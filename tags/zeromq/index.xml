@@ -15,9 +15,7 @@
       <pubDate>Fri, 03 Feb 2017 10:00:00 +0000</pubDate>
       
       <guid>https://enriquecoronadozu.github.io/post/2017-02-03-ZeroQM%20notes%20part%201/</guid>
-      <description>
-
-&lt;p&gt;This post present a set of notes and python examples of ZeroMQ&lt;/p&gt;
+      <description>&lt;p&gt;This post present a set of notes and python examples of ZeroMQ. &lt;/p&gt;
 
 &lt;h2 id=&#34;instalation&#34;&gt;Instalation:&lt;/h2&gt;
 
@@ -120,8 +118,7 @@ sock.connect(&amp;quot;tcp://127.0.0.1:5685&amp;quot;)
 
 sock.send(&amp;quot;hello&amp;quot;)
 print (sock.recv())
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
   </channel>

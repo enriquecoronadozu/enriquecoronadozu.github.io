@@ -15,9 +15,7 @@
       <pubDate>Sat, 04 Feb 2017 10:00:00 +0000</pubDate>
       
       <guid>https://enriquecoronadozu.github.io/post/2017-02-04-Sphinx%20&amp;%20Github%20pages/</guid>
-      <description>
-
-&lt;p&gt;This tutorial shows how to use Github pages + Sphinx for publish nice looking documentation&lt;/p&gt;
+      <description>&lt;p&gt;This tutorial shows how to use Github pages + Sphinx for publish nice looking documentation. &lt;/p&gt;
 
 &lt;h2 id=&#34;install-sphinx&#34;&gt;Install Sphinx&lt;/h2&gt;
 
@@ -185,8 +183,7 @@ git checkout master
 &lt;pre&gt;&lt;code&gt;import sphinx_rtd_theme
 html_theme = &amp;quot;sphinx_rtd_theme&amp;quot;
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>
@@ -195,7 +192,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
       <pubDate>Wed, 01 Feb 2017 10:00:00 +0000</pubDate>
       
       <guid>https://enriquecoronadozu.github.io/post/2017-02-02-Useful%20links%20for%20Github%20pages/</guid>
-      <description>
+      <description>&lt;p&gt;This post gives some useful links for github pages &lt;/p&gt;
 
 &lt;h2 id=&#34;math-in-jekyll&#34;&gt;Math in Jekyll&lt;/h2&gt;
 
@@ -222,8 +219,7 @@ cd public
 git add.
 git commit -m &amp;quot;Build website&amp;quot;
 git push
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>

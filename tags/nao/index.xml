@@ -15,9 +15,7 @@
       <pubDate>Sun, 05 Feb 2017 10:00:00 +0000</pubDate>
       
       <guid>https://enriquecoronadozu.github.io/post/2017-02-05-NAO%20basics/</guid>
-      <description>
-
-&lt;p&gt;In this document a set of notes and useful links about NAO robot are presented&lt;/p&gt;
+      <description>&lt;p&gt;In this document a set of notes and useful links about NAO robot are presented. &lt;/p&gt;
 
 &lt;h2 id=&#34;nao-safety&#34;&gt;Nao safety&lt;/h2&gt;
 
@@ -101,8 +99,7 @@
 &lt;h2 id=&#34;first-steps-and-hello-world-in-python&#34;&gt;First steps and hello world in python:&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://doc.aldebaran.com/1-14/software/choregraphe/choregraphe_first_steps.html&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/software/choregraphe/choregraphe_first_steps.html&lt;/a&gt;
-&lt;a href=&#34;http://doc.aldebaran.com/1-14/getting_started/helloworld_python.html#helloworld-python&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/getting_started/helloworld_python.html#helloworld-python&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;a href=&#34;http://doc.aldebaran.com/1-14/getting_started/helloworld_python.html#helloworld-python&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/getting_started/helloworld_python.html#helloworld-python&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

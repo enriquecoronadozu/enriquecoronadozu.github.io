@@ -16,9 +16,7 @@
       <pubDate>Sun, 05 Feb 2017 10:00:00 +0000</pubDate>
       
       <guid>https://enriquecoronadozu.github.io/post/2017-02-05-NAO%20basics/</guid>
-      <description>
-
-&lt;p&gt;In this document a set of notes and useful links about NAO robot are presented&lt;/p&gt;
+      <description>&lt;p&gt;In this document a set of notes and useful links about NAO robot are presented. &lt;/p&gt;
 
 &lt;h2 id=&#34;nao-safety&#34;&gt;Nao safety&lt;/h2&gt;
 
@@ -102,8 +100,7 @@
 &lt;h2 id=&#34;first-steps-and-hello-world-in-python&#34;&gt;First steps and hello world in python:&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://doc.aldebaran.com/1-14/software/choregraphe/choregraphe_first_steps.html&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/software/choregraphe/choregraphe_first_steps.html&lt;/a&gt;
-&lt;a href=&#34;http://doc.aldebaran.com/1-14/getting_started/helloworld_python.html#helloworld-python&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/getting_started/helloworld_python.html#helloworld-python&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;a href=&#34;http://doc.aldebaran.com/1-14/getting_started/helloworld_python.html#helloworld-python&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/getting_started/helloworld_python.html#helloworld-python&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -112,9 +109,7 @@
       <pubDate>Sat, 04 Feb 2017 10:00:00 +0000</pubDate>
       
       <guid>https://enriquecoronadozu.github.io/post/2017-02-04-Sphinx%20&amp;%20Github%20pages/</guid>
-      <description>
-
-&lt;p&gt;This tutorial shows how to use Github pages + Sphinx for publish nice looking documentation&lt;/p&gt;
+      <description>&lt;p&gt;This tutorial shows how to use Github pages + Sphinx for publish nice looking documentation. &lt;/p&gt;
 
 &lt;h2 id=&#34;install-sphinx&#34;&gt;Install Sphinx&lt;/h2&gt;
 
@@ -282,8 +277,7 @@ git checkout master
 &lt;pre&gt;&lt;code&gt;import sphinx_rtd_theme
 html_theme = &amp;quot;sphinx_rtd_theme&amp;quot;
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>
@@ -292,9 +286,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
       <pubDate>Fri, 03 Feb 2017 10:00:00 +0000</pubDate>
       
       <guid>https://enriquecoronadozu.github.io/post/2017-02-03-ZeroQM%20notes%20part%201/</guid>
-      <description>
-
-&lt;p&gt;This post present a set of notes and python examples of ZeroMQ&lt;/p&gt;
+      <description>&lt;p&gt;This post present a set of notes and python examples of ZeroMQ. &lt;/p&gt;
 
 &lt;h2 id=&#34;instalation&#34;&gt;Instalation:&lt;/h2&gt;
 
@@ -397,8 +389,7 @@ sock.connect(&amp;quot;tcp://127.0.0.1:5685&amp;quot;)
 
 sock.send(&amp;quot;hello&amp;quot;)
 print (sock.recv())
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>
@@ -408,6 +399,8 @@ print (sock.recv())
       
       <guid>https://enriquecoronadozu.github.io/post/2017-02-01-Deep%20Learning/</guid>
       <description>
+
+&lt;p&gt;This post gives and introduction of Recurrent Neural Networks (RNN)&lt;/p&gt;
 
 &lt;h2 id=&#34;notations&#34;&gt;Notations:&lt;/h2&gt;
 
@@ -635,7 +628,7 @@ print(model.metrics_names[1], scores[1]*100)
       <pubDate>Wed, 01 Feb 2017 10:00:00 +0000</pubDate>
       
       <guid>https://enriquecoronadozu.github.io/post/2017-02-02-Useful%20links%20for%20Github%20pages/</guid>
-      <description>
+      <description>&lt;p&gt;This post gives some useful links for github pages &lt;/p&gt;
 
 &lt;h2 id=&#34;math-in-jekyll&#34;&gt;Math in Jekyll&lt;/h2&gt;
 
@@ -662,8 +655,7 @@ cd public
 git add.
 git commit -m &amp;quot;Build website&amp;quot;
 git push
-&lt;/code&gt;&lt;/pre&gt;
-</description>
+&lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>
@@ -672,11 +664,7 @@ git push
       <pubDate>Mon, 30 Jan 2017 10:00:00 +0000</pubDate>
       
       <guid>https://enriquecoronadozu.github.io/post/2017-01-30-Installation%20of%20Keras/</guid>
-      <description>
-
-&lt;h2 id=&#34;description&#34;&gt;Description&lt;/h2&gt;
-
-&lt;p&gt;This post contains the steps followed to perform the installation of the machine learning libraries used for my thesis.&lt;/p&gt;
+      <description>&lt;p&gt;This post contains the steps followed to perform the installation of the machine learning libraries used for my thesis. &lt;/p&gt;
 
 &lt;h2 id=&#34;python-installation&#34;&gt;Python Installation&lt;/h2&gt;
 
@@ -725,8 +713,7 @@ conda install mingw libpython
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;More info in: &lt;a href=&#34;https://keras.io/backend/&#34; target=&#34;_blank&#34;&gt;https://keras.io/backend/&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;More info in: &lt;a href=&#34;https://keras.io/backend/&#34; target=&#34;_blank&#34;&gt;https://keras.io/backend/&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>

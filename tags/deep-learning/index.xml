@@ -17,6 +17,8 @@
       <guid>https://enriquecoronadozu.github.io/post/2017-02-01-Deep%20Learning/</guid>
       <description>
 
+&lt;p&gt;This post gives and introduction of Recurrent Neural Networks (RNN)&lt;/p&gt;
+
 &lt;h2 id=&#34;notations&#34;&gt;Notations:&lt;/h2&gt;
 
 &lt;h3 id=&#34;list-of-abbrevations&#34;&gt;List of abbrevations&lt;/h3&gt;
@@ -243,11 +245,7 @@ print(model.metrics_names[1], scores[1]*100)
       <pubDate>Mon, 30 Jan 2017 10:00:00 +0000</pubDate>
       
       <guid>https://enriquecoronadozu.github.io/post/2017-01-30-Installation%20of%20Keras/</guid>
-      <description>
-
-&lt;h2 id=&#34;description&#34;&gt;Description&lt;/h2&gt;
-
-&lt;p&gt;This post contains the steps followed to perform the installation of the machine learning libraries used for my thesis.&lt;/p&gt;
+      <description>&lt;p&gt;This post contains the steps followed to perform the installation of the machine learning libraries used for my thesis. &lt;/p&gt;
 
 &lt;h2 id=&#34;python-installation&#34;&gt;Python Installation&lt;/h2&gt;
 
@@ -296,8 +294,7 @@ conda install mingw libpython
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;More info in: &lt;a href=&#34;https://keras.io/backend/&#34; target=&#34;_blank&#34;&gt;https://keras.io/backend/&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;More info in: &lt;a href=&#34;https://keras.io/backend/&#34; target=&#34;_blank&#34;&gt;https://keras.io/backend/&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
