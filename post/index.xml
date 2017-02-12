@@ -287,7 +287,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
     </item>
     
     <item>
-      <title>ZeroQM notes 1</title>
+      <title>ZeroMQ notes 1</title>
       <link>https://enriquecoronadozu.github.io/post/2017-02-03-ZeroQM%20notes%20part%201/</link>
       <pubDate>Fri, 03 Feb 2017 10:00:00 +0000</pubDate>
       
@@ -421,13 +421,13 @@ print (sock.recv())
 &lt;h3 id=&#34;list-of-symbols&#34;&gt;List of symbols&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;$$T$$,  length of a sequence&lt;/li&gt;
-&lt;li&gt;$$\tau$$ length of a minibatch of a sequence&lt;/li&gt;
-&lt;li&gt;$$\mathbf{x} = {x_1, x_2, \dots, x_n }$, vector set&lt;/li&gt;
-&lt;li&gt;$$\mathcal{X} = {x_1, x_2, \dots, x_T }$,  sequence&lt;/li&gt;
-&lt;li&gt;$$x$,  element of a set or of a sequence&lt;/li&gt;
-&lt;li&gt;$$\mathbf{h}$ state in the hidden units of the network&lt;/li&gt;
-&lt;li&gt;$$t$$,    time step&lt;/li&gt;
+&lt;li&gt;$T$,  length of a sequence&lt;/li&gt;
+&lt;li&gt;$\tau$ length of a minibatch of a sequence&lt;/li&gt;
+&lt;li&gt;$\mathbf{x} = {x_1, x_2, \dots, x_n }$, vector set&lt;/li&gt;
+&lt;li&gt;$\mathcal{X} = {x_1, x_2, \dots, x_T }$,  sequence&lt;/li&gt;
+&lt;li&gt;$x$,  element of a set or of a sequence&lt;/li&gt;
+&lt;li&gt;$\mathbf{h}$ state in the hidden units of the network&lt;/li&gt;
+&lt;li&gt;$t$,    time step&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;theory&#34;&gt;Theory:&lt;/h2&gt;

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zeromq on Academic</title>
+    <link>https://enriquecoronadozu.github.io/tags/zeromq/index.xml</link>
+    <description>Recent content in Zeromq on Academic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Enrique Coronado</copyright>
+    <atom:link href="/tags/zeromq/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ZeroMQ notes 1</title>
+      <link>https://enriquecoronadozu.github.io/post/2017-02-03-ZeroQM%20notes%20part%201/</link>
+      <pubDate>Fri, 03 Feb 2017 10:00:00 +0000</pubDate>
+      
+      <guid>https://enriquecoronadozu.github.io/post/2017-02-03-ZeroQM%20notes%20part%201/</guid>
+      <description>
+
+&lt;p&gt;This post present a set of notes and python examples of ZeroMQ&lt;/p&gt;
+
+&lt;h2 id=&#34;instalation&#34;&gt;Instalation:&lt;/h2&gt;
+
+&lt;p&gt;First intall the libzmq libraries:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://zeromq.org/intro:get-the-software&#34; target=&#34;_blank&#34;&gt;http://zeromq.org/intro:get-the-software&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;The install the binaries in Python using the next line:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# (Windows or OS X)
+pip install --wheel pyzmq
+# or
+easy_install pyzmq
+# or (pretty much anywhere)
+pip install pyzmq
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;More info in: &lt;a href=&#34;http://zeromq.org/bindings:python&#34; target=&#34;_blank&#34;&gt;http://zeromq.org/bindings:python&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;zeromq-main-idea&#34;&gt;ZeroMQ main idea&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;ZeroMQ&lt;/strong&gt; is en general a middleware that augments the capabilities of TCP/IP sockets. Is a socket system that allow to do concurrency.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Is fast&lt;/li&gt;
+&lt;li&gt;Use to connect several parts of a distributed system&lt;/li&gt;
+&lt;li&gt;Works asynchronously (unlike regular socket implementation that works synchronously)&lt;/li&gt;
+&lt;li&gt;Allows the implementation of several comunication patterns as request/reply and publish/subcriber&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;context-in-zeromq&#34;&gt;Context in ZeroMQ&lt;/h2&gt;
+
+&lt;p&gt;Used to help to manage the sockets created in ZeroMQ. They are created in the start of the aplication.&lt;/p&gt;
+
+&lt;h2 id=&#34;request-reply-example&#34;&gt;Request/Reply example&lt;/h2&gt;
+
+&lt;p&gt;For this we will use the type sockets zmq.REP for the server and zmq.REQ for the client.&lt;/p&gt;
+
+&lt;h3 id=&#34;server-code&#34;&gt;Server code&lt;/h3&gt;
+
+&lt;p&gt;First import the zmq libraries&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import zmq
+import time
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;then, define a new context&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;context = zmq.Context()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;now define the socket for Request/Reply patter using zmq.REP as argument on the context&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;sock = context.socket(zmq.REP)
+sock.bind(&amp;quot;tcp://127.0.0.1:5685&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;run the server, get the client message and send a response &amp;ldquo;Echo&amp;rdquo; + message&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;while True:
+    message = sock.recv()
+    sock.send(&amp;quot;Echo: &amp;quot; +  message)
+    print (&amp;quot;Echo: &amp;quot; +  message)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Putting all together:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import zmq
+import time
+context = zmq.Context()
+sock = context.socket(zmq.REP)
+sock.bind(&amp;quot;tcp://127.0.0.1:5685&amp;quot;)
+while True:
+    message = sock.recv()
+    sock.send(&amp;quot;Echo: &amp;quot; +  message)
+    print (&amp;quot;Echo: &amp;quot; +  message)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To exit press ctrl+x (Termianal in OSX/Linux)&lt;/p&gt;
+
+&lt;h1 id=&#34;client-code&#34;&gt;Client code&lt;/h1&gt;
+
+&lt;p&gt;The client code it is similar but we use the next elements instead:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;zmq.REQ&lt;/li&gt;
+&lt;li&gt;socket.connect&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import zmq
+import time
+context = zmq.Context()
+
+# Connect with the server
+sock = context.socket(zmq.REQ)
+sock.connect(&amp;quot;tcp://127.0.0.1:5685&amp;quot;)
+
+# Send a message using the socket
+
+sock.send(&amp;quot;hello&amp;quot;)
+print (sock.recv())
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
