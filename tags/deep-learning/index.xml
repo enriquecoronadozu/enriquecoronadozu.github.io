@@ -15,9 +15,7 @@
       <pubDate>Wed, 01 Feb 2017 10:00:00 +0000</pubDate>
       
       <guid>https://enriquecoronadozu.github.io/post/2017-02-01-Deep%20Learning/</guid>
-      <description>
-
-&lt;p&gt;This post gives and introduction of Recurrent Neural Networks (RNN)&lt;/p&gt;
+      <description>&lt;p&gt;This post gives and introduction of Recurrent Neural Networks (RNN) &lt;/p&gt;
 
 &lt;h2 id=&#34;notations&#34;&gt;Notations:&lt;/h2&gt;
 
@@ -235,8 +233,7 @@ print(model.metrics_names[1], scores[1]*100)
 &lt;ul&gt;
 &lt;li&gt;Sets: &lt;a href=&#34;https://en.wikipedia.org/wiki/Set_(mathematics&#34; target=&#34;_blank&#34;&gt;https://en.wikipedia.org/wiki/Set_(mathematics&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;Basic explanation of sets and sequences: &lt;a href=&#34;http://www.mathsisfun.com/algebra/sequences-series.html&#34; target=&#34;_blank&#34;&gt;http://www.mathsisfun.com/algebra/sequences-series.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
+&lt;/ul&gt;</description>
     </item>
     
     <item>
