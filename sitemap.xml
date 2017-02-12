@@ -4,6 +4,54 @@
     
     
     <url>
+      <loc>https://enriquecoronadozu.github.io/post/2017-02-05-NAO%20basics/</loc>
+      <lastmod>2017-02-05T10:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://enriquecoronadozu.github.io/post/2017-02-04-Sphinx%20&amp;%20Github%20pages/</loc>
+      <lastmod>2017-02-04T10:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://enriquecoronadozu.github.io/post/2017-02-03-ZeroQM%20notes%20part%201/</loc>
+      <lastmod>2017-02-03T10:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://enriquecoronadozu.github.io/post/2017-02-01-Deep%20Learning/</loc>
+      <lastmod>2017-02-01T10:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://enriquecoronadozu.github.io/post/2017-02-02-Useful%20links%20for%20Github%20pages/</loc>
+      <lastmod>2017-02-01T10:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://enriquecoronadozu.github.io/post/2017-01-30-Installation%20of%20Keras/</loc>
+      <lastmod>2017-01-30T10:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
       <loc>https://enriquecoronadozu.github.io/talk/example-talk/</loc>
       <lastmod>2017-01-01T00:00:00+00:00</lastmod>
     </url>
@@ -46,30 +94,6 @@
     <url>
       <loc>https://enriquecoronadozu.github.io/project/example-external-project/</loc>
       <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-      <loc>https://enriquecoronadozu.github.io/post/getting-started/</loc>
-      <lastmod>2016-04-20T12:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-      <loc>https://enriquecoronadozu.github.io/post/widgets/</loc>
-      <lastmod>2016-04-20T11:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-      <loc>https://enriquecoronadozu.github.io/post/managing-content/</loc>
-      <lastmod>2016-04-20T11:00:00+00:00</lastmod>
     </url>
     
   
@@ -135,15 +159,6 @@
     
     
     <url>
-      <loc>https://enriquecoronadozu.github.io/tags/academic/</loc>
-      <lastmod>2016-04-20T12:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
       <loc>https://enriquecoronadozu.github.io/tags/deep-learning/</loc>
       <lastmod>2016-04-27T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -161,14 +176,14 @@
   
     
     
-  
-    
-    
     <url>
-      <loc>https://enriquecoronadozu.github.io/tags/hugo/</loc>
-      <lastmod>2016-04-20T12:00:00+00:00</lastmod>
+      <loc>https://enriquecoronadozu.github.io/tags/github/</loc>
+      <lastmod>2017-02-05T10:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
+    
+  
+    
     
   
     

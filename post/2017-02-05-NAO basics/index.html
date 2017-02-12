@@ -34,11 +34,11 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
 
-  <link rel="canonical" href="https://enriquecoronadozu.github.io/post/migrate-from-jekyll/">
+  <link rel="canonical" href="https://enriquecoronadozu.github.io/post/2017-02-05-NAO%20basics/">
 
   
 
-  <title>Migrate from Jekyll to Hugo | Academic</title>
+  <title>NAO basics | Academic</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
@@ -148,14 +148,14 @@
   
 
   <div class="article-container">
-    <h1 itemprop="name">Migrate from Jekyll to Hugo</h1>
+    <h1 itemprop="name">NAO basics</h1>
     
 
 <div class="article-metadata">
 
   <span class="article-date">
-    <time datetime="2014-03-10 00:00:00 &#43;0000 UTC" itemprop="datePublished">
-      Mon, Mar 10, 2014
+    <time datetime="2017-02-05 10:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Sun, Feb 5, 2017
     </time>
   </span>
 
@@ -167,7 +167,7 @@
   <span class="article-tags">
     <i class="fa fa-tags"></i>
     
-    <a href="/tags/jekyll">jekyll</a
+    <a href="/tags/github">github</a
     >
     
   </span>
@@ -180,35 +180,35 @@
   <ul class="share">
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2fmigrate-from-jekyll%2f"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-02-05-NAO%2520basics%2f"
          target="_blank">
         <i class="fa fa-facebook"></i>
       </a>
     </li>
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Migrate%20from%20Jekyll%20to%20Hugo&amp;url=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2fmigrate-from-jekyll%2f"
+         href="https://twitter.com/intent/tweet?text=NAO%20basics&amp;url=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-02-05-NAO%2520basics%2f"
          target="_blank">
         <i class="fa fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2fmigrate-from-jekyll%2f&amp;title=Migrate%20from%20Jekyll%20to%20Hugo"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-02-05-NAO%2520basics%2f&amp;title=NAO%20basics"
          target="_blank">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2fmigrate-from-jekyll%2f&amp;title=Migrate%20from%20Jekyll%20to%20Hugo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-02-05-NAO%2520basics%2f&amp;title=NAO%20basics"
          target="_blank">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=Migrate%20from%20Jekyll%20to%20Hugo&amp;body=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2fmigrate-from-jekyll%2f">
+         href="mailto:?subject=NAO%20basics&amp;body=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-02-05-NAO%2520basics%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -223,40 +223,91 @@
     <div class="article-style" itemprop="articleBody">
       
 
-<p>Here are a few tips for migrating an existing website from Jekyll to Hugo. These tips can be applied in conjunction with following Hugo Academic&rsquo;s <a href="No page found with path or logical name "post/getting-started.md".
-" target="_blank">getting started guide</a>.</p>
+<p>In this document a set of notes and useful links about NAO robot are presented</p>
 
-<h2 id="move-static-content-to-static">Move static content to <code>static</code></h2>
+<h2 id="nao-safety">Nao safety</h2>
 
-<p>Jekyll has a rule that any directory not starting with <code>_</code> will be copied as-is to the <code>_site</code> output. Hugo keeps all static content under <code>static</code>. You should therefore move it all there.
-With Jekyll, something that looked like</p>
+<ul>
+<li>Best practices: <a href="http://doc.aldebaran.com/1-14/nao/practices.html" target="_blank">http://doc.aldebaran.com/1-14/nao/practices.html</a></li>
+<li>Put the robot in a stable position before &ldquo;releasing stiffness&rdquo;</li>
+</ul>
 
-<pre><code>▾ &lt;root&gt;/
-    ▾ images/
-        logo.png
-</code></pre>
+<h2 id="battery">Battery</h2>
 
-<p>should become</p>
+<ul>
+<li>From 30 minutes to 2 hours.</li>
+<li>Charging the battery: <a href="http://doc.aldebaran.com/1-14/nao/battery-charging.html" target="_blank">http://doc.aldebaran.com/1-14/nao/battery-charging.html</a></li>
+</ul>
 
-<pre><code>▾ &lt;root&gt;/
-    ▾ static/
-        ▾ images/
-            logo.png
-</code></pre>
+<h2 id="turn-on-the-robot">Turn on the robot</h2>
 
-<p>Additionally, you&rsquo;ll want any files that should reside at the root (such as <code>CNAME</code>) to be moved to <code>static</code>.</p>
+<ul>
+<li>Press the chest button once.</li>
+<li>The boot process is completed when NAO says “OGNAK GNOUK” while its Chest button becomes white.
+&lt; <a href="http://doc.aldebaran.com/1-14/nao/nao-turn-on.html" target="_blank">http://doc.aldebaran.com/1-14/nao/nao-turn-on.html</a>&gt;</li>
+</ul>
 
-<h2 id="fix-content">Fix content</h2>
+<h2 id="know-ip-address">Know IP address</h2>
 
-<p>Depending on the amount of customization that was done for each post in Jekyll, this step will require more or less effort. There are no hard and fast rules here except that <code>hugo server --watch</code> and the Hugo Academic example site are your friends. Test your changes and fix errors as needed.</p>
+<ul>
+<li>Press the chest button once, when it&rsquo;s on</li>
+</ul>
 
-<h2 id="publish">Publish</h2>
+<h2 id="battery-level">Battery level</h2>
 
-<p>The default is for Jekyll to publish the website to a <code>_site</code> directory, whereas Hugo publishes to a <code>public</code> directory.</p>
+<ul>
+<li>Indicated in the chest: green, yellow and blinking red.</li>
+</ul>
 
-<h2 id="a-practical-example">A practical example</h2>
+<h2 id="release-stiffness">Release stiffness</h2>
 
-<p>Alexandre Normand migrated his website from Jekyll to Hugo in less than a day. You can see all his changes by looking at this GitHub <a href="https://github.com/alexandre-normand/alexandre-normand/compare/869d69435bd2665c3fbf5b5c78d4c22759d7613a...b7f6605b1265e83b4b81495423294208cc74d610" target="_blank">diff</a>. However, bear in mind that this example is <strong>not specific to the Academic theme nor does it use the latest version of Hugo</strong>.</p>
+<ul>
+<li>Press two times chest button.</li>
+</ul>
+
+<h2 id="shutdown-the-robot">Shutdown the robot</h2>
+
+<ul>
+<li>Press the chest button for 3 seconds, until NAO says “GNUK GNUK”.</li>
+<li>The shutdown process takes approximately 18 seconds</li>
+<li>The shutdown process is completed when all the LEDs are off.</li>
+</ul>
+
+<h2 id="nao-configuration">NAO configuration</h2>
+
+<p>Nao wifi connection: <a href="http://doc.aldebaran.com/1-14/nao/nao-connecting.html" target="_blank">http://doc.aldebaran.com/1-14/nao/nao-connecting.html</a></p>
+
+<h2 id="problems-with-nao">Problems with NAO?</h2>
+
+<ul>
+<li>Press the chest button for 8 seconds.</li>
+</ul>
+
+<h2 id="nao-basic-software">NAO basic software:</h2>
+
+<p>NAO basic softwares are:
+- Choregraphe: for create animation, dialogs and behavior. Also for simple simulation.</p>
+
+<p><a href="http://doc.aldebaran.com/1-14/software/choregraphe/index.html#choregraphe" target="_blank">http://doc.aldebaran.com/1-14/software/choregraphe/index.html#choregraphe</a></p>
+
+<ul>
+<li>Monitor: Feedback of the state and sensors of the robot.</li>
+<li>SDK: Can be used to remotely control, create new NAOqi modules and enrich Choregraphe box library (use python)</li>
+<li>OpenNAO: Operating System of the robot.</li>
+</ul>
+
+<p><a href="http://doc.aldebaran.com/1-14/dev/tools/opennao.html#opennao-advanced" target="_blank">http://doc.aldebaran.com/1-14/dev/tools/opennao.html#opennao-advanced</a></p>
+
+<ul>
+<li>NAOqi: is the main software that runs on the robot.</li>
+</ul>
+
+<p><a href="http://doc.aldebaran.com/1-14/dev/naoqi/index.html#naoqi-framework-overview" target="_blank">http://doc.aldebaran.com/1-14/dev/naoqi/index.html#naoqi-framework-overview</a></p>
+
+<h2 id="first-steps-and-hello-world-in-python">First steps and hello world in python:</h2>
+
+<p><a href="http://doc.aldebaran.com/1-14/software/choregraphe/choregraphe_first_steps.html" target="_blank">http://doc.aldebaran.com/1-14/software/choregraphe/choregraphe_first_steps.html</a>
+<a href="http://doc.aldebaran.com/1-14/getting_started/helloworld_python.html#helloworld-python" target="_blank">http://doc.aldebaran.com/1-14/getting_started/helloworld_python.html#helloworld-python</a></p>
 
     </div>
   </div>
@@ -267,10 +318,10 @@ With Jekyll, something that looked like</p>
   <nav>
   <ul class="pager">
     
-
+    <li class="previous"><a href="https://enriquecoronadozu.github.io/post/2017-02-04-Sphinx%20&amp;%20Github%20pages/"><span
+      aria-hidden="true">&larr;</span> Sphinx &amp; Github pages</a></li>
     
-    <li class="next"><a href="https://enriquecoronadozu.github.io/post/writing-markdown-latex/">Writing content with Markdown, LaTeX, and Shortcodes <span
-      aria-hidden="true">&rarr;</span></a></li>
+
     
   </ul>
 </nav>
