@@ -1,0 +1,21 @@
+This post explains how to install Blocked for different Operating Systems
+
+TODO: Makes a for dummies tutorial
+
+## Windows:
+
+- **Install git tools:** For this download Git from:
+
+<https://git-scm.com/download/win>
+
+
+- ** Download Blockpy **: Open the cmd and write:
+
+```
+git clone https://github.com/RealTimeWeb/blockpy.git
+```
+
+- ** Closure Compiler**: Download and unzip from
+
+https://github.com/google/closure-library/zipball/master
+
