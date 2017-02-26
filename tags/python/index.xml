@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Academic</title>
+    <link>https://enriquecoronadozu.github.io/tags/python/index.xml</link>
+    <description>Recent content in Python on Academic</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017 Enrique Coronado</copyright>
+    <atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Blockpy</title>
+      <link>https://enriquecoronadozu.github.io/post/2017-02-24-Blockly/</link>
+      <pubDate>Sun, 05 Feb 2017 10:00:00 +0000</pubDate>
+      
+      <guid>https://enriquecoronadozu.github.io/post/2017-02-24-Blockly/</guid>
+      <description>&lt;p&gt;In a new folder:&lt;/p&gt;
+
+&lt;p&gt;git clone &lt;a href=&#34;https://github.com/RealTimeWeb/blockpy.git&#34; target=&#34;_blank&#34;&gt;https://github.com/RealTimeWeb/blockpy.git&lt;/a&gt;
+wget &lt;a href=&#34;https://github.com/google/closure-library/zipball/master&#34; target=&#34;_blank&#34;&gt;https://github.com/google/closure-library/zipball/master&lt;/a&gt; -O closure.zip
+unzip closure.zip&lt;/p&gt;
+
+&lt;p&gt;cd blockpy/&lt;/p&gt;
+
+&lt;p&gt;En ubuntu usar: control +  h para ver carpetas ocultas
+Editar el archivo .git/config&lt;/p&gt;
+
+&lt;p&gt;Sustituir por el texto:&lt;/p&gt;
+
+&lt;p&gt;[core]
+        repositoryformatversion = 0
+        filemode = false
+        bare = false
+        logallrefupdates = true
+        symlinks = false
+        ignorecase = true
+        hideDotFiles = dotGitOnly
+[remote &amp;ldquo;origin&amp;rdquo;]
+        url = &lt;a href=&#34;https://github.com/RealTimeWeb/blockpy&#34; target=&#34;_blank&#34;&gt;https://github.com/RealTimeWeb/blockpy&lt;/a&gt;
+        fetch = +refs/heads/&lt;em&gt;:refs/remotes/origin/&lt;/em&gt;
+[branch &amp;ldquo;master&amp;rdquo;]
+        remote = origin
+        merge = refs/heads/master
+[remote &amp;ldquo;blockly&amp;rdquo;]
+        url = &lt;a href=&#34;https://github.com/RealTimeWeb/blockly&#34; target=&#34;_blank&#34;&gt;https://github.com/RealTimeWeb/blockly&lt;/a&gt;
+        fetch = +refs/heads/&lt;em&gt;:refs/remotes/blockly/&lt;/em&gt;
+[remote &amp;ldquo;blockly_upstream&amp;rdquo;]
+    url = &lt;a href=&#34;https://github.com/google/blockly.git&#34; target=&#34;_blank&#34;&gt;https://github.com/google/blockly.git&lt;/a&gt;
+    fetch = +refs/heads/&lt;em&gt;:refs/remotes/blockly/&lt;/em&gt;
+[remote &amp;ldquo;skulpt&amp;rdquo;]
+        url = &lt;a href=&#34;https://github.com/RealTimeWeb/skulpt&#34; target=&#34;_blank&#34;&gt;https://github.com/RealTimeWeb/skulpt&lt;/a&gt;
+        fetch = +refs/heads/&lt;em&gt;:refs/remotes/skulpt/&lt;/em&gt;
+[remote &amp;ldquo;skulpt_upstream&amp;rdquo;]
+        url = &lt;a href=&#34;https://github.com/skulpt/skulpt.git&#34; target=&#34;_blank&#34;&gt;https://github.com/skulpt/skulpt.git&lt;/a&gt;
+        fetch = +refs/heads/&lt;em&gt;:refs/remotes/skulpt/&lt;/em&gt;
+[remote &amp;ldquo;server&amp;rdquo;]
+        url = &lt;a href=&#34;https://github.com/RealTimeWeb/Blockpy-Server.git&#34; target=&#34;_blank&#34;&gt;https://github.com/RealTimeWeb/Blockpy-Server.git&lt;/a&gt;
+        fetch = +refs/heads/&lt;em&gt;:refs/remotes/server/&lt;/em&gt;
+[remote &amp;ldquo;blockly_games&amp;rdquo;]
+        url = &lt;a href=&#34;https://github.com/RealTimeWeb/blockly-games.git&#34; target=&#34;_blank&#34;&gt;https://github.com/RealTimeWeb/blockly-games.git&lt;/a&gt;
+        fetch = +refs/heads/&lt;em&gt;:refs/remotes/blockly_games/&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Install Java:&lt;/p&gt;
+
+&lt;p&gt;sudo apt-get update
+sudo apt-get install default-jre&lt;/p&gt;
+
+&lt;p&gt;cp blockly/msg/messages.js messages.js
+cd blockly
+python build.py
+cd ..
+mv messages.js blockly/msg/messages.js&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

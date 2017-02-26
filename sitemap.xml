@@ -4,6 +4,14 @@
     
     
     <url>
+      <loc>https://enriquecoronadozu.github.io/post/2017-02-24-Blockly/</loc>
+      <lastmod>2017-02-05T10:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
       <loc>https://enriquecoronadozu.github.io/post/2017-02-05-NAO%20basics/</loc>
       <lastmod>2017-02-05T10:00:00+00:00</lastmod>
     </url>
@@ -200,6 +208,15 @@
     
     <url>
       <loc>https://enriquecoronadozu.github.io/publication_types/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://enriquecoronadozu.github.io/tags/python/</loc>
+      <lastmod>2017-02-05T10:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
