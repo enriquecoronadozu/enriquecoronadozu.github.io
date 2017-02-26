@@ -10,68 +10,113 @@
     <atom:link href="/tags/python/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Blockpy</title>
-      <link>https://enriquecoronadozu.github.io/post/2017-02-24-Blockly/</link>
+      <title>How to create a programing framework using Google Blockly</title>
+      <link>https://enriquecoronadozu.github.io/post/2017-02-27-%20Google%20Blocky/</link>
       <pubDate>Sun, 05 Feb 2017 10:00:00 +0000</pubDate>
       
-      <guid>https://enriquecoronadozu.github.io/post/2017-02-24-Blockly/</guid>
-      <description>&lt;p&gt;In a new folder:&lt;/p&gt;
+      <guid>https://enriquecoronadozu.github.io/post/2017-02-27-%20Google%20Blocky/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;
 
-&lt;p&gt;git clone &lt;a href=&#34;https://github.com/RealTimeWeb/blockpy.git&#34; target=&#34;_blank&#34;&gt;https://github.com/RealTimeWeb/blockpy.git&lt;/a&gt;
-wget &lt;a href=&#34;https://github.com/google/closure-library/zipball/master&#34; target=&#34;_blank&#34;&gt;https://github.com/google/closure-library/zipball/master&lt;/a&gt; -O closure.zip
-unzip closure.zip&lt;/p&gt;
+&lt;p&gt;Google Blockly is a open source and web-based library which allows users to build programs by dragging blocks together in a visual programming editor. The programs builded with Blockly can be exported to many languages, including JavaScript, Python, PHP, C++, among others.&lt;/p&gt;
 
-&lt;p&gt;cd blockpy/&lt;/p&gt;
+&lt;p&gt;This post is consist of a set of examples that explains how to create a visual programing framework using Google Blockly and Python. This tutorials are oriented to create Desktop applications.&lt;/p&gt;
 
-&lt;p&gt;En ubuntu usar: control +  h para ver carpetas ocultas
-Editar el archivo .git/config&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
 
-&lt;p&gt;Sustituir por el texto:&lt;/p&gt;
+&lt;h2 id=&#34;requirements&#34;&gt;Requirements:&lt;/h2&gt;
 
-&lt;p&gt;[core]
-        repositoryformatversion = 0
-        filemode = false
-        bare = false
-        logallrefupdates = true
-        symlinks = false
-        ignorecase = true
-        hideDotFiles = dotGitOnly
-[remote &amp;ldquo;origin&amp;rdquo;]
-        url = &lt;a href=&#34;https://github.com/RealTimeWeb/blockpy&#34; target=&#34;_blank&#34;&gt;https://github.com/RealTimeWeb/blockpy&lt;/a&gt;
-        fetch = +refs/heads/&lt;em&gt;:refs/remotes/origin/&lt;/em&gt;
-[branch &amp;ldquo;master&amp;rdquo;]
-        remote = origin
-        merge = refs/heads/master
-[remote &amp;ldquo;blockly&amp;rdquo;]
-        url = &lt;a href=&#34;https://github.com/RealTimeWeb/blockly&#34; target=&#34;_blank&#34;&gt;https://github.com/RealTimeWeb/blockly&lt;/a&gt;
-        fetch = +refs/heads/&lt;em&gt;:refs/remotes/blockly/&lt;/em&gt;
-[remote &amp;ldquo;blockly_upstream&amp;rdquo;]
-    url = &lt;a href=&#34;https://github.com/google/blockly.git&#34; target=&#34;_blank&#34;&gt;https://github.com/google/blockly.git&lt;/a&gt;
-    fetch = +refs/heads/&lt;em&gt;:refs/remotes/blockly/&lt;/em&gt;
-[remote &amp;ldquo;skulpt&amp;rdquo;]
-        url = &lt;a href=&#34;https://github.com/RealTimeWeb/skulpt&#34; target=&#34;_blank&#34;&gt;https://github.com/RealTimeWeb/skulpt&lt;/a&gt;
-        fetch = +refs/heads/&lt;em&gt;:refs/remotes/skulpt/&lt;/em&gt;
-[remote &amp;ldquo;skulpt_upstream&amp;rdquo;]
-        url = &lt;a href=&#34;https://github.com/skulpt/skulpt.git&#34; target=&#34;_blank&#34;&gt;https://github.com/skulpt/skulpt.git&lt;/a&gt;
-        fetch = +refs/heads/&lt;em&gt;:refs/remotes/skulpt/&lt;/em&gt;
-[remote &amp;ldquo;server&amp;rdquo;]
-        url = &lt;a href=&#34;https://github.com/RealTimeWeb/Blockpy-Server.git&#34; target=&#34;_blank&#34;&gt;https://github.com/RealTimeWeb/Blockpy-Server.git&lt;/a&gt;
-        fetch = +refs/heads/&lt;em&gt;:refs/remotes/server/&lt;/em&gt;
-[remote &amp;ldquo;blockly_games&amp;rdquo;]
-        url = &lt;a href=&#34;https://github.com/RealTimeWeb/blockly-games.git&#34; target=&#34;_blank&#34;&gt;https://github.com/RealTimeWeb/blockly-games.git&lt;/a&gt;
-        fetch = +refs/heads/&lt;em&gt;:refs/remotes/blockly_games/&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Basics in Python such as how to create a new python program and how to run a python program in Windows, MacOS or Linux.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;Install Java:&lt;/p&gt;
+&lt;h1 id=&#34;part-1-download-and-launch-a-google-blockly-editor-in-a-server-using-python&#34;&gt;Part 1: Download and launch a Google Blockly editor in a server using Python.&lt;/h1&gt;
 
-&lt;p&gt;sudo apt-get update
-sudo apt-get install default-jre&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;First download Google Blockly from (update March 2017):&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;cp blockly/msg/messages.js messages.js
-cd blockly
-python build.py
-cd ..
-mv messages.js blockly/msg/messages.js&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;a href=&#34;https://developers.google.com/blockly/guides/get-started/web&#34; target=&#34;_blank&#34;&gt;https://developers.google.com/blockly/guides/get-started/web&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Unzip the file and rename the folder as &lt;em&gt;bloclky&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Create a new python file with the next code:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/python
+
+import BaseHTTPServer
+import SimpleHTTPServer
+import os
+import subprocess
+import tempfile
+import urllib
+
+
+# First define the ip (local host) and port of the application
+ip = &amp;quot;127.0.0.1&amp;quot;
+
+# You can change this value for your test
+port = 8092
+
+dir_host = ip + &amp;quot;:&amp;quot; + str(port)
+
+# Then we will use a class to set up a very basic web server
+# We need to define the path of a html file called *index.html*
+# This file have the interface of our application
+
+
+# This is the path of the *index.html* file
+index_location= &amp;quot;/blockly/demos/toolbox/index.html&amp;quot;
+
+# This is the class used to set up the server
+# Note: if you want to better understand and modify the next class, then see: &amp;lt;https://docs.python.org/2/library/simplehttpserver.html&amp;gt;
+
+class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
+    def do_HEAD(self):
+        &amp;quot;&amp;quot;&amp;quot;Send response headers&amp;quot;&amp;quot;&amp;quot;
+        if self.path != &amp;quot;/&amp;quot;:
+            return SimpleHTTPServer.SimpleHTTPRequestHandler.do_HEAD(self)
+        self.send_response(200)
+        self.send_header(&amp;quot;content-type&amp;quot;, &amp;quot;text/html;charset=utf-8&amp;quot;)
+        self.send_header(&#39;Access-Control-Allow-Origin&#39;, &#39;*&#39;)
+        self.end_headers()
+
+    def do_GET(self):
+        &amp;quot;&amp;quot;&amp;quot;Send page text&amp;quot;&amp;quot;&amp;quot;
+        if self.path != &amp;quot;/&amp;quot;:
+            return SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
+        else:
+            self.send_response(302)
+            self.send_header(&amp;quot;Location&amp;quot;, index_location)
+            self.end_headers()
+
+    def do_POST(self):
+        &amp;quot;&amp;quot;&amp;quot;Save new page text and display it&amp;quot;&amp;quot;&amp;quot;
+        if self.path != &amp;quot;/&amp;quot;:
+            return SimpleHTTPServer.SimpleHTTPRequestHandler.do_POST(self)
+        else:
+            self.send_response(400)
+
+
+# This is the main function
+if __name__ == &#39;__main__&#39;:
+
+    print &amp;quot;Application can now be accessed at&amp;quot;, dir_host
+
+    # Then we lauch the server
+    server = BaseHTTPServer.HTTPServer((ip, port), Handler)
+    server.pages = {}
+    server.serve_forever()
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;The main idea is to define the port and ip address of our application, define the path of the interface of out application (index.html) and launch the server with python (code explained in the comments).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Then run the python file and open Chrome, Firefox or Safari.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;In your internet navigator go to &lt;a href=&#34;http://127.0.0.1:8092/&#34; target=&#34;_blank&#34;&gt;http://127.0.0.1:8092/&lt;/a&gt; (or the url indicated in the python program). Then you will be able to see the next interface, which is and example of a Blockly editor.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
   </channel>
