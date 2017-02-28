@@ -108,17 +108,18 @@ if __name__ == &#39;__main__&#39;:
 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;## Explanation of the code:&lt;br /&gt;
-The main idea is to define the port and ip address of our application, define the path of the interface of out application (index.html) and launch the server with python (code explained in the comments).&lt;/p&gt;
+&lt;h2 id=&#34;explanation-of-the-code&#34;&gt;Explanation of the code:&lt;/h2&gt;
 
-&lt;p&gt;## Results&lt;/p&gt;
+&lt;p&gt;The main idea is to define the port and ip address of our application, define the path of the interface of out application (index.html) and launch the server with python (code explained in the comments).&lt;/p&gt;
+
+&lt;h2 id=&#34;results&#34;&gt;Results&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Run the python file and open Chrome, Firefox or Safari.&lt;/li&gt;
 &lt;li&gt;In the internet navigator go to &lt;a href=&#34;http://127.0.0.1:8092/&#34; target=&#34;_blank&#34;&gt;http://127.0.0.1:8092/&lt;/a&gt; (or the url indicated in the python program). Then you will be able to see the next interface, which is and example of a Blockly editor.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;{{&amp;lt; figure src=&amp;ldquo;/img/blockly/interface.png&amp;rdquo; title=&amp;ldquo;Blockly editor&amp;rdquo; &amp;gt;}}&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://enriquecoronadozu.github.io/img/blockly/interface.png&#34; alt=&#34;Blockly editor&#34; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;part-2-create-a-new-block-and-generate-python-code&#34;&gt;Part 2: Create a new Block and generate Python code.&lt;/h2&gt;</description>
     </item>
