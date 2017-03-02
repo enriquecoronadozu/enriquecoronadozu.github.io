@@ -20,23 +20,24 @@
 &lt;h2 id=&#34;nao-safety&#34;&gt;Nao safety&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Best practices: &lt;a href=&#34;http://doc.aldebaran.com/1-14/nao/practices.html&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/nao/practices.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Put the robot in a stable position before &amp;ldquo;releasing stiffness&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Best practices: &lt;a href=&#34;http://doc.aldebaran.com/2-4/nao/practices.html&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Put the robot in a stable position before &amp;ldquo;releasing stiffness&amp;rdquo;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;battery&#34;&gt;Battery&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;From 30 minutes to 2 hours.&lt;/li&gt;
-&lt;li&gt;Charging the battery: &lt;a href=&#34;http://doc.aldebaran.com/1-14/nao/battery-charging.html&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/nao/battery-charging.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Charging the battery: &lt;a href=&#34;http://doc.aldebaran.com/3-4/nao/battery-charging.html&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;turn-on-the-robot&#34;&gt;Turn on the robot&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Press the chest button once.&lt;/li&gt;
-&lt;li&gt;The boot process is completed when NAO says “OGNAK GNOUK” while its Chest button becomes white.
-&amp;lt; &lt;a href=&#34;http://doc.aldebaran.com/1-14/nao/nao-turn-on.html&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/nao/nao-turn-on.html&lt;/a&gt;&amp;gt;&lt;/li&gt;
+&lt;li&gt;The boot process is completed when NAO says “OGNAK GNOUK” while its Chest button becomes white (30 seconds approx).
+&lt;a href=&#34;http://doc.aldebaran.com/1-14/nao/nao-turn-on.html&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;know-ip-address&#34;&gt;Know IP address&lt;/h2&gt;
@@ -67,7 +68,7 @@
 
 &lt;h2 id=&#34;nao-configuration&#34;&gt;NAO configuration&lt;/h2&gt;
 
-&lt;p&gt;Nao wifi connection: &lt;a href=&#34;http://doc.aldebaran.com/1-14/nao/nao-connecting.html&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/nao/nao-connecting.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Nao wifi connection: &lt;a href=&#34;http://doc.aldebaran.com/1-14/nao/nao-connecting.html&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;problems-with-nao&#34;&gt;Problems with NAO?&lt;/h2&gt;
 
@@ -78,28 +79,23 @@
 &lt;h2 id=&#34;nao-basic-software&#34;&gt;NAO basic software:&lt;/h2&gt;
 
 &lt;p&gt;NAO basic softwares are:
-- Choregraphe: for create animation, dialogs and behavior. Also for simple simulation.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://doc.aldebaran.com/1-14/software/choregraphe/index.html#choregraphe&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/software/choregraphe/index.html#choregraphe&lt;/a&gt;&lt;/p&gt;
+- Choregraphe: for create animation, dialogs and behavior. Also for simple simulation. &lt;a href=&#34;http://doc.aldebaran.com/2-4/software/choregraphe/index.html#choregraphe&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Monitor: Feedback of the state and sensors of the robot.&lt;/li&gt;
 &lt;li&gt;SDK: Can be used to remotely control, create new NAOqi modules and enrich Choregraphe box library (use python)&lt;/li&gt;
-&lt;li&gt;OpenNAO: Operating System of the robot.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;OpenNAO: Operating System of the robot.
+&lt;a href=&#34;http://doc.aldebaran.com/2-4/dev/tools/opennao.html#opennao-advanced&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;NAOqi: is the main software that runs on the robot.
+&lt;a href=&#34;http://doc.aldebaran.com/2-4/dev/naoqi/index.html#naoqi-framework-overview&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://doc.aldebaran.com/1-14/dev/tools/opennao.html#opennao-advanced&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/dev/tools/opennao.html#opennao-advanced&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;NAOqi: is the main software that runs on the robot.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://doc.aldebaran.com/1-14/dev/naoqi/index.html#naoqi-framework-overview&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/dev/naoqi/index.html#naoqi-framework-overview&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;first-steps-and-hello-world-in-python&#34;&gt;First steps and hello world in python:&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://doc.aldebaran.com/1-14/software/choregraphe/choregraphe_first_steps.html&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/software/choregraphe/choregraphe_first_steps.html&lt;/a&gt;
-&lt;a href=&#34;http://doc.aldebaran.com/1-14/getting_started/helloworld_python.html#helloworld-python&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/getting_started/helloworld_python.html#helloworld-python&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href=&#34;http://doc.aldebaran.com/2-4/software/choregraphe/choregraphe_first_steps.html&#34; target=&#34;_blank&#34;&gt;link 1: first steps&lt;/a&gt;
+&lt;a href=&#34;http://doc.aldebaran.com/1-14/getting_started/helloworld_python.html#helloworld-python&#34; target=&#34;_blank&#34;&gt;link 2: hello world python&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

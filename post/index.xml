@@ -11,120 +11,6 @@
     <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>How to create a programing framework using Google Blockly</title>
-      <link>https://enriquecoronadozu.github.io/post/2017-02-27-%20Google%20Blocky/</link>
-      <pubDate>Sun, 05 Feb 2017 10:00:00 +0000</pubDate>
-      
-      <guid>https://enriquecoronadozu.github.io/post/2017-02-27-%20Google%20Blocky/</guid>
-      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;
-
-&lt;p&gt;Google Blockly is a open source and web-based library which allows users to build programs by dragging blocks together in a visual programming editor. The programs builded with Blockly can be exported to many languages, including JavaScript, Python, PHP, C++, among others.&lt;/p&gt;
-
-&lt;p&gt;This post consist of a set of examples that explains how to create a visual programing framework using Google Blockly and Python. This tutorial is oriented to create Desktop applications.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;requirements&#34;&gt;Requirements:&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Basic knowledge in Python such as creation of new python scripts program a execution of a python program in Windows, MacOS or Linux.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;part-1-download-and-launch-a-google-blockly-editor-in-a-server-using-python&#34;&gt;Part 1: Download and launch a Google Blockly editor in a server using Python.&lt;/h2&gt;
-
-&lt;p&gt;Google Blockly is mainly written in JavaScript, which is a programming language oriented to HTML and Web applications. In order to use a Google Blockly editor it is necessary to run a web page that contains the definition of the blocks and the user interface in a HTTP server. One way to do this is using the python libraries BaseHTTPServer and SimpleHTTPServer. This first part of the tutorial explains how to run a simple Google Blockly editor using this libraries.&lt;/p&gt;
-
-&lt;h3 id=&#34;procedure&#34;&gt;Procedure:&lt;/h3&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;First download Google Blockly from (update March 2017):
-&lt;a href=&#34;https://developers.google.com/blockly/guides/get-started/web&#34; target=&#34;_blank&#34;&gt;https://developers.google.com/blockly/guides/get-started/web&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Unzip the file and rename the folder as &lt;em&gt;bloclky&lt;/em&gt;&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Create a new python file with the next code:&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;#!/usr/bin/python
-
-import BaseHTTPServer
-import SimpleHTTPServer
-import os
-import subprocess
-import tempfile
-import urllib
-
-
-# First define the ip (local host) and port of the application
-ip = &amp;quot;127.0.0.1&amp;quot;
-
-# You can change the value of the port for your test
-port = 8092
-dir_host = ip + &amp;quot;:&amp;quot; + str(port)
-
-# Then we will use a class to set up a very basic web server
-# We need to define the path of a html file called *index.html*
-# This file will have the interface of our application
-
-# The next line indicate the path of the *index.html* file
-# We will use a demo in Google Blockly
-index_location= &amp;quot;/blockly/demos/toolbox/index.html&amp;quot;
-
-# This is the class used to set up the server
-# Note: if you want to have a better understanding of this class, then see: &amp;lt;https://docs.python.org/2/library/simplehttpserver.html&amp;gt;
-class Handler(SimpleHTTPServer.SimpleHTTPRequestHandler):
-    def do_HEAD(self):
-        if self.path != &amp;quot;/&amp;quot;:
-            return SimpleHTTPServer.SimpleHTTPRequestHandler.do_HEAD(self)
-        self.send_response(200)
-        self.send_header(&amp;quot;content-type&amp;quot;, &amp;quot;text/html;charset=utf-8&amp;quot;)
-        self.send_header(&#39;Access-Control-Allow-Origin&#39;, &#39;*&#39;)
-        self.end_headers()
-
-    def do_GET(self):
-        if self.path != &amp;quot;/&amp;quot;:
-            return SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
-        else:
-            self.send_response(302)
-            self.send_header(&amp;quot;Location&amp;quot;, index_location)
-            self.end_headers()
-
-    def do_POST(self):
-        if self.path != &amp;quot;/&amp;quot;:
-            return SimpleHTTPServer.SimpleHTTPRequestHandler.do_POST(self)
-        else:
-            self.send_response(400)
-
-
-# This is the main function
-if __name__ == &#39;__main__&#39;:
-
-    print &amp;quot;Application can now be accessed at&amp;quot;, dir_host
-
-    # Then we launch the server
-    server = BaseHTTPServer.HTTPServer((ip, port), Handler)
-    server.pages = {}
-    server.serve_forever()
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h2 id=&#34;explanation-of-the-code&#34;&gt;Explanation of the code:&lt;/h2&gt;
-
-&lt;p&gt;The main idea is to define the port and ip address of our application, define the path of the interface of out application (index.html) and launch the server with python (code explained in the comments).&lt;/p&gt;
-
-&lt;h2 id=&#34;results&#34;&gt;Results&lt;/h2&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Run the python file and open Chrome, Firefox or Safari.&lt;/li&gt;
-&lt;li&gt;In the internet navigator go to &lt;a href=&#34;http://127.0.0.1:8092/&#34; target=&#34;_blank&#34;&gt;http://127.0.0.1:8092/&lt;/a&gt; (or the url indicated in the python program). Then you will be able to see the next interface, which is and example of a Blockly editor.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&#34;https://enriquecoronadozu.github.io/img/blockly/interface.png&#34; alt=&#34;Blockly editor&#34; /&gt;&lt;/p&gt;
-
-&lt;h2 id=&#34;part-2-create-a-new-block-and-generate-python-code&#34;&gt;Part 2: Create a new Block and generate Python code.&lt;/h2&gt;</description>
-    </item>
-    
-    <item>
       <title>NAO basics</title>
       <link>https://enriquecoronadozu.github.io/post/2017-02-05-NAO%20basics/</link>
       <pubDate>Sun, 05 Feb 2017 10:00:00 +0000</pubDate>
@@ -135,23 +21,24 @@ if __name__ == &#39;__main__&#39;:
 &lt;h2 id=&#34;nao-safety&#34;&gt;Nao safety&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Best practices: &lt;a href=&#34;http://doc.aldebaran.com/1-14/nao/practices.html&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/nao/practices.html&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Put the robot in a stable position before &amp;ldquo;releasing stiffness&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Best practices: &lt;a href=&#34;http://doc.aldebaran.com/2-4/nao/practices.html&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Put the robot in a stable position before &amp;ldquo;releasing stiffness&amp;rdquo;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;battery&#34;&gt;Battery&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;From 30 minutes to 2 hours.&lt;/li&gt;
-&lt;li&gt;Charging the battery: &lt;a href=&#34;http://doc.aldebaran.com/1-14/nao/battery-charging.html&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/nao/battery-charging.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Charging the battery: &lt;a href=&#34;http://doc.aldebaran.com/3-4/nao/battery-charging.html&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;turn-on-the-robot&#34;&gt;Turn on the robot&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Press the chest button once.&lt;/li&gt;
-&lt;li&gt;The boot process is completed when NAO says “OGNAK GNOUK” while its Chest button becomes white.
-&amp;lt; &lt;a href=&#34;http://doc.aldebaran.com/1-14/nao/nao-turn-on.html&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/nao/nao-turn-on.html&lt;/a&gt;&amp;gt;&lt;/li&gt;
+&lt;li&gt;The boot process is completed when NAO says “OGNAK GNOUK” while its Chest button becomes white (30 seconds approx).
+&lt;a href=&#34;http://doc.aldebaran.com/1-14/nao/nao-turn-on.html&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;know-ip-address&#34;&gt;Know IP address&lt;/h2&gt;
@@ -182,7 +69,7 @@ if __name__ == &#39;__main__&#39;:
 
 &lt;h2 id=&#34;nao-configuration&#34;&gt;NAO configuration&lt;/h2&gt;
 
-&lt;p&gt;Nao wifi connection: &lt;a href=&#34;http://doc.aldebaran.com/1-14/nao/nao-connecting.html&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/nao/nao-connecting.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Nao wifi connection: &lt;a href=&#34;http://doc.aldebaran.com/1-14/nao/nao-connecting.html&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;problems-with-nao&#34;&gt;Problems with NAO?&lt;/h2&gt;
 
@@ -193,28 +80,23 @@ if __name__ == &#39;__main__&#39;:
 &lt;h2 id=&#34;nao-basic-software&#34;&gt;NAO basic software:&lt;/h2&gt;
 
 &lt;p&gt;NAO basic softwares are:
-- Choregraphe: for create animation, dialogs and behavior. Also for simple simulation.&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://doc.aldebaran.com/1-14/software/choregraphe/index.html#choregraphe&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/software/choregraphe/index.html#choregraphe&lt;/a&gt;&lt;/p&gt;
+- Choregraphe: for create animation, dialogs and behavior. Also for simple simulation. &lt;a href=&#34;http://doc.aldebaran.com/2-4/software/choregraphe/index.html#choregraphe&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Monitor: Feedback of the state and sensors of the robot.&lt;/li&gt;
 &lt;li&gt;SDK: Can be used to remotely control, create new NAOqi modules and enrich Choregraphe box library (use python)&lt;/li&gt;
-&lt;li&gt;OpenNAO: Operating System of the robot.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;OpenNAO: Operating System of the robot.
+&lt;a href=&#34;http://doc.aldebaran.com/2-4/dev/tools/opennao.html#opennao-advanced&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;NAOqi: is the main software that runs on the robot.
+&lt;a href=&#34;http://doc.aldebaran.com/2-4/dev/naoqi/index.html#naoqi-framework-overview&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://doc.aldebaran.com/1-14/dev/tools/opennao.html#opennao-advanced&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/dev/tools/opennao.html#opennao-advanced&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;NAOqi: is the main software that runs on the robot.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://doc.aldebaran.com/1-14/dev/naoqi/index.html#naoqi-framework-overview&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/dev/naoqi/index.html#naoqi-framework-overview&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;first-steps-and-hello-world-in-python&#34;&gt;First steps and hello world in python:&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://doc.aldebaran.com/1-14/software/choregraphe/choregraphe_first_steps.html&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/software/choregraphe/choregraphe_first_steps.html&lt;/a&gt;
-&lt;a href=&#34;http://doc.aldebaran.com/1-14/getting_started/helloworld_python.html#helloworld-python&#34; target=&#34;_blank&#34;&gt;http://doc.aldebaran.com/1-14/getting_started/helloworld_python.html#helloworld-python&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href=&#34;http://doc.aldebaran.com/2-4/software/choregraphe/choregraphe_first_steps.html&#34; target=&#34;_blank&#34;&gt;link 1: first steps&lt;/a&gt;
+&lt;a href=&#34;http://doc.aldebaran.com/1-14/getting_started/helloworld_python.html#helloworld-python&#34; target=&#34;_blank&#34;&gt;link 2: hello world python&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
