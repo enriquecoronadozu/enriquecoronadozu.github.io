@@ -11,6 +11,142 @@
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Gesture based controller starting points</title>
+      <link>https://enriquecoronadozu.github.io/post/2017-03-19%20Gesture%20based%20controller%20starting%20points/</link>
+      <pubDate>Mon, 20 Mar 2017 10:00:00 +0000</pubDate>
+      
+      <guid>https://enriquecoronadozu.github.io/post/2017-03-19%20Gesture%20based%20controller%20starting%20points/</guid>
+      <description>
+
+&lt;h2 id=&#34;general-overview&#34;&gt;General overview&lt;/h2&gt;
+
+&lt;p&gt;The next diagram describe the general structure of the gesture based controller:&lt;/p&gt;
+
+&lt;h2 id=&#34;sensory-system&#34;&gt;Sensory system&lt;/h2&gt;
+
+&lt;p&gt;The sensory module is composed of 3 programs:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The mobile and wear version of the Nep Wear Ami: used to send the IMU data via sockets to a PC.&lt;/li&gt;
+&lt;li&gt;The ros_server.py program: Used to obtain the IMU information in the PC. This program also publish the IMU information in the topics &amp;lsquo;/wearami_acc&amp;rsquo; in the case of the acceleration and &amp;lsquo;/wearami_acc&amp;rsquo; in the case of gyroscope information (this are the names of the topics that I see in the current github version, but you can check if are the correct ones in your version, in the ICRA article it seems are with different names).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;perceptual-system&#34;&gt;Perceptual system&lt;/h2&gt;
+
+&lt;p&gt;The perceptual system consist in the gesture recognition module. Which main function is to subscribe to the &amp;lsquo;/wearami_acc&amp;rsquo; topic and to infer the gesture that a person with the smartwatch perform using the GMM and GMR algortihms.&lt;/p&gt;
+
+&lt;p&gt;I will explain what i did with an example in python because the code I use is a mess and most probably will not work in the current version because the changes that I am doing (improving the performance and including RNNs) or maybe if you want to use the C++ version which is in a stable version, you can have and idea reading this document.&lt;/p&gt;
+
+&lt;p&gt;First of all import the needed libraries, in my code I put a lot of libraries that I did not use, then I put here which are the most important&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#! /usr/bin/env python
+
+# For run ROS and for the ROS messages used. You can search in the C++ ROS documentation which the message libraries that are needed to include use Pose and Twist information. Pose for read the IMU data, and Twist to control the velocity of the robot in the /cmd_vel topic (See the powerpoint slides).
+
+import rospy
+from geometry_msgs.msg import Pose, Twist
+import std_msgs.msg
+
+# This are the libraries for recognize the gesture, I am calling this libraries like this in my current experiments, but I use Windows in this moment, I will try to implement again this in ROS latter.
+
+from gesture import GestureModel, Recognition
+
+# In the code I give you I use instead
+
+from GestureModel import*
+from Creator import*
+from Classifier import*
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then, the code of the callback of the subscriber:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def callback(data):
+
+  # Here we obtain the info of the x,y and z axis
+	x= data.position.x
+	y= data.position.y
+	z= data.position.z
+
+  # In the Python and C++ version we have the function called online_validation, which return the possibility of that some set of acceleration information correspond to a specific gesture model.
+
+  # The next one is a pseudo code line, depending of the version this function can return a vector with the posibility of all the models to compare (I think is the case of the C++ version), or in my current version I need to specify which model I need to compare:
+  poss = r.online_validation(x,y,z)
+
+  # The here we need to think which are the conditions that must be meet in order to send the gesture to other nodes
+  # For example I am using now something like this:
+
+  # I start a variable that I use as a counter
+  i1 = 0
+
+  # If the possibility of some gesture is greater that some value (in this case 0.7) then increase the counter variable
+  if(poss &amp;gt; 0.7):
+        i1 = i1 + 1
+  # When the counter is greater that some number (for example 10), then publish the gesture recognized and reset the counter
+  if(i1&amp;gt;10):
+        i1 = 0
+        pub(gesture_id) # This is a pseudo code line
+
+  # You can did this for each gesture model, this is the easy way and can be improved.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then, the main part that is better to put in a function&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#First we need to load the gesture models and create new classes for recognition. In my current version functions as newModel and loadModel are included in the library.
+
+# In this moment I am doing this
+
+# Define the path of the gesture folders with the training examples
+path_to_load = dir_path + &amp;quot;/data_examples/acceleration_aligned/&amp;quot;
+
+# Define the number of training examples
+training_examples1 = 10
+training_examples2 = 10
+training_examples3 = 10
+
+#Define the name of the gesture
+name_model1 = &amp;quot;hand_up&amp;quot;
+name_model2 = &amp;quot;hand_pendulum&amp;quot;
+name_model3 = &amp;quot;press_button&amp;quot;
+
+# Create new gesture models classes
+
+gest1 = GestureModel(name_model1,path_to_load,path_to_save,training_examples1)
+gest2 = GestureModel(name_model2,path_to_load,path_to_save,training_examples2)
+gest3 = GestureModel(name_model3,path_to_load,path_to_save,training_examples3)
+
+
+# Define the name of the files in the datatest, example &amp;lt;mod(1)&amp;gt;.txt, example &amp;lt;mod(2)&amp;gt;.txt , ....
+files_id = &amp;quot;mod&amp;quot;
+
+# Define the threashold
+th = [80,125,115]
+
+#Create a list of models
+list_models = [gest1,gest2,gest3]
+
+# Load the GMM models
+print (&amp;quot;Loading models ...&amp;quot;)
+
+i = 0
+for model in list_models:
+    model.loadModel(&amp;quot;3IMU_acc&amp;quot;, th[i], features)
+    i = i +  1
+
+# New recognition class
+r =  Recognition(list_models,&amp;quot;GMR&amp;quot;,&amp;quot;3IMU_acc&amp;quot;, features )
+
+# As you maybe can infer the node is called online_classifier, we obtain a Pose data from /wearami_acc topic and we publish the gesture in a /hmp_gesture topic
+rospy.init_node(&#39;online_classifier&#39;, anonymous=True)
+rate = rospy.Rate(50) # period
+rospy.Subscriber(&#39;/wearami_acc&#39;, Pose, callback)
+pub = rospy.Publisher(&#39;/hmp_gesture&#39;, std_msgs.msg.Int32,queue_size =2 )
+rospy.spin()
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
       <title>NAO basics</title>
       <link>https://enriquecoronadozu.github.io/post/2017-02-05-NAO%20basics/</link>
       <pubDate>Sun, 05 Feb 2017 10:00:00 +0000</pubDate>
@@ -83,20 +219,69 @@
 - Choregraphe: for create animation, dialogs and behavior. Also for simple simulation. &lt;a href=&#34;http://doc.aldebaran.com/2-4/software/choregraphe/index.html#choregraphe&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Monitor: Feedback of the state and sensors of the robot.&lt;/li&gt;
-&lt;li&gt;SDK: Can be used to remotely control, create new NAOqi modules and enrich Choregraphe box library (use python)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Monitor&lt;/strong&gt;: Feedback of the state and sensors of the robot.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SDK&lt;/strong&gt;: Can be used to remotely control, create new NAOqi modules and enrich Choregraphe box library (use python)&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;OpenNAO: Operating System of the robot.
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;OpenNAO&lt;/strong&gt;: Operating System of the robot.
 &lt;a href=&#34;http://doc.aldebaran.com/2-4/dev/tools/opennao.html#opennao-advanced&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;NAOqi: is the main software that runs on the robot.
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;NAOqi&lt;/strong&gt;: is the main software that runs on the robot.
 &lt;a href=&#34;http://doc.aldebaran.com/2-4/dev/naoqi/index.html#naoqi-framework-overview&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&#34;first-steps-and-hello-world-in-python&#34;&gt;First steps and hello world in python:&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://doc.aldebaran.com/2-4/software/choregraphe/choregraphe_first_steps.html&#34; target=&#34;_blank&#34;&gt;link 1: first steps&lt;/a&gt;
-&lt;a href=&#34;http://doc.aldebaran.com/1-14/getting_started/helloworld_python.html#helloworld-python&#34; target=&#34;_blank&#34;&gt;link 2: hello world python&lt;/a&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href=&#34;http://doc.aldebaran.com/2-4/software/choregraphe/choregraphe_first_steps.html&#34; target=&#34;_blank&#34;&gt;link 1: first steps&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://doc.aldebaran.com/1-14/getting_started/helloworld_python.html#helloworld-python&#34; target=&#34;_blank&#34;&gt;link 2: hello world python&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Pepper basics</title>
+      <link>https://enriquecoronadozu.github.io/post/2017-03-02-Pepper%20basics/</link>
+      <pubDate>Sun, 05 Feb 2017 10:00:00 +0000</pubDate>
+      
+      <guid>https://enriquecoronadozu.github.io/post/2017-03-02-Pepper%20basics/</guid>
+      <description>&lt;p&gt;In this document a set of notes and useful links about Pepper robot are presented. &lt;/p&gt;
+
+&lt;h2 id=&#34;nao-safety&#34;&gt;Nao safety:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;** Moving Pepper ** &lt;a href=&#34;http://doc.aldebaran.com/2-4/family/pepper_user_guide/move_manually.html&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;turning-pepper-on&#34;&gt;Turning Pepper on&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Make sure Pepper is on a flat surface, providing enough space to move around.&lt;/li&gt;
+&lt;li&gt;Press the Chest Button once.&lt;/li&gt;
+&lt;li&gt;The boot process is completed when Pepper says “OGNAK GNOUK”.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://doc.aldebaran.com/2-4/family/pepper_user_guide/turn_on_pep.html&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;turning-pepper-off&#34;&gt;Turning Pepper off&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Put a hand on its shoulder or its back, in order to keep it in position.&lt;/li&gt;
+&lt;li&gt;Press and hold the Chest Button for 3 seconds, until the robot says “GNUK GNUK”.&lt;/li&gt;
+&lt;li&gt;The shutdown process is completed when all the LEDs are off.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;In emergency mode&lt;/strong&gt;
+- Forced switch off is not recommended in normal use.
+- Make sure Pepper is in a safe position, or he may fall.
+- Press and hold the Chest Button for 8 seconds.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://doc.aldebaran.com/2-4/family/pepper_user_guide/turn_off_pep.html&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;more&#34;&gt;More:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Interacting &lt;a href=&#34;http://doc.aldebaran.com/2-4/family/pepper_user_guide/interacting.html&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Tablet menu &lt;a href=&#34;http://doc.aldebaran.com/2-4/family/pepper_user_guide/setting_menu_pep.html&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Launching / exiting an Activity &lt;a href=&#34;http://doc.aldebaran.com/2-4/family/pepper_user_guide/activity_pep.html&#34; target=&#34;_blank&#34;&gt;link&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
     <item>
