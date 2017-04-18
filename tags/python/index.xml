@@ -145,5 +145,22 @@ rospy.spin()
 </description>
     </item>
     
+    <item>
+      <title>Master thesis framework instalation</title>
+      <link>https://enriquecoronadozu.github.io/post/2017-03-24%20Master%20thesis%20framework%20instalation/</link>
+      <pubDate>Mon, 20 Mar 2017 10:00:00 +0000</pubDate>
+      
+      <guid>https://enriquecoronadozu.github.io/post/2017-03-24%20Master%20thesis%20framework%20instalation/</guid>
+      <description>
+
+&lt;h2 id=&#34;install-transitions&#34;&gt;Install transitions&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code&gt;pip install transitions
+python -m pip install dtw
+pip install keras
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
   </channel>
 </rss>
