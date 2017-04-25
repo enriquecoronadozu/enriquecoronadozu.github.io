@@ -421,35 +421,21 @@ git checkout master
 <pre><code>sh autodoc.sh
 </code></pre>
 
-<h1 id="read-the-docs-theme-working">Read the docs theme (working&hellip;):</h1>
+<h1 id="read-the-docs-theme">Read the docs theme:</h1>
 
 <p>Download the Read the Docs theme</p>
 
 <pre><code>pip install sphinx_rtd_theme
 </code></pre>
 
-<p>Add githubpages extension:</p>
-
-<p>Open conf.py and in extension add the line</p>
-
-<pre><code>sphinx.ext.githubpages',
-</code></pre>
-
-<p>Then, the extensions will be as:</p>
-
-<pre><code>extensions = [
-    'sphinx.ext.autodoc',
-    'sphinx.ext.mathjax',
-    'sphinx.ext.githubpages',
-]
-</code></pre>
-
-<p>Import read the docs theme</p>
+<p>Put the next lines in the bottom of the &ldquo;conf.py&rdquo; script</p>
 
 <pre><code>import sphinx_rtd_theme
 html_theme = &quot;sphinx_rtd_theme&quot;
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 </code></pre>
+
+<p>Reference: <a href="https://github.com/rtfd/sphinx_rtd_theme" target="_blank">https://github.com/rtfd/sphinx_rtd_theme</a></p>
     </div>
   </div>
 
