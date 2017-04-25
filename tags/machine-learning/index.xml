@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Demo on Academic</title>
-    <link>https://enriquecoronadozu.github.io/tags/demo/index.xml</link>
-    <description>Recent content in Demo on Academic</description>
+    <title>Machine Learning on Academic</title>
+    <link>https://enriquecoronadozu.github.io/tags/machine-learning/index.xml</link>
+    <description>Recent content in Machine Learning on Academic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Enrique Coronado</copyright>
-    <atom:link href="/tags/demo/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>HMPY</title>
+      <title>Human behavior understanding</title>
       <link>https://enriquecoronadozu.github.io/project/Human%20behavior%20understanding/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://enriquecoronadozu.github.io/project/Human%20behavior%20understanding/</guid>
-      <description></description>
+      <description>&lt;p&gt;The objective&lt;/p&gt;
+</description>
     </item>
     
   </channel>

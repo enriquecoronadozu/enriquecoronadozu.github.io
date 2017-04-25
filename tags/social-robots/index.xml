@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Projects on Academic</title>
-    <link>https://enriquecoronadozu.github.io/project/index.xml</link>
-    <description>Recent content in Projects on Academic</description>
+    <title>Social Robots on Academic</title>
+    <link>https://enriquecoronadozu.github.io/tags/social-robots/index.xml</link>
+    <description>Recent content in Social Robots on Academic</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Enrique Coronado</copyright>
-    <lastBuildDate>Mon, 24 Apr 2017 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/project/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/social-robots/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Social robot programming</title>
@@ -74,16 +73,6 @@
 
 &lt;li&gt;&lt;p&gt;Open the terminal and run the &lt;code&gt;install.sh&lt;/code&gt; script&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Human behavior understanding</title>
-      <link>https://enriquecoronadozu.github.io/project/Human%20behavior%20understanding/</link>
-      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://enriquecoronadozu.github.io/project/Human%20behavior%20understanding/</guid>
-      <description>&lt;p&gt;The objective&lt;/p&gt;
 </description>
     </item>
     
