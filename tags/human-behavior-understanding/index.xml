@@ -15,7 +15,9 @@
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://enriquecoronadozu.github.io/project/Biomechanical%20parameters%20estimation/</guid>
-      <description>&lt;p&gt;The objective&lt;/p&gt;
+      <description>&lt;p&gt;&lt;p style=&#39;text-align: justify;&#39;&gt;
+The estimation of human ankle’s mechanical impedance is an important tool used to gain insight on the mechanisms involved in postural stability. This knowledge is indispensable to understand how humans can regain balance against possible disturbances. The objetive of this project is to validate quiet standing muscle-tendon mathematical models. For this measurements using low-cost motion capture systems and
+algorithms for the identification of muscle-tendons’ parameters are used. These parameters are particularly important to compare betweem healthy subjects and individuals who have been impaired as a consequence of injuries or neurological diseases, or are elderly and more prone to fall.&lt;/p&gt;
 </description>
     </item>
     
@@ -25,7 +27,8 @@
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://enriquecoronadozu.github.io/project/Gesture-based%20control/</guid>
-      <description>&lt;p&gt;The objective&lt;/p&gt;
+      <description>&lt;p&gt;Typical forms of communication with robots in industrial and laboratory environments are using devices such as keyboard, mouse, joystick and teach pendant. These forms of communication are generally considered unnatural methods and require prior training, which can be unpleasant and time consuming for novice user.
+The objective of this project is to propose simpler or novel forms of communication that improve the usability and user experience of robots in real-world enviroments. Such simplification is possible with the adoption of natural interfaces, i.e., interfaces that enables users to interact with machines and computers in the same way they interact with their everyday environment.&lt;/p&gt;
 </description>
     </item>
     

@@ -27,7 +27,8 @@
       <guid>https://enriquecoronadozu.github.io/project/Node%20primitives/</guid>
       <description>
 
-&lt;p&gt;Node primitives (NEP) is an open source experimental platform which allows the creation and design of  social interactions with robots. This platform have the next main characteristics:&lt;/p&gt;
+&lt;p&gt;&lt;p style=&#39;text-align: justify;&#39;&gt;
+Node primitives (NEP) is an open source experimental platform which allows the creation and design of  social interactions with robots. This platform have the next main characteristics:&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Cross-plataform: support Linux, Windows and OSX.&lt;/li&gt;
@@ -37,45 +38,91 @@
 &lt;li&gt;Mostly written in JavaScript and Python.&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h2 id=&#34;robot-supported&#34;&gt;Robot supported:&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;NAO&lt;/li&gt;
+&lt;li&gt;Pepper&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;main-requirements&#34;&gt;Main requirements&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Python&lt;/li&gt;
+&lt;li&gt;A modern web browser (Chrome, Firefox or Safari)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;p&gt;The NAO and Pepper SDK do not work in Python 3&lt;/p&gt;
+
+&lt;/div&gt;
+
+
 &lt;h1 id=&#34;instalation-windows&#34;&gt;Instalation Windows:&lt;/h1&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Install a Python(x,y) from:&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Dowloand and install the lasted version of Python(x,y), currently denoted by Python(x,y)-2.7.10.0.exe, from:&lt;/p&gt;
 
-&lt;li&gt;&lt;p&gt;Download the most recent version of the NEP social robot programming platform from:&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;&lt;a href=&#34;https://python-xy.github.io/downloads.html&#34; target=&#34;_blank&#34;&gt;https://python-xy.github.io/downloads.html&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;li&gt;&lt;p&gt;Unzip the folder and run the &lt;code&gt;install.bat&lt;/code&gt; file (with double click)&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;Download the most recent version of the NEP social robot programming platform from:&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Kinect V2 (Windows):&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/enriquecoronadozu/NEP&#34; target=&#34;_blank&#34;&gt;https://github.com/enriquecoronadozu/NEP&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;If you need to use the Kinect V2 device, then install Visual Studio 2013 or newer from:&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;When you are installing Visual Studio it is possible that you need to select which packages you want to install. The important thing is to ensure that C# is installed. If you are not sure, then select all the packages (some of them must install C#).&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Download and install Kinect SDK V2 from:&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Unzip the folder and run the file &lt;code&gt;install.bat&lt;/code&gt; (with double click).&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h1 id=&#34;instalation-linux&#34;&gt;Instalation Linux:&lt;/h1&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Download the most recent version of the NEP social robot programming platform from:&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Download the most recent version of the NEP social robot programming platform from:&lt;/p&gt;
 
-&lt;li&gt;&lt;p&gt;Open the linux console and run the &lt;code&gt;install.sh&lt;/code&gt; script&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/enriquecoronadozu/NEP&#34; target=&#34;_blank&#34;&gt;https://github.com/enriquecoronadozu/NEP&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Unzip the folder and with linux console run the &lt;code&gt;install.sh&lt;/code&gt; script&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;p&gt;Did you have problems running the script in Linux, then use the next commands:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;chmod +x install.sh
+./install.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
 
 &lt;h1 id=&#34;instalation-mac&#34;&gt;Instalation Mac:&lt;/h1&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;If you will use a NAO or Papper robot, you need to install and use the newest version of Python 2.7 from:&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;If you will use a NAO or Pepper robot, you need to install and use the newest version of Python 2.7 from:&lt;/p&gt;
 
-&lt;li&gt;&lt;p&gt;Otherwise you can use the anaconda distribution of python 2.7 or the default python instalation.&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Download the most recent version of the NEP social robot programming platform from:&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Open the terminal and run the &lt;code&gt;install.sh&lt;/code&gt; script&lt;/p&gt;&lt;/li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.python.org/downloads/&#34; target=&#34;_blank&#34;&gt;https://www.python.org/downloads/&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;p&gt;In Mac the NAO and Pepper SDK do not work with the default Python installation or with Anaconda&lt;/p&gt;
+
+&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Download the most recent version of the NEP social robot programming platform from:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/enriquecoronadozu/NEP&#34; target=&#34;_blank&#34;&gt;https://github.com/enriquecoronadozu/NEP&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Unzip the folder and with Mac Terminal run the &lt;code&gt;install.sh&lt;/code&gt; script&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;p&gt;Did you have problems running the script in MAC?, then use the next commands:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;chmod +x install.sh
+./install.sh
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;/div&gt;
+
 </description>
     </item>
     
@@ -896,7 +943,9 @@ conda install mingw libpython
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://enriquecoronadozu.github.io/project/Biomechanical%20parameters%20estimation/</guid>
-      <description>&lt;p&gt;The objective&lt;/p&gt;
+      <description>&lt;p&gt;&lt;p style=&#39;text-align: justify;&#39;&gt;
+The estimation of human ankle’s mechanical impedance is an important tool used to gain insight on the mechanisms involved in postural stability. This knowledge is indispensable to understand how humans can regain balance against possible disturbances. The objetive of this project is to validate quiet standing muscle-tendon mathematical models. For this measurements using low-cost motion capture systems and
+algorithms for the identification of muscle-tendons’ parameters are used. These parameters are particularly important to compare betweem healthy subjects and individuals who have been impaired as a consequence of injuries or neurological diseases, or are elderly and more prone to fall.&lt;/p&gt;
 </description>
     </item>
     
@@ -906,7 +955,8 @@ conda install mingw libpython
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://enriquecoronadozu.github.io/project/Gesture-based%20control/</guid>
-      <description>&lt;p&gt;The objective&lt;/p&gt;
+      <description>&lt;p&gt;Typical forms of communication with robots in industrial and laboratory environments are using devices such as keyboard, mouse, joystick and teach pendant. These forms of communication are generally considered unnatural methods and require prior training, which can be unpleasant and time consuming for novice user.
+The objective of this project is to propose simpler or novel forms of communication that improve the usability and user experience of robots in real-world enviroments. Such simplification is possible with the adoption of natural interfaces, i.e., interfaces that enables users to interact with machines and computers in the same way they interact with their everyday environment.&lt;/p&gt;
 </description>
     </item>
     

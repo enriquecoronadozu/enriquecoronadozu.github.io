@@ -200,7 +200,8 @@
     <div class="article-style" itemprop="articleBody">
       
 
-<p>Node primitives (NEP) is an open source experimental platform which allows the creation and design of  social interactions with robots. This platform have the next main characteristics:</p>
+<p><p style='text-align: justify;'>
+Node primitives (NEP) is an open source experimental platform which allows the creation and design of  social interactions with robots. This platform have the next main characteristics:</p>
 
 <ul>
 <li>Cross-plataform: support Linux, Windows and OSX.</li>
@@ -210,45 +211,91 @@
 <li>Mostly written in JavaScript and Python.</li>
 </ul>
 
+<h2 id="robot-supported">Robot supported:</h2>
+
+<ul>
+<li>NAO</li>
+<li>Pepper</li>
+</ul>
+
+<h2 id="main-requirements">Main requirements</h2>
+
+<ul>
+<li>Python</li>
+<li>A modern web browser (Chrome, Firefox or Safari)</li>
+</ul>
+
+<div class="alert alert-warning">
+  <p>The NAO and Pepper SDK do not work in Python 3</p>
+
+</div>
+
+
 <h1 id="instalation-windows">Instalation Windows:</h1>
 
 <ul>
-<li><p>Install a Python(x,y) from:</p></li>
+<li><p>Dowloand and install the lasted version of Python(x,y), currently denoted by Python(x,y)-2.7.10.0.exe, from:</p>
 
-<li><p>Download the most recent version of the NEP social robot programming platform from:</p></li>
+<p><a href="https://python-xy.github.io/downloads.html" target="_blank">https://python-xy.github.io/downloads.html</a></p></li>
 
-<li><p>Unzip the folder and run the <code>install.bat</code> file (with double click)</p></li>
-</ul>
+<li><p>Download the most recent version of the NEP social robot programming platform from:</p>
 
-<p><strong>Kinect V2 (Windows):</strong></p>
+<p><a href="https://github.com/enriquecoronadozu/NEP" target="_blank">https://github.com/enriquecoronadozu/NEP</a></p></li>
 
-<ul>
-<li><p>If you need to use the Kinect V2 device, then install Visual Studio 2013 or newer from:</p></li>
-
-<li><p>When you are installing Visual Studio it is possible that you need to select which packages you want to install. The important thing is to ensure that C# is installed. If you are not sure, then select all the packages (some of them must install C#).</p></li>
-
-<li><p>Download and install Kinect SDK V2 from:</p></li>
+<li><p>Unzip the folder and run the file <code>install.bat</code> (with double click).</p></li>
 </ul>
 
 <h1 id="instalation-linux">Instalation Linux:</h1>
 
 <ul>
-<li><p>Download the most recent version of the NEP social robot programming platform from:</p></li>
+<li><p>Download the most recent version of the NEP social robot programming platform from:</p>
 
-<li><p>Open the linux console and run the <code>install.sh</code> script</p></li>
+<p><a href="https://github.com/enriquecoronadozu/NEP" target="_blank">https://github.com/enriquecoronadozu/NEP</a></p></li>
+
+<li><p>Unzip the folder and with linux console run the <code>install.sh</code> script</p></li>
 </ul>
+
+<div class="alert alert-note">
+  <p>Did you have problems running the script in Linux, then use the next commands:</p>
+
+<pre><code class="language-shell">chmod +x install.sh
+./install.sh
+</code></pre>
+
+</div>
+
 
 <h1 id="instalation-mac">Instalation Mac:</h1>
 
 <ul>
-<li><p>If you will use a NAO or Papper robot, you need to install and use the newest version of Python 2.7 from:</p></li>
+<li><p>If you will use a NAO or Pepper robot, you need to install and use the newest version of Python 2.7 from:</p>
 
-<li><p>Otherwise you can use the anaconda distribution of python 2.7 or the default python instalation.</p></li>
-
-<li><p>Download the most recent version of the NEP social robot programming platform from:</p></li>
-
-<li><p>Open the terminal and run the <code>install.sh</code> script</p></li>
+<p><a href="https://www.python.org/downloads/" target="_blank">https://www.python.org/downloads/</a></p></li>
 </ul>
+
+<div class="alert alert-warning">
+  <p>In Mac the NAO and Pepper SDK do not work with the default Python installation or with Anaconda</p>
+
+</div>
+
+
+<ul>
+<li><p>Download the most recent version of the NEP social robot programming platform from:</p>
+
+<p><a href="https://github.com/enriquecoronadozu/NEP" target="_blank">https://github.com/enriquecoronadozu/NEP</a></p></li>
+
+<li><p>Unzip the folder and with Mac Terminal run the <code>install.sh</code> script</p></li>
+</ul>
+
+<div class="alert alert-note">
+  <p>Did you have problems running the script in MAC?, then use the next commands:</p>
+
+<pre><code class="language-shell">chmod +x install.sh
+./install.sh
+</code></pre>
+
+</div>
+
 
     </div>
   </article>
