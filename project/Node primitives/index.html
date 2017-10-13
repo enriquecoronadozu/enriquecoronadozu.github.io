@@ -34,11 +34,11 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
 
-  <link rel="canonical" href="https://enriquecoronadozu.github.io/post/2017-01-30-Installation%20of%20Keras/">
+  <link rel="canonical" href="https://enriquecoronadozu.github.io/project/Node%20primitives/">
 
   
 
-  <title>Installation of Machine Learning libraries for Python | Academic</title>
+  <title>Node primitives | Academic</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
@@ -142,73 +142,49 @@
   </div>
 </nav>
 
+<div class="article-container">
 
-<article class="article" itemscope itemtype="http://schema.org/Article">
-
-  
-
-  <div class="article-container">
-    <h1 itemprop="name">Installation of Machine Learning libraries for Python</h1>
+  <article class="article article-project" itemscope itemtype="http://schema.org/Article">
     
 
-<div class="article-metadata">
-
-  <span class="article-date">
-    <time datetime="2017-01-30 10:00:00 &#43;0000 UTC" itemprop="datePublished">
-      Mon, Jan 30, 2017
-    </time>
-  </span>
-
-  
-
-  
-  
-  
-  <span class="article-tags">
-    <i class="fa fa-tags"></i>
-    
-    <a href="/tags/deep-learning">deep learning</a
-    >
-    
-  </span>
-  
-  
-
-  
-  
+    <div class="pub-title">
+      <h1 itemprop="name">Node primitives</h1>
+      <span class="pub-authors" itemprop="author">&nbsp;</span>
+      <span class="pull-right">
+        
 <div class="share-box" aria-hidden="true">
   <ul class="share">
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-01-30-Installation%2520of%2520Keras%2f"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fenriquecoronadozu.github.io%2fproject%2fNode%2520primitives%2f"
          target="_blank">
         <i class="fa fa-facebook"></i>
       </a>
     </li>
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Installation%20of%20Machine%20Learning%20libraries%20for%20Python&amp;url=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-01-30-Installation%2520of%2520Keras%2f"
+         href="https://twitter.com/intent/tweet?text=Node%20primitives&amp;url=https%3a%2f%2fenriquecoronadozu.github.io%2fproject%2fNode%2520primitives%2f"
          target="_blank">
         <i class="fa fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-01-30-Installation%2520of%2520Keras%2f&amp;title=Installation%20of%20Machine%20Learning%20libraries%20for%20Python"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fenriquecoronadozu.github.io%2fproject%2fNode%2520primitives%2f&amp;title=Node%20primitives"
          target="_blank">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-01-30-Installation%2520of%2520Keras%2f&amp;title=Installation%20of%20Machine%20Learning%20libraries%20for%20Python"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fenriquecoronadozu.github.io%2fproject%2fNode%2520primitives%2f&amp;title=Node%20primitives"
          target="_blank">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=Installation%20of%20Machine%20Learning%20libraries%20for%20Python&amp;body=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-01-30-Installation%2520of%2520Keras%2f">
+         href="mailto:?subject=Node%20primitives&amp;body=https%3a%2f%2fenriquecoronadozu.github.io%2fproject%2fNode%2520primitives%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -216,85 +192,80 @@
 </div>
 
 
-  
+      </span>
+    </div>
 
-</div>
+    
 
     <div class="article-style" itemprop="articleBody">
-      <p>This post contains the steps followed to perform the installation of the machine learning libraries used for my thesis. </p>
+      
 
-<h2 id="python-installation">Python Installation</h2>
-
-<p>The python version used is 2.7 of 32-bit from the Anacoda distribution:
-<a href="https://www.continuum.io/downloads" target="_blank">https://www.continuum.io/downloads</a></p>
-
-<h2 id="update-pip-install">Update pip install</h2>
-
-<pre><code>python -m pip install --upgrade pip
-</code></pre>
-
-<h2 id="installation-of-machine-learning-libraries">Installation of machine learning libraries</h2>
-
-<pre><code># Used in MAC OS to solve the error: &quot;HDF5 library version mismatched error&quot;
-conda install h5py
-
-# Theano library
-pip install theano
-
-## TensorFlow library: Used only for MAC OS X and Linux
-pip install tensorflow
-
-# Keras library (In windows opening the CMD as administrator)
-pip install keras
-conda install mingw libpython
-</code></pre>
-
-<h2 id="keras-backend">Keras backend</h2>
-
-<p>Keras has two backend implementations (2017): TensorFlow and Theano. The default backend implementation is TensorFlow.</p>
-
-<blockquote>
-<p>In Windows there is only the Python 3.5 version of TensorFlow. In order to use Keras + Python 2.7 in Windows, the next steps can be performed:</p>
-</blockquote>
+<p>Node primitives (NEP) is an open source experimental platform which allows the creation and design of  social interactions with robots. This platform have the next main characteristics:</p>
 
 <ul>
-<li>Go to <code>C:\Users\&lt;user name&gt;</code> and open the folder .keras</li>
-<li>Open the file keras.json and change the lines as:</li>
+<li>Cross-plataform: support Linux, Windows and OSX.</li>
+<li>Enables end-user and expert programming</li>
+<li>&ldquo;Easy to install&rdquo;, &ldquo;easy to use&rdquo; and &ldquo;easy to develop&rdquo;.</li>
+<li>Use ZeroMQ for inter-process comunication</li>
+<li>Mostly written in JavaScript and Python.</li>
 </ul>
 
-<pre><code class="language-javascript">{
-    &quot;image_dim_ordering&quot;: &quot;th&quot;,
-    &quot;epsilon&quot;: 1e-07,
-    &quot;floatx&quot;: &quot;float32&quot;,
-    &quot;backend&quot;: &quot;theano&quot;
-}
-</code></pre>
+<h1 id="instalation-windows">Instalation Windows:</h1>
 
-<p>More info in: <a href="https://keras.io/backend/" target="_blank">https://keras.io/backend/</a></p>
+<ul>
+<li><p>Install a Python(x,y) from:</p></li>
+
+<li><p>Download the most recent version of the NEP social robot programming platform from:</p></li>
+
+<li><p>Unzip the folder and run the <code>install.bat</code> file (with double click)</p></li>
+</ul>
+
+<p><strong>Kinect V2 (Windows):</strong></p>
+
+<ul>
+<li><p>If you need to use the Kinect V2 device, then install Visual Studio 2013 or newer from:</p></li>
+
+<li><p>When you are installing Visual Studio it is possible that you need to select which packages you want to install. The important thing is to ensure that C# is installed. If you are not sure, then select all the packages (some of them must install C#).</p></li>
+
+<li><p>Download and install Kinect SDK V2 from:</p></li>
+</ul>
+
+<h1 id="instalation-linux">Instalation Linux:</h1>
+
+<ul>
+<li><p>Download the most recent version of the NEP social robot programming platform from:</p></li>
+
+<li><p>Open the linux console and run the <code>install.sh</code> script</p></li>
+</ul>
+
+<h1 id="instalation-mac">Instalation Mac:</h1>
+
+<ul>
+<li><p>If you will use a NAO or Papper robot, you need to install and use the newest version of Python 2.7 from:</p></li>
+
+<li><p>Otherwise you can use the anaconda distribution of python 2.7 or the default python instalation.</p></li>
+
+<li><p>Download the most recent version of the NEP social robot programming platform from:</p></li>
+
+<li><p>Open the terminal and run the <code>install.sh</code> script</p></li>
+</ul>
+
     </div>
-  </div>
+  </article>
 
-</article>
+</div>
 
 <div class="container">
   <nav>
   <ul class="pager">
     
-    <li class="previous"><a href="https://enriquecoronadozu.github.io/post/writing-markdown-latex/"><span
-      aria-hidden="true">&larr;</span> Writing content with Markdown, LaTeX, and Shortcodes</a></li>
+    <li class="previous"><a href="https://enriquecoronadozu.github.io/project/Biomechanical%20parameters%20estimation/"><span
+      aria-hidden="true">&larr;</span> Biomechanical parameters estimation</a></li>
     
 
-    
-    <li class="next"><a href="https://enriquecoronadozu.github.io/post/2017-02-02-Useful%20links%20for%20Github%20pages/">Useful links for Github pages <span
-      aria-hidden="true">&rarr;</span></a></li>
     
   </ul>
 </nav>
-
-</div>
-
-<div class="article-container">
-  
 
 </div>
 

@@ -11,159 +11,6 @@
     <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Gesture based controller starting points</title>
-      <link>https://enriquecoronadozu.github.io/post/2017-03-19%20Gesture%20based%20controller%20starting%20points/</link>
-      <pubDate>Mon, 20 Mar 2017 10:00:00 +0000</pubDate>
-      
-      <guid>https://enriquecoronadozu.github.io/post/2017-03-19%20Gesture%20based%20controller%20starting%20points/</guid>
-      <description>
-
-&lt;h2 id=&#34;general-overview&#34;&gt;General overview&lt;/h2&gt;
-
-&lt;p&gt;The next diagram describe the general structure of the gesture based controller:&lt;/p&gt;
-
-&lt;h2 id=&#34;sensory-system&#34;&gt;Sensory system&lt;/h2&gt;
-
-&lt;p&gt;The sensory module is composed of 3 programs:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;The mobile and wear version of the Nep Wear Ami: used to send the IMU data via sockets to a PC.&lt;/li&gt;
-&lt;li&gt;The ros_server.py program: Used to obtain the IMU information in the PC. This program also publish the IMU information in the topics &amp;lsquo;/wearami_acc&amp;rsquo; in the case of the acceleration and &amp;lsquo;/wearami_acc&amp;rsquo; in the case of gyroscope information (this are the names of the topics that I see in the current github version, but you can check if are the correct ones in your version, in the ICRA article it seems are with different names).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&#34;perceptual-system&#34;&gt;Perceptual system&lt;/h2&gt;
-
-&lt;p&gt;The perceptual system consist in the gesture recognition module. Which main function is to subscribe to the &amp;lsquo;/wearami_acc&amp;rsquo; topic and to infer the gesture that a person with the smartwatch perform using the GMM and GMR algortihms.&lt;/p&gt;
-
-&lt;p&gt;I will explain what i did with an example in python because the code I use is a mess and most probably will not work in the current version because the changes that I am doing (improving the performance and including RNNs) or maybe if you want to use the C++ version which is in a stable version, you can have and idea reading this document.&lt;/p&gt;
-
-&lt;p&gt;First of all import the needed libraries, in my code I put a lot of libraries that I did not use, then I put here which are the most important&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#! /usr/bin/env python
-
-# For run ROS and for the ROS messages used. You can search in the C++ ROS documentation which the message libraries that are needed to include use Pose and Twist information. Pose for read the IMU data, and Twist to control the velocity of the robot in the /cmd_vel topic (See the powerpoint slides).
-
-import rospy
-from geometry_msgs.msg import Pose, Twist
-import std_msgs.msg
-
-# This are the libraries for recognize the gesture, I am calling this libraries like this in my current experiments, but I use Windows in this moment, I will try to implement again this in ROS latter.
-
-from gesture import GestureModel, Recognition
-
-# In the code I give you I use instead
-
-from GestureModel import*
-from Creator import*
-from Classifier import*
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Then, the code of the callback of the subscriber:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;def callback(data):
-
-  # Here we obtain the info of the x,y and z axis
-	x= data.position.x
-	y= data.position.y
-	z= data.position.z
-
-  # In the Python and C++ version we have the function called online_validation, which return the possibility of that some set of acceleration information correspond to a specific gesture model.
-
-  # The next one is a pseudo code line, depending of the version this function can return a vector with the posibility of all the models to compare (I think is the case of the C++ version), or in my current version I need to specify which model I need to compare:
-  poss = r.online_validation(x,y,z)
-
-  # The here we need to think which are the conditions that must be meet in order to send the gesture to other nodes
-  # For example I am using now something like this:
-
-  # I start a variable that I use as a counter
-  i1 = 0
-
-  # If the possibility of some gesture is greater that some value (in this case 0.7) then increase the counter variable
-  if(poss &amp;gt; 0.7):
-        i1 = i1 + 1
-  # When the counter is greater that some number (for example 10), then publish the gesture recognized and reset the counter
-  if(i1&amp;gt;10):
-        i1 = 0
-        pub(gesture_id) # This is a pseudo code line
-
-  # You can did this for each gesture model, this is the easy way and can be improved.
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Then, the main part that is better to put in a function&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;#First we need to load the gesture models and create new classes for recognition. In my current version functions as newModel and loadModel are included in the library.
-
-# In this moment I am doing this
-
-# Define the path of the gesture folders with the training examples
-path_to_load = dir_path + &amp;quot;/data_examples/acceleration_aligned/&amp;quot;
-
-# Define the number of training examples
-training_examples1 = 10
-training_examples2 = 10
-training_examples3 = 10
-
-#Define the name of the gesture
-name_model1 = &amp;quot;hand_up&amp;quot;
-name_model2 = &amp;quot;hand_pendulum&amp;quot;
-name_model3 = &amp;quot;press_button&amp;quot;
-
-# Create new gesture models classes
-
-gest1 = GestureModel(name_model1,path_to_load,path_to_save,training_examples1)
-gest2 = GestureModel(name_model2,path_to_load,path_to_save,training_examples2)
-gest3 = GestureModel(name_model3,path_to_load,path_to_save,training_examples3)
-
-
-# Define the name of the files in the datatest, example &amp;lt;mod(1)&amp;gt;.txt, example &amp;lt;mod(2)&amp;gt;.txt , ....
-files_id = &amp;quot;mod&amp;quot;
-
-# Define the threashold
-th = [80,125,115]
-
-#Create a list of models
-list_models = [gest1,gest2,gest3]
-
-# Load the GMM models
-print (&amp;quot;Loading models ...&amp;quot;)
-
-i = 0
-for model in list_models:
-    model.loadModel(&amp;quot;3IMU_acc&amp;quot;, th[i], features)
-    i = i +  1
-
-# New recognition class
-r =  Recognition(list_models,&amp;quot;GMR&amp;quot;,&amp;quot;3IMU_acc&amp;quot;, features )
-
-# As you maybe can infer the node is called online_classifier, we obtain a Pose data from /wearami_acc topic and we publish the gesture in a /hmp_gesture topic
-rospy.init_node(&#39;online_classifier&#39;, anonymous=True)
-rate = rospy.Rate(50) # period
-rospy.Subscriber(&#39;/wearami_acc&#39;, Pose, callback)
-pub = rospy.Publisher(&#39;/hmp_gesture&#39;, std_msgs.msg.Int32,queue_size =2 )
-rospy.spin()
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Master thesis framework instalation</title>
-      <link>https://enriquecoronadozu.github.io/post/2017-03-24%20Master%20thesis%20framework%20instalation/</link>
-      <pubDate>Mon, 20 Mar 2017 10:00:00 +0000</pubDate>
-      
-      <guid>https://enriquecoronadozu.github.io/post/2017-03-24%20Master%20thesis%20framework%20instalation/</guid>
-      <description>
-
-&lt;h2 id=&#34;install-transitions&#34;&gt;Install transitions&lt;/h2&gt;
-
-&lt;pre&gt;&lt;code&gt;pip install transitions
-python -m pip install dtw
-pip install keras
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-    </item>
-    
-    <item>
       <title>NAO basics</title>
       <link>https://enriquecoronadozu.github.io/post/2017-02-05-NAO%20basics/</link>
       <pubDate>Sun, 05 Feb 2017 10:00:00 +0000</pubDate>
@@ -525,11 +372,11 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
     </item>
     
     <item>
-      <title>ZeroMQ notes 1</title>
-      <link>https://enriquecoronadozu.github.io/post/2017-02-03-ZeroQM%20notes%20part%201/</link>
+      <title>ZeroMQ basics</title>
+      <link>https://enriquecoronadozu.github.io/post/2017-02-03-ZeroQM%20basics/</link>
       <pubDate>Fri, 03 Feb 2017 10:00:00 +0000</pubDate>
       
-      <guid>https://enriquecoronadozu.github.io/post/2017-02-03-ZeroQM%20notes%20part%201/</guid>
+      <guid>https://enriquecoronadozu.github.io/post/2017-02-03-ZeroQM%20basics/</guid>
       <description>&lt;p&gt;This post present a set of notes and python examples of ZeroMQ. &lt;/p&gt;
 
 &lt;h2 id=&#34;instalation&#34;&gt;Instalation:&lt;/h2&gt;
@@ -887,20 +734,27 @@ print(model.metrics_names[1], scores[1]*100)
 
 &lt;p&gt;&lt;a href=&#34;http://gcushen.github.io/hugo-academic-demo/&#34; target=&#34;_blank&#34;&gt;http://gcushen.github.io/hugo-academic-demo/&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;compile-hugo&#34;&gt;Compile Hugo:&lt;/h2&gt;
+&lt;h2 id=&#34;compile-hugo-and-update-github-page&#34;&gt;Compile Hugo and update Github-page:&lt;/h2&gt;
 
-&lt;p&gt;In the main folder of the Hugo webpage write:&lt;/p&gt;
+&lt;p&gt;Go in with the Terminal to the main folder of the Hugo webpage and write:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;hugo
 cd public
 git add.
 git commit -m &amp;quot;Build website&amp;quot;
 git push
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;run-hugo-server&#34;&gt;Run hugo server:&lt;/h2&gt;
+
+&lt;p&gt;Go in with the Terminal to the main folder of the Hugo webpage and write:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo server
 &lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     
     <item>
-      <title>Installation of Machine Learning libraries for my master thesis</title>
+      <title>Installation of Machine Learning libraries for Python</title>
       <link>https://enriquecoronadozu.github.io/post/2017-01-30-Installation%20of%20Keras/</link>
       <pubDate>Mon, 30 Jan 2017 10:00:00 +0000</pubDate>
       

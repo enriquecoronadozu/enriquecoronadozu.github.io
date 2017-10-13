@@ -237,7 +237,7 @@ print(model.metrics_names[1], scores[1]*100)
     </item>
     
     <item>
-      <title>Installation of Machine Learning libraries for my master thesis</title>
+      <title>Installation of Machine Learning libraries for Python</title>
       <link>https://enriquecoronadozu.github.io/post/2017-01-30-Installation%20of%20Keras/</link>
       <pubDate>Mon, 30 Jan 2017 10:00:00 +0000</pubDate>
       
@@ -295,11 +295,21 @@ conda install mingw libpython
     </item>
     
     <item>
-      <title>Human behavior understanding</title>
-      <link>https://enriquecoronadozu.github.io/project/Human%20behavior%20understanding/</link>
+      <title>Biomechanical parameters estimation</title>
+      <link>https://enriquecoronadozu.github.io/project/Biomechanical%20parameters%20estimation/</link>
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>https://enriquecoronadozu.github.io/project/Human%20behavior%20understanding/</guid>
+      <guid>https://enriquecoronadozu.github.io/project/Biomechanical%20parameters%20estimation/</guid>
+      <description>&lt;p&gt;The objective&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Gesture-based Control</title>
+      <link>https://enriquecoronadozu.github.io/project/Gesture-based%20control/</link>
+      <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://enriquecoronadozu.github.io/project/Gesture-based%20control/</guid>
       <description>&lt;p&gt;The objective&lt;/p&gt;
 </description>
     </item>

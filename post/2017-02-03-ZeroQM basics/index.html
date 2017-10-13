@@ -34,11 +34,11 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
 
-  <link rel="canonical" href="https://enriquecoronadozu.github.io/post/2017-01-30-Installation%20of%20Keras/">
+  <link rel="canonical" href="https://enriquecoronadozu.github.io/post/2017-02-03-ZeroQM%20basics/">
 
   
 
-  <title>Installation of Machine Learning libraries for Python | Academic</title>
+  <title>ZeroMQ basics | Academic</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
@@ -148,14 +148,14 @@
   
 
   <div class="article-container">
-    <h1 itemprop="name">Installation of Machine Learning libraries for Python</h1>
+    <h1 itemprop="name">ZeroMQ basics</h1>
     
 
 <div class="article-metadata">
 
   <span class="article-date">
-    <time datetime="2017-01-30 10:00:00 &#43;0000 UTC" itemprop="datePublished">
-      Mon, Jan 30, 2017
+    <time datetime="2017-02-03 10:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Fri, Feb 3, 2017
     </time>
   </span>
 
@@ -167,7 +167,7 @@
   <span class="article-tags">
     <i class="fa fa-tags"></i>
     
-    <a href="/tags/deep-learning">deep learning</a
+    <a href="/tags/zeromq">ZeroMQ</a
     >
     
   </span>
@@ -180,35 +180,35 @@
   <ul class="share">
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-01-30-Installation%2520of%2520Keras%2f"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-02-03-ZeroQM%2520basics%2f"
          target="_blank">
         <i class="fa fa-facebook"></i>
       </a>
     </li>
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Installation%20of%20Machine%20Learning%20libraries%20for%20Python&amp;url=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-01-30-Installation%2520of%2520Keras%2f"
+         href="https://twitter.com/intent/tweet?text=ZeroMQ%20basics&amp;url=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-02-03-ZeroQM%2520basics%2f"
          target="_blank">
         <i class="fa fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-01-30-Installation%2520of%2520Keras%2f&amp;title=Installation%20of%20Machine%20Learning%20libraries%20for%20Python"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-02-03-ZeroQM%2520basics%2f&amp;title=ZeroMQ%20basics"
          target="_blank">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-01-30-Installation%2520of%2520Keras%2f&amp;title=Installation%20of%20Machine%20Learning%20libraries%20for%20Python"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-02-03-ZeroQM%2520basics%2f&amp;title=ZeroMQ%20basics"
          target="_blank">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=Installation%20of%20Machine%20Learning%20libraries%20for%20Python&amp;body=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-01-30-Installation%2520of%2520Keras%2f">
+         href="mailto:?subject=ZeroMQ%20basics&amp;body=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-02-03-ZeroQM%2520basics%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -221,56 +221,110 @@
 </div>
 
     <div class="article-style" itemprop="articleBody">
-      <p>This post contains the steps followed to perform the installation of the machine learning libraries used for my thesis. </p>
+      <p>This post present a set of notes and python examples of ZeroMQ. </p>
 
-<h2 id="python-installation">Python Installation</h2>
+<h2 id="instalation">Instalation:</h2>
 
-<p>The python version used is 2.7 of 32-bit from the Anacoda distribution:
-<a href="https://www.continuum.io/downloads" target="_blank">https://www.continuum.io/downloads</a></p>
+<p>First intall the libzmq libraries:</p>
 
-<h2 id="update-pip-install">Update pip install</h2>
+<p><a href="http://zeromq.org/intro:get-the-software" target="_blank">http://zeromq.org/intro:get-the-software</a></p>
 
-<pre><code>python -m pip install --upgrade pip
+<p>The install the binaries in Python using the next line:</p>
+
+<pre><code># (Windows or OS X)
+pip install --wheel pyzmq
+# or
+easy_install pyzmq
+# or (pretty much anywhere)
+pip install pyzmq
 </code></pre>
 
-<h2 id="installation-of-machine-learning-libraries">Installation of machine learning libraries</h2>
+<p>More info in: <a href="http://zeromq.org/bindings:python" target="_blank">http://zeromq.org/bindings:python</a></p>
 
-<pre><code># Used in MAC OS to solve the error: &quot;HDF5 library version mismatched error&quot;
-conda install h5py
+<h2 id="zeromq-main-idea">ZeroMQ main idea</h2>
 
-# Theano library
-pip install theano
-
-## TensorFlow library: Used only for MAC OS X and Linux
-pip install tensorflow
-
-# Keras library (In windows opening the CMD as administrator)
-pip install keras
-conda install mingw libpython
-</code></pre>
-
-<h2 id="keras-backend">Keras backend</h2>
-
-<p>Keras has two backend implementations (2017): TensorFlow and Theano. The default backend implementation is TensorFlow.</p>
-
-<blockquote>
-<p>In Windows there is only the Python 3.5 version of TensorFlow. In order to use Keras + Python 2.7 in Windows, the next steps can be performed:</p>
-</blockquote>
+<p><strong>ZeroMQ</strong> is en general a middleware that augments the capabilities of TCP/IP sockets. Is a socket system that allow to do concurrency.</p>
 
 <ul>
-<li>Go to <code>C:\Users\&lt;user name&gt;</code> and open the folder .keras</li>
-<li>Open the file keras.json and change the lines as:</li>
+<li>Is fast</li>
+<li>Use to connect several parts of a distributed system</li>
+<li>Works asynchronously (unlike regular socket implementation that works synchronously)</li>
+<li>Allows the implementation of several comunication patterns as request/reply and publish/subcriber</li>
 </ul>
 
-<pre><code class="language-javascript">{
-    &quot;image_dim_ordering&quot;: &quot;th&quot;,
-    &quot;epsilon&quot;: 1e-07,
-    &quot;floatx&quot;: &quot;float32&quot;,
-    &quot;backend&quot;: &quot;theano&quot;
-}
+<h2 id="context-in-zeromq">Context in ZeroMQ</h2>
+
+<p>Used to help to manage the sockets created in ZeroMQ. They are created in the start of the aplication.</p>
+
+<h2 id="request-reply-example">Request/Reply example</h2>
+
+<p>For this we will use the type sockets zmq.REP for the server and zmq.REQ for the client.</p>
+
+<h3 id="server-code">Server code</h3>
+
+<p>First import the zmq libraries</p>
+
+<pre><code class="language-python">import zmq
+import time
+
 </code></pre>
 
-<p>More info in: <a href="https://keras.io/backend/" target="_blank">https://keras.io/backend/</a></p>
+<p>then, define a new context</p>
+
+<pre><code class="language-python">context = zmq.Context()
+</code></pre>
+
+<p>now define the socket for Request/Reply patter using zmq.REP as argument on the context</p>
+
+<pre><code class="language-python">sock = context.socket(zmq.REP)
+sock.bind(&quot;tcp://127.0.0.1:5685&quot;)
+</code></pre>
+
+<p>run the server, get the client message and send a response &ldquo;Echo&rdquo; + message</p>
+
+<pre><code class="language-python">while True:
+    message = sock.recv()
+    sock.send(&quot;Echo: &quot; +  message)
+    print (&quot;Echo: &quot; +  message)
+</code></pre>
+
+<p>Putting all together:</p>
+
+<pre><code class="language-python">import zmq
+import time
+context = zmq.Context()
+sock = context.socket(zmq.REP)
+sock.bind(&quot;tcp://127.0.0.1:5685&quot;)
+while True:
+    message = sock.recv()
+    sock.send(&quot;Echo: &quot; +  message)
+    print (&quot;Echo: &quot; +  message)
+</code></pre>
+
+<p>To exit press ctrl+x (Termianal in OSX/Linux)</p>
+
+<h1 id="client-code">Client code</h1>
+
+<p>The client code it is similar but we use the next elements instead:</p>
+
+<ul>
+<li>zmq.REQ</li>
+<li>socket.connect</li>
+</ul>
+
+<pre><code class="language-python">import zmq
+import time
+context = zmq.Context()
+
+# Connect with the server
+sock = context.socket(zmq.REQ)
+sock.connect(&quot;tcp://127.0.0.1:5685&quot;)
+
+# Send a message using the socket
+
+sock.send(&quot;hello&quot;)
+print (sock.recv())
+</code></pre>
     </div>
   </div>
 
@@ -280,12 +334,12 @@ conda install mingw libpython
   <nav>
   <ul class="pager">
     
-    <li class="previous"><a href="https://enriquecoronadozu.github.io/post/writing-markdown-latex/"><span
-      aria-hidden="true">&larr;</span> Writing content with Markdown, LaTeX, and Shortcodes</a></li>
+    <li class="previous"><a href="https://enriquecoronadozu.github.io/post/2017-02-01-Deep%20Learning/"><span
+      aria-hidden="true">&larr;</span> Deep Learning: Introduction to Recurrent Neural Networks</a></li>
     
 
     
-    <li class="next"><a href="https://enriquecoronadozu.github.io/post/2017-02-02-Useful%20links%20for%20Github%20pages/">Useful links for Github pages <span
+    <li class="next"><a href="https://enriquecoronadozu.github.io/post/2017-02-04-Sphinx%20&amp;%20Github%20pages/">Sphinx &amp; Github pages <span
       aria-hidden="true">&rarr;</span></a></li>
     
   </ul>

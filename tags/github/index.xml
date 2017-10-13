@@ -256,15 +256,22 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 &lt;p&gt;&lt;a href=&#34;http://gcushen.github.io/hugo-academic-demo/&#34; target=&#34;_blank&#34;&gt;http://gcushen.github.io/hugo-academic-demo/&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&#34;compile-hugo&#34;&gt;Compile Hugo:&lt;/h2&gt;
+&lt;h2 id=&#34;compile-hugo-and-update-github-page&#34;&gt;Compile Hugo and update Github-page:&lt;/h2&gt;
 
-&lt;p&gt;In the main folder of the Hugo webpage write:&lt;/p&gt;
+&lt;p&gt;Go in with the Terminal to the main folder of the Hugo webpage and write:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;hugo
 cd public
 git add.
 git commit -m &amp;quot;Build website&amp;quot;
 git push
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;run-hugo-server&#34;&gt;Run hugo server:&lt;/h2&gt;
+
+&lt;p&gt;Go in with the Terminal to the main folder of the Hugo webpage and write:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;hugo server
 &lt;/code&gt;&lt;/pre&gt;</description>
     </item>
     

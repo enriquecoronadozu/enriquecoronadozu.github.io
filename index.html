@@ -218,7 +218,7 @@
 
 <h1 id="biography">Biography</h1>
 
-<p>I am a Master student in Robotics, currently performing my master thesis in Tokyo, Japan. My research interests include Social Robotics, Human-Robot Interaction, Machine Learning and Computer Vision.</p>
+<p>I am a PhD student in Tokyo, Japan. My current objective is to increase the usability and flexibility of robots with the development of software tools that enable the generation of real-world applications. Other current researches are realted to <em>biomechanics parameters estimation</em> and <em>gesture-based control of robots</em>.</p>
 
 
     <div class="row">
@@ -230,11 +230,21 @@
           
           <li>Human-Robot Interaction</li>
           
-          <li>Deep Learning</li>
+          <li>Software Architectures</li>
+          
+          <li>Social Robotics</li>
+          
+          <li>Robot programming</li>
+          
+          <li>Python and JavaScript</li>
+          
+          <li>Machine Learning</li>
+          
+          <li>Human Behavior Undestranding</li>
           
           <li>Computer Vision</li>
           
-          <li>Python programming</li>
+          <li>Anime and Videogames</li>
           
         </ul>
       </div>
@@ -244,6 +254,14 @@
       <div class="col-sm-7">
         <h3>Education</h3>
         <ul class="ul-edu fa-ul">
+          
+          <li>
+            <i class="fa-li fa fa-graduation-cap"></i>
+            <div class="description">
+              <p class="course">Phd in Mechanical Engineering Systems</p>
+              <p class="institution">Tokyo University of Agriculture and Technology, Japan</p>
+            </div>
+          </li>
           
           <li>
             <i class="fa-li fa fa-graduation-cap"></i>
@@ -295,7 +313,37 @@
       
       <li itemscope itemtype="http://schema.org/CreativeWork">
   <i class="fa-li fa fa-file-text-o pub-icon" aria-hidden="true"></i>
-  <span itemprop="name">Analysis of Recoverable Falls Via microsoft kinect: Identification of Third-Order Ankle Dynamics</span>
+  <span itemprop="name">Gesture-based Robot Control: Design Challenges and Evaluation with Humans</span>
+  <p>
+
+
+
+<a class="btn btn-primary btn-outline btn-xs" href="https://enriquecoronadozu.github.io/publication/Gesture-based/">
+  Details
+</a>
+
+
+<a class="btn btn-primary btn-outline btn-xs" href="https://www.researchgate.net/publication/296331985_Analysis_of_Recoverable_Falls_Via_microsoft_kinect_Identification_of_Third-Order_Ankle_Dynamics">
+  PDF
+</a>
+
+
+
+
+
+
+<a class="btn btn-primary btn-outline btn-xs" href="https://enriquecoronadozu.github.io/project/gesture/">
+  Project
+</a>
+
+
+</p>
+</li>
+
+      
+      <li itemscope itemtype="http://schema.org/CreativeWork">
+  <i class="fa-li fa fa-file-text-o pub-icon" aria-hidden="true"></i>
+  <span itemprop="name">Analysis of Recoverable Falls via Microsoft Kinect: Identification of Third-Order Ankle Dynamics</span>
   <p>
 
 
@@ -361,118 +409,6 @@
     
 
     
-      
-        
-        
-
-
-<div class="article-list-item" itemscope itemprop="blogPost">
-  
-  <h3 class="article-title" itemprop="name">
-    <a href="https://enriquecoronadozu.github.io/post/2017-03-19%20Gesture%20based%20controller%20starting%20points/" itemprop="url">Gesture based controller starting points</a>
-  </h3>
-  
-
-<div class="article-metadata">
-
-  <span class="article-date">
-    <time datetime="2017-03-20 10:00:00 &#43;0000 UTC" itemprop="datePublished">
-      Mon, Mar 20, 2017
-    </time>
-  </span>
-
-  
-
-  
-  
-  
-  <span class="article-tags">
-    <i class="fa fa-tags"></i>
-    
-    <a href="/tags/python">Python</a
-    >
-    
-  </span>
-  
-  
-
-  
-
-</div>
-
-  <div class="article-style" itemprop="articleBody">
-    
-    General overview The next diagram describe the general structure of the gesture based controller:
-Sensory system The sensory module is composed of 3 programs:
- The mobile and wear version of the Nep Wear Ami: used to send the IMU data via sockets to a PC. The ros_server.py program: Used to obtain the IMU information in the PC. This program also publish the IMU information in the topics &lsquo;/wearami_acc&rsquo; in the case of the acceleration and &lsquo;/wearami_acc&rsquo; in the case of gyroscope information (this are the names of the topics that I see in the current github version, but you can check if are the correct ones in your version, in the ICRA article it seems are with different names).
-    
-  </div>
-  <p class="read-more">
-    <a href="https://enriquecoronadozu.github.io/post/2017-03-19%20Gesture%20based%20controller%20starting%20points/" class="btn btn-primary btn-outline">
-      CONTINUE READING
-    </a>
-  </p>
-</div>
-
-      
-        
-        
-
-
-<div class="article-list-item" itemscope itemprop="blogPost">
-  
-  <h3 class="article-title" itemprop="name">
-    <a href="https://enriquecoronadozu.github.io/post/2017-03-24%20Master%20thesis%20framework%20instalation/" itemprop="url">Master thesis framework instalation</a>
-  </h3>
-  
-
-<div class="article-metadata">
-
-  <span class="article-date">
-    <time datetime="2017-03-20 10:00:00 &#43;0000 UTC" itemprop="datePublished">
-      Mon, Mar 20, 2017
-    </time>
-  </span>
-
-  
-
-  
-  
-  
-  <span class="article-tags">
-    <i class="fa fa-tags"></i>
-    
-    <a href="/tags/python">Python</a
-    >
-    
-  </span>
-  
-  
-
-  
-
-</div>
-
-  <div class="article-style" itemprop="articleBody">
-    
-    
-
-<h2 id="install-transitions">Install transitions</h2>
-
-<pre><code>pip install transitions
-python -m pip install dtw
-pip install keras
-</code></pre>
-
-    
-  </div>
-  <p class="read-more">
-    <a href="https://enriquecoronadozu.github.io/post/2017-03-24%20Master%20thesis%20framework%20instalation/" class="btn btn-primary btn-outline">
-      CONTINUE READING
-    </a>
-  </p>
-</div>
-
       
         
         
@@ -576,6 +512,108 @@ pip install keras
 </div>
 
       
+        
+        
+
+
+<div class="article-list-item" itemscope itemprop="blogPost">
+  
+  <h3 class="article-title" itemprop="name">
+    <a href="https://enriquecoronadozu.github.io/post/2017-02-04-Sphinx%20&amp;%20Github%20pages/" itemprop="url">Sphinx &amp; Github pages</a>
+  </h3>
+  
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2017-02-04 10:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Sat, Feb 4, 2017
+    </time>
+  </span>
+
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/github">github</a
+    >
+    
+  </span>
+  
+  
+
+  
+
+</div>
+
+  <div class="article-style" itemprop="articleBody">
+    
+    <p>This tutorial shows how to use Github pages + Sphinx for publish nice looking documentation. </p>
+    
+  </div>
+  <p class="read-more">
+    <a href="https://enriquecoronadozu.github.io/post/2017-02-04-Sphinx%20&amp;%20Github%20pages/" class="btn btn-primary btn-outline">
+      CONTINUE READING
+    </a>
+  </p>
+</div>
+
+      
+        
+        
+
+
+<div class="article-list-item" itemscope itemprop="blogPost">
+  
+  <h3 class="article-title" itemprop="name">
+    <a href="https://enriquecoronadozu.github.io/post/2017-02-03-ZeroQM%20basics/" itemprop="url">ZeroMQ basics</a>
+  </h3>
+  
+
+<div class="article-metadata">
+
+  <span class="article-date">
+    <time datetime="2017-02-03 10:00:00 &#43;0000 UTC" itemprop="datePublished">
+      Fri, Feb 3, 2017
+    </time>
+  </span>
+
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/zeromq">ZeroMQ</a
+    >
+    
+  </span>
+  
+  
+
+  
+
+</div>
+
+  <div class="article-style" itemprop="articleBody">
+    
+    <p>This post present a set of notes and python examples of ZeroMQ. </p>
+    
+  </div>
+  <p class="read-more">
+    <a href="https://enriquecoronadozu.github.io/post/2017-02-03-ZeroQM%20basics/" class="btn btn-primary btn-outline">
+      CONTINUE READING
+    </a>
+  </p>
+</div>
+
+      
     
 
   </div>
@@ -607,9 +645,11 @@ pip install keras
           
             <a href="#" data-filter="*" class="btn btn-primary btn-large active">All</a>
           
-            <a href="#" data-filter=".NEP" class="btn btn-primary btn-large">Social robot programming</a>
+            <a href="#" data-filter=".robot-programming" class="btn btn-primary btn-large">Robot programming</a>
           
-            <a href="#" data-filter=".HBU" class="btn btn-primary btn-large">Human behavior understanding</a>
+            <a href="#" data-filter=".human-behavior-understanding" class="btn btn-primary btn-large">Human behavior understanding</a>
+          
+            <a href="#" data-filter=".biomechanics" class="btn btn-primary btn-large">Biomechanics</a>
           
           </div>
         </div>
@@ -624,18 +664,18 @@ pip install keras
       
       
       
-      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-6 project-item isotope-item social-robots robot-programming NEP">
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-6 project-item isotope-item .robot-programming">
         <div class="card">
           
-          <a href="https://enriquecoronadozu.github.io/project/Programming%20social%20robots/" title="" class="card-image hover-overlay"
+          <a href="https://enriquecoronadozu.github.io/project/Node%20primitives/" title="" class="card-image hover-overlay"
              >
-            <img src="/img/bubbles.jpg" alt="" class="img-responsive">
+            <img src="/img/nep.png" alt="" class="img-responsive">
           </a>
           
           <div class="card-text">
-            <h4><a href="https://enriquecoronadozu.github.io/project/Programming%20social%20robots/" >Social robot programming</a></h4>
+            <h4><a href="https://enriquecoronadozu.github.io/project/Node%20primitives/" >Node primitives</a></h4>
             <div class="card-desription">
-              <p>Node primitives (NEP) is an open source experimental platform which allows the creation and design of  social interactions with robots. The objective of this project is to remove the gap between academic research in social human robot interaction and end-user applications</p>
+              <p>Node primitives (NEP) is an open source experimental platform which allows the creation and design of social interactions with robots. The objective of this project is to remove the gap between academic research in social human robot interaction and end-user applications</p>
             </div>
           </div>
         </div>
@@ -647,15 +687,35 @@ pip install keras
       <div class="col-xs-12 col-sm-6 col-md-4 col-lg-6 project-item isotope-item machine-learning deep-learning human-behavior-understanding">
         <div class="card">
           
-          <a href="https://enriquecoronadozu.github.io/project/Human%20behavior%20understanding/" title="" class="card-image hover-overlay"
+          <a href="https://enriquecoronadozu.github.io/project/Biomechanical%20parameters%20estimation/" title="" class="card-image hover-overlay"
+             >
+            <img src="/img/bio.png" alt="" class="img-responsive">
+          </a>
+          
+          <div class="card-text">
+            <h4><a href="https://enriquecoronadozu.github.io/project/Biomechanical%20parameters%20estimation/" >Biomechanical parameters estimation</a></h4>
+            <div class="card-desription">
+              <p>The objective of this project is the develpment and integration of sensory and perceptual modules that gives to robots the capabilty of understand the human actions</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+      <div class="col-xs-12 col-sm-6 col-md-4 col-lg-6 project-item isotope-item machine-learning deep-learning human-behavior-understanding">
+        <div class="card">
+          
+          <a href="https://enriquecoronadozu.github.io/project/Gesture-based%20control/" title="" class="card-image hover-overlay"
              >
             <img src="/img/boards.jpg" alt="" class="img-responsive">
           </a>
           
           <div class="card-text">
-            <h4><a href="https://enriquecoronadozu.github.io/project/Human%20behavior%20understanding/" >Human behavior understanding</a></h4>
+            <h4><a href="https://enriquecoronadozu.github.io/project/Gesture-based%20control/" >Gesture-based Control</a></h4>
             <div class="card-desription">
-              <p>The objective of this project is the develpment and integration of sensory and perceptual modules that gives to robots the capabilty of understand the human actions</p>
+              <p>The objective of this project is the develpment and integration of sensory and perceptual modules that enables the control of robots using natural interfaces</p>
             </div>
           </div>
         </div>

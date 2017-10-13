@@ -4,24 +4,16 @@
     
     
     <url>
-      <loc>https://enriquecoronadozu.github.io/project/Programming%20social%20robots/</loc>
+      <loc>https://enriquecoronadozu.github.io/publication/Gesture-based/</loc>
+      <lastmod>2017-07-01T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://enriquecoronadozu.github.io/project/Node%20primitives/</loc>
       <lastmod>2017-04-24T00:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-      <loc>https://enriquecoronadozu.github.io/post/2017-03-19%20Gesture%20based%20controller%20starting%20points/</loc>
-      <lastmod>2017-03-20T10:00:00+00:00</lastmod>
-    </url>
-    
-  
-    
-    
-    <url>
-      <loc>https://enriquecoronadozu.github.io/post/2017-03-24%20Master%20thesis%20framework%20instalation/</loc>
-      <lastmod>2017-03-20T10:00:00+00:00</lastmod>
     </url>
     
   
@@ -52,7 +44,7 @@
     
     
     <url>
-      <loc>https://enriquecoronadozu.github.io/post/2017-02-03-ZeroQM%20notes%20part%201/</loc>
+      <loc>https://enriquecoronadozu.github.io/post/2017-02-03-ZeroQM%20basics/</loc>
       <lastmod>2017-02-03T10:00:00+00:00</lastmod>
     </url>
     
@@ -116,7 +108,15 @@
     
     
     <url>
-      <loc>https://enriquecoronadozu.github.io/project/Human%20behavior%20understanding/</loc>
+      <loc>https://enriquecoronadozu.github.io/project/Biomechanical%20parameters%20estimation/</loc>
+      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://enriquecoronadozu.github.io/project/Gesture-based%20control/</loc>
       <lastmod>2016-04-27T00:00:00+00:00</lastmod>
     </url>
     
@@ -148,7 +148,25 @@
     
     
     <url>
+      <loc>https://enriquecoronadozu.github.io/tags/index.robot-programming/</loc>
+      <lastmod>2017-04-24T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
       <loc>https://enriquecoronadozu.github.io/publication_types/1/</loc>
+      <lastmod>2017-07-01T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://enriquecoronadozu.github.io/publication_types/2/</loc>
       <lastmod>2016-02-01T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
@@ -223,15 +241,6 @@
     
     
     <url>
-      <loc>https://enriquecoronadozu.github.io/tags/nep/</loc>
-      <lastmod>2017-04-24T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
       <loc>https://enriquecoronadozu.github.io/tags/pepper/</loc>
       <lastmod>2017-02-05T10:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -251,33 +260,6 @@
     
     <url>
       <loc>https://enriquecoronadozu.github.io/publication_types/</loc>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-      <loc>https://enriquecoronadozu.github.io/tags/python/</loc>
-      <lastmod>2017-03-20T10:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-      <loc>https://enriquecoronadozu.github.io/tags/robot-programming/</loc>
-      <lastmod>2017-04-24T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-      <loc>https://enriquecoronadozu.github.io/tags/social-robots/</loc>
-      <lastmod>2017-04-24T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

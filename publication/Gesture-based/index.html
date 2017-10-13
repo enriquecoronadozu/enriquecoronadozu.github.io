@@ -34,11 +34,11 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
 
-  <link rel="canonical" href="https://enriquecoronadozu.github.io/post/2017-01-30-Installation%20of%20Keras/">
+  <link rel="canonical" href="https://enriquecoronadozu.github.io/publication/Gesture-based/">
 
   
 
-  <title>Installation of Machine Learning libraries for Python | Academic</title>
+  <title>Gesture-based Robot Control: Design Challenges and Evaluation with Humans | Academic</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
@@ -142,73 +142,50 @@
   </div>
 </nav>
 
+<div class="container pub" itemscope itemtype="http://schema.org/CreativeWork">
 
-<article class="article" itemscope itemtype="http://schema.org/Article">
-
-  
-
-  <div class="article-container">
-    <h1 itemprop="name">Installation of Machine Learning libraries for Python</h1>
-    
-
-<div class="article-metadata">
-
-  <span class="article-date">
-    <time datetime="2017-01-30 10:00:00 &#43;0000 UTC" itemprop="datePublished">
-      Mon, Jan 30, 2017
-    </time>
-  </span>
-
-  
-
-  
-  
-  
-  <span class="article-tags">
-    <i class="fa fa-tags"></i>
-    
-    <a href="/tags/deep-learning">deep learning</a
-    >
-    
-  </span>
-  
-  
-
-  
-  
+  <div class="pub-title">
+    <h1 itemprop="name">Gesture-based Robot Control: Design Challenges and Evaluation with Humans</h1>
+    <span class="pub-authors" itemprop="author">
+      
+      Enrique Coronado, Jessica Villalobos, Barbara Bruno, Fulvio Mastrogiovanni
+      
+    </span>
+    <span class="pull-right">
+      
 <div class="share-box" aria-hidden="true">
   <ul class="share">
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-01-30-Installation%2520of%2520Keras%2f"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fenriquecoronadozu.github.io%2fpublication%2fGesture-based%2f"
          target="_blank">
         <i class="fa fa-facebook"></i>
       </a>
     </li>
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Installation%20of%20Machine%20Learning%20libraries%20for%20Python&amp;url=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-01-30-Installation%2520of%2520Keras%2f"
+         href="https://twitter.com/intent/tweet?text=Gesture-based%20Robot%20Control%3a%20Design%20Challenges%20and%20Evaluation%20with%20Humans&amp;url=https%3a%2f%2fenriquecoronadozu.github.io%2fpublication%2fGesture-based%2f"
          target="_blank">
         <i class="fa fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-01-30-Installation%2520of%2520Keras%2f&amp;title=Installation%20of%20Machine%20Learning%20libraries%20for%20Python"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fenriquecoronadozu.github.io%2fpublication%2fGesture-based%2f&amp;title=Gesture-based%20Robot%20Control%3a%20Design%20Challenges%20and%20Evaluation%20with%20Humans"
          target="_blank">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-01-30-Installation%2520of%2520Keras%2f&amp;title=Installation%20of%20Machine%20Learning%20libraries%20for%20Python"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fenriquecoronadozu.github.io%2fpublication%2fGesture-based%2f&amp;title=Gesture-based%20Robot%20Control%3a%20Design%20Challenges%20and%20Evaluation%20with%20Humans"
          target="_blank">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=Installation%20of%20Machine%20Learning%20libraries%20for%20Python&amp;body=https%3a%2f%2fenriquecoronadozu.github.io%2fpost%2f2017-01-30-Installation%2520of%2520Keras%2f">
+         href="mailto:?subject=Gesture-based%20Robot%20Control%3a%20Design%20Challenges%20and%20Evaluation%20with%20Humans&amp;body=https%3a%2f%2fenriquecoronadozu.github.io%2fpublication%2fGesture-based%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -216,85 +193,115 @@
 </div>
 
 
-  
-
-</div>
-
-    <div class="article-style" itemprop="articleBody">
-      <p>This post contains the steps followed to perform the installation of the machine learning libraries used for my thesis. </p>
-
-<h2 id="python-installation">Python Installation</h2>
-
-<p>The python version used is 2.7 of 32-bit from the Anacoda distribution:
-<a href="https://www.continuum.io/downloads" target="_blank">https://www.continuum.io/downloads</a></p>
-
-<h2 id="update-pip-install">Update pip install</h2>
-
-<pre><code>python -m pip install --upgrade pip
-</code></pre>
-
-<h2 id="installation-of-machine-learning-libraries">Installation of machine learning libraries</h2>
-
-<pre><code># Used in MAC OS to solve the error: &quot;HDF5 library version mismatched error&quot;
-conda install h5py
-
-# Theano library
-pip install theano
-
-## TensorFlow library: Used only for MAC OS X and Linux
-pip install tensorflow
-
-# Keras library (In windows opening the CMD as administrator)
-pip install keras
-conda install mingw libpython
-</code></pre>
-
-<h2 id="keras-backend">Keras backend</h2>
-
-<p>Keras has two backend implementations (2017): TensorFlow and Theano. The default backend implementation is TensorFlow.</p>
-
-<blockquote>
-<p>In Windows there is only the Python 3.5 version of TensorFlow. In order to use Keras + Python 2.7 in Windows, the next steps can be performed:</p>
-</blockquote>
-
-<ul>
-<li>Go to <code>C:\Users\&lt;user name&gt;</code> and open the folder .keras</li>
-<li>Open the file keras.json and change the lines as:</li>
-</ul>
-
-<pre><code class="language-javascript">{
-    &quot;image_dim_ordering&quot;: &quot;th&quot;,
-    &quot;epsilon&quot;: 1e-07,
-    &quot;floatx&quot;: &quot;float32&quot;,
-    &quot;backend&quot;: &quot;theano&quot;
-}
-</code></pre>
-
-<p>More info in: <a href="https://keras.io/backend/" target="_blank">https://keras.io/backend/</a></p>
-    </div>
+    </span>
   </div>
 
-</article>
+</div>
+<div class="article-container">
+
+  
+
+  <h3>Abstract</h3>
+  <p class="pub-abstract" itemprop="text">In this paper we introduce a gesture-based robot control framework, we discuss the adopted design principles and we report results about its evaluation with humans. Gesture-based control using wearable devices may constitute a novel form of human-robot interaction, but its implications have not been discussed in the literature. We discuss the main challenging issues, possible design guidelines and an open source, freely available implementation using commercially available devices and robots. The overall performance of the architecture, as well as its validation with 26 untrained volunteers, is reported. </p>
+
+  
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      <div class="row">
+        <div class="col-xs-12 col-sm-3 pub-row-heading">Type</div>
+        <div class="col-xs-12 col-sm-9">
+          
+          <a href="/publication/#1">
+            Conference proceedings
+          </a>
+          
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-1"></div>
+  </div>
+  <div class="visible-xs space-below"></div>
+  
+
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      <div class="row">
+        <div class="col-xs-12 col-sm-3 pub-row-heading">Publication</div>
+        <div class="col-xs-12 col-sm-9">In <em>IEEE International Conference on Robotics and Automation (ICRA 2017)</em></div>
+      </div>
+    </div>
+    <div class="col-sm-1"></div>
+  </div>
+  <div class="visible-xs space-below"></div>
+
+  <div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      <div class="row">
+        <div class="col-xs-12 col-sm-3 pub-row-heading">Date</div>
+        <div class="col-xs-12 col-sm-9" itemprop="datePublished">
+          July, 2017
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-1"></div>
+  </div>
+  <div class="visible-xs space-below"></div>
+
+  <div class="row" style="padding-top: 10px">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+      <div class="row">
+        <div class="col-xs-12 col-sm-3 pub-row-heading" style="line-height:34px;">Links</div>
+        <div class="col-xs-12 col-sm-9">
+
+          
+
+
+
+
+<a class="btn btn-primary btn-outline" href="https://www.researchgate.net/publication/296331985_Analysis_of_Recoverable_Falls_Via_microsoft_kinect_Identification_of_Third-Order_Ankle_Dynamics">
+  PDF
+</a>
+
+
+
+
+
+
+<a class="btn btn-primary btn-outline" href="https://enriquecoronadozu.github.io/project/gesture/">
+  Project
+</a>
+
+
+
+
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-1"></div>
+  </div>
+  <div class="visible-xs space-below"></div>
+
+  <div class="space-below"></div>
+
+  <div class="article-style"></div>
+
+</div>
 
 <div class="container">
   <nav>
   <ul class="pager">
     
-    <li class="previous"><a href="https://enriquecoronadozu.github.io/post/writing-markdown-latex/"><span
-      aria-hidden="true">&larr;</span> Writing content with Markdown, LaTeX, and Shortcodes</a></li>
+    <li class="previous"><a href="https://enriquecoronadozu.github.io/publication/Analysis-of%20-Recoverable/"><span
+      aria-hidden="true">&larr;</span> Analysis of Recoverable Falls via Microsoft Kinect: Identification of Third-Order Ankle Dynamics</a></li>
     
 
-    
-    <li class="next"><a href="https://enriquecoronadozu.github.io/post/2017-02-02-Useful%20links%20for%20Github%20pages/">Useful links for Github pages <span
-      aria-hidden="true">&rarr;</span></a></li>
     
   </ul>
 </nav>
-
-</div>
-
-<div class="article-container">
-  
 
 </div>
 

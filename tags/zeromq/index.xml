@@ -10,11 +10,11 @@
     <atom:link href="/tags/zeromq/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>ZeroMQ notes 1</title>
-      <link>https://enriquecoronadozu.github.io/post/2017-02-03-ZeroQM%20notes%20part%201/</link>
+      <title>ZeroMQ basics</title>
+      <link>https://enriquecoronadozu.github.io/post/2017-02-03-ZeroQM%20basics/</link>
       <pubDate>Fri, 03 Feb 2017 10:00:00 +0000</pubDate>
       
-      <guid>https://enriquecoronadozu.github.io/post/2017-02-03-ZeroQM%20notes%20part%201/</guid>
+      <guid>https://enriquecoronadozu.github.io/post/2017-02-03-ZeroQM%20basics/</guid>
       <description>&lt;p&gt;This post present a set of notes and python examples of ZeroMQ. &lt;/p&gt;
 
 &lt;h2 id=&#34;instalation&#34;&gt;Instalation:&lt;/h2&gt;
