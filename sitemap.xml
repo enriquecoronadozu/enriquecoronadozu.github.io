@@ -148,8 +148,8 @@
     
     
     <url>
-      <loc>https://enriquecoronadozu.github.io/tags/index.robot-programming/</loc>
-      <lastmod>2017-04-24T00:00:00+00:00</lastmod>
+      <loc>https://enriquecoronadozu.github.io/</loc>
+      <lastmod>2016-04-20T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -175,8 +175,8 @@
     
     
     <url>
-      <loc>https://enriquecoronadozu.github.io/</loc>
-      <lastmod>2016-04-20T00:00:00+00:00</lastmod>
+      <loc>https://enriquecoronadozu.github.io/tags/biomechanics/</loc>
+      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -205,26 +205,8 @@
     
     
     <url>
-      <loc>https://enriquecoronadozu.github.io/tags/human-behavior-understanding/</loc>
-      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
       <loc>https://enriquecoronadozu.github.io/tags/jekyll/</loc>
       <lastmod>2014-03-10T00:00:00+00:00</lastmod>
-      <priority>0</priority>
-    </url>
-    
-  
-    
-    
-    <url>
-      <loc>https://enriquecoronadozu.github.io/tags/machine-learning/</loc>
-      <lastmod>2016-04-27T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -260,6 +242,15 @@
     
     <url>
       <loc>https://enriquecoronadozu.github.io/publication_types/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+      <loc>https://enriquecoronadozu.github.io/tags/robot/</loc>
+      <lastmod>2017-04-24T00:00:00+00:00</lastmod>
       <priority>0</priority>
     </url>
     

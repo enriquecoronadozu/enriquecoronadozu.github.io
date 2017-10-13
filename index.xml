@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Academic on Academic</title>
+    <title></title>
     <link>https://enriquecoronadozu.github.io/index.xml</link>
-    <description>Recent content in Academic on Academic</description>
+    <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy; 2017 Enrique Coronado</copyright>
@@ -955,7 +955,8 @@ algorithms for the identification of muscle-tendons’ parameters are used. Thes
       <pubDate>Wed, 27 Apr 2016 00:00:00 +0000</pubDate>
       
       <guid>https://enriquecoronadozu.github.io/project/Gesture-based%20control/</guid>
-      <description>&lt;p&gt;Typical forms of communication with robots in industrial and laboratory environments are using devices such as keyboard, mouse, joystick and teach pendant. These forms of communication are generally considered unnatural methods and require prior training, which can be unpleasant and time consuming for novice user.
+      <description>&lt;p&gt;&lt;p style=&#39;text-align: justify;&#39;&gt;
+Typical forms of communication with robots in industrial and laboratory environments are using devices such as keyboard, mouse, joystick and teach pendant. These forms of communication are generally considered unnatural methods and require prior training, which can be unpleasant and time consuming for novice user.
 The objective of this project is to propose simpler or novel forms of communication that improve the usability and user experience of robots in real-world enviroments. Such simplification is possible with the adoption of natural interfaces, i.e., interfaces that enables users to interact with machines and computers in the same way they interact with their everyday environment.&lt;/p&gt;
 </description>
     </item>
