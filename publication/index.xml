@@ -11,6 +11,15 @@
     <atom:link href="/publication/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Is Kinesthetic Teaching What Smart Factories Really Need?</title>
+      <link>https://enriquecoronadozu.github.io/publication/Is_kinesthetic/</link>
+      <pubDate>Wed, 01 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://enriquecoronadozu.github.io/publication/Is_kinesthetic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Gesture-based Robot Control: Design Challenges and Evaluation with Humans</title>
       <link>https://enriquecoronadozu.github.io/publication/Gesture-based/</link>
       <pubDate>Sat, 01 Jul 2017 00:00:00 +0000</pubDate>
@@ -25,6 +34,15 @@
       <pubDate>Mon, 01 Feb 2016 00:00:00 +0000</pubDate>
       
       <guid>https://enriquecoronadozu.github.io/publication/Analysis-of%20-Recoverable/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Combining Genetic Algorithms and Extended Kalman Filter to Estimate Ankle’s Muscle-Tendon Parameters</title>
+      <link>https://enriquecoronadozu.github.io/publication/Combining/</link>
+      <pubDate>Sun, 01 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://enriquecoronadozu.github.io/publication/Combining/</guid>
       <description></description>
     </item>
     
