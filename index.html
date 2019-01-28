@@ -5,7 +5,7 @@
 	<link rel="icon" type="image/png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="author" content="Enrique Coronado" />
-    <title>Rize</title>
+    <title>Enrique Coronado</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="viewport" content="width=device-width" />
@@ -18,8 +18,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
     
 
-    <!-- ################# Rize library  ######################## -->
-    <script src="rize/rize.js"></script>
     
 
     <style>
@@ -29,6 +27,15 @@
           -moz-osx-font-smoothing: grayscale;
           text-align: center;
           color: #212121;
+        }
+
+        .v-card--reveal {
+        align-items: center;
+        bottom: 0;
+        justify-content: center;
+        opacity: .5;
+        position: absolute;
+        width: 100%;
         }
     </style>
 
@@ -43,12 +50,12 @@
         <v-app id="inspire">
           <v-layout justify-center >
             <v-flex xs12 sm12  >
-            <v-card color="rgb(0, 0, 0, 0)" flat>
+            <v-card color="white" flat>
                 <v-container fluid>
                     <v-layout row>
                         <v-flex xs4 order-lg2>
-                            <v-card color="rgb(0, 0, 0, 0)" flat>
-                                <v-avatar :tile="tile" :size="150" color="rgb(0, 0, 0, 0)" flat >
+                            <v-card color="white" flat>
+                                <v-avatar :title="title" :size="150" color="white" flat >
                                     <img src="img/yo.jpg" alt="avatar">
                                   </v-avatar>
                                     <v-container > 
@@ -56,11 +63,11 @@
                             </v-card>
                           </v-flex>
                           <v-flex xs8>
-                            <v-card color="rgb(0, 0, 0, 0)" flat>
+                            <v-card color="white" flat>
                                 <div class="headline"><span  style="font-size: 35px">Enrique Coronado</span></div> 
                                 <div><span  style=" color: rgb(101, 101, 103); font-size: 23px">Ph.D Student</span></div> 
                                 <div>&nbsp;</div> 
-                                <div><span  style="font-size: 16px">A mexican researcher in Human-Robot Interaction, Software Architectures for Robotics, Intelligent Social Robots and End-User Robot Programming.</span></div> 
+                                <div><span  style="font-size: 16px">A Ph.D student in Human-Robot Interaction, Software Architectures for Robotics, Intelligent Social Robots and End-User Robot Programming.</span></div> 
                                 <div>&nbsp;</div> 
                                 <div><span  style=" font-weight: bold;font-size: 16px">Tokyo, Japan</span></div> 
                             
@@ -71,7 +78,7 @@
 
             </v-card>
               
-                <v-tabs fixed-tabs>
+                <v-tabs fixed-tabs dark color="light-blue darken-4">
                     <v-tab> Research </v-tab>
                     <v-tab> Publications </v-tab>
                     <v-tab> Education </v-tab>
@@ -80,19 +87,46 @@
                     <v-tab> Links </v-tab>
 
                     <v-tab-item>
-                        <v-card flat color="rgb(0, 0, 0, 0)" flat>
-                        <v-card-text>Research</v-card-text>
+                        <v-card flat color="white" flat>
+                        
+                            <v-card color="white" flat >
+                                <!--  <v-card dark flat > -->
+                                <v-container  fluid grid-list-md >
+                                  <v-layout row wrap >
+                                    <v-flex v-for="card in cards"  v-bind="{ [`xs${card.flex}`]: true }" :key="card.title" >
+                                      <v-hover>
+                                      <v-card color="grey darken-3" flat  dark  slot-scope="{ hover }" >
+                                        <v-img  :src="card.src"  height="250px" >
+                                            <v-expand-transition>
+                                                <div
+                                                  v-if="hover"
+                                                  class="d-flex transition-fast-in-fast-out grey darken-3 v-card--reveal display-3 white--text"
+                                                  style="height: 100%;"
+                                                >
+                                                  more ...
+                                                </div>
+                                              </v-expand-transition>
+                                         
+                                        </v-img>
+                                        
+                                      <v-card-text>  {{ card.content }}  </v-card-text>
+                                      </v-card>
+                                      </v-hover>
+                                    </v-flex>
+                                  </v-layout>
+                                </v-container>
+                              </v-card>
 
                         </v-card>
                     </v-tab-item>
                     <v-tab-item>
-                        <v-card flat color="rgb(0, 0, 0, 0)" flat>
+                        <v-card flat color="white" flat>
                             <div>&nbsp;</div> 
-                        <v-chip  class="white--text ml-0"  color="indigo"  label  small> Conferences </v-chip>
+                        <v-chip  class="white--text ml-0"  color="grey darken-3" label  small> Conferences </v-chip>
                         
                         <template v-for="(item, index) in conferences">
 
-                            <v-card flat color="rgb(0, 0, 0, 0)">
+                            <v-card flat color="white">
                                 <v-card-actions>
                                   <div>
                                         <p align="left" style=" font-weight: bold;">
@@ -114,11 +148,11 @@
                         </template>
                          
 
-                        <v-chip  class="white--text ml-0"  color="indigo"  label  small> Journals </v-chip>
+                        <v-chip  class="white--text ml-0"  color="grey darken-3"  label  small> Journals </v-chip>
                         
                         <template v-for="(item, index) in journals">
 
-                            <v-card flat color="rgb(0, 0, 0, 0)">
+                            <v-card flat color="white">
                                 <v-card-actions>
                                     
         
@@ -146,7 +180,7 @@
                     </v-tab-item>
 
                     <v-tab-item>
-                        <v-card flat color="rgb(0, 0, 0, 0)" flat>
+                        <v-card flat color="white" flat>
                         <v-timeline>
                             <v-timeline-item v-for="(year, i) in years" :color="year.color" :key="i" small >
                               <span slot="opposite" :class="` font-weight-bold ${year.color}--text`" style="font-size: 20px"  v-text="year.year" ></span>
@@ -161,11 +195,11 @@
                     </v-tab-item>
 
                     <!--<v-tab-item>
-                        <v-card flat color="rgb(0, 0, 0, 0)" flat>
+                        <v-card flat color="white" flat>
 
                         <v-layout row>
                             <v-flex xs6 order-lg2>
-                                <v-card color="rgb(0, 0, 0, 0)" flat>
+                                <v-card color="white" flat>
                                     <div>&nbsp;</div>
                                     <div> <span  style="font-size: 14px">Programming Languages</span>  </div> 
                                     <div>&nbsp;</div>
@@ -195,7 +229,7 @@
                                 </v-card>
                               </v-flex>
                               <v-flex xs6>
-                                <v-card color="rgb(0, 0, 0, 0)" flat>
+                                <v-card color="white" flat>
                                     <div>&nbsp;</div>
                                     <div> <span  style="font-size: 14px">English</span> <v-rating v-model="rating_en"></v-rating> </div> 
                                     <div></div>
@@ -212,12 +246,12 @@
                         </v-card>
                     </v-tab-item>-->
                     <v-tab-item>
-                        <v-card flat color="rgb(0, 0, 0, 0)" flat>
+                        <v-card flat color="white" flat>
                         <v-card-text>Teaching</v-card-text>
                         </v-card>
                     </v-tab-item>
                     <v-tab-item>
-                        <v-card flat color="rgb(0, 0, 0, 0)" flat>
+                        <v-card flat color="white" flat>
                         <v-card-text>Blog</v-card-text>
                         </v-card>
                     </v-tab-item>
@@ -244,10 +278,10 @@
       
             <v-layout justify-center >
                 <v-flex xs12 sm12  >
-                  <v-card color="rgb(0, 0, 0, 0)" flat>
+                  <v-card color="white" flat>
                     <v-container > <div class="headline"><span  style="font-size: 80px">Enrique Coronado</span></div> </v-container>
                   </v-card>
-                  <v-card color="rgb(0, 0, 0, 0)" flat >
+                  <v-card color="white" flat >
                     <v-container  fluid grid-list-md >
                       <v-layout row wrap >
                         <v-flex v-for="card in cards"  v-bind="{ [`xs${card.flex}`]: true }" :key="card.title" >
@@ -276,6 +310,7 @@
   el: '#app',
   data: () => ({
     theme : false,
+    title:"academic",
     rating_en: 4,
     rating_jp: 2,
     rating_es: 5,
@@ -324,11 +359,21 @@
           authors: "M.E. Segura, E. Coronado, A. Cardenas, D. Piovesan. ",
           src: "Journal of Dynamic Systems, Measurement, and Control 138 (9), 091006",
           year:2016,
-      },
+      },      
 
-      
-  
       ],
+
+      cards: [
+      { title: 'Programming for non-engeneers', src: "img/rize.png", flex: 3,
+      content: 'Programming for non-engeneers' },
+      { title: 'Expresing emotions with non face robots', src: "img/1.jpg", flex: 3,
+      content: 'Expresing emotions with robots' },
+      { title: 'Controlling robot with gestures', src: "img/2.jpg", flex: 3,
+      content: 'Controlling robot with gestures' },
+      { title: 'Distributed robotics systems', src: "img/3.jpg", flex: 3,
+      content: 'Distribuited robotics systems' },
+    ],
+
     years: [
       {
         color: 'cyan',
