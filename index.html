@@ -52,7 +52,6 @@
                                     <img src="img/yo.jpg" alt="avatar">
                                   </v-avatar>
                                     <v-container > 
-
                                     </v-container>
                             </v-card>
                           </v-flex>
@@ -68,27 +67,91 @@
                               </v-card>
                           </v-flex>
                         </v-layout>
-                     
-
                   </v-container>
 
             </v-card>
               
                 <v-tabs fixed-tabs>
-                    <v-tab > Education </v-tab>
-                    <v-tab> Skills </v-tab>
-                    <v-tab> Publications </v-tab>
                     <v-tab> Research </v-tab>
+                    <v-tab> Publications </v-tab>
+                    <v-tab> Education </v-tab>
                     <v-tab> Teaching </v-tab>
+                    <!--<v-tab> Skills </v-tab> -->
                     <v-tab> Links </v-tab>
+
+                    <v-tab-item>
+                        <v-card flat color="rgb(0, 0, 0, 0)" flat>
+                        <v-card-text>Research</v-card-text>
+
+                        </v-card>
+                    </v-tab-item>
+                    <v-tab-item>
+                        <v-card flat color="rgb(0, 0, 0, 0)" flat>
+                            <div>&nbsp;</div> 
+                        <v-chip  class="white--text ml-0"  color="indigo"  label  small> Conferences </v-chip>
+                        
+                        <template v-for="(item, index) in conferences">
+
+                            <v-card flat color="rgb(0, 0, 0, 0)">
+                                <v-card-actions>
+                                  <div>
+                                        <p align="left" style=" font-weight: bold;">
+                                            {{item.title}}
+                                        </p>
+                                        <p align="left">
+                                            {{item.authors}} {{item.src}}
+                                        </p>
+                                  </div>
+                                      
+                                    <v-spacer></v-spacer>
+                                    <v-chip  flat label  small> {{item.year}} </v-chip>
+                                    <div>&nbsp;</div> 
+                                    <v-btn color="indigo" flat >pdf</v-btn>
+                                    <v-btn color="green" flat >bib</v-btn>
+                                  </v-card-actions>
+                              </v-card>
+        
+                        </template>
+                         
+
+                        <v-chip  class="white--text ml-0"  color="indigo"  label  small> Journals </v-chip>
+                        
+                        <template v-for="(item, index) in journals">
+
+                            <v-card flat color="rgb(0, 0, 0, 0)">
+                                <v-card-actions>
+                                    
+        
+                                  <div>
+                                        <p align="left" style=" font-weight: bold;">
+                                            {{item.title}}
+                                        </p>
+                                        <p>
+                                            {{item.authors}} {{item.src}}
+                                        </p>
+                                  </div>
+
+                                    
+                                      
+                                    <v-spacer></v-spacer>
+                                    <v-chip  flat label  small> {{item.year}} </v-chip>
+                                    <v-btn color="indigo" flat >pdf</v-btn>
+                                    <v-btn color="green" flat >bib</v-btn>
+                                  </v-card-actions>
+                              </v-card>
+        
+                        </template>
+
+                        </v-card>
+                    </v-tab-item>
 
                     <v-tab-item>
                         <v-card flat color="rgb(0, 0, 0, 0)" flat>
                         <v-timeline>
                             <v-timeline-item v-for="(year, i) in years" :color="year.color" :key="i" small >
-                              <span slot="opposite" :class="`headline font-weight-bold ${year.color}--text`"  v-text="year.year" ></span>
+                              <span slot="opposite" :class="` font-weight-bold ${year.color}--text`" style="font-size: 20px"  v-text="year.year" ></span>
                               <div class="py-3">
-                                <h2 :class="`headline font-weight-light mb-3 ${year.color}--text`"> {{year.title}} </h2> <div>
+                                <h3  style="font-size: 20px":class="` font-weight-light mb-3 ${year.color}--text`"> {{year.title}}  </h3> <div>
                                   {{year.school}}
                                 </div>
                               </div>
@@ -96,9 +159,9 @@
                           </v-timeline>
                         </v-card>
                     </v-tab-item>
-                    <v-tab-item>
+
+                    <!--<v-tab-item>
                         <v-card flat color="rgb(0, 0, 0, 0)" flat>
-                        
 
                         <v-layout row>
                             <v-flex xs6 order-lg2>
@@ -127,14 +190,7 @@
                                       </div>
                                       <div>&nbsp;</div>
 
-                                      <div> <span  style="font-size: 14px">Others</span> </div> 
-                                      <div>&nbsp;</div>
-                                      <div class="text-xs-center">
-                                          <v-chip>Artificial Intelligence</v-chip>
-                                          <v-chip>Usability Studies</v-chip>
-                                          <v-chip>Computer Vision</v-chip>
-                                          <v-chip>Distributed Systems</v-chip>
-                                      </div>
+                                     
 
                                 </v-card>
                               </v-flex>
@@ -149,25 +205,12 @@
                                     <div></div> 
                                     <div> <span  style="font-size: 14px">Italian</span> <v-rating v-model="rating_it"></v-rating> </div> 
                                     <div></div>
-                                    <div> <span  style="font-size: 14px">French</span> <v-rating v-model="rating_fr"></v-rating> </div> 
-                                    <div></div>
+                              
                                   </v-card>
                               </v-flex>
                             </v-layout>
-
-                        
                         </v-card>
-                    </v-tab-item>
-                    <v-tab-item>
-                        <v-card flat color="rgb(0, 0, 0, 0)" flat>
-                        <v-card-text>Publications</v-card-text>
-                        </v-card>
-                    </v-tab-item>
-                    <v-tab-item>
-                        <v-card flat color="rgb(0, 0, 0, 0)" flat>
-                        <v-card-text>Research</v-card-text>
-                        </v-card>
-                    </v-tab-item>
+                    </v-tab-item>-->
                     <v-tab-item>
                         <v-card flat color="rgb(0, 0, 0, 0)" flat>
                         <v-card-text>Teaching</v-card-text>
@@ -178,11 +221,7 @@
                         <v-card-text>Blog</v-card-text>
                         </v-card>
                     </v-tab-item>
-
                   </v-tabs>
-
-                  
-
               </v-card>
             </v-flex>
           </v-layout>
@@ -242,6 +281,54 @@
     rating_es: 5,
     rating_it: 3,
     rating_fr: 1,
+    conferences: [
+        
+        {
+          title: 'Design of a Human-Centered Robot Framework for End-User Programming and Applications.',
+          authors: "E. Coronado, F. Mastrogiovanni, G. Venture. ",
+          src: "ROMANSY 22–Robot Design, Dynamics and Control, 450-457.",
+          year:2018,
+        },
+        {
+          title: 'Expressive states with a robot arm using adaptive fuzzy and robust predictive controllers.',
+          authors: "L. Rincon, E. Coronado, H. Hendra, J. Phan, Z. Zainalkefli, G. Venture. ",
+          src: " 2018 3rd International Conference on Control and Robotics Engineering (ICCRE)",
+          year:2018,
+        },
+
+        {
+          title: 'Gesture-based Robot Control: Design Challenges and Evaluation with Humans.',
+          authors: "E. Coronado, J. Villalobos, B. Bruno, F. Mastrogiovanni. ",
+          src: "2017 IEEE International Conference on Robotics and Automation (ICRA).",
+          year:2017,
+        },
+
+        {
+          title: 'Time-based identification of human ankle impedance via Microsoft Kinect.',
+          authors: "M.E. Segura, E. Coronado, A. Cardenas, D. Piovesan. ",
+          src: "Journal of Dynamic Systems, Measurement, and Control 138 (9), 091006",
+          year:2015,
+      },
+      ],
+
+    journals: [
+      {
+          title: 'Vision-based Control of a Delta Parallel Robot via Linear Camera-Space Manipulation.',
+          authors: "E. Coronado, M. Maya, A. Cardenas, O. Guarneros, D. Piovesan. ",
+          src: "Journal of Intelligent & Robotic Systems 85 (1), 93-106.",
+          year:2017,
+      },
+
+      {
+          title: 'Analysis of recoverable falls via Microsoft Kinect: Identification of third-order ankle dynamics.',
+          authors: "M.E. Segura, E. Coronado, A. Cardenas, D. Piovesan. ",
+          src: "Journal of Dynamic Systems, Measurement, and Control 138 (9), 091006",
+          year:2016,
+      },
+
+      
+  
+      ],
     years: [
       {
         color: 'cyan',
