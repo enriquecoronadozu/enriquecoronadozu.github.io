@@ -53,7 +53,7 @@
             <v-card color="white" flat>
                 <v-container fluid>
                     <v-layout row>
-                        <v-flex xs4 order-lg2>
+                        <v-flex xs4>
                             <v-card color="white" flat>
                                 <v-avatar :title="title" :size="150" color="white" flat >
                                     <img src="img/yo.jpg" alt="avatar">
@@ -82,7 +82,7 @@
                     <v-tab> Research </v-tab>
                     <v-tab> Publications </v-tab>
                     <v-tab> Education </v-tab>
-                    <v-tab> Teaching </v-tab>
+                    <!--<v-tab> Teaching </v-tab>-->
                     <!--<v-tab> Skills </v-tab> -->
                     <v-tab> Links </v-tab>
 
@@ -95,7 +95,7 @@
                                   <v-layout row wrap >
                                     <v-flex v-for="card in cards"  v-bind="{ [`xs${card.flex}`]: true }" :key="card.title" >
                                       <v-hover>
-                                      <v-card color="grey darken-3" flat  dark  slot-scope="{ hover }" >
+                                      <v-card flat  dark  slot-scope="{ hover }" >
                                         <v-img  :src="card.src"  height="250px" >
                                             <v-expand-transition>
                                                 <div
@@ -127,22 +127,27 @@
                         <template v-for="(item, index) in conferences">
 
                             <v-card flat color="white">
-                                <v-card-actions>
+                                <v-card-content>
                                   <div>
                                         <p align="left" style=" font-weight: bold;">
-                                            {{item.title}}
+                                            <v-chip  flat label  small> {{item.year}} </v-chip> {{item.title}}
                                         </p>
                                         <p align="left">
-                                            {{item.authors}} {{item.src}}
+                                           &nbsp; {{item.authors}} {{item.src}} 
                                         </p>
+                                    
+                                    
                                   </div>
+                                  <div>
+                                     
+                                      <v-btn color="indigo" flat >pdf</v-btn>
+                                      <v-btn color="green" flat >bib</v-btn>
+                                  </div>
+
+                                  
                                       
-                                    <v-spacer></v-spacer>
-                                    <v-chip  flat label  small> {{item.year}} </v-chip>
-                                    <div>&nbsp;</div> 
-                                    <v-btn color="indigo" flat >pdf</v-btn>
-                                    <v-btn color="green" flat >bib</v-btn>
-                                  </v-card-actions>
+                                    
+                                  </v-card-content>
                               </v-card>
         
                         </template>
@@ -153,25 +158,27 @@
                         <template v-for="(item, index) in journals">
 
                             <v-card flat color="white">
-                                <v-card-actions>
-                                    
-        
-                                  <div>
-                                        <p align="left" style=" font-weight: bold;">
-                                            {{item.title}}
-                                        </p>
-                                        <p>
-                                            {{item.authors}} {{item.src}}
-                                        </p>
-                                  </div>
-
-                                    
+                                <v-card-content>
+                                    <div>
+                                          <p align="left" style=" font-weight: bold;">
+                                              <v-chip  flat label  small> {{item.year}} </v-chip> {{item.title}}
+                                          </p>
+                                          <p align="left">
+                                             &nbsp; {{item.authors}} {{item.src}} 
+                                          </p>
                                       
-                                    <v-spacer></v-spacer>
-                                    <v-chip  flat label  small> {{item.year}} </v-chip>
-                                    <v-btn color="indigo" flat >pdf</v-btn>
-                                    <v-btn color="green" flat >bib</v-btn>
-                                  </v-card-actions>
+                                      
+                                    </div>
+                                    <div>
+                                       
+                                        <v-btn color="indigo" flat >pdf</v-btn>
+                                        <v-btn color="green" flat >bib</v-btn>
+                                    </div>
+  
+                                    
+                                        
+                                      
+                                    </v-card-content>
                               </v-card>
         
                         </template>
@@ -245,11 +252,11 @@
                             </v-layout>
                         </v-card>
                     </v-tab-item>-->
-                    <v-tab-item>
+                    <!--<v-tab-item>
                         <v-card flat color="white" flat>
                         <v-card-text>Teaching</v-card-text>
                         </v-card>
-                    </v-tab-item>
+                    </v-tab-item>-->
                     <v-tab-item>
                         <v-card flat color="white" flat>
                         <v-card-text>Blog</v-card-text>
@@ -364,14 +371,16 @@
       ],
 
       cards: [
-      { title: 'Programming for non-engeneers', src: "img/rize.png", flex: 3,
-      content: 'Programming for non-engeneers' },
-      { title: 'Expresing emotions with non face robots', src: "img/1.jpg", flex: 3,
-      content: 'Expresing emotions with robots' },
-      { title: 'Controlling robot with gestures', src: "img/2.jpg", flex: 3,
-      content: 'Controlling robot with gestures' },
-      { title: 'Distributed robotics systems', src: "img/3.jpg", flex: 3,
-      content: 'Distribuited robotics systems' },
+      { title: 'End-User Programming', src: "img/rize.png", flex: 3,
+      content: 'End-User Programming' },
+      { title: 'Modeling Artificial Intelligence', src: "img/bt.png", flex: 3,
+      content: 'Modeling Artificial Intelligence' },
+      { title: 'Distributed robotics systems', src: "img/pub.png", flex: 3,
+      content: 'Distribuited Robotics Systems' },
+      { title: 'Human-Robot Interaction', src: "img/hri.png", flex: 3,
+      content: 'Human-Robot Interaction' },
+      { title: 'Gesture-based control', src: "img/ges.png", flex: 3,
+      content: 'Gesture-based control' },
     ],
 
     years: [
