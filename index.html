@@ -37,6 +37,8 @@
         position: absolute;
         width: 100%;
         }
+
+        
     </style>
 
 
@@ -47,7 +49,7 @@
 
 
     <div id="app">
-        <v-app id="inspire">
+        <v-app id="inspire" >
           <v-layout justify-center >
             <v-flex xs12 sm12  >
             <v-card color="white" flat>
@@ -76,7 +78,7 @@
                         </v-layout>
                   </v-container>
 
-            </v-card>
+            </v-card color="white" flat>
               
                 <v-tabs fixed-tabs dark color="light-blue darken-4">
                     <v-tab> Research </v-tab>
@@ -120,12 +122,13 @@
                         </v-card>
                     </v-tab-item>
                     <v-tab-item>
-                        <v-card flat color="white" flat>
-                            <div>&nbsp;</div> 
-                        <v-chip  class="white--text ml-0"  color="grey darken-3" label  small> Conferences </v-chip>
                         
+                        <v-card flat color="white" flat>
+                        <div>&nbsp;</div> 
+                        <v-chip  class="white--text ml-0"  color="grey darken-3" label  small> Conferences </v-chip>
+                        <div>&nbsp;</div> 
                         <template v-for="(item, index) in conferences">
-
+                            <v-flex xs10 offset-xs1>
                             <v-card flat color="white">
                                 <v-card-content>
                                   <div>
@@ -140,25 +143,23 @@
                                   </div>
                                   <div>
                                      
-                                      <v-btn color="indigo" flat >pdf</v-btn>
-                                      <v-btn color="green" flat >bib</v-btn>
+                                      <v-btn color="indigo" v-on:click="onPDF(item.url)" flat >pdf</v-btn>
+                                      <v-btn color="green"  flat >bib</v-btn>
                                   </div>
-
-                                  
-                                      
-                                    
+                       
                                   </v-card-content>
                               </v-card>
+                            </v-flex>
         
                         </template>
                          
-
+                        <div>&nbsp;</div> 
                         <v-chip  class="white--text ml-0"  color="grey darken-3"  label  small> Journals </v-chip>
-                        
+                        <div>&nbsp;</div> 
                         <template v-for="(item, index) in journals">
-
+                            <v-flex xs10 offset-xs1>
                             <v-card flat color="white">
-                                <v-card-content>
+                                <v-card-content >
                                     <div>
                                           <p align="left" style=" font-weight: bold;">
                                               <v-chip  flat label  small> {{item.year}} </v-chip> {{item.title}}
@@ -171,23 +172,24 @@
                                     </div>
                                     <div>
                                        
-                                        <v-btn color="indigo" flat >pdf</v-btn>
+                                      <v-btn color="indigo" v-on:click="onPDF(item.url)" flat >pdf</v-btn>
                                         <v-btn color="green" flat >bib</v-btn>
                                     </div>
   
-                                    
-                                        
-                                      
                                     </v-card-content>
+        
                               </v-card>
+                            </v-flex>
         
                         </template>
 
                         </v-card>
+                       
                     </v-tab-item>
 
                     <v-tab-item>
                         <v-card flat color="white" flat>
+                        <v-flex xs10 offset-xs1>
                         <v-timeline>
                             <v-timeline-item v-for="(year, i) in years" :color="year.color" :key="i" small >
                               <span slot="opposite" :class="` font-weight-bold ${year.color}--text`" style="font-size: 20px"  v-text="year.year" ></span>
@@ -198,6 +200,7 @@
                               </div>
                             </v-timeline-item>
                           </v-timeline>
+                        </v-flex>
                         </v-card>
                     </v-tab-item>
 
@@ -324,18 +327,26 @@
     rating_it: 3,
     rating_fr: 1,
     conferences: [
-        
+      {
+          title: 'Development of Intelligent Behaviors for Social Robots via User-Friendly and Modular Programming Tools.',
+          authors: "E. Coronado, F. Mastrogiovanni, G. Venture. ",
+          src: "In 2018 IEEE Workshop on Advanced Robotics and its Social Impacts (ARSO) (pp. 62-68). IEEE.",
+          year:2018,
+          url:"https://ieeexplore.ieee.org/abstract/document/8625839"
+        },        
         {
           title: 'Design of a Human-Centered Robot Framework for End-User Programming and Applications.',
           authors: "E. Coronado, F. Mastrogiovanni, G. Venture. ",
           src: "ROMANSY 22–Robot Design, Dynamics and Control, 450-457.",
           year:2018,
+          url:"https://link.springer.com/chapter/10.1007/978-3-319-78963-7_56"
         },
         {
           title: 'Expressive states with a robot arm using adaptive fuzzy and robust predictive controllers.',
           authors: "L. Rincon, E. Coronado, H. Hendra, J. Phan, Z. Zainalkefli, G. Venture. ",
           src: " 2018 3rd International Conference on Control and Robotics Engineering (ICCRE)",
           year:2018,
+          url:"https://ieeexplore.ieee.org/abstract/document/8376425",
         },
 
         {
@@ -343,6 +354,7 @@
           authors: "E. Coronado, J. Villalobos, B. Bruno, F. Mastrogiovanni. ",
           src: "2017 IEEE International Conference on Robotics and Automation (ICRA).",
           year:2017,
+          url:"https://ieeexplore.ieee.org/abstract/document/7989321",
         },
 
         {
@@ -350,6 +362,7 @@
           authors: "M.E. Segura, E. Coronado, A. Cardenas, D. Piovesan. ",
           src: "Journal of Dynamic Systems, Measurement, and Control 138 (9), 091006",
           year:2015,
+          url:"https://ieeexplore.ieee.org/abstract/document/7405424",
       },
       ],
 
@@ -359,6 +372,7 @@
           authors: "E. Coronado, M. Maya, A. Cardenas, O. Guarneros, D. Piovesan. ",
           src: "Journal of Intelligent & Robotic Systems 85 (1), 93-106.",
           year:2017,
+          url:"https://link.springer.com/article/10.1007/s10846-016-0413-5",
       },
 
       {
@@ -366,6 +380,7 @@
           authors: "M.E. Segura, E. Coronado, A. Cardenas, D. Piovesan. ",
           src: "Journal of Dynamic Systems, Measurement, and Control 138 (9), 091006",
           year:2016,
+          url:"https://dynamicsystems.asmedigitalcollection.asme.org/article.aspx?articleid=2499047",
       },      
 
       ],
@@ -373,9 +388,9 @@
       cards: [
       { title: 'End-User Programming', src: "img/rize.png", flex: 3,
       content: 'End-User Programming' },
-      { title: 'Modeling Artificial Intelligence', src: "img/bt.png", flex: 3,
-      content: 'Modeling Artificial Intelligence' },
-      { title: 'Distributed robotics systems', src: "img/pub.png", flex: 3,
+      { title: 'Modeling Robot Behaviors', src: "img/bt.png", flex: 3,
+      content: 'Modeling Robot Behaviors' },
+      { title: 'Distributed Robotics systems', src: "img/pub.png", flex: 3,
       content: 'Distribuited Robotics Systems' },
       { title: 'Human-Robot Interaction', src: "img/hri.png", flex: 3,
       content: 'Human-Robot Interaction' },
@@ -417,7 +432,8 @@
     ]
   }),
   methods: {
-    doSomething:function (value){
+    onPDF:function (value){
+      window.location.href =  value
     }
   }
 
