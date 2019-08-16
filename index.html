@@ -12,7 +12,7 @@
   <meta name="viewport" content="width=device-width" />
 
 
-  
+
   <!--   ################# Vuetify #################### -->
   <link href="web/vuetify/vuetify.min.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
@@ -24,7 +24,7 @@
 
 
 
-  
+
 
   <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
 
@@ -51,10 +51,10 @@
     }
   </style>
 
-    <!--   ############### Vue + Vuetify ############## -->
-    <script src="web/vue.js"></script>
-    <script src="web/vuetify/vuetify.js"></script>
-  
+  <!--   ############### Vue + Vuetify ############## -->
+  <script src="web/vue.js"></script>
+  <script src="web/vuetify/vuetify.js"></script>
+
 
 
 </head>
@@ -101,9 +101,9 @@
               <v-icon size="24px">fab fa-researchgate </v-icon>
             </v-btn>
 
-            <v-btn icon href="https://www.youtube.com/channel/UCn2ZtA5YLmkgeM4FWN0-fjw?view_as=subscriber"
+            <v-btn icon href="https://scholar.google.com/citations?user=2usIS0EAAAAJ&hl"
               target="_blank" dark icon>
-              <v-icon size="24px">fab fa-youtube </v-icon>
+              <v-icon size="24px">fas fa-graduation-cap</i> </v-icon>
             </v-btn>
 
           </v-card>
@@ -207,63 +207,52 @@
                       <v-card class="mx-auto" dark>
                         <v-card-title>
                           <v-spacer></v-spacer>
+                          <v-list-tile-avatar color="grey darken-3">
+                            <v-img class="elevation-6" src="img/nep7.png">
+                            </v-img>
+                          </v-list-tile-avatar>
                           <span class="headline">NEP</span>
                           <v-spacer></v-spacer>
                         </v-card-title>
 
                         <v-card-text class="title font-weight-light">
-                          A high-level, re-usable and cross-platform library for developing robot software architectures.
+                          A high-level, re-usable and cross-platform library for developing robot software
+                          architectures.
                         </v-card-text>
 
                         <v-card-actions>
-                          <v-list-tile class="grow">
-                            <v-list-tile-avatar color="grey darken-3">
-                              <v-img class="elevation-6" src="img/nep7.png">
-                              </v-img>
-                            </v-list-tile-avatar>
+                          <v-spacer></v-spacer>
+                          <div class="my-2">
+                            <v-btn class="ma-2"  color="indigo" href="https://enriquecoronadozu.github.io/NEP/" target="_blank" > NEP main page </v-btn>
+                          </div>
+                          <v-spacer></v-spacer>
 
-                            <v-list-tile-content>
-                              <v-list-tile-title>NEP</v-list-tile-title>
-                            </v-list-tile-content>
-
-                            <v-layout align-center justify-end>
-                              <v-btn flat icon href="https://enriquecoronadozu.github.io/learn-nep/" target="_blank">
-                                <v-icon class="mr-1">cloud_download</v-icon>
-                              </v-btn>
-                            </v-layout>
-                          </v-list-tile>
                         </v-card-actions>
                       </v-card>
                     </v-flex>
                     <v-flex xs6>
-                      <v-card class="mx-auto" color="indigo" dark>
+                      <v-card class="mx-auto" dark>
                         <v-card-title>
                           <v-spacer></v-spacer>
+                          <v-list-tile-avatar color="grey darken-3">
+                              <v-img class="elevation-6" src="img/rize2.png">
+                              </v-img>
+                            </v-list-tile-avatar>
                           <span class="headline">RIZE</span>
                           <v-spacer></v-spacer>
                         </v-card-title>
 
                         <v-card-text class="title font-weight-light">
-                          An user-friendly, accessible and platform-independent End-User Development (EUD) environment for robotics
+                          An user-friendly, accessible and platform-independent End-User Development (EUD) environment
+                          for robotics
                         </v-card-text>
 
                         <v-card-actions>
-                          <v-list-tile class="grow">
-                            <v-list-tile-avatar color="grey darken-3">
-                              <v-img class="elevation-6" src="img/rize2.png">
-                              </v-img>
-                            </v-list-tile-avatar>
-
-                            <v-list-tile-content>
-                              <v-list-tile-title>RIZE</v-list-tile-title>
-                            </v-list-tile-content>
-
-                            <v-layout align-center justify-end>
-                              <v-btn flat icon href="https://enriquecoronadozu.github.io/learn-nep/" target="_blank">
-                                <v-icon class="mr-1">cloud_download</v-icon>
-                              </v-btn>
-                            </v-layout>
-                          </v-list-tile>
+                            <v-spacer></v-spacer>
+                            <div class="my-2">
+                              <v-btn class="ma-2"  color="indigo" href="https://enriquecoronadozu.github.io/RIZE/" target="_blank" > RIZE main page </v-btn>
+                            </div>
+                            <v-spacer></v-spacer>
                         </v-card-actions>
                       </v-card>
                     </v-flex>
@@ -437,7 +426,7 @@
 
       journals: [
 
-      {
+        {
           title: 'Can Human-Inspired Learning Behaviour Facilitate Human–Robot Interaction?',
           authors: "Carfì, A., Villalobos, J., Coronado, E., Bruno, B., & Mastrogiovanni, F. ",
           src: "International Journal of Social Robotics, 1-14.",
