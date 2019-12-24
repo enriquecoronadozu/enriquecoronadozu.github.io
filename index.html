@@ -225,7 +225,7 @@
                 <v-layout row wrap>
                   <v-flex xs12 sm12>
 
-                    
+
                     <v-card color="white" height="7px" flat>
                       <div>&nbsp;</div>
                     </v-card>
@@ -312,91 +312,100 @@
             </v-card>
 
             <v-card flat colot="white">
-              <div class="headline"><span style="font-size: 25px">Education and Skills</span></div>
+              <div class="headline"><span style="font-size: 25px">Education </span></div>
             </v-card>
 
             <v-card flat color="white">
 
-              <v-layout row>
-                <v-flex xs6>
-                  <v-card flat color="white" flat>
-                    <v-flex xs10 offset-xs1>
-                      <v-timeline>
-                        <v-timeline-item v-for="(year, i) in years" :color="year.color" :key="i" small>
-                          <span slot="opposite" :class="` font-weight-bold ${year.color}--text`" style="font-size: 20px"
-                            v-text="year.year"></span>
-                          <div class="py-3">
-                            <h3 style="font-size: 20px" :class="` font-weight-light mb-3 ${year.color}--text`">
-                              {{year.title}} </h3>
-                            <div>
-                              {{year.school}}
-                            </div>
-                          </div>
-                        </v-timeline-item>
-                      </v-timeline>
-                    </v-flex>
-                  </v-card>
+
+              <v-card flat color="white" flat>
+                <v-flex xs10 offset-xs1>
+                  <v-timeline>
+                    <v-timeline-item v-for="(year, i) in years" :color="year.color" :key="i" small>
+                      <span slot="opposite" :class="` font-weight-bold ${year.color}--text`" style="font-size: 20px"
+                        v-text="year.year"></span>
+                      <div class="py-3">
+                        <h3 style="font-size: 20px" :class="` font-weight-light mb-3 ${year.color}--text`">
+                          {{year.title}} </h3>
+                        <div>
+                          {{year.school}}
+                        </div>
+                      </div>
+                    </v-timeline-item>
+                  </v-timeline>
                 </v-flex>
-                <v-flex xs8>
-                  <v-card color="white" flat>
-                    <div>&nbsp;</div>
-                    <div> <span style="font-size: 14px">Main programming languages</span> </div>
-                    <div>&nbsp;</div>
-                    <div class="text-xs-center">
-                      <v-chip>Python </v-chip>
-                      <v-chip>Javascript</v-chip>
-                      <v-chip>C# </v-chip>
-                      <v-chip>Java </v-chip>
-                      <v-chip>C/C++ </v-chip>
-                      <v-chip>Matlab </v-chip>
-                    </div>
-                    <div>&nbsp;</div>
+              </v-card>
 
 
-                    <div> <span style="font-size: 14px">Main software tools</span> </div>
-                    <div>&nbsp;</div>
-                    <div class="text-xs-center">
-                      <v-chip>ROS</v-chip>
-                      <v-chip>Node.js</v-chip>
-                      <v-chip>Vue.js</v-chip>
-                      <v-chip>Flask</v-chip>
-                      <v-chip>OpenCV</v-chip>
-                      <v-chip>scikit-learn</v-chip>
-                      <v-chip>Unity</v-chip>
-                      <v-chip>Visual Studio</v-chip>
-                      <v-chip>TensorFlow</v-chip>
-                      <v-chip>OpenVINO</v-chip>
-                      <v-chip>Android Studio</v-chip>
-                      <v-chip>Xcode</v-chip>
-                      <v-chip>Netbeans</v-chip>
-                    </div>
-                    <div>&nbsp;</div>
+              <v-card flat colot="white">
+                <div class="headline"><span style="font-size: 25px">Skills</span></div>
+              </v-card>
+
+              <v-card color="white" flat>
+                <div>&nbsp;</div>
+                <div> <span style="font-size: 14px">Main programming languages</span> </div>
+                <div>&nbsp;</div>
+                <div class="text-xs-center">
+                  <v-chip>Python </v-chip>
+                  <v-chip>Javascript</v-chip>
+                  <v-chip>C# </v-chip>
+                  <v-chip>Java </v-chip>
+                  <v-chip>C/C++ </v-chip>
+                  <v-chip>Matlab </v-chip>
+                </div>
+                <div>&nbsp;</div>
 
 
+                <div> <span style="font-size: 14px">Main software tools</span> </div>
+                <div>&nbsp;</div>
+                <div class="text-xs-center">
+                  <v-chip>ROS</v-chip>
+                  <v-chip>Node.js</v-chip>
+                  <v-chip>Vue.js</v-chip>
+                  <v-chip>Flask</v-chip>
+                  <v-chip>OpenCV</v-chip>
+                  <v-chip>scikit-learn</v-chip>
+                  <v-chip>Unity</v-chip>
+                  <v-chip>Visual Studio</v-chip>
+                  <v-chip>TensorFlow</v-chip>
+                  <v-chip>OpenVINO</v-chip>
+                  <v-chip>Android Studio</v-chip>
+                  <v-chip>Xcode</v-chip>
+                  <v-chip>Netbeans</v-chip>
+                </div>
+                <div>&nbsp;</div>
 
-                  </v-card>
-                  <v-card color="white" flat>
-                    <div>&nbsp;</div>
-                    <div> <span style="font-size: 14px">English</span>
-                      <v-rating readonly=true v-model="rating_en"></v-rating>
-                    </div>
-                    <div></div>
-                    <div> <span style="font-size: 14px">Spanish</span>
-                      <v-rating readonly=true v-model="rating_es"></v-rating>
-                    </div>
-                    <div></div>
-                    <div> <span style="font-size: 14px">Japanese</span>
-                      <v-rating readonly=true v-model="rating_jp"></v-rating>
-                    </div>
-                    <div></div>
-                    <div> <span style="font-size: 14px">Italian</span>
-                      <v-rating readonly=true v-model="rating_it"></v-rating>
-                    </div>
-                    <div></div>
+                <v-card flat colot="white">
+                  <div class="headline"><span style="font-size: 25px">Languages</span></div>
+                </v-card>
 
-                  </v-card>
-                </v-flex>
-              </v-layout>
+              </v-card>
+              <v-card color="white" flat>
+                <div>&nbsp;</div>
+                <div> <span style="font-size: 14px">English</span>
+                  <v-rating readonly=true v-model="rating_en"></v-rating>
+                </div>
+                <div></div>
+                <div> <span style="font-size: 14px">Spanish</span>
+                  <v-rating readonly=true v-model="rating_es"></v-rating>
+                </div>
+                <div></div>
+                <div> <span style="font-size: 14px">Japanese</span>
+                  <v-rating readonly=true v-model="rating_jp"></v-rating>
+                </div>
+                <div></div>
+                <div> <span style="font-size: 14px">Italian</span>
+                  <v-rating readonly=true v-model="rating_it"></v-rating>
+                </div>
+                <div></div>
+
+              </v-card>
+
+              <v-card color="white" height="60px" flat>
+                <div>&nbsp;</div>
+              </v-card>
+              
+
             </v-card>
 
 
