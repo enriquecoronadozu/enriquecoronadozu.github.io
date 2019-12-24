@@ -33,6 +33,10 @@
 
 
   <style>
+    body {
+      background-color: white;
+    }
+
     #app {
       font-family: 'Avenir', Helvetica, Arial, sans-serif;
       -webkit-font-smoothing: antialiased;
@@ -63,10 +67,12 @@
 
   <div id="app">
     <v-app id="inspire">
-      <v-navigation-drawer permanent fixed flat v-model="drawer" app>
+      <v-navigation-drawer floating flat clipped v-model="drawer" app>
         <v-container>
           <layout align-center justify-center>
-
+            <v-card color="white" height="50px" flat>
+              <div>&nbsp;</div>
+            </v-card>
             <v-card color="white" flat>
               <v-avatar :title="title" :size="150" color="white" flat>
                 <img src="img/yo.jpg" alt="avatar">
@@ -76,7 +82,7 @@
             </v-card>
             <v-card color="white" flat>
               <div class="headline"><span style="font-size: 35px">Enrique Coronado</span></div>
-              <div><span style=" color: rgb(101, 101, 103); font-size: 23px">Ph.D Student</span></div>
+              <div><span style=" color:#0277BD; font-size: 23px">Ph.D Student</span></div>
               <div>&nbsp;</div>
               <div><span style="font-size: 16px">Human-Robot Interaction, Software Architectures for
                   Robotics, Intelligent Social Robots, and End-User Robot Programming.</span></div>
@@ -88,36 +94,18 @@
         </v-container>
 
         </v-card>
-        <v-footer fixed dark height="auto">
-          <v-card class="flex" flat tile color="teal">
-
-
-
-            <v-btn icon href="https://github.com/enriquecoronadozu/" target="_blank" dark icon>
-              <v-icon size="24px">fab fa-github </v-icon>
-            </v-btn>
-
-            <v-btn icon href="https://www.researchgate.net/profile/Enrique_Coronado/" target="_blank" dark icon>
-              <v-icon size="24px">fab fa-researchgate </v-icon>
-            </v-btn>
-
-            <v-btn icon href="https://scholar.google.com/citations?user=2usIS0EAAAAJ&hl"
-              target="_blank" dark icon>
-              <v-icon size="24px">fas fa-graduation-cap</i> </v-icon>
-            </v-btn>
-
-          </v-card>
-        </v-footer>
 
       </v-navigation-drawer>
-      <v-toolbar flat fixed app>
+      <v-toolbar flat fixed app dark dense color="light-blue darken-3">
+
         <v-toolbar-title>Enrique Coronado</v-toolbar-title>
         <v-spacer></v-spacer>
 
         <v-toolbar-items>
           <v-btn @click="ChangeTab(0)" flat>Publications</v-btn>
           <v-btn @click="ChangeTab(1)" flat>Software</v-btn>
-          <v-btn @click="ChangeTab(2)" flat>About</v-btn>
+          <v-btn @click="ChangeTab(2)" flat>Education & Skills</v-btn>
+          <v-btn @click="ChangeTab(3)" flat>Experience</v-btn>
         </v-toolbar-items>
       </v-toolbar>
       <v-content>
@@ -131,37 +119,12 @@
           <v-tab-item :key="0">
 
             <v-card flat color="white" flat>
+
+              <v-card color="white" height="20px" flat>
+                <div>&nbsp;</div>
+              </v-card>
               <div>&nbsp;</div>
-              <v-chip class="white--text ml-0" color="grey darken-3" label small> Conferences </v-chip>
-              <div>&nbsp;</div>
-              <template v-for="(item, index) in conferences">
-                <v-flex xs10 offset-xs1>
-                  <v-card flat color="white">
-                    <v-card-content>
-                      <div>
-                        <p align="left" style=" font-weight: bold;">
-                          <v-chip flat label small> {{item.year}} </v-chip> {{item.title}}
-                        </p>
-                        <p align="left">
-                          &nbsp; {{item.authors}} {{item.src}}
-                        </p>
-
-
-                      </div>
-                      <div>
-
-                        <v-btn color="indigo" v-on:click="onPDF(item.url)" flat>pdf</v-btn>
-                        <v-btn color="green" flat>bib</v-btn>
-                      </div>
-
-                    </v-card-content>
-                  </v-card>
-                </v-flex>
-
-              </template>
-
-              <div>&nbsp;</div>
-              <v-chip class="white--text ml-0" color="grey darken-3" label small> Journals </v-chip>
+              <v-chip class="white--text ml-0" color="light-blue darken-2" label small> Journal Articles </v-chip>
               <div>&nbsp;</div>
               <template v-for="(item, index) in journals">
                 <v-flex xs10 offset-xs1>
@@ -190,74 +153,152 @@
 
               </template>
 
+              <div>&nbsp;</div>
+              <v-chip class="white--text ml-0" color="light-blue darken-2" label small> Conference Peppers </v-chip>
+              <div>&nbsp;</div>
+              <template v-for="(item, index) in conferences">
+                <v-flex xs10 offset-xs1>
+                  <v-card flat color="white">
+                    <v-card-content>
+                      <div>
+                        <p align="left" style=" font-weight: bold;">
+                          <v-chip flat label small> {{item.year}} </v-chip> {{item.title}}
+                        </p>
+                        <p align="left">
+                          &nbsp; {{item.authors}} {{item.src}}
+                        </p>
+
+
+                      </div>
+                      <div>
+
+                        <v-btn color="indigo" v-on:click="onPDF(item.url)" flat>pdf</v-btn>
+                        <v-btn color="green" flat>bib</v-btn>
+                      </div>
+
+                    </v-card-content>
+                  </v-card>
+                </v-flex>
+
+              </template>
+
+
+              </template>
+
+              <div>&nbsp;</div>
+              <v-chip class="white--text ml-0" color="light-blue darken-2" label small> Invited talks </v-chip>
+              <div>&nbsp;</div>
+              <template v-for="(item, index) in talks">
+                <v-flex xs10 offset-xs1>
+                  <v-card flat color="white">
+                    <v-card-content>
+                      <div>
+                        <p align="left" style=" font-weight: bold;">
+                          <v-chip flat label small> {{item.year}} </v-chip> {{item.title}}
+                        </p>
+                        <p align="left">
+                          &nbsp; {{item.authors}} {{item.src}}
+                        </p>
+                      </div>
+                      <div>
+                        <v-btn color="indigo" v-on:click="onPDF(item.url)" flat>link</v-btn>
+                      </div>
+
+                    </v-card-content>
+                  </v-card>
+                </v-flex>
+
+              </template>
+
+
+
+
+
+
             </v-card>
 
           </v-tab-item>
 
           <v-tab-item :key="1">
+            <v-card flat>
+              <v-container fluid grid-list-md>
+                <v-layout row wrap>
+                  <v-flex xs12 sm12>
 
-            <v-container fluid grid-list-md>
-              <v-layout row wrap>
-                <v-flex xs12 sm12>
+                    
+                    <v-card color="white" height="7px" flat>
+                      <div>&nbsp;</div>
+                    </v-card>
 
+                    <v-card flat colot="white">
+                      <div class="headline"><span style="font-size: 25px">Software Developed</span></div>
+                    </v-card>
 
+                    <v-card color="white" height="30px" flat>
+                      <div>&nbsp;</div>
+                    </v-card>
 
-                  <v-layout row wrap>
-                    <v-flex xs6>
-                      <v-card class="mx-auto" dark>
-                        <v-card-title>
-                          <v-spacer></v-spacer>
-                          <v-list-tile-avatar color="grey darken-3">
-                            <v-img class="elevation-6" src="img/nep7.png">
-                            </v-img>
-                          </v-list-tile-avatar>
-                          <span class="headline">NEP</span>
-                          <v-spacer></v-spacer>
-                        </v-card-title>
-
-                        <v-card-text class="title font-weight-light">
-                          A high-level, re-usable and cross-platform library for developing robot software
-                          architectures.
-                        </v-card-text>
-
-                        <v-card-actions>
-                          <v-spacer></v-spacer>
-                          <div class="my-2">
-                            <v-btn class="ma-2"  color="indigo" href="https://enriquecoronadozu.github.io/NEP/" target="_blank" > NEP main page </v-btn>
-                          </div>
-                          <v-spacer></v-spacer>
-
-                        </v-card-actions>
-                      </v-card>
-                    </v-flex>
-                    <v-flex xs6>
-                      <v-card class="mx-auto" dark>
-                        <v-card-title>
-                          <v-spacer></v-spacer>
-                          <v-list-tile-avatar color="grey darken-3">
-                              <v-img class="elevation-6" src="img/rize2.png">
+                    <v-layout row wrap align-center justify-center>
+                      <v-flex xs10>
+                        <v-card class="mx-auto" color="white" flat>
+                          <v-card-title>
+                            <v-spacer></v-spacer>
+                            <v-list-tile-avatar>
+                              <v-img src="img/nep7.png">
                               </v-img>
                             </v-list-tile-avatar>
-                          <span class="headline">RIZE</span>
-                          <v-spacer></v-spacer>
-                        </v-card-title>
+                            <span class="headline">NEP</span>
+                            <v-spacer></v-spacer>
+                          </v-card-title>
 
-                        <v-card-text class="title font-weight-light">
-                          An user-friendly, accessible and platform-independent End-User Development (EUD) environment
-                          for robotics
-                        </v-card-text>
+                          <v-card-text class="title font-weight-light">
+                            A high-level, re-usable and cross-platform framework for developing robot software
+                            architectures.
+                          </v-card-text>
 
-                        <v-card-actions>
+                          <v-card-actions>
                             <v-spacer></v-spacer>
                             <div class="my-2">
-                              <v-btn class="ma-2"  color="indigo" href="https://enriquecoronadozu.github.io/RIZE/" target="_blank" > RIZE main page </v-btn>
+                              <v-btn class="ma-2" flat color="light-blue darken-2"
+                                href="https://enriquecoronadozu.github.io/NEP/" target="_blank"> More about NEP</v-btn>
                             </div>
                             <v-spacer></v-spacer>
-                        </v-card-actions>
-                      </v-card>
-                    </v-flex>
-                  </v-layout>
-            </v-container>
+
+                          </v-card-actions>
+                        </v-card>
+                      </v-flex>
+                      <v-flex xs10>
+                        <v-card class="mx-auto" color="white" flat>
+                          <v-card-title>
+                            <v-spacer></v-spacer>
+                            <v-list-tile-avatar>
+                              <v-img src="img/rize2.png">
+                              </v-img>
+                            </v-list-tile-avatar>
+                            <span class="headline">RIZE</span>
+                            <v-spacer></v-spacer>
+                          </v-card-title>
+
+                          <v-card-text class="title font-weight-light">
+                            An user-friendly, accessible and platform-independent End-User Development (EUD) framework
+                            for robotics
+                          </v-card-text>
+
+                          <v-card-actions>
+                            <v-spacer></v-spacer>
+                            <div class="my-2">
+                              <v-btn class="ma-2" flat color="light-blue darken-2"
+                                href="https://enriquecoronadozu.github.io/RIZE/" target="_blank"> More about RIZE
+                              </v-btn>
+                            </div>
+                            <v-spacer></v-spacer>
+                          </v-card-actions>
+                        </v-card>
+                      </v-flex>
+                    </v-layout>
+
+              </v-container>
+            </v-card>
 
             </v-flex>
             </v-layout>
@@ -265,7 +306,16 @@
           </v-tab-item>
 
           <v-tab-item :key="2">
-            <v-card flat color="white" flat>
+
+            <v-card color="white" height="30px" flat>
+              <div>&nbsp;</div>
+            </v-card>
+
+            <v-card flat colot="white">
+              <div class="headline"><span style="font-size: 25px">Education and Skills</span></div>
+            </v-card>
+
+            <v-card flat color="white">
 
               <v-layout row>
                 <v-flex xs6>
@@ -287,7 +337,7 @@
                     </v-flex>
                   </v-card>
                 </v-flex>
-                <v-flex xs6>
+                <v-flex xs8>
                   <v-card color="white" flat>
                     <div>&nbsp;</div>
                     <div> <span style="font-size: 14px">Main programming languages</span> </div>
@@ -297,22 +347,28 @@
                       <v-chip>Javascript</v-chip>
                       <v-chip>C# </v-chip>
                       <v-chip>Java </v-chip>
-                      <v-chip>C++ </v-chip>
+                      <v-chip>C/C++ </v-chip>
                       <v-chip>Matlab </v-chip>
                     </div>
                     <div>&nbsp;</div>
 
 
-                    <div> <span style="font-size: 14px">Software tools</span> </div>
+                    <div> <span style="font-size: 14px">Main software tools</span> </div>
                     <div>&nbsp;</div>
                     <div class="text-xs-center">
                       <v-chip>ROS</v-chip>
                       <v-chip>Node.js</v-chip>
+                      <v-chip>Vue.js</v-chip>
                       <v-chip>Flask</v-chip>
                       <v-chip>OpenCV</v-chip>
-                      <v-chip>Keras</v-chip>
                       <v-chip>scikit-learn</v-chip>
                       <v-chip>Unity</v-chip>
+                      <v-chip>Visual Studio</v-chip>
+                      <v-chip>TensorFlow</v-chip>
+                      <v-chip>OpenVINO</v-chip>
+                      <v-chip>Android Studio</v-chip>
+                      <v-chip>Xcode</v-chip>
+                      <v-chip>Netbeans</v-chip>
                     </div>
                     <div>&nbsp;</div>
 
@@ -342,15 +398,88 @@
                 </v-flex>
               </v-layout>
             </v-card>
+
+
           </v-tab-item>
           <v-tab-item :key="3">
             <v-card flat color="white" flat>
-              <v-card-text>Blog</v-card-text>
+
+              <v-card color="white" height="30px" flat>
+                <div>&nbsp;</div>
+              </v-card>
+
+              <v-card flat colot="white">
+                <div class="headline"><span style="font-size: 25px">Research experience</span></div>
+
+                <v-card-text class="title font-weight-light">
+                  Working in several academic projects in different countries (Mexico, United States, Italy, France and
+                  Japan)
+                </v-card-text>
+
+                <img src="img/world.png" alt="Smiley face" height="70" width="70">
+
+
+              </v-card>
+              <v-card color="white" height="50px" flat>
+                <div>&nbsp;</div>
+              </v-card>
+
+              <v-card flat colot="white">
+
+                <div class="headline"><span style="font-size: 25px">Teaching experience</span></div>
+                <v-card-text class="title font-weight-light">
+                  3 years teaching undergraduate courses (Articial Intelligence and Computer
+                  Vision) and laboratory courses (Robotics)
+                </v-card-text>
+
+                <img src="img/teaching.png" alt="Smiley face" height="70" width="70">
+
+              </v-card>
+
+              <v-card color="white" height="50px" flat>
+                <div>&nbsp;</div>
+              </v-card>
+
+            </v-card>
+            <v-card flat colot="white">
+
+              <div class="headline"><span style="font-size: 25px">Industry experience</span></div>
+              <v-card-text class="title font-weight-light">
+                1 year working in Robotics and Computer Vision projects on Industry
+              </v-card-text>
+
+              <img src="img/robot.png" alt="Smiley face" height="70" width="70">
+
+            </v-card>
+
+            <v-card color="white" height="100px" flat>
+              <div>&nbsp;</div>
+            </v-card>
             </v-card>
           </v-tab-item>
         </v-tabs>
 
       </v-content>
+
+      <v-footer fixed dark height="auto">
+        <v-card class="flex" flat tile color="light-blue darken-3">
+
+
+
+          <v-btn icon href="https://github.com/enriquecoronadozu/" target="_blank" dark icon>
+            <v-icon size="24px">fab fa-github </v-icon>
+          </v-btn>
+
+          <v-btn icon href="https://www.researchgate.net/profile/Enrique_Coronado/" target="_blank" dark icon>
+            <v-icon size="24px">fab fa-researchgate </v-icon>
+          </v-btn>
+
+          <v-btn icon href="https://scholar.google.com/citations?user=2usIS0EAAAAJ&hl" target="_blank" dark icon>
+            <v-icon size="24px">fas fa-graduation-cap</i> </v-icon>
+          </v-btn>
+
+        </v-card>
+      </v-footer>
 
     </v-app>
   </div>
@@ -359,7 +488,7 @@
 
 
 <script>
-  new Vue({
+  var vueApp = new Vue({
     el: '#app',
     data: () => ({
       active: 0,
@@ -379,8 +508,22 @@
       rating_fr: 1,
       conferences: [
         {
+          title: 'Intention and Engagement Recognition for Personalized Human-Robot Interaction, an integrated and Deep Learning approach.',
+          authors: "SP. Pattar, E. Coronado, LR. Ardila, G. Venture",
+          src: "IEEE 4th International Conference on Advanced Robotics and Mechatronics (ICARM)",
+          year: 2019,
+          url: "https://ieeexplore.ieee.org/abstract/document/8834226",
+        },
+        {
+          title: 'Robots Meet Children, Development of Semi-Autonomous Control Systems for Children-Robot Interaction in the Wild.',
+          authors: "E. Coronado, X. Indurkhya, G. Venture",
+          src: "IEEE 4th International Conference on Advanced Robotics and Mechatronics (ICARM)",
+          year: 2019,
+          url: "https://ieeexplore.ieee.org/abstract/document/8833751",
+        },
+        {
           title: 'Adaptive cognitive robot using dynamic perception with fast deep-learning and adaptive on-line predictive control.',
-          authors: "Rincon, L., Coronado, E., Law, C., & Venture, G. ",
+          authors: "L. Rincon,  E. Coronado,  C. Law, & G. Venture",
           src: "IFToMM World Congress on Mechanism and Machine Science (pp. 2429-2438)",
           year: 2019,
           url: "https://link.springer.com/chapter/10.1007/978-3-030-20131-9_240",
@@ -388,7 +531,7 @@
         {
           title: 'Development of Intelligent Behaviors for Social Robots via User-Friendly and Modular Programming Tools.',
           authors: "E. Coronado, F. Mastrogiovanni, G. Venture. ",
-          src: "In 2018 IEEE Workshop on Advanced Robotics and its Social Impacts (ARSO) (pp. 62-68). IEEE.",
+          src: "IEEE Workshop on Advanced Robotics and its Social Impacts (ARSO) (pp. 62-68).",
           year: 2018,
           url: "https://ieeexplore.ieee.org/abstract/document/8625839"
         },
@@ -453,6 +596,19 @@
       ],
 
 
+
+      talks: [
+
+        {
+          title: 'Empowering End-Users with Behavior Trees, Development of Human-Robot Applications Performing "in the Wild"',
+          authors: "Coronado, E.",
+          src: "IROS 2019 Workshop: Behavior Trees for Robotics Systems: Tools, Applications, and Lessons Learned, Macau, 4th-8th November, 2019",
+          year: 2019,
+          url: "https://behavior-trees-iros-workshop.github.io/",
+        },
+      ],
+
+
       years: [
         {
           color: 'cyan',
@@ -488,7 +644,7 @@
     }),
     methods: {
       onPDF: function (value) {
-        window.location.href = value
+        window.open(value, '_blank')
       },
       ChangeTab(item) {
         console.log(item)
