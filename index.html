@@ -85,7 +85,7 @@
               <div><span style=" color:#0277BD; font-size: 23px">Ph.D Student</span></div>
               <div>&nbsp;</div>
               <div><span style="font-size: 16px">Human-Robot Interaction, Software Architectures for
-                  Robotics, Intelligent Social Robots, and End-User Robot Programming.</span></div>
+                  Robotics, Intelligent Social Robots.</span></div>
               <div>&nbsp;</div>
 
               <div><span style=" font-weight: bold;font-size: 16px">Tokyo, Japan</span></div>
@@ -143,7 +143,7 @@
                       <div>
 
                         <v-btn color="indigo" v-on:click="onPDF(item.url)" flat>pdf</v-btn>
-                        <v-btn color="green" flat>bib</v-btn>
+                      
                       </div>
 
                     </v-card-content>
@@ -173,7 +173,7 @@
                       <div>
 
                         <v-btn color="indigo" v-on:click="onPDF(item.url)" flat>pdf</v-btn>
-                        <v-btn color="green" flat>bib</v-btn>
+                  
                       </div>
 
                     </v-card-content>
@@ -181,6 +181,38 @@
                 </v-flex>
 
               </template>
+
+
+            </template>
+
+            <div>&nbsp;</div>
+            <v-chip class="white--text ml-0" color="light-blue darken-2" label small> Book Chapters </v-chip>
+            <div>&nbsp;</div>
+            <template v-for="(item, index) in books">
+              <v-flex xs10 offset-xs1>
+                <v-card flat color="white">
+                  <v-card-content>
+                    <div>
+                      <p align="left" style=" font-weight: bold;">
+                        <v-chip flat label small> {{item.year}} </v-chip> {{item.title}}
+                      </p>
+                      <p align="left">
+                        &nbsp; {{item.authors}} {{item.src}}
+                      </p>
+
+
+                    </div>
+                    <div>
+
+                      <v-btn color="indigo" v-on:click="onPDF(item.url)" flat>pdf</v-btn>
+                
+                    </div>
+
+                  </v-card-content>
+                </v-card>
+              </v-flex>
+
+            </template>
 
 
               </template>
@@ -515,7 +547,18 @@
       rating_es: 5,
       rating_it: 3,
       rating_fr: 1,
+      books:[
+        {
+          title: 'From Motion to Emotion Prediction: A Hidden Biometrics Approach.',
+          authors: "F. Rida, L.R. Ardila, E. Coronado, A. Nait-ali, G. Venture",
+          src: "Hidden Biometrics",
+          year: 2019,
+          url: "https://link.springer.com/chapter/10.1007/978-981-13-0956-4_11",
+         
+        }
+      ],
       conferences: [
+
         {
           title: 'Intention and Engagement Recognition for Personalized Human-Robot Interaction, an integrated and Deep Learning approach.',
           authors: "SP. Pattar, E. Coronado, LR. Ardila, G. Venture",
