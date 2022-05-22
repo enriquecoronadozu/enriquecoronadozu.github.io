@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="author" content="Enrique Coronado" />
-  <title>NEP+ Docs</title>
+  <title>Enrique Coronado</title>
   <link rel="shortcut icon" type="image/png" href="img/nep.png" />
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@mdi/font@3.x/css/materialdesignicons.min.css" rel="stylesheet">
@@ -56,31 +56,27 @@
     font-family: 'Orbitron', sans-serif;
   }
 
-  h3
-  {
+  h3 {
     font-family: 'Orbitron', sans-serif;
   }
 
-  h4
-  {
+  h4 {
     font-family: 'Roboto Mono', monospace;
   }
 
-  span{
+  span {
     font-family: 'Orbitron', sans-serif;
   }
-
 </style>
 
 
 <body>
 
   <div id="app">
-    <v-app id="inspire" style="
-        background: rgb(305, 305, 305);">
+    <v-app id="inspire">
 
 
-      <v-app-bar color="indigo" app dark dense flat clipped-right>
+      <v-app-bar color="white" app dense flat clipped-right>
 
 
 
@@ -94,32 +90,29 @@
 
         <v-toolbar-items>
 
-
-          <v-btn text dark @click="onAbout()"> 01. About
+          <!-- <v-switch hide-details insert v-model="$vuetify.theme.dark"></v-switch> -->
+          <v-btn text @click="onAbout()"> 01. About
           </v-btn>
 
-          <v-btn text dark>
+          <v-btn text @click="onEducation">
             02. Education
           </v-btn>
 
-          <v-btn text dark>
+          <v-btn text @click="onExperience">
             03. Experience
           </v-btn>
 
-          <v-btn text dark>
-            04. Skills
-          </v-btn>
 
           <v-btn text text>
-            05. Projects
+            04. Projects
           </v-btn>
 
 
-          <v-btn text dark>
-            06. Interests
+          <v-btn text>
+            05. Interests
           </v-btn>
 
-          <v-btn dark text @click="onPublications()"> 07. Publications
+          <v-btn text @click="onPublications()"> 06. Publications
           </v-btn>
 
 
@@ -143,13 +136,13 @@
 
 
             <v-flex xs10 md10>
-              <v-card color="white" flat>
+              <v-card color="transparent" flat>
 
 
                 <v-layout wrap align-center justify-center>
 
                   <v-flex xs12 md12>
-                    <v-card color="white" flat>
+                    <v-card color="transparent" flat>
 
                       <div id="about">&nbsp;</div>
                       <div>&nbsp;</div>
@@ -236,17 +229,25 @@
 
               </v-card>
 
-              <v-card color="white" flat>
+              <v-card color="transparent" flat>
                 &nbsp;&nbsp;
               </v-card>
               <v-card color="white" flat>
                 &nbsp;&nbsp;
+              </v-card>
 
-                <h1 id="education" style="text-align: justify">
+              <v-card color="transparent" flat>
+                &nbsp;&nbsp;
+              </v-card>
+
+              <v-card color="transparent" flat>
+                &nbsp;&nbsp;
+
+                <h1 style="text-align: justify">
                   <b>Education</b>
                 </h1>
 
-                <v-card flat color="white" flat>
+                <v-card id="education" flat color="transparent" flat>
                   <v-flex xs10 offset-xs1>
                     <v-timeline>
                       <v-timeline-item v-for="(year, i) in years" :color="year.color" :key="i" small>
@@ -257,7 +258,7 @@
                             {{year.title}} </h3>
                           <div>
                             <h4>
-                            {{year.school}}  </h4>
+                              {{year.school}} </h4>
                           </div>
                         </div>
                       </v-timeline-item>
@@ -267,26 +268,88 @@
 
               </v-card>
 
+              <v-card color="white" flat>
+                &nbsp;&nbsp;
+              </v-card>
+
+              <v-card color="white" flat>
+                &nbsp;&nbsp;
+              </v-card>
+              <v-card color="white" flat>
+                &nbsp;&nbsp;
+              </v-card>
+
 
               <v-card color="white" flat>
                 &nbsp;&nbsp;
 
-                <h1 id="experience" style="text-align: justify">
+                <h1 style="text-align: justify">
                   <b>Experience</b>
                 </h1>
+
+                <v-row dense>
+
+                  <v-col cols="12">
+                    &nbsp;&nbsp;
+                  </v-col>
+                  <v-col cols="12">
+                    &nbsp;&nbsp;
+                  </v-col>
+                  <v-col cols="12">
+                    &nbsp;&nbsp;
+                  </v-col>
+
+
+
+                  <v-col cols="4">
+                    <p style="text-align: center;"> Part-time proffesor
+                    </p>
+                    <div> &nbsp;&nbsp;</div>
+                    <v-img class="mx-auto" max-width="300" src="img/uaslp2.jpg"></v-img>
+
+
+                  </v-col>
+                  <v-col id="experience" cols="4">
+                    <p style="text-align: center;"> Assitant Proffesor in
+                    </p>
+                    <div> &nbsp;&nbsp;</div>
+                    <v-img class="mx-auto" max-width="300" src="img/tuat.png"></v-img>
+
+
+                  </v-col>
+                  <v-col cols="4">
+                    <p style="text-align: center;"> Researcher in
+                    </p>
+                    <div> &nbsp;&nbsp;</div>
+                    <v-img class="mx-auto" max-width="300" src="img/aist.jpg"></v-img>
+
+
+                  </v-col>
+
+                  <v-col cols="4">
+
+                    <span style="text-align: center;  font-size: 18px;"> 2013-2015
+                    </span>
+                  </v-col>
+                  <v-col cols="4">
+
+                    <span style="text-align: center;  font-size: 18px;"> 2020-2022
+                    </span>
+                  </v-col>
+                  <v-col cols="4">
+
+                    <span style="text-align: center;  font-size: 18px;"> 2022-today
+                    </span>
+                  </v-col>
+
+                </v-row>
+
               </v-card>
 
 
-              <v-card color="white" flat>
-                &nbsp;&nbsp;
-
-                <h1 id="skills" style="text-align: justify">
-                  <b>Skills</b>
-                </h1>
-              </v-card>
 
 
-              <v-card color="white" flat>
+              <v-card color="transparent" flat>
                 &nbsp;&nbsp;
 
                 <h1 id="projects" style="text-align: justify">
@@ -295,7 +358,7 @@
               </v-card>
 
 
-              <v-card color="white" flat>
+              <v-card color="transparent" flat>
                 &nbsp;&nbsp;
 
                 <h1 id="interest" style="text-align: justify">
@@ -303,8 +366,21 @@
                 </h1>
               </v-card>
 
+              <v-card color="white" flat>
+                &nbsp;&nbsp;
+              </v-card>
 
               <v-card color="white" flat>
+                &nbsp;&nbsp;
+              </v-card>
+
+
+              <v-card color="white" flat>
+                &nbsp;&nbsp;
+              </v-card>
+
+
+              <v-card color="transparent" flat>
 
                 &nbsp;&nbsp;
 
@@ -312,28 +388,28 @@
                 <v-layout wrap align-center justify-center>
 
                   <v-flex xs12 md12>
-                    <v-card color="white" flat>
+                    <v-card color="transparent" flat>
 
 
 
                       <div>
 
-                        <h1 id="publications" style="text-align: justify">
+                        <h1 style="text-align: justify">
                           <b>Publications</b>
                         </h1>
 
-                        <v-card flat color="white" flat>
+                        <v-card flat color="transparent" flat>
 
-                          <v-card color="white" height="20px" flat>
+                          <v-card color="transparent" height="20px" flat>
                             <div>&nbsp;</div>
                           </v-card>
                           <div>&nbsp;</div>
-                          <h2> Journal Articles
+                          <h2 id="publications"> Journal Articles
                           </h2>
                           <div>&nbsp;</div>
                           <template v-for="(item, index) in journals">
                             <v-flex xs12>
-                              <v-card flat color="white">
+                              <v-card flat color="transparent">
                                 <v-card-content>
                                   <div>
                                     <p align="left" style=" font-weight: bold;  font-size: 18px;">
@@ -366,7 +442,7 @@
                           <div>&nbsp;</div>
                           <template v-for="(item, index) in conferences">
                             <v-flex xs12>
-                              <v-card flat color="white">
+                              <v-card flat color="transparent">
                                 <v-card-content>
                                   <div>
                                     <p align="left" style=" font-weight: bold;  font-size: 18px;">
@@ -401,7 +477,7 @@
                           <div>&nbsp;</div>
                           <template v-for="(item, index) in books">
                             <v-flex xs12>
-                              <v-card flat color="white">
+                              <v-card flat color="transparent">
                                 <v-card-content>
                                   <div>
                                     <p align="left" style=" font-weight: bold;  font-size: 18px;">
@@ -434,7 +510,7 @@
                           <div>&nbsp;</div>
                           <template v-for="(item, index) in talks">
                             <v-flex xs12>
-                              <v-card flat color="white">
+                              <v-card flat color="transparent">
                                 <v-card-content>
                                   <div>
                                     <p align="left" style=" font-weight: bold;  font-size: 18px;">
@@ -537,11 +613,12 @@
       'left-trim': true,
     });
 
-    new Vue({
+    vueApp = new Vue({
       el: '#app',
       vuetify: new Vuetify(),
       data: () => ({
 
+        dark_theme: true,
 
 
 
@@ -577,6 +654,60 @@
           },],
 
         conferences: [
+
+        {
+            title: 'Un robot dans les foyers deux jours avec pepper',
+            authors: "Deuff, D., Coronado, E., Milleville-Pennel, I., Ocnarescu, I., & Venture, G.",
+            src: "In Drôles d'objets: un nouvel art de faire",
+            year: 2021,
+            url: "https://hal.archives-ouvertes.fr/hal-03618857/document",
+          },
+
+
+          {
+            title: 'Human Motion Retargeting to Pepper Humanoid Robot from Uncalibrated Videos Using Human Pose Estimation*',
+            authors: "Khalil, H., Coronado, E., & Venture, G.",
+            src: "30th IEEE International Conference on Robot & Human Interactive Communication (RO-MAN). IEEE, 2021.",
+            year: 2021,
+            url: "https://ieeexplore.ieee.org/abstract/document/9515495",
+          },
+
+          {
+            title: 'Impression evaluation of robot’s behavior when assisting human in a cooking task*',
+            authors: "Yamamoto, M., Hu, Y., Coronado, E., & Venture, G",
+            src: "In 2021 30th IEEE International Conference on Robot & Human Interactive Communication (RO-MAN) (pp. 743-748). IEEE. 2021",
+            year: 2021,
+            url: "https://ieeexplore.ieee.org/abstract/document/9515527",
+          },
+
+
+          {
+            title: 'User expectations of robots in public spaces: A co-design methodology',
+            authors: "Tian, L., Carreno-Medrano, P., Sumartojo, S., Mintrom, M., Coronado, E., Venture, G. and Kulić, D",
+            src: "In International Conference on Social Robotics, pp. 259-270. Springer, Cham, 2020.",
+            year: 2020,
+            url: "https://link.springer.com/chapter/10.1007/978-3-030-62056-1_22",
+          },
+
+          {
+            title: 'Connecting MATLAB/Octave to Perceptual, Cognitive and Control Components for the Development of Intelligent Robotic Systems',
+            authors: "Coronado, E., Rincon, L., & Venture, G",
+            src: "Symposium on Robot Design, Dynamics and Control. Springer, Cham, 2020.",
+            year: 2020,
+            url: "https://link.springer.com/chapter/10.1007/978-3-030-58380-4_44",
+          },
+
+
+
+          {
+            title: 'Designerly way of thinking in a robotics research project',
+            authors: "Deuff, Dominique, Ioana Ocnarescu, Luis Enrique Coronado, Liz Rincon-Ardila, Isabelle Milleville, and Gentiane Venture.",
+            src: "日本ロボット学会誌 38.8 (2020): 692-702.",
+            year: 2020,
+            url: "https://www.jstage.jst.go.jp/article/jrsj/38/8/38_38_692/_article/-char/ja/",
+          },
+
+
 
           {
             title: 'Intention and Engagement Recognition for Personalized Human-Robot Interaction, an integrated and Deep Learning approach.',
@@ -639,6 +770,56 @@
         ],
 
         journals: [
+
+          {
+            title: ' Evaluating quality in human-robot interaction: A systematic search and classification of performance and human-centered factors',
+            authors: "Coronado, E., Kiyokawa, T., Ricardez, G. A. G., Ramirez-Alpizar, I. G., Venture, G., & Yamanobe, N. ",
+            src: "Journal of Manufacturing Systems, 63, 392-410.",
+            year: 2022,
+            url: "https://doi.org/10.1016/j.jmsy.2022.04.007",
+          },
+
+          {
+            title: ' Applying kansei/affective engineering methodologies in the design of social and service robots: A systematic review',
+            authors: "Coronado, E., Gentiane V., and Natsuki Y.",
+            src: "International Journal of Social Robotics 13.5 (2021): 1161-1171.",
+            year: 2021,
+            url: "https://link.springer.com/article/10.1007/s12369-020-00709-x",
+          },
+
+          {
+            title: ' Towards a modular and distributed end-user development framework for human-robot interaction',
+            authors: "Coronado, E., Deuff, D., Carreno-Medrano, P., Tian, L., Kulić, D., Sumartojo, S., Mastrogiovanni, F. and Venture, G.",
+            src: "IEEE Access",
+            year: 2021,
+            url: "https://ieeexplore.ieee.org/abstract/document/9323043",
+          },
+
+          {
+            title: ' Visual programming environments for end-user development of intelligent and social robots, a systematic review',
+            authors: "Coronado, E., Mastrogiovanni, F., Indurkhya, B., & Venture, G.",
+            src: "Journal of Computer Languages",
+            year: 2021,
+            url: "https://doi.org/10.1016/j.cola.2020.100970",
+          },
+
+          {
+            title: ' Towards iot-aided human–robot interaction using nep and ros: A platform-independent, accessible and distributed approach',
+            authors: "Coronado, E., & Venture, G.",
+            src: "Sensors, 20(5), 1500.",
+            year: 2020,
+            url: "https://www.mdpi.com/1424-8220/20/5/1500",
+          },
+
+
+          {
+            title: " Self-Tuning Extended Kalman Filter Parameters to Identify Ankle's Third-Order Mechanics",
+            authors: "E. Coronado, A. González, A. Cárdenas, M. Maya, E. Chiovetto, D. Piovesan",
+            src: "Journal of Biomechanical Engineering ",
+            year: 2020,
+            url: " https://doi.org/10.1115/1.4048042",
+          },
+
 
           {
             title: 'Can Human-Inspired Learning Behaviour Facilitate Human–Robot Interaction?',
@@ -726,6 +907,16 @@
         onPublications() {
 
           document.getElementById("publications").scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        },
+
+        onEducation() {
+          document.getElementById("education").scrollIntoView({ behavior: 'smooth', block: 'center' });
+        },
+
+        onExperience() {
+
+          document.getElementById("experience").scrollIntoView({ behavior: 'smooth', block: 'center' });
 
         },
       }
