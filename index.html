@@ -1,713 +1,739 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" type="image/png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="author" content="Enrique Coronado" />
-  <title>Enrique Coronado</title>
-  <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <meta name="viewport" content="width=device-width" />
-
-
-
-  <!--   ################# Vuetify #################### -->
-  <link href="web/vuetify/vuetify.min.css" rel="stylesheet">
+  <title>NEP+ Docs</title>
+  <link rel="shortcut icon" type="image/png" href="img/nep.png" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@3.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+
+
+
+  <link rel="stylesheet" href="web/prism.css" data-noprefix />
+
 
   <!--   #################### Material Icons  ################### -->
   <link rel="stylesheet" href="web/material-icons/material-design-icons.css">
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
-
-
-
-
-
-  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
-
   <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
 
-
-
-  <style>
-    body {
-      background-color: white;
-    }
-
-    #app {
-      font-family: 'Avenir', Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-align: center;
-      color: #212121;
-    }
-
-    .v-card--reveal {
-      align-items: center;
-      bottom: 0;
-      justify-content: center;
-      opacity: .5;
-      position: absolute;
-      width: 100%;
-    }
-  </style>
-
-  <!--   ############### Vue + Vuetify ############## -->
-  <script src="web/vue.js"></script>
-  <script src="web/vuetify/vuetify.js"></script>
-
-
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Grape+Nuts&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap" rel="stylesheet">
 </head>
+
+<style>
+  .v-btn {
+    text-transform: none !important;
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  p {
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  h1 {
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  h2 {
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  .v-toolbar {
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  h3
+  {
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  h4
+  {
+    font-family: 'Roboto Mono', monospace;
+  }
+
+  span{
+    font-family: 'Orbitron', sans-serif;
+  }
+
+</style>
+
 
 <body>
 
   <div id="app">
-    <v-app id="inspire">
-      <v-navigation-drawer floating flat clipped v-model="drawer" app>
-        <v-container>
-          <layout align-center justify-center>
-            <v-card color="white" height="50px" flat>
-              <div>&nbsp;</div>
-            </v-card>
-            <v-card color="white" flat>
-              <v-avatar :title="title" :size="150" color="white" flat>
-                <img src="img/yo.jpg" alt="avatar">
-              </v-avatar>
-              <v-container>
-              </v-container>
-            </v-card>
-            <v-card color="white" flat>
-              <div class="headline"><span style="font-size: 35px">Enrique Coronado</span></div>
-              <div><span style=" color:#0277BD; font-size: 23px">Ph.D Student</span></div>
-              <div>&nbsp;</div>
-              <div><span style="font-size: 16px">Human-Robot Interaction, Software Architectures for
-                  Robotics, Intelligent Social Robots.</span></div>
-              <div>&nbsp;</div>
+    <v-app id="inspire" style="
+        background: rgb(305, 305, 305);">
 
-              <div><span style=" font-weight: bold;font-size: 16px">Tokyo, Japan</span></div>
 
-          </layout>
-        </v-container>
+      <v-app-bar color="indigo" app dark dense flat clipped-right>
 
-        </v-card>
 
-      </v-navigation-drawer>
-      <v-toolbar flat fixed app dark dense color="light-blue darken-3">
 
-        <v-toolbar-title>Enrique Coronado</v-toolbar-title>
+        <v-toolbar-title href="https://enriquecoronadozu.github.io/NEP/start" target="_blank">
+          EC
+        </v-toolbar-title>
+
         <v-spacer></v-spacer>
 
+
+
         <v-toolbar-items>
-          <v-btn @click="ChangeTab(0)" flat>Publications</v-btn>
-          <v-btn @click="ChangeTab(1)" flat>Software</v-btn>
-          <v-btn @click="ChangeTab(2)" flat>Education & Skills</v-btn>
-          <v-btn @click="ChangeTab(3)" flat>Experience</v-btn>
+
+
+          <v-btn text dark @click="onAbout()"> 01. About
+          </v-btn>
+
+          <v-btn text dark>
+            02. Education
+          </v-btn>
+
+          <v-btn text dark>
+            03. Experience
+          </v-btn>
+
+          <v-btn text dark>
+            04. Skills
+          </v-btn>
+
+          <v-btn text text>
+            05. Projects
+          </v-btn>
+
+
+          <v-btn text dark>
+            06. Interests
+          </v-btn>
+
+          <v-btn dark text @click="onPublications()"> 07. Publications
+          </v-btn>
+
+
+
         </v-toolbar-items>
-      </v-toolbar>
-      <v-content>
+
+
+        <div>&nbsp;</div>
 
 
 
-        <v-tabs dense v-model="active" height=0>
+      </v-app-bar>
 
-          <v-tab v-for="n in 5" :key="n"> </v-tab>
 
-          <v-tab-item :key="0">
+      <v-main>
 
-            <v-card flat color="white" flat>
 
-              <v-card color="white" height="20px" flat>
-                <div>&nbsp;</div>
+        <v-container grid-list-md text-center>
+          <v-layout wrap align-center justify-center>
+
+
+
+            <v-flex xs10 md10>
+              <v-card color="white" flat>
+
+
+                <v-layout wrap align-center justify-center>
+
+                  <v-flex xs12 md12>
+                    <v-card color="white" flat>
+
+                      <div id="about">&nbsp;</div>
+                      <div>&nbsp;</div>
+                      <div>&nbsp;</div>
+
+
+
+                      <v-row dense>
+
+
+
+                        <v-col cols="5">
+                          <p style="text-align: center;"> Hi, my name is <b> Enrique Coronado </b>
+                          </p>
+                          <v-img class="mx-auto" max-width="350" src="img/cute.png"></v-img>
+                        </v-col>
+
+                        <v-col cols="2">
+
+                        </v-col>
+
+                        <v-col cols="5">
+
+                          <div>&nbsp;</div>
+                          <div>&nbsp;</div>
+                          <div>&nbsp;</div>
+
+
+
+
+                          <div>
+                            <p style="text-align: center; font-size: 40px; color:#616161;"><b>Robotics software </b>
+                              developer & researcher
+                            </p>
+                          </div>
+
+                          <p style="text-align: center;"> I code beutiful simple things. Currently, I'm focused on
+                            building
+                            accesible and human-centered robotics systems
+                          </p>
+
+                        </v-col>
+                        <v-col cols="12">
+
+
+                          <div>&nbsp;</div>
+                          <div>&nbsp;</div>
+
+                        </v-col>
+
+                      </v-row>
+
+
+
+
+
+                    </v-card>
+
+                  </v-flex>
+
+                </v-layout>
+
+
+
+                &nbsp;&nbsp;
+                &nbsp;&nbsp;
+                &nbsp;&nbsp;
+                &nbsp;&nbsp;
+
+
+
+
+                <div>
+
+                  <p style="text-align: justify">
+                    <b>My design philosophy:</b> robotics software must be friendly, modular, interactive, beutiful and
+                    intuitive
+                  </p>
+
+                  &nbsp;&nbsp;
+
+
+                </div>
+
               </v-card>
-              <div>&nbsp;</div>
-              <v-chip class="white--text ml-0" color="light-blue darken-2" label small> Journal Articles </v-chip>
-              <div>&nbsp;</div>
-              <template v-for="(item, index) in journals">
-                <v-flex xs10 offset-xs1>
-                  <v-card flat color="white">
-                    <v-card-content>
-                      <div>
-                        <p align="left" style=" font-weight: bold;">
-                          <v-chip flat label small> {{item.year}} </v-chip> {{item.title}}
-                        </p>
-                        <p align="left">
-                          &nbsp; {{item.authors}} {{item.src}}
-                        </p>
 
+              <v-card color="white" flat>
+                &nbsp;&nbsp;
+              </v-card>
+              <v-card color="white" flat>
+                &nbsp;&nbsp;
 
-                      </div>
-                      <div>
+                <h1 id="education" style="text-align: justify">
+                  <b>Education</b>
+                </h1>
 
-                        <v-btn color="indigo" v-on:click="onPDF(item.url)" flat>pdf</v-btn>
-                      
-                      </div>
-
-                    </v-card-content>
-
-                  </v-card>
-                </v-flex>
-
-              </template>
-
-              <div>&nbsp;</div>
-              <v-chip class="white--text ml-0" color="light-blue darken-2" label small> Conference Peppers </v-chip>
-              <div>&nbsp;</div>
-              <template v-for="(item, index) in conferences">
-                <v-flex xs10 offset-xs1>
-                  <v-card flat color="white">
-                    <v-card-content>
-                      <div>
-                        <p align="left" style=" font-weight: bold;">
-                          <v-chip flat label small> {{item.year}} </v-chip> {{item.title}}
-                        </p>
-                        <p align="left">
-                          &nbsp; {{item.authors}} {{item.src}}
-                        </p>
-
-
-                      </div>
-                      <div>
-
-                        <v-btn color="indigo" v-on:click="onPDF(item.url)" flat>pdf</v-btn>
-                  
-                      </div>
-
-                    </v-card-content>
-                  </v-card>
-                </v-flex>
-
-              </template>
-
-
-            </template>
-
-            <div>&nbsp;</div>
-            <v-chip class="white--text ml-0" color="light-blue darken-2" label small> Book Chapters </v-chip>
-            <div>&nbsp;</div>
-            <template v-for="(item, index) in books">
-              <v-flex xs10 offset-xs1>
-                <v-card flat color="white">
-                  <v-card-content>
-                    <div>
-                      <p align="left" style=" font-weight: bold;">
-                        <v-chip flat label small> {{item.year}} </v-chip> {{item.title}}
-                      </p>
-                      <p align="left">
-                        &nbsp; {{item.authors}} {{item.src}}
-                      </p>
-
-
-                    </div>
-                    <div>
-
-                      <v-btn color="indigo" v-on:click="onPDF(item.url)" flat>pdf</v-btn>
-                
-                    </div>
-
-                  </v-card-content>
-                </v-card>
-              </v-flex>
-
-            </template>
-
-
-              </template>
-
-              <div>&nbsp;</div>
-              <v-chip class="white--text ml-0" color="light-blue darken-2" label small> Invited talks </v-chip>
-              <div>&nbsp;</div>
-              <template v-for="(item, index) in talks">
-                <v-flex xs10 offset-xs1>
-                  <v-card flat color="white">
-                    <v-card-content>
-                      <div>
-                        <p align="left" style=" font-weight: bold;">
-                          <v-chip flat label small> {{item.year}} </v-chip> {{item.title}}
-                        </p>
-                        <p align="left">
-                          &nbsp; {{item.authors}} {{item.src}}
-                        </p>
-                      </div>
-                      <div>
-                        <v-btn color="indigo" v-on:click="onPDF(item.url)" flat>link</v-btn>
-                      </div>
-
-                    </v-card-content>
-                  </v-card>
-                </v-flex>
-
-              </template>
-
-
-
-
-
-
-            </v-card>
-
-          </v-tab-item>
-
-          <v-tab-item :key="1">
-            <v-card flat>
-              <v-container fluid grid-list-md>
-                <v-layout row wrap>
-                  <v-flex xs12 sm12>
-
-
-                    <v-card color="white" height="7px" flat>
-                      <div>&nbsp;</div>
-                    </v-card>
-
-                    <v-card flat colot="white">
-                      <div class="headline"><span style="font-size: 25px">Software Developed</span></div>
-                    </v-card>
-
-                    <v-card color="white" height="30px" flat>
-                      <div>&nbsp;</div>
-                    </v-card>
-
-                    <v-layout row wrap align-center justify-center>
-                      <v-flex xs10>
-                        <v-card class="mx-auto" color="white" flat>
-                          <v-card-title>
-                            <v-spacer></v-spacer>
-                            <v-list-tile-avatar>
-                              <v-img src="img/nep7.png">
-                              </v-img>
-                            </v-list-tile-avatar>
-                            <span class="headline">NEP</span>
-                            <v-spacer></v-spacer>
-                          </v-card-title>
-
-                          <v-card-text class="title font-weight-light">
-                            A high-level, re-usable and cross-platform framework for developing robot software
-                            architectures.
-                          </v-card-text>
-
-                          <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <div class="my-2">
-                              <v-btn class="ma-2" flat color="light-blue darken-2"
-                                href="https://enriquecoronadozu.github.io/NEP/" target="_blank"> More about NEP</v-btn>
-                            </div>
-                            <v-spacer></v-spacer>
-
-                          </v-card-actions>
-                        </v-card>
-                      </v-flex>
-                      <v-flex xs10>
-                        <v-card class="mx-auto" color="white" flat>
-                          <v-card-title>
-                            <v-spacer></v-spacer>
-                            <v-list-tile-avatar>
-                              <v-img src="img/rize2.png">
-                              </v-img>
-                            </v-list-tile-avatar>
-                            <span class="headline">RIZE</span>
-                            <v-spacer></v-spacer>
-                          </v-card-title>
-
-                          <v-card-text class="title font-weight-light">
-                            An user-friendly, accessible and platform-independent End-User Development (EUD) framework
-                            for robotics
-                          </v-card-text>
-
-                          <v-card-actions>
-                            <v-spacer></v-spacer>
-                            <div class="my-2">
-                              <v-btn class="ma-2" flat color="light-blue darken-2"
-                                href="https://enriquecoronadozu.github.io/RIZE/" target="_blank"> More about RIZE
-                              </v-btn>
-                            </div>
-                            <v-spacer></v-spacer>
-                          </v-card-actions>
-                        </v-card>
-                      </v-flex>
-                    </v-layout>
-
-              </v-container>
-            </v-card>
-
-            </v-flex>
-            </v-layout>
-
-          </v-tab-item>
-
-          <v-tab-item :key="2">
-
-            <v-card color="white" height="30px" flat>
-              <div>&nbsp;</div>
-            </v-card>
-
-            <v-card flat colot="white">
-              <div class="headline"><span style="font-size: 25px">Education </span></div>
-            </v-card>
-
-            <v-card flat color="white">
-
-
-              <v-card flat color="white" flat>
-                <v-flex xs10 offset-xs1>
-                  <v-timeline>
-                    <v-timeline-item v-for="(year, i) in years" :color="year.color" :key="i" small>
-                      <span slot="opposite" :class="` font-weight-bold ${year.color}--text`" style="font-size: 20px"
-                        v-text="year.year"></span>
-                      <div class="py-3">
-                        <h3 style="font-size: 20px" :class="` font-weight-light mb-3 ${year.color}--text`">
-                          {{year.title}} </h3>
-                        <div>
-                          {{year.school}}
+                <v-card flat color="white" flat>
+                  <v-flex xs10 offset-xs1>
+                    <v-timeline>
+                      <v-timeline-item v-for="(year, i) in years" :color="year.color" :key="i" small>
+                        <span slot="opposite" :class="` font-weight-bold ${year.color}--text`" style="font-size: 20px"
+                          v-text="year.year"></span>
+                        <div class="py-3">
+                          <h3 style="font-size: 20px" :class="` font-weight-light mb-3 ${year.color}--text`">
+                            {{year.title}} </h3>
+                          <div>
+                            <h4>
+                            {{year.school}}  </h4>
+                          </div>
                         </div>
-                      </div>
-                    </v-timeline-item>
-                  </v-timeline>
-                </v-flex>
-              </v-card>
-
-
-              <v-card flat colot="white">
-                <div class="headline"><span style="font-size: 25px">Skills</span></div>
-              </v-card>
-
-              <v-card color="white" flat>
-                <div>&nbsp;</div>
-                <div> <span style="font-size: 14px">Main programming languages</span> </div>
-                <div>&nbsp;</div>
-                <div class="text-xs-center">
-                  <v-chip>Python </v-chip>
-                  <v-chip>Javascript</v-chip>
-                  <v-chip>C# </v-chip>
-                  <v-chip>Java </v-chip>
-                  <v-chip>C/C++ </v-chip>
-                  <v-chip>Matlab </v-chip>
-                </div>
-                <div>&nbsp;</div>
-
-
-                <div> <span style="font-size: 14px">Main software tools</span> </div>
-                <div>&nbsp;</div>
-                <div class="text-xs-center">
-                  <v-chip>ROS</v-chip>
-                  <v-chip>Node.js</v-chip>
-                  <v-chip>Vue.js</v-chip>
-                  <v-chip>Flask</v-chip>
-                  <v-chip>OpenCV</v-chip>
-                  <v-chip>scikit-learn</v-chip>
-                  <v-chip>Unity</v-chip>
-                  <v-chip>Visual Studio</v-chip>
-                  <v-chip>TensorFlow</v-chip>
-                  <v-chip>OpenVINO</v-chip>
-                  <v-chip>Android Studio</v-chip>
-                  <v-chip>Xcode</v-chip>
-                  <v-chip>Netbeans</v-chip>
-                </div>
-                <div>&nbsp;</div>
-
-                <v-card flat colot="white">
-                  <div class="headline"><span style="font-size: 25px">Languages</span></div>
+                      </v-timeline-item>
+                    </v-timeline>
+                  </v-flex>
                 </v-card>
 
               </v-card>
+
+
               <v-card color="white" flat>
-                <div>&nbsp;</div>
-                <div> <span style="font-size: 14px">English</span>
-                  <v-rating readonly=true v-model="rating_en"></v-rating>
-                </div>
-                <div></div>
-                <div> <span style="font-size: 14px">Spanish</span>
-                  <v-rating readonly=true v-model="rating_es"></v-rating>
-                </div>
-                <div></div>
-                <div> <span style="font-size: 14px">Japanese</span>
-                  <v-rating readonly=true v-model="rating_jp"></v-rating>
-                </div>
-                <div></div>
-                <div> <span style="font-size: 14px">Italian</span>
-                  <v-rating readonly=true v-model="rating_it"></v-rating>
-                </div>
-                <div></div>
+                &nbsp;&nbsp;
+
+                <h1 id="experience" style="text-align: justify">
+                  <b>Experience</b>
+                </h1>
+              </v-card>
+
+
+              <v-card color="white" flat>
+                &nbsp;&nbsp;
+
+                <h1 id="skills" style="text-align: justify">
+                  <b>Skills</b>
+                </h1>
+              </v-card>
+
+
+              <v-card color="white" flat>
+                &nbsp;&nbsp;
+
+                <h1 id="projects" style="text-align: justify">
+                  <b>Projects</b>
+                </h1>
+              </v-card>
+
+
+              <v-card color="white" flat>
+                &nbsp;&nbsp;
+
+                <h1 id="interest" style="text-align: justify">
+                  <b>Interests</b>
+                </h1>
+              </v-card>
+
+
+              <v-card color="white" flat>
+
+                &nbsp;&nbsp;
+
+
+                <v-layout wrap align-center justify-center>
+
+                  <v-flex xs12 md12>
+                    <v-card color="white" flat>
+
+
+
+                      <div>
+
+                        <h1 id="publications" style="text-align: justify">
+                          <b>Publications</b>
+                        </h1>
+
+                        <v-card flat color="white" flat>
+
+                          <v-card color="white" height="20px" flat>
+                            <div>&nbsp;</div>
+                          </v-card>
+                          <div>&nbsp;</div>
+                          <h2> Journal Articles
+                          </h2>
+                          <div>&nbsp;</div>
+                          <template v-for="(item, index) in journals">
+                            <v-flex xs12>
+                              <v-card flat color="white">
+                                <v-card-content>
+                                  <div>
+                                    <p align="left" style=" font-weight: bold;  font-size: 18px;">
+                                      <v-chip text label small> {{item.year}} </v-chip> {{item.title}}
+                                    </p>
+                                    <p align="left" style="  font-size: 18px;">
+                                      {{item.authors}} {{item.src}}
+                                    </p>
+
+
+                                  </div>
+                                  <div>
+
+                                    <v-btn color="indigo" v-on:click="onPDF(item.url)" text>pdf</v-btn>
+
+                                  </div>
+
+                                </v-card-content>
+
+                              </v-card>
+                            </v-flex>
+
+                          </template>
+
+                          <div>&nbsp;</div>
+
+                          <h2>Conference Peppers
+                          </h2>
+
+                          <div>&nbsp;</div>
+                          <template v-for="(item, index) in conferences">
+                            <v-flex xs12>
+                              <v-card flat color="white">
+                                <v-card-content>
+                                  <div>
+                                    <p align="left" style=" font-weight: bold;  font-size: 18px;">
+                                      <v-chip text label small> {{item.year}} </v-chip> {{item.title}}
+                                    </p>
+                                    <p align="left" style="  font-size: 18px;">
+                                      {{item.authors}} {{item.src}}
+                                    </p>
+
+
+                                  </div>
+                                  <div>
+
+                                    <v-btn color="indigo" v-on:click="onPDF(item.url)" text>pdf</v-btn>
+
+                                  </div>
+
+                                </v-card-content>
+                              </v-card>
+                            </v-flex>
+
+                          </template>
+
+
+                          </template>
+
+                          <div>&nbsp;</div>
+
+                          <h2>Book Chapters
+                          </h2>
+
+                          <div>&nbsp;</div>
+                          <template v-for="(item, index) in books">
+                            <v-flex xs12>
+                              <v-card flat color="white">
+                                <v-card-content>
+                                  <div>
+                                    <p align="left" style=" font-weight: bold;  font-size: 18px;">
+                                      <v-chip text label small> {{item.year}} </v-chip> {{item.title}}
+                                    </p>
+                                    <p align="left" style="  font-size: 18px;">
+                                      {{item.authors}} {{item.src}}
+                                    </p>
+
+
+                                  </div>
+                                  <div>
+
+                                    <v-btn color="indigo" v-on:click="onPDF(item.url)" text>pdf</v-btn>
+
+                                  </div>
+
+                                </v-card-content>
+                              </v-card>
+                            </v-flex>
+
+                          </template>
+
+
+                          </template>
+
+                          <div>&nbsp;</div>
+                          <h2>Invited talks
+                          </h2>
+                          <div>&nbsp;</div>
+                          <template v-for="(item, index) in talks">
+                            <v-flex xs12>
+                              <v-card flat color="white">
+                                <v-card-content>
+                                  <div>
+                                    <p align="left" style=" font-weight: bold;  font-size: 18px;">
+                                      <v-chip text label small> {{item.year}} </v-chip> {{item.title}}
+                                    </p>
+                                    <p align="left" style="  font-size: 18px;">
+                                      {{item.authors}} {{item.src}}
+                                    </p>
+                                  </div>
+                                  <div>
+                                    <v-btn color="indigo" v-on:click="onPDF(item.url)" text>link</v-btn>
+                                  </div>
+
+                                </v-card-content>
+                              </v-card>
+                            </v-flex>
+
+                          </template>
+
+
+
+
+
+
+                        </v-card>
+
+
+
+
+
+                      </div>
+
+
+
+
+
+
+
+                    </v-card>
+
+
+                  </v-flex>
+
+                </v-layout>
 
               </v-card>
 
-              <v-card color="white" height="60px" flat>
-                <div>&nbsp;</div>
-              </v-card>
-              
-
-            </v-card>
-
-
-          </v-tab-item>
-          <v-tab-item :key="3">
-            <v-card flat color="white" flat>
-
-              <v-card color="white" height="30px" flat>
-                <div>&nbsp;</div>
-              </v-card>
-
-              <v-card flat colot="white">
-                <div class="headline"><span style="font-size: 25px">Research experience</span></div>
-
-                <v-card-text class="title font-weight-light">
-                  Working in several academic projects in different countries (Mexico, United States, Italy, France and
-                  Japan)
-                </v-card-text>
-
-                <img src="img/world.png" alt="Smiley face" height="70" width="70">
-
-
-              </v-card>
-              <v-card color="white" height="50px" flat>
-                <div>&nbsp;</div>
-              </v-card>
-
-              <v-card flat colot="white">
-
-                <div class="headline"><span style="font-size: 25px">Teaching experience</span></div>
-                <v-card-text class="title font-weight-light">
-                  3 years teaching undergraduate courses (Articial Intelligence and Computer
-                  Vision) and laboratory courses (Robotics)
-                </v-card-text>
-
-                <img src="img/teaching.png" alt="Smiley face" height="70" width="70">
-
-              </v-card>
-
-              <v-card color="white" height="50px" flat>
-                <div>&nbsp;</div>
-              </v-card>
-
-            </v-card>
-            <v-card flat colot="white">
-
-              <div class="headline"><span style="font-size: 25px">Industry experience</span></div>
-              <v-card-text class="title font-weight-light">
-                1 year working in Robotics and Computer Vision projects on Industry
-              </v-card-text>
-
-              <img src="img/robot.png" alt="Smiley face" height="70" width="70">
-
-            </v-card>
-
-            <v-card color="white" height="100px" flat>
-              <div>&nbsp;</div>
-            </v-card>
-            </v-card>
-          </v-tab-item>
-        </v-tabs>
-
-      </v-content>
-
-      <v-footer fixed dark height="auto">
-        <v-card class="flex" flat tile color="light-blue darken-3">
+        </v-container>
 
 
 
-          <v-btn icon href="https://github.com/enriquecoronadozu/" target="_blank" dark icon>
-            <v-icon size="24px">fab fa-github </v-icon>
-          </v-btn>
 
-          <v-btn icon href="https://www.researchgate.net/profile/Enrique_Coronado/" target="_blank" dark icon>
-            <v-icon size="24px">fab fa-researchgate </v-icon>
-          </v-btn>
 
-          <v-btn icon href="https://scholar.google.com/citations?user=2usIS0EAAAAJ&hl" target="_blank" dark icon>
-            <v-icon size="24px">fas fa-graduation-cap</i> </v-icon>
-          </v-btn>
 
-        </v-card>
-      </v-footer>
+      </v-main>
+
+
 
     </v-app>
   </div>
 
-</body>
-
-
-<script>
-  var vueApp = new Vue({
-    el: '#app',
-    data: () => ({
-      active: 0,
-      drawer: null,
-
-      theme: false,
-      title: "academic",
-      cards: [
-        { title: 'Pre-fab homes', src: 'https://cdn.vuetifyjs.com/images/cards/house.jpg', flex: 12 },
-        { title: 'Favorite road trips', src: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', flex: 6 },
-        { title: 'Best airlines', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 6 }
-      ],
-      rating_en: 4,
-      rating_jp: 2,
-      rating_es: 5,
-      rating_it: 3,
-      rating_fr: 1,
-      books:[
-        {
-          title: 'From Motion to Emotion Prediction: A Hidden Biometrics Approach.',
-          authors: "F. Rida, L.R. Ardila, E. Coronado, A. Nait-ali, G. Venture",
-          src: "Hidden Biometrics",
-          year: 2019,
-          url: "https://link.springer.com/chapter/10.1007/978-981-13-0956-4_11",
-         
-        }
-      ],
-      conferences: [
-
-        {
-          title: 'Intention and Engagement Recognition for Personalized Human-Robot Interaction, an integrated and Deep Learning approach.',
-          authors: "SP. Pattar, E. Coronado, LR. Ardila, G. Venture",
-          src: "IEEE 4th International Conference on Advanced Robotics and Mechatronics (ICARM)",
-          year: 2019,
-          url: "https://ieeexplore.ieee.org/abstract/document/8834226",
-        },
-        {
-          title: 'Robots Meet Children, Development of Semi-Autonomous Control Systems for Children-Robot Interaction in the Wild.',
-          authors: "E. Coronado, X. Indurkhya, G. Venture",
-          src: "IEEE 4th International Conference on Advanced Robotics and Mechatronics (ICARM)",
-          year: 2019,
-          url: "https://ieeexplore.ieee.org/abstract/document/8833751",
-        },
-        {
-          title: 'Adaptive cognitive robot using dynamic perception with fast deep-learning and adaptive on-line predictive control.',
-          authors: "L. Rincon,  E. Coronado,  C. Law, & G. Venture",
-          src: "IFToMM World Congress on Mechanism and Machine Science (pp. 2429-2438)",
-          year: 2019,
-          url: "https://link.springer.com/chapter/10.1007/978-3-030-20131-9_240",
-        },
-        {
-          title: 'Development of Intelligent Behaviors for Social Robots via User-Friendly and Modular Programming Tools.',
-          authors: "E. Coronado, F. Mastrogiovanni, G. Venture. ",
-          src: "IEEE Workshop on Advanced Robotics and its Social Impacts (ARSO) (pp. 62-68).",
-          year: 2018,
-          url: "https://ieeexplore.ieee.org/abstract/document/8625839"
-        },
-        {
-          title: 'Design of a Human-Centered Robot Framework for End-User Programming and Applications.',
-          authors: "E. Coronado, F. Mastrogiovanni, G. Venture. ",
-          src: "ROMANSY 22–Robot Design, Dynamics and Control, 450-457.",
-          year: 2018,
-          url: "https://link.springer.com/chapter/10.1007/978-3-319-78963-7_56"
-        },
-        {
-          title: 'Expressive states with a robot arm using adaptive fuzzy and robust predictive controllers.',
-          authors: "L. Rincon, E. Coronado, H. Hendra, J. Phan, Z. Zainalkefli, G. Venture. ",
-          src: " 2018 3rd International Conference on Control and Robotics Engineering (ICCRE)",
-          year: 2018,
-          url: "https://ieeexplore.ieee.org/abstract/document/8376425",
-        },
-
-        {
-          title: 'Gesture-based Robot Control: Design Challenges and Evaluation with Humans.',
-          authors: "E. Coronado, J. Villalobos, B. Bruno, F. Mastrogiovanni. ",
-          src: "2017 IEEE International Conference on Robotics and Automation (ICRA).",
-          year: 2017,
-          url: "https://ieeexplore.ieee.org/abstract/document/7989321",
-        },
-
-        {
-          title: 'Time-based identification of human ankle impedance via Microsoft Kinect.',
-          authors: "M.E. Segura, E. Coronado, A. Cardenas, D. Piovesan. ",
-          src: " IEEE Signal Processing in Medicine and Biology Symposium (SPMB) (pp. 1-5).",
-          year: 2015,
-          url: "https://ieeexplore.ieee.org/abstract/document/7405424",
-        },
-      ],
-
-      journals: [
-
-        {
-          title: 'Can Human-Inspired Learning Behaviour Facilitate Human–Robot Interaction?',
-          authors: "Carfì, A., Villalobos, J., Coronado, E., Bruno, B., & Mastrogiovanni, F. ",
-          src: "International Journal of Social Robotics, 1-14.",
-          year: 2019,
-          url: "https://link.springer.com/article/10.1007/s12369-019-00548-5",
-        },
-
-        {
-          title: 'Vision-based Control of a Delta Parallel Robot via Linear Camera-Space Manipulation.',
-          authors: "E. Coronado, M. Maya, A. Cardenas, O. Guarneros, D. Piovesan. ",
-          src: "Journal of Intelligent & Robotic Systems 85 (1), 93-106.",
-          year: 2017,
-          url: "https://link.springer.com/article/10.1007/s10846-016-0413-5",
-        },
-
-        {
-          title: 'Analysis of recoverable falls via Microsoft Kinect: Identification of third-order ankle dynamics.',
-          authors: "M.E. Segura, E. Coronado, A. Cardenas, D. Piovesan. ",
-          src: "Journal of Dynamic Systems, Measurement, and Control 138 (9), 091006",
-          year: 2016,
-          url: "https://dynamicsystems.asmedigitalcollection.asme.org/article.aspx?articleid=2499047",
-        },
-
-      ],
-
-
-
-      talks: [
-
-        {
-          title: 'Empowering End-Users with Behavior Trees, Development of Human-Robot Applications Performing "in the Wild"',
-          authors: "Coronado, E.",
-          src: "IROS 2019 Workshop: Behavior Trees for Robotics Systems: Tools, Applications, and Lessons Learned, Macau, 4th-8th November, 2019",
-          year: 2019,
-          url: "https://behavior-trees-iros-workshop.github.io/",
-        },
-      ],
-
-
-      years: [
-        {
-          color: 'cyan',
-          year: '2017  - now',
-          school: ' Tokyo University of Agriculture and Technology, Japan',
-          title: 'Phd student in Mechanical Systems Engineering',
-        },
-        {
-          color: 'teal',
-          year: '2015-2017 ',
-          title: 'MSc in Advanced Robotics (EMARO+)',
-          school: 'University of Genova, Italy, and Ecole Centrale de Nantes, France',
-        },
-        {
-          color: 'green',
-          year: '2012',
-          title: 'BSc in Mechatronics Engineering',
-          school: 'Autonomous University of San Luis Potosí, Mexico',
-        },
-        /*{
-          color: 'amber',
-          year: '1990', 
-          title:'x',
-          school:'y', 
-        },
-        {
-          color: 'orange',
-          year: '2000',
-          title:'x',
-          school:'y', 
-        }*/
-      ]
-    }),
-    methods: {
-      onPDF: function (value) {
-        window.open(value, '_blank')
-      },
-      ChangeTab(item) {
-        console.log(item)
-        this.active = item
-      },
+  <style>
+    #listDiv.ul {
+      text-align: left;
     }
 
-  })
+    div.center {
+      margin-left: auto;
+      margin-right: auto;
+      display: table;
+    }
+
+    ul {
+      text-align: left;
+    }
+
+    li {
+      font-size: 22px;
+      color: #0277BD;
+      text-align: left
+    }
 
 
-</script>
+    p {
+      font-size: 22px;
+      color: #616161;
+      text-align: left
+    }
+  </style>
 
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script src="web/prism.js"></script>
+
+  <script>
+
+    Prism.plugins.NormalizeWhitespace.setDefaults({
+      'remove-trailing': true,
+      'remove-indent': true,
+      'left-trim': true,
+    });
+
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      data: () => ({
+
+
+
+
+        books: [
+          {
+            title: 'From Motion to Emotion Prediction: A Hidden Biometrics Approach.',
+            authors: "F. Rida, L.R. Ardila, E. Coronado, A. Nait-ali, G. Venture",
+            src: "Hidden Biometrics",
+            year: 2019,
+            url: "https://link.springer.com/chapter/10.1007/978-981-13-0956-4_11",
+
+          }
+        ],
+
+        years: [
+          {
+            color: 'cyan',
+            year: '2017  - 2020',
+            school: ' Tokyo University of Agriculture and Technology, Japan',
+            title: 'Phd in Mechanical Systems Engineering',
+          },
+          {
+            color: 'teal',
+            year: '2015-2017 ',
+            title: 'MSc in Advanced Robotics (EMARO+)',
+            school: 'University of Genova, Italy, and Ecole Centrale de Nantes, France',
+          },
+          {
+            color: 'green',
+            year: '2012',
+            title: 'BSc in Mechatronics Engineering',
+            school: 'Autonomous University of San Luis Potosí, Mexico',
+          },],
+
+        conferences: [
+
+          {
+            title: 'Intention and Engagement Recognition for Personalized Human-Robot Interaction, an integrated and Deep Learning approach.',
+            authors: "SP. Pattar, E. Coronado, LR. Ardila, G. Venture",
+            src: "IEEE 4th International Conference on Advanced Robotics and Mechatronics (ICARM)",
+            year: 2019,
+            url: "https://ieeexplore.ieee.org/abstract/document/8834226",
+          },
+          {
+            title: 'Robots Meet Children, Development of Semi-Autonomous Control Systems for Children-Robot Interaction in the Wild.',
+            authors: "E. Coronado, X. Indurkhya, G. Venture",
+            src: "IEEE 4th International Conference on Advanced Robotics and Mechatronics (ICARM)",
+            year: 2019,
+            url: "https://ieeexplore.ieee.org/abstract/document/8833751",
+          },
+          {
+            title: 'Adaptive cognitive robot using dynamic perception with fast deep-learning and adaptive on-line predictive control.',
+            authors: "L. Rincon,  E. Coronado,  C. Law, & G. Venture",
+            src: "IFToMM World Congress on Mechanism and Machine Science (pp. 2429-2438)",
+            year: 2019,
+            url: "https://link.springer.com/chapter/10.1007/978-3-030-20131-9_240",
+          },
+          {
+            title: 'Development of Intelligent Behaviors for Social Robots via User-Friendly and Modular Programming Tools.',
+            authors: "E. Coronado, F. Mastrogiovanni, G. Venture. ",
+            src: "IEEE Workshop on Advanced Robotics and its Social Impacts (ARSO) (pp. 62-68).",
+            year: 2018,
+            url: "https://ieeexplore.ieee.org/abstract/document/8625839"
+          },
+          {
+            title: 'Design of a Human-Centered Robot Framework for End-User Programming and Applications.',
+            authors: "E. Coronado, F. Mastrogiovanni, G. Venture. ",
+            src: "ROMANSY 22–Robot Design, Dynamics and Control, 450-457.",
+            year: 2018,
+            url: "https://link.springer.com/chapter/10.1007/978-3-319-78963-7_56"
+          },
+          {
+            title: 'Expressive states with a robot arm using adaptive fuzzy and robust predictive controllers.',
+            authors: "L. Rincon, E. Coronado, H. Hendra, J. Phan, Z. Zainalkefli, G. Venture. ",
+            src: " 2018 3rd International Conference on Control and Robotics Engineering (ICCRE)",
+            year: 2018,
+            url: "https://ieeexplore.ieee.org/abstract/document/8376425",
+          },
+
+          {
+            title: 'Gesture-based Robot Control: Design Challenges and Evaluation with Humans.',
+            authors: "E. Coronado, J. Villalobos, B. Bruno, F. Mastrogiovanni. ",
+            src: "2017 IEEE International Conference on Robotics and Automation (ICRA).",
+            year: 2017,
+            url: "https://ieeexplore.ieee.org/abstract/document/7989321",
+          },
+
+          {
+            title: 'Time-based identification of human ankle impedance via Microsoft Kinect.',
+            authors: "M.E. Segura, E. Coronado, A. Cardenas, D. Piovesan. ",
+            src: " IEEE Signal Processing in Medicine and Biology Symposium (SPMB) (pp. 1-5).",
+            year: 2015,
+            url: "https://ieeexplore.ieee.org/abstract/document/7405424",
+          },
+        ],
+
+        journals: [
+
+          {
+            title: 'Can Human-Inspired Learning Behaviour Facilitate Human–Robot Interaction?',
+            authors: "Carfì, A., Villalobos, J., Coronado, E., Bruno, B., & Mastrogiovanni, F. ",
+            src: "International Journal of Social Robotics, 1-14.",
+            year: 2019,
+            url: "https://link.springer.com/article/10.1007/s12369-019-00548-5",
+          },
+
+          {
+            title: 'Vision-based Control of a Delta Parallel Robot via Linear Camera-Space Manipulation.',
+            authors: "E. Coronado, M. Maya, A. Cardenas, O. Guarneros, D. Piovesan. ",
+            src: "Journal of Intelligent & Robotic Systems 85 (1), 93-106.",
+            year: 2017,
+            url: "https://link.springer.com/article/10.1007/s10846-016-0413-5",
+          },
+
+          {
+            title: 'Analysis of recoverable falls via Microsoft Kinect: Identification of third-order ankle dynamics.',
+            authors: "M.E. Segura, E. Coronado, A. Cardenas, D. Piovesan. ",
+            src: "Journal of Dynamic Systems, Measurement, and Control 138 (9), 091006",
+            year: 2016,
+            url: "https://dynamicsystems.asmedigitalcollection.asme.org/article.aspx?articleid=2499047",
+          },
+
+        ],
+
+        talks: [
+
+          {
+            title: 'Empowering End-Users with Behavior Trees, Development of Human-Robot Applications Performing "in the Wild"',
+            authors: "Coronado, E.",
+            src: "IROS 2019 Workshop: Behavior Trees for Robotics Systems: Tools, Applications, and Lessons Learned, Macau, 4th-8th November, 2019",
+            year: 2019,
+            url: "https://behavior-trees-iros-workshop.github.io/",
+          },
+        ],
+
+
+
+        ref1:
+          `
+        @article{coronado2020towards,
+              title={Towards IoT-aided human--robot interaction using NEP and ROS: A platform-independent, accessible and distributed approach},
+              author={Coronado, Enrique and Venture, Gentiane},
+              journal={Sensors},
+              volume={20},
+              number={5},
+              pages={1500},
+              year={2020},
+              publisher={Multidisciplinary Digital Publishing Institute}
+            }`,
+
+
+
+
+
+        color_nav: "grey lighten-2",
+
+
+
+      }),
+
+      created() {
+        this.initialize()
+
+
+
+      },
+
+      methods: {
+        initialize() {
+
+        },
+
+        onPDF: function (value) {
+          window.open(value, '_blank')
+        },
+
+        onAbout() {
+          document.getElementById("about").scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        },
+
+        onPublications() {
+
+          document.getElementById("publications").scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        },
+      }
+
+
+
+    })
+  </script>
+</body>
 
 </html>

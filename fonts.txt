@@ -1,0 +1,6 @@
+font-family: 'Amatic SC', cursive;
+font-family: 'Grape Nuts', cursive;
+font-family: 'Roboto Mono', monospace;
+font-family: 'Ubuntu Mono', monospace;
+font-family: 'Orbitron', sans-serif;
+font-family: 'Hi Melody', cursive;
