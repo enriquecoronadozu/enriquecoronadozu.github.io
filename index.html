@@ -103,12 +103,12 @@
           </v-btn>
 
 
-          <v-btn text text>
+          <v-btn text @click="onProjects">
             04. Projects
           </v-btn>
 
 
-          <v-btn text>
+          <v-btn text @click="onInterests">
             05. Interests
           </v-btn>
 
@@ -352,18 +352,225 @@
               <v-card color="transparent" flat>
                 &nbsp;&nbsp;
 
-                <h1 id="projects" style="text-align: justify">
+                <h1  style="text-align: justify">
                   <b>Projects</b>
                 </h1>
+
+                <v-row dense>
+
+
+
+
+   
+                  <v-col cols="2">
+               
+
+                  </v-col>
+         
+
+                  <v-col cols="3">
+                    <p  id="projects" style="text-align: center;"> NEP
+                    </p>
+                    <div> &nbsp;&nbsp;</div>
+                    <v-img class="mx-auto" max-width="100" src="img/nep.png"></v-img>
+
+
+                  </v-col>
+
+
+                  <v-col cols="2">
+               
+
+                  </v-col>
+
+
+            
+                  <v-col cols="3">
+                    <p style="text-align: center;"> RIZE
+                    </p>
+                    <div> &nbsp;&nbsp;</div>
+                    <v-img class="mx-auto" max-width="100" src="img/rize2.png"></v-img>
+
+
+                  </v-col>
+
+                  <v-col cols="2">
+               
+
+                  </v-col>
+
+
+
+                  <v-row dense></v-row>
+
               </v-card>
 
 
               <v-card color="transparent" flat>
                 &nbsp;&nbsp;
 
-                <h1 id="interest" style="text-align: justify">
+                <h1  style="text-align: justify">
                   <b>Interests</b>
                 </h1>
+
+
+
+                <v-row dense>
+
+                  <v-col cols="12">
+                    &nbsp;&nbsp;
+                  </v-col>
+                  <v-col cols="12">
+                    &nbsp;&nbsp;
+                  </v-col>
+                  <v-col cols="12">
+                    &nbsp;&nbsp;
+                  </v-col>
+
+
+
+   
+
+         
+
+                  <v-col cols="3">
+                    <p style="text-align: center;"> Robot Programming
+                    </p>
+                    <div> &nbsp;&nbsp;</div>
+                    <v-img class="mx-auto" max-width="300" src="img/ai_computer_sousa_robot.png"></v-img>
+
+
+                  </v-col>
+
+
+                  <v-col cols="3">
+                    <p style="text-align: center;"> Human-Robot Interaction
+                    </p>
+                    <div> &nbsp;&nbsp;</div>
+                    <v-img class="mx-auto" max-width="300" src="img/robot_house.png"></v-img>
+
+
+                  </v-col>
+
+
+            
+     
+
+        
+
+                  <v-col cols="3">
+
+                    <p style="text-align: center;"> Cyber-Physicial Systems
+                    </p>
+                    <div> &nbsp;&nbsp;</div>
+                    <v-img class="mx-auto" max-width="300" src="img/ar_kakuchou_genjitsu.png"></v-img>
+          
+                    
+
+
+                  </v-col>
+
+                  <v-col id="interest" cols="3">
+                    <p style="text-align: center;"> Distributed Systems
+                    </p>
+                    <div> &nbsp;&nbsp;</div>
+                    <v-img class="mx-auto" max-width="300" src="img/computer_p2p.png"></v-img>
+
+
+                  </v-col>
+
+
+              
+
+                  <v-col   cols="3">
+                    <div> &nbsp;&nbsp;</div>
+                    <div> &nbsp;&nbsp;</div>
+                    <div> &nbsp;&nbsp;</div>
+                    <div> &nbsp;&nbsp;</div>
+                    <p style="text-align: center;"> End-User Programming
+                    </p>
+                    <div> &nbsp;&nbsp;</div>
+                    <v-img class="mx-auto" max-width="300" src="img/computer_tokui_boy.png"></v-img>
+                 
+
+
+                  </v-col>
+
+
+
+          
+
+
+                  <v-col cols="3">
+                    <div> &nbsp;&nbsp;</div>
+                    <div> &nbsp;&nbsp;</div>
+                    <div> &nbsp;&nbsp;</div>
+                    <div> &nbsp;&nbsp;</div>
+                    <p style="text-align: center;"> Game and VR Systems
+                    </p>
+                    <div> &nbsp;&nbsp;</div>
+                    <v-img class="mx-auto" max-width="260" src="img/vr_game_pad.png"></v-img>
+  
+  
+                  </v-col>
+
+                  <v-col cols="3">
+                    <div> &nbsp;&nbsp;</div>
+                    <div> &nbsp;&nbsp;</div>
+                    <div> &nbsp;&nbsp;</div>
+                    <div> &nbsp;&nbsp;</div>
+                    <p style="text-align: center;"> Industrial Robotics
+                    </p>
+                    <div> &nbsp;&nbsp;</div>
+                    <v-img class="mx-auto" max-width="270" src="img/machine_robot_arm.png"></v-img>
+
+
+                  </v-col>
+
+                  <v-col cols="3">
+                    <div> &nbsp;&nbsp;</div>
+                    <div> &nbsp;&nbsp;</div>
+                    <div> &nbsp;&nbsp;</div>
+                    <div> &nbsp;&nbsp;</div>
+                    <p style="text-align: center;"> Social Robotics
+                    </p>
+                    <div> &nbsp;&nbsp;</div>
+                    <v-img class="mx-auto" max-width="270" src="img/pet_robot_woman.png"></v-img>
+  
+  
+                  </v-col>
+
+                  <v-col cols="4">
+
+                  </v-col>
+                  <v-col cols="4">
+                    <div> &nbsp;&nbsp;</div>
+                    <div> &nbsp;&nbsp;</div>
+                    <div> &nbsp;&nbsp;</div>
+                    <div> &nbsp;&nbsp;</div>
+                    <p style="text-align: center;"> Human-Centered Robotics
+                    </p>
+                    <div> &nbsp;&nbsp;</div>
+                    <v-img class="mx-auto" max-width="320" src="img/friends_robot.png"></v-img>
+
+
+                  </v-col>
+
+                  <v-col cols="4">
+
+                  </v-col>
+
+       
+
+
+                </v-row>
+
+
+          
+
+
+
+
               </v-card>
 
               <v-card color="white" flat>
@@ -914,11 +1121,22 @@
           document.getElementById("education").scrollIntoView({ behavior: 'smooth', block: 'center' });
         },
 
+        onProjects()
+        {
+          document.getElementById("projects").scrollIntoView({ behavior: 'smooth', block: 'center' });
+        },
+
         onExperience() {
 
           document.getElementById("experience").scrollIntoView({ behavior: 'smooth', block: 'center' });
 
         },
+
+        onInterests() {
+
+document.getElementById("interest").scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+},
       }
 
 
