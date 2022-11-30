@@ -162,7 +162,14 @@
                         <v-col cols="3">
                           <p style="text-align: center;"> Hi, my name is Luis <b> Enrique Coronado </b> Zuñiga
                           </p>
-                          <v-img class="mx-auto" max-width="350" src="img/cute.png"></v-img>
+                          <!--<v-img class="mx-auto" max-width="350" src="img/cute.png"></v-img>-->
+                          <v-avatar  size="200">
+                            <img
+                              src="img/cute.png"
+                              alt="Enrique"
+                            >
+                          </v-avatar>
+                      
                         </v-col>
 
                         <v-col cols="2">
@@ -317,7 +324,7 @@
 
                   </v-col>
                   <v-col id="experience" cols="4">
-                    <p style="text-align: center;"> Assitant Professor in
+                    <p style="text-align: center;"> Assistant Professor in
                     </p>
                     <div> &nbsp;&nbsp;</div>
                     <v-img class="mx-auto" max-width="300" src="img/tuat.png"></v-img>
@@ -354,7 +361,12 @@
               </v-card>
 
 
-
+              <v-card color="transparent" flat>
+                <div> &nbsp;&nbsp;</div>
+                <div> &nbsp;&nbsp;</div>
+                <div> &nbsp;&nbsp;</div>
+                <div> &nbsp;&nbsp;</div>
+              </v-card>
 
               <v-card color="transparent" flat>
                 &nbsp;&nbsp;
@@ -413,6 +425,14 @@
               </v-card>
 
 
+              <v-card color="white" flat>
+                <div> &nbsp;&nbsp;</div>
+                <div> &nbsp;&nbsp;</div>
+                <div> &nbsp;&nbsp;</div>
+              
+              </v-card>
+
+
               <v-card color="transparent" flat>
                 &nbsp;&nbsp;
 
@@ -467,7 +487,7 @@
 
                   <v-col cols="3">
 
-                    <p style="text-align: center;"> Cyber-Physicial Systems
+                    <p style="text-align: center;"> Cyber-Physical Systems
                     </p>
                     <div> &nbsp;&nbsp;</div>
                     <v-img class="mx-auto" max-width="300" src="img/ar_kakuchou_genjitsu.png"></v-img>
@@ -488,56 +508,14 @@
 
 
 
-<!--
-                  <v-col cols="3">
-                    <div> &nbsp;&nbsp;</div>
-                    <div> &nbsp;&nbsp;</div>
-                    <div> &nbsp;&nbsp;</div>
-                    <div> &nbsp;&nbsp;</div>
-                    <p style="text-align: center;"> End-User Programming
-                    </p>
-                    <div> &nbsp;&nbsp;</div>
-                    <v-img class="mx-auto" max-width="300" src="img/computer_tokui_boy.png"></v-img>
-
-
-
-                  </v-col>
-
--->
-
-
-
-<!--
-                  <v-col cols="3">
-                    <div> &nbsp;&nbsp;</div>
-                    <div> &nbsp;&nbsp;</div>
-                    <div> &nbsp;&nbsp;</div>
-                    <div> &nbsp;&nbsp;</div>
-                    <p style="text-align: center;"> Game and VR Systems
-                    </p>
-                    <div> &nbsp;&nbsp;</div>
-                    <v-img class="mx-auto" max-width="260" src="img/vr_game_pad.png"></v-img>
--->
-
-                  </v-col>
+         
 
                   <v-col cols="1">
                   </v-col>
 
-                  <v-col cols="3">
-                    <div> &nbsp;&nbsp;</div>
-                    <div> &nbsp;&nbsp;</div>
-                    <div> &nbsp;&nbsp;</div>
-                    <div> &nbsp;&nbsp;</div>
-                    <p style="text-align: center;"> Industrial Robotics
-                    </p>
-                    <div> &nbsp;&nbsp;</div>
-                    <v-img class="mx-auto" max-width="270" src="img/machine_robot_arm.png"></v-img>
+      
 
-
-                  </v-col>
-
-                  <v-col cols="3">
+                  <v-col cols="4">
                     <div> &nbsp;&nbsp;</div>
                     <div> &nbsp;&nbsp;</div>
                     <div> &nbsp;&nbsp;</div>
@@ -545,18 +523,18 @@
                     <p style="text-align: center;"> Social Robotics
                     </p>
                     <div> &nbsp;&nbsp;</div>
-                    <v-img class="mx-auto" max-width="270" src="img/pet_robot_woman.png"></v-img>
+                    <v-img class="mx-auto" max-width="230" src="img/pet_robot_woman.png"></v-img>
 
 
                   </v-col>
 
           
-                  <v-col cols="3">
+                  <v-col cols="4">
                     <div> &nbsp;&nbsp;</div>
                     <div> &nbsp;&nbsp;</div>
                     <div> &nbsp;&nbsp;</div>
                     <div> &nbsp;&nbsp;</div>
-                    <p style="text-align: center;"> Human-Centered Robotics
+                    <p style="text-align: center;"> Human-Centered AI
                     </p>
                     <div> &nbsp;&nbsp;</div>
                     <v-img class="mx-auto" max-width="320" src="img/friends_robot.png"></v-img>
@@ -584,10 +562,15 @@
               </v-card>
 
               <v-card color="white" flat>
-                &nbsp;&nbsp;
+              <div> &nbsp;&nbsp;</div>
+              <div> &nbsp;&nbsp;</div>
+              <div> &nbsp;&nbsp;</div>
+            
               </v-card>
 
+              
 
+            <!--
               <v-card color="white" flat>
                 &nbsp;&nbsp;
                 <v-combobox v-model="chips" :items="items" chips clearable label="Your favorite hobbies" multiple
@@ -599,7 +582,7 @@
                     </v-chip>
                   </template>
                 </v-combobox>
-              </v-card>
+              </v-card>-->
 
 
               <v-card color="transparent" flat>
@@ -872,7 +855,7 @@
           },
           {
             color: 'green',
-            year: '2012',
+            year: '2007 - 2012',
             title: 'BSc in Mechatronics Engineering',
             school: 'Autonomous University of San Luis Potosí, Mexico',
           },],
@@ -1003,6 +986,15 @@
         ],
 
         journals: [
+
+          {
+            title:'Yookobo: A Robot to Strengthen Links Amongst Users with Non-Verbal Behaviours',
+            authors:'Capy Siméon, Pablo Osorio, Shohei Hagane, Corentin Aznar, Dora Garcin, Enrique Coronado, Dominique Deuff, Ioana Ocnarescu, Isabelle Milleville, and Gentiane Venture.',
+            src:'Machines 10.8 (2022): 708',
+            year: 2022,
+            url: "https://www.mdpi.com/2075-1702/10/8/708",
+
+          },
 
           {
             title: ' Evaluating quality in human-robot interaction: A systematic search and classification of performance and human-centered factors',
