@@ -9,7 +9,7 @@
   <link rel="shortcut icon" type="image/png" href="img/nep.png" />
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/@mdi/font@3.x/css/materialdesignicons.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/vuetify@3.0.3/dist/vuetify.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@3.3.0/dist/vuetify.min.css" rel="stylesheet">
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
@@ -132,7 +132,7 @@
 
         <v-toolbar-items>
 
-          <v-switch hide-details insert v-model="$vuetify.theme.dark"></v-switch>
+          <!-- <v-switch hide-details insert v-model="$vuetify.theme.dark"></v-switch> -->
           <v-btn text @click="onAbout()"> 01. About
           </v-btn>
 
@@ -164,6 +164,565 @@
 
       <v-main>
 
+        <v-container>
+
+
+          <v-card color="transparent" flat>
+
+
+            <v-layout wrap align-center justify-center>
+
+              <v-card color="transparent" flat>
+
+                <div id="about">&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+
+
+
+                <v-row dense>
+                  <v-col cols="3">
+                    <p style="text-align: center;"> Welcome to my personal webpage!, my name is Luis <b> Enrique
+                        Coronado </b> Zuñiga
+                    </p>
+                    <!--<v-img class="mx-auto" max-width="350" src="img/cute.png"></v-img>-->
+
+                    <v-img :width="300" aspect-ratio="16/9" cover src="img/coronado.jpg"></v-img>
+
+                  </v-col>
+
+                  <v-col cols="2">
+
+                  </v-col>
+
+                  <v-col cols="7">
+
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+
+                    <div>
+                      <p style="text-align: center; font-size: 40px; color:#616161;"><b>Human-Centered AI & Robotics
+                        </b>
+                        researcher and software developer
+                      </p>
+                    </div>
+                    <div>&nbsp;</div>
+
+                    <p style="text-align: center;"> I am dedicated to pushing the boundaries of what robotics can
+                      achieve, ultimately contributing to a more human-centered and inclusive future
+                    </p>
+
+                  </v-col>
+                  <v-col cols="12">
+
+
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+
+                  </v-col>
+
+                </v-row>
+
+              </v-card>
+
+            </v-layout>
+
+            &nbsp;&nbsp;
+            &nbsp;&nbsp;
+            &nbsp;&nbsp;
+            &nbsp;&nbsp;
+
+            <div>
+              <p style="text-align: justify">
+                <b>My design manifesto:</b>
+              </p>
+              <ol>
+                <li>
+                  <p>Empower rather than replace </p>
+                </li>
+                <li>
+                  <p> Keep it simple (KIS) </p>
+                </li>
+              </ol>
+              &nbsp;&nbsp;
+            </div>
+          </v-card>
+
+          <v-card color="transparent" flat>
+            &nbsp;&nbsp;
+          </v-card>
+
+          <v-card color="transparent" flat>
+            &nbsp;&nbsp;
+
+            <h1 style="text-align: justify">
+              <b>Education</b>
+            </h1>
+
+            <v-card id="education" flat color="transparent" flat>
+
+              <v-timeline>
+                <v-timeline-item v-for="(year, i) in years" :color="year.color" :key="i" small>
+                  <span slot="opposite" :class="` font-weight-bold ${year.color}--text`" style="font-size: 20px"
+                    v-text="year.year"></span>
+                  <div class="py-3">
+                    <h3 style="font-size: 20px" :class="` font-weight-light mb-3 ${year.color}--text`">
+                      {{year.title}} </h3>
+                    <div>
+                      <h4>
+                        {{year.school}} </h4>
+                    </div>
+                  </div>
+                </v-timeline-item>
+              </v-timeline>
+
+            </v-card>
+
+          </v-card>
+
+          <v-card color="transparent" flat>
+            &nbsp;&nbsp;
+          </v-card>
+
+          <v-card color="transparent" flat>
+            &nbsp;&nbsp;
+          </v-card>
+          <v-card color="transparent" flat>
+            &nbsp;&nbsp;
+          </v-card>
+
+
+          <v-card color="transparent" flat>
+            &nbsp;&nbsp;
+
+            <h1 style="text-align: justify">
+              <b>Experience</b>
+            </h1>
+
+            <v-row dense>
+
+              <v-col cols="12">
+                &nbsp;&nbsp;
+              </v-col>
+              <v-col cols="12">
+                &nbsp;&nbsp;
+              </v-col>
+              <v-col cols="12">
+                &nbsp;&nbsp;
+              </v-col>
+
+
+
+              <v-col cols="4">
+                <p style="text-align: center;"> Part-time Lecturer in
+                </p>
+                <div> &nbsp;&nbsp;</div>
+                <v-img class="mx-auto" max-width="300" src="img/uaslp-logo.png"></v-img>
+
+
+              </v-col>
+              <v-col id="experience" cols="4">
+                <p style="text-align: center;"> Assistant Professor in
+                </p>
+                <div> &nbsp;&nbsp;</div>
+                <v-img class="mx-auto" max-width="300" src="img/tuat-logo2.png"></v-img>
+
+
+              </v-col>
+              <v-col cols="4">
+                <p style="text-align: center;"> Research Scientist in
+                </p>
+                <div> &nbsp;&nbsp;</div>
+                <v-img class="mx-auto" max-width="300" src="img/aist-logo2.png"></v-img>
+
+
+              </v-col>
+
+              <v-col class="d-flex justify-center align-center" cols="4">
+                <p style="text-align: center;  font-size: 18px;"> Autonomous University of San Luis Potosí (Mexico)
+                  2013-2015
+                </p>
+
+
+              </v-col>
+              <v-col class="d-flex justify-center align-center" cols="4">
+
+                <p style="text-align: center;  font-size: 18px;"> Tokyo University of Agriculture and Technology (Japan)
+                  2020-2022
+                </p>
+              </v-col>
+              <v-col class="d-flex justify-center align-center" cols="4">
+
+                <p style="text-align: center;  font-size: 18px;"> National Institute of Advanced Industrial Science and
+                  Technology (Japan) 2022-today
+                </p>
+              </v-col>
+
+            </v-row>
+
+          </v-card>
+
+
+          <v-card color="transparent" flat>
+            <div> &nbsp;&nbsp;</div>
+            <div> &nbsp;&nbsp;</div>
+            <div> &nbsp;&nbsp;</div>
+            <div> &nbsp;&nbsp;</div>
+          </v-card>
+
+          <v-card color="transparent" flat>
+            &nbsp;&nbsp;
+
+            <h1 style="text-align: justify">
+              <b>Projects</b>
+            </h1>
+
+            <v-row dense>
+
+
+
+
+
+              <v-col cols="2">
+
+
+              </v-col>
+
+
+              <v-col cols="3">
+                <p id="projects" style="text-align: center;"> NEP
+                </p>
+                <div> &nbsp;&nbsp;</div>
+                <v-img class="mx-auto" max-width="100" src="img/nep.png"></v-img>
+
+
+              </v-col>
+
+
+              <v-col cols="2">
+
+
+              </v-col>
+
+
+
+              <v-col cols="3">
+                <p style="text-align: center;"> RIZE
+                </p>
+                <div> &nbsp;&nbsp;</div>
+                <v-img class="mx-auto" max-width="100" src="img/rize2.png"></v-img>
+
+
+              </v-col>
+
+              <v-col cols="2">
+
+
+              </v-col>
+
+
+
+              <v-row dense></v-row>
+
+          </v-card>
+
+          <v-card color="transparent" flat>
+            <div> &nbsp;&nbsp;</div>
+            <div> &nbsp;&nbsp;</div>
+            <div> &nbsp;&nbsp;</div>
+
+          </v-card>
+
+
+          <v-card color="transparent" flat>
+            &nbsp;&nbsp;
+
+            <h1 style="text-align: justify">
+              <b>Interests</b>
+            </h1>
+
+
+
+            <v-row dense>
+
+              <v-col cols="12">
+                &nbsp;&nbsp;
+              </v-col>
+              <v-col cols="12">
+                &nbsp;&nbsp;
+              </v-col>
+              <v-col cols="12">
+                &nbsp;&nbsp;
+              </v-col>
+
+
+
+
+
+
+
+              <v-col cols="3">
+                <p style="text-align: center;"> Robot Programming
+                </p>
+                <div> &nbsp;&nbsp;</div>
+                <v-img class="mx-auto" max-width="300" src="img/ai_computer_sousa_robot.png"></v-img>
+
+
+              </v-col>
+
+
+              <v-col cols="3">
+                <p style="text-align: center;"> Human-Robot Interaction
+                </p>
+                <div> &nbsp;&nbsp;</div>
+                <v-img class="mx-auto" max-width="300" src="img/robot_house.png"></v-img>
+
+
+              </v-col>
+
+
+
+
+
+
+
+              <v-col cols="3">
+
+                <p style="text-align: center;"> Cyber-Physical Systems
+                </p>
+                <div> &nbsp;&nbsp;</div>
+                <v-img class="mx-auto" max-width="300" src="img/ar_kakuchou_genjitsu.png"></v-img>
+
+
+
+
+              </v-col>
+
+              <v-col id="interest" cols="3">
+                <p style="text-align: center;"> Distributed Systems
+                </p>
+                <div> &nbsp;&nbsp;</div>
+                <v-img class="mx-auto" max-width="300" src="img/computer_p2p.png"></v-img>
+
+
+              </v-col>
+
+
+              <v-col cols="1">
+              </v-col>
+
+
+              <v-col cols="4">
+                <div> &nbsp;&nbsp;</div>
+                <div> &nbsp;&nbsp;</div>
+                <div> &nbsp;&nbsp;</div>
+                <div> &nbsp;&nbsp;</div>
+                <p style="text-align: center;"> Social Robotics
+                </p>
+                <div> &nbsp;&nbsp;</div>
+                <v-img class="mx-auto" max-width="230" src="img/pet_robot_woman.png"></v-img>
+
+              </v-col>
+
+
+              <v-col cols="4">
+                <div> &nbsp;&nbsp;</div>
+                <div> &nbsp;&nbsp;</div>
+                <div> &nbsp;&nbsp;</div>
+                <div> &nbsp;&nbsp;</div>
+                <p style="text-align: center;"> Human-Centered AI
+                </p>
+                <div> &nbsp;&nbsp;</div>
+                <v-img class="mx-auto" max-width="320" src="img/friends_robot.png"></v-img>
+
+
+              </v-col>
+
+
+            </v-row>
+
+
+          </v-card>
+
+          <v-card color="transparent" flat>
+            &nbsp;&nbsp;
+          </v-card>
+
+          <v-card color="transparent" flat>
+            <div> &nbsp;&nbsp;</div>
+            <div> &nbsp;&nbsp;</div>
+            <div> &nbsp;&nbsp;</div>
+
+          </v-card>
+
+          <v-card color="transparent" flat>
+
+            &nbsp;&nbsp;
+
+
+            <v-layout wrap align-center justify-center>
+
+              <v-card color="transparent" flat>
+
+
+
+                <div>
+
+                  <h1 style="text-align: justify">
+                    <b>Publications</b>
+                  </h1>
+
+                  <v-card flat color="transparent" flat>
+
+                    <v-card color="transparent" height="20px" flat>
+                      <div>&nbsp;</div>
+                    </v-card>
+                    <div>&nbsp;</div>
+                    <h2 id="publications"> Journal Articles
+                    </h2>
+                    <div>&nbsp;</div>
+                    <template v-for="(item, index) in journals">
+
+                      <v-card flat color="transparent">
+
+                        <div>
+                          <p align="left" style=" font-weight: bold;  font-size: 18px;">
+                            <v-chip text label small> {{item.year}} </v-chip> {{item.title}}
+                          </p>
+                          <p align="left" style="  font-size: 18px;">
+                            {{item.authors}} {{item.src}}
+                          </p>
+
+                        </div>
+                        <v-card-actions>
+                          <v-spacer></v-spacer>
+                          <v-btn variant="tonal" color="indigo" v-on:click="onPDF(item.url)" text>pdf</v-btn>
+                        </v-card-actions>
+
+                      </v-card>
+
+
+                    </template>
+
+                    <div>&nbsp;</div>
+
+                    <h2>Conference Papers
+                    </h2>
+
+                    <div>&nbsp;</div>
+                    <template v-for="(item, index) in conferences">
+
+                      <v-card flat color="transparent">
+                        <div>
+                          <p align="left" style=" font-weight: bold;  font-size: 18px;">
+                            <v-chip text label small> {{item.year}} </v-chip> {{item.title}}
+                          </p>
+                          <p align="left" style="  font-size: 18px;">
+                            {{item.authors}} {{item.src}}
+                          </p>
+
+
+                        </div>
+                        <v-card-actions>
+                          <v-spacer></v-spacer>
+                          <v-btn variant="tonal" color="indigo" v-on:click="onPDF(item.url)" text>pdf</v-btn>
+                        </v-card-actions>
+                      </v-card>
+
+
+                    </template>
+
+
+                    </template>
+
+                    <div>&nbsp;</div>
+
+                    <h2>Book Chapters
+                    </h2>
+
+                    <div>&nbsp;</div>
+                    <template v-for="(item, index) in books">
+
+                      <v-card flat color="transparent">
+
+                        <div>
+                          <p align="left" style=" font-weight: bold;  font-size: 18px;">
+                            <v-chip text label small> {{item.year}} </v-chip> {{item.title}}
+                          </p>
+                          <p align="left" style="  font-size: 18px;">
+                            {{item.authors}} {{item.src}}
+                          </p>
+
+
+                        </div>
+                        <v-card-actions>
+                          <v-spacer></v-spacer>
+                          <v-btn variant="tonal" color="indigo" v-on:click="onPDF(item.url)" text>pdf</v-btn>
+                        </v-card-actions>
+                      </v-card>
+
+
+                    </template>
+
+
+                    </template>
+
+                    <div>&nbsp;</div>
+                    <h2>Invited talks
+                    </h2>
+                    <div>&nbsp;</div>
+                    <template v-for="(item, index) in talks">
+
+                      <v-card flat color="transparent">
+                        <div>
+                          <p align="left" style=" font-weight: bold;  font-size: 18px;">
+                            <v-chip text label small> {{item.year}} </v-chip> {{item.title}}
+                          </p>
+                          <p align="left" style="  font-size: 18px;">
+                            {{item.authors}} {{item.src}}
+                          </p>
+                        </div>
+                        <v-card-actions>
+                          <v-spacer></v-spacer>
+                          <v-btn variant="tonal" color="indigo" v-on:click="onPDF(item.url)" text>pdf</v-btn>
+                        </v-card-actions>
+                      </v-card>
+
+
+                    </template>
+
+
+
+
+
+
+                  </v-card>
+
+
+
+
+
+                </div>
+
+
+
+
+
+
+
+              </v-card>
+
+
+
+
+            </v-layout>
+
+          </v-card>
+
+
+
+        </v-container>
       </v-main>
 
     </v-app>
