@@ -144,17 +144,7 @@
             03. Experience
           </v-btn>
 
-
-          <v-btn text @click="onProjects">
-            04. Projects
-          </v-btn>
-
-
-          <v-btn text @click="onInterests">
-            05. Interests
-          </v-btn>
-
-          <v-btn text @click="onPublications()"> 06. Publications
+          <v-btn text @click="onPublications()"> 04. Publications
           </v-btn>
 
         </v-toolbar-items>
@@ -162,548 +152,437 @@
 
       </v-app-bar>
 
-      <v-main>
+      <body>
 
-        <v-container>
 
 
-          <v-card color="transparent" flat>
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vuetify@3.0.3/dist/vuetify.min.js"></script>
+        <script src="web/prism.js"></script>
 
 
-            <v-layout wrap align-center justify-center>
 
-              <v-card color="transparent" flat>
+        <div id="app">
 
-                <div id="about">&nbsp;</div>
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
+          <v-app>
 
+            <v-app-bar color="white" app dense flat clipped-right>
 
 
-                <v-row dense>
-                  <v-col cols="3">
-                    <p style="text-align: center;"> Welcome to my personal webpage!, my name is Luis <b> Enrique
-                        Coronado </b> Zuñiga
-                    </p>
-                    <!--<v-img class="mx-auto" max-width="350" src="img/cute.png"></v-img>-->
+              <v-toolbar-title href="https://enriquecoronadozu.github.io/NEP/start" target="_blank">
+                EC
+              </v-toolbar-title>
 
-                    <v-img :width="300" aspect-ratio="16/9" cover src="img/coronado.jpg"></v-img>
+              <v-spacer></v-spacer>
 
-                  </v-col>
+              <v-toolbar-items>
 
-                  <v-col cols="2">
+                <!-- <v-switch hide-details insert v-model="$vuetify.theme.dark"></v-switch> -->
+                <v-btn text @click="onAbout()"> 01. About
+                </v-btn>
 
-                  </v-col>
+                <v-btn text @click="onEducation">
+                  02. Education
+                </v-btn>
 
-                  <v-col cols="7">
+                <v-btn text @click="onExperience">
+                  03. Experience
+                </v-btn>
 
-                    <div>&nbsp;</div>
-                    <div>&nbsp;</div>
-                    <div>&nbsp;</div>
 
-                    <div>
-                      <p style="text-align: center; font-size: 40px; color:#616161;"><b>Human-Centered AI & Robotics
-                        </b>
-                        researcher and software developer
-                      </p>
-                    </div>
-                    <div>&nbsp;</div>
 
-                    <p style="text-align: center;"> I am dedicated to pushing the boundaries of what robotics can
-                      achieve, ultimately contributing to a more human-centered and inclusive future
-                    </p>
+                <v-btn text @click="onPublications()"> 06. Publications
+                </v-btn>
 
-                  </v-col>
-                  <v-col cols="12">
+              </v-toolbar-items>
+              <div>&nbsp;</div>
 
+            </v-app-bar>
 
-                    <div>&nbsp;</div>
-                    <div>&nbsp;</div>
+            <v-main>
 
-                  </v-col>
+              <v-container>
 
-                </v-row>
 
-              </v-card>
+                <v-card color="transparent" flat>
 
-            </v-layout>
 
-            &nbsp;&nbsp;
-            &nbsp;&nbsp;
-            &nbsp;&nbsp;
-            &nbsp;&nbsp;
+                  <v-layout wrap align-center justify-center>
 
-            <div>
-              <p style="text-align: justify">
-                <b>My design manifesto:</b>
-              </p>
-              <ol>
-                <li>
-                  <p>Empower rather than replace </p>
-                </li>
-                <li>
-                  <p> Keep it simple (KIS) </p>
-                </li>
-              </ol>
-              &nbsp;&nbsp;
-            </div>
-          </v-card>
+                    <v-card color="transparent" flat>
 
-          <v-card color="transparent" flat>
-            &nbsp;&nbsp;
-          </v-card>
+                      <div id="about">&nbsp;</div>
+                      <div>&nbsp;</div>
+                      <div>&nbsp;</div>
 
-          <v-card color="transparent" flat>
-            &nbsp;&nbsp;
 
-            <h1 style="text-align: justify">
-              <b>Education</b>
-            </h1>
 
-            <v-card id="education" flat color="transparent" flat>
+                      <v-row dense>
+                        <v-col cols="3">
 
-              <v-timeline>
-                <v-timeline-item v-for="(year, i) in years" :color="year.color" :key="i" small>
-                  <span slot="opposite" :class="` font-weight-bold ${year.color}--text`" style="font-size: 20px"
-                    v-text="year.year"></span>
-                  <div class="py-3">
-                    <h3 style="font-size: 20px" :class="` font-weight-light mb-3 ${year.color}--text`">
-                      {{year.title}} </h3>
-                    <div>
-                      <h4>
-                        {{year.school}} </h4>
-                    </div>
-                  </div>
-                </v-timeline-item>
-              </v-timeline>
+                          <!--<v-img class="mx-auto" max-width="350" src="img/cute.png"></v-img>-->
 
-            </v-card>
+                          <v-img :width="300" aspect-ratio="16/9" cover src="img/coronado.jpg"></v-img>
 
-          </v-card>
+                        </v-col>
 
-          <v-card color="transparent" flat>
-            &nbsp;&nbsp;
-          </v-card>
+                        <v-col cols="2">
 
-          <v-card color="transparent" flat>
-            &nbsp;&nbsp;
-          </v-card>
-          <v-card color="transparent" flat>
-            &nbsp;&nbsp;
-          </v-card>
+                        </v-col>
 
+                        <v-col cols="7">
 
-          <v-card color="transparent" flat>
-            &nbsp;&nbsp;
+                          <div>&nbsp;</div>
+                          <div>&nbsp;</div>
+                          <div>&nbsp;</div>
 
-            <h1 style="text-align: justify">
-              <b>Experience</b>
-            </h1>
+                          <div>
+                            <p style="text-align: center; font-size: 40px; color:#616161;"> Luis <b> Enrique
+                                Coronado </b> Zuñiga
+                            </p>
+                            <div>&nbsp;</div>
+                            <p style="text-align: center; font-size: 30px; color:#616161;">
+                              Researcher in <b>AIST</b>, Tokyo, Japan
+                            </p>
+                          </div>
+                          <div>&nbsp;</div>
 
-            <v-row dense>
+                          <p style="text-align: center;"> I'm interested in Human-Robot Interaction, Software
+                            Architectures, End-User Programmig, Affective Computing, and Extended Reality. My primary
+                            focus revolves around developing human-centered systems in these domains.
+                          </p>
 
-              <v-col cols="12">
-                &nbsp;&nbsp;
-              </v-col>
-              <v-col cols="12">
-                &nbsp;&nbsp;
-              </v-col>
-              <v-col cols="12">
-                &nbsp;&nbsp;
-              </v-col>
+                        </v-col>
+                        <v-col cols="12">
 
 
+                          <div>&nbsp;</div>
+                          <div>&nbsp;</div>
 
-              <v-col cols="4">
-                <p style="text-align: center;"> Part-time Lecturer in
-                </p>
-                <div> &nbsp;&nbsp;</div>
-                <v-img class="mx-auto" max-width="300" src="img/uaslp-logo.png"></v-img>
+                        </v-col>
 
+                      </v-row>
 
-              </v-col>
-              <v-col id="experience" cols="4">
-                <p style="text-align: center;"> Assistant Professor in
-                </p>
-                <div> &nbsp;&nbsp;</div>
-                <v-img class="mx-auto" max-width="300" src="img/tuat-logo2.png"></v-img>
+                    </v-card>
 
+                  </v-layout>
 
-              </v-col>
-              <v-col cols="4">
-                <p style="text-align: center;"> Research Scientist in
-                </p>
-                <div> &nbsp;&nbsp;</div>
-                <v-img class="mx-auto" max-width="300" src="img/aist-logo2.png"></v-img>
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
+                  &nbsp;&nbsp;
 
 
-              </v-col>
+                </v-card>
 
-              <v-col class="d-flex justify-center align-center" cols="4">
-                <p style="text-align: center;  font-size: 18px;"> Autonomous University of San Luis Potosí (Mexico)
-                  2013-2015
-                </p>
+                <v-card color="transparent" flat>
+                  &nbsp;&nbsp;
+                </v-card>
 
-
-              </v-col>
-              <v-col class="d-flex justify-center align-center" cols="4">
-
-                <p style="text-align: center;  font-size: 18px;"> Tokyo University of Agriculture and Technology (Japan)
-                  2020-2022
-                </p>
-              </v-col>
-              <v-col class="d-flex justify-center align-center" cols="4">
-
-                <p style="text-align: center;  font-size: 18px;"> National Institute of Advanced Industrial Science and
-                  Technology (Japan) 2022-today
-                </p>
-              </v-col>
-
-            </v-row>
-
-          </v-card>
-
-
-          <v-card color="transparent" flat>
-            <div> &nbsp;&nbsp;</div>
-            <div> &nbsp;&nbsp;</div>
-            <div> &nbsp;&nbsp;</div>
-            <div> &nbsp;&nbsp;</div>
-          </v-card>
-
-          <v-card color="transparent" flat>
-            &nbsp;&nbsp;
-
-            <h1 style="text-align: justify">
-              <b>Projects</b>
-            </h1>
-
-            <v-row dense>
-
-
-
-
-
-              <v-col cols="2">
-
-
-              </v-col>
-
-
-              <v-col cols="3">
-                <p id="projects" style="text-align: center;"> NEP
-                </p>
-                <div> &nbsp;&nbsp;</div>
-                <v-img class="mx-auto" max-width="100" src="img/nep.png"></v-img>
-
-
-              </v-col>
-
-
-              <v-col cols="2">
-
-
-              </v-col>
-
-
-
-              <v-col cols="3">
-                <p style="text-align: center;"> RIZE
-                </p>
-                <div> &nbsp;&nbsp;</div>
-                <v-img class="mx-auto" max-width="100" src="img/rize2.png"></v-img>
-
-
-              </v-col>
-
-              <v-col cols="2">
-
-
-              </v-col>
-
-
-
-              <v-row dense></v-row>
-
-          </v-card>
-
-          <v-card color="transparent" flat>
-            <div> &nbsp;&nbsp;</div>
-            <div> &nbsp;&nbsp;</div>
-            <div> &nbsp;&nbsp;</div>
-
-          </v-card>
-
-
-          <v-card color="transparent" flat>
-            &nbsp;&nbsp;
-
-            <h1 style="text-align: justify">
-              <b>Interests</b>
-            </h1>
-
-
-
-            <v-row dense>
-
-              <v-col cols="12">
-                &nbsp;&nbsp;
-              </v-col>
-              <v-col cols="12">
-                &nbsp;&nbsp;
-              </v-col>
-              <v-col cols="12">
-                &nbsp;&nbsp;
-              </v-col>
-
-
-
-
-
-
-
-              <v-col cols="3">
-                <p style="text-align: center;"> Robot Programming
-                </p>
-                <div> &nbsp;&nbsp;</div>
-                <v-img class="mx-auto" max-width="300" src="img/ai_computer_sousa_robot.png"></v-img>
-
-
-              </v-col>
-
-
-              <v-col cols="3">
-                <p style="text-align: center;"> Human-Robot Interaction
-                </p>
-                <div> &nbsp;&nbsp;</div>
-                <v-img class="mx-auto" max-width="300" src="img/robot_house.png"></v-img>
-
-
-              </v-col>
-
-
-
-
-
-
-
-              <v-col cols="3">
-
-                <p style="text-align: center;"> Cyber-Physical Systems
-                </p>
-                <div> &nbsp;&nbsp;</div>
-                <v-img class="mx-auto" max-width="300" src="img/ar_kakuchou_genjitsu.png"></v-img>
-
-
-
-
-              </v-col>
-
-              <v-col id="interest" cols="3">
-                <p style="text-align: center;"> Distributed Systems for Robotics & IoT
-                </p>
-                <div> &nbsp;&nbsp;</div>
-                <v-img class="mx-auto" max-width="300" src="img/computer_p2p.png"></v-img>
-
-
-              </v-col>
-
-
-              <v-col cols="2">
-              </v-col>
-
-
-              <v-col cols="4">
-                <div> &nbsp;&nbsp;</div>
-                <div> &nbsp;&nbsp;</div>
-                <div> &nbsp;&nbsp;</div>
-                <div> &nbsp;&nbsp;</div>
-                <p style="text-align: center;"> Social Robotics
-                </p>
-                <div> &nbsp;&nbsp;</div>
-                <v-img class="mx-auto" max-width="230" src="img/pet_robot_woman.png"></v-img>
-
-              </v-col>
-
-
-              <v-col cols="4">
-                <div> &nbsp;&nbsp;</div>
-                <div> &nbsp;&nbsp;</div>
-                <div> &nbsp;&nbsp;</div>
-                <div> &nbsp;&nbsp;</div>
-                <p style="text-align: center;"> Human-Centered Systems
-                </p>
-                <div> &nbsp;&nbsp;</div>
-                <v-img class="mx-auto" max-width="320" src="img/friends_robot.png"></v-img>
-
-
-              </v-col>
-
-
-            </v-row>
-
-
-          </v-card>
-
-          <v-card color="transparent" flat>
-            &nbsp;&nbsp;
-          </v-card>
-
-          <v-card color="transparent" flat>
-            <div> &nbsp;&nbsp;</div>
-            <div> &nbsp;&nbsp;</div>
-            <div> &nbsp;&nbsp;</div>
-
-          </v-card>
-
-          <v-card color="transparent" flat>
-
-            &nbsp;&nbsp;
-
-
-            <v-layout wrap align-center justify-center>
-
-              <v-card color="transparent" flat>
-
-
-
-                <div>
+                <v-card color="transparent" flat>
+                  &nbsp;&nbsp;
 
                   <h1 style="text-align: justify">
-                    <b>Publications</b>
+                    <b>Education</b>
                   </h1>
 
-                  <v-card flat color="transparent" flat>
+                  <v-card id="education" flat color="transparent" flat>
 
-                    <v-card color="transparent" height="20px" flat>
-                      <div>&nbsp;</div>
-                    </v-card>
-                    <div>&nbsp;</div>
-                    <h2 id="publications"> Journal Articles
-                    </h2>
-                    <div>&nbsp;</div>
-                    <template v-for="(item, index) in journals">
-
-                      <v-card flat color="transparent">
-
-                        <div>
-                          <p align="left" style=" font-weight: bold;  font-size: 18px;">
-                            <v-chip text label small> {{item.year}} </v-chip> {{item.title}}
-                          </p>
-                          <p align="left" style="  font-size: 18px;">
-                            {{item.authors}} {{item.src}}
-                          </p>
-
+                    <v-timeline>
+                      <v-timeline-item v-for="(year, i) in years" :color="year.color" :key="i" small>
+                        <span slot="opposite" :class="` font-weight-bold ${year.color}--text`" style="font-size: 20px"
+                          v-text="year.year"></span>
+                        <div class="py-3">
+                          <h3 style="font-size: 20px" :class="` font-weight-light mb-3 ${year.color}--text`">
+                            {{year.title}} </h3>
+                          <div>
+                            <h4>
+                              {{year.school}} </h4>
+                          </div>
                         </div>
-                        <v-card-actions>
-                          <v-spacer></v-spacer>
-                          <v-btn variant="tonal" color="indigo" v-on:click="onPDF(item.url)" text>pdf</v-btn>
-                        </v-card-actions>
-
-                      </v-card>
-
-
-                    </template>
-
-                    <div>&nbsp;</div>
-
-                    <h2>Conference Papers
-                    </h2>
-
-                    <div>&nbsp;</div>
-                    <template v-for="(item, index) in conferences">
-
-                      <v-card flat color="transparent">
-                        <div>
-                          <p align="left" style=" font-weight: bold;  font-size: 18px;">
-                            <v-chip text label small> {{item.year}} </v-chip> {{item.title}}
-                          </p>
-                          <p align="left" style="  font-size: 18px;">
-                            {{item.authors}} {{item.src}}
-                          </p>
-
-
-                        </div>
-                        <v-card-actions>
-                          <v-spacer></v-spacer>
-                          <v-btn variant="tonal" color="indigo" v-on:click="onPDF(item.url)" text>pdf</v-btn>
-                        </v-card-actions>
-                      </v-card>
-
-
-                    </template>
-
-
-                    </template>
-
-                    <div>&nbsp;</div>
-
-                    <h2>Book Chapters
-                    </h2>
-
-                    <div>&nbsp;</div>
-                    <template v-for="(item, index) in books">
-
-                      <v-card flat color="transparent">
-
-                        <div>
-                          <p align="left" style=" font-weight: bold;  font-size: 18px;">
-                            <v-chip text label small> {{item.year}} </v-chip> {{item.title}}
-                          </p>
-                          <p align="left" style="  font-size: 18px;">
-                            {{item.authors}} {{item.src}}
-                          </p>
-
-
-                        </div>
-                        <v-card-actions>
-                          <v-spacer></v-spacer>
-                          <v-btn variant="tonal" color="indigo" v-on:click="onPDF(item.url)" text>pdf</v-btn>
-                        </v-card-actions>
-                      </v-card>
-
-
-                    </template>
-
-
-                    </template>
-
-                    <div>&nbsp;</div>
-                    <h2>Invited talks
-                    </h2>
-                    <div>&nbsp;</div>
-                    <template v-for="(item, index) in talks">
-
-                      <v-card flat color="transparent">
-                        <div>
-                          <p align="left" style=" font-weight: bold;  font-size: 18px;">
-                            <v-chip text label small> {{item.year}} </v-chip> {{item.title}}
-                          </p>
-                          <p align="left" style="  font-size: 18px;">
-                            {{item.authors}} {{item.src}}
-                          </p>
-                        </div>
-                        <v-card-actions>
-                          <v-spacer></v-spacer>
-                          <v-btn variant="tonal" color="indigo" v-on:click="onPDF(item.url)" text>pdf</v-btn>
-                        </v-card-actions>
-                      </v-card>
-
-
-                    </template>
-
-
-
-
-
+                      </v-timeline-item>
+                    </v-timeline>
 
                   </v-card>
 
+                </v-card>
+
+                <v-card color="transparent" flat>
+                  &nbsp;&nbsp;
+                </v-card>
+
+                <v-card color="transparent" flat>
+                  &nbsp;&nbsp;
+                </v-card>
+                <v-card color="transparent" flat>
+                  &nbsp;&nbsp;
+                </v-card>
+
+
+                <v-card color="transparent" flat>
+                  &nbsp;&nbsp;
+
+                  <h1 style="text-align: justify">
+                    <b>Experience</b>
+                  </h1>
+
+                  <v-row dense>
+
+                    <v-col cols="12">
+                      &nbsp;&nbsp;
+                    </v-col>
+                    <v-col cols="12">
+                      &nbsp;&nbsp;
+                    </v-col>
+                    <v-col cols="12">
+                      &nbsp;&nbsp;
+                    </v-col>
+
+
+
+                    <v-col cols="4">
+                      <p style="text-align: center;"> Part-time Lecturer in
+                      </p>
+                      <div> &nbsp;&nbsp;</div>
+                      <v-img class="mx-auto" max-width="300" src="img/uaslp-logo.png"></v-img>
+
+
+                    </v-col>
+                    <v-col id="experience" cols="4">
+                      <p style="text-align: center;"> Assistant Professor in
+                      </p>
+                      <div> &nbsp;&nbsp;</div>
+                      <v-img class="mx-auto" max-width="300" src="img/tuat-logo2.png"></v-img>
+
+
+                    </v-col>
+                    <v-col cols="4">
+                      <p style="text-align: center;"> Research Scientist in
+                      </p>
+                      <div> &nbsp;&nbsp;</div>
+                      <v-img class="mx-auto" max-width="300" src="img/aist-logo2.png"></v-img>
+
+
+                    </v-col>
+
+                    <v-col class="d-flex justify-center align-center" cols="4">
+                      <p style="text-align: center;  font-size: 18px;"> Autonomous University of San Luis Potosí
+                        (Mexico)
+                        2013-2015
+                      </p>
+
+
+                    </v-col>
+                    <v-col class="d-flex justify-center align-center" cols="4">
+
+                      <p style="text-align: center;  font-size: 18px;"> Tokyo University of Agriculture and Technology
+                        (Japan)
+                        2020-2022
+                      </p>
+                    </v-col>
+                    <v-col class="d-flex justify-center align-center" cols="4">
+
+                      <p style="text-align: center;  font-size: 18px;"> National Institute of Advanced Industrial
+                        Science and
+                        Technology (Japan) 2022-today
+                      </p>
+                    </v-col>
+
+                  </v-row>
+
+                </v-card>
+
+
+                <v-card color="transparent" flat>
+                  <div> &nbsp;&nbsp;</div>
+                  <div> &nbsp;&nbsp;</div>
+                  <div> &nbsp;&nbsp;</div>
+                  <div> &nbsp;&nbsp;</div>
+                </v-card>
+
+
+                <v-card color="transparent" flat>
+                  <div> &nbsp;&nbsp;</div>
+                  <div> &nbsp;&nbsp;</div>
+                  <div> &nbsp;&nbsp;</div>
+
+                </v-card>
+
+
+
+                <v-card color="transparent" flat>
+                  &nbsp;&nbsp;
+                </v-card>
+
+                <v-card color="transparent" flat>
+                  <div> &nbsp;&nbsp;</div>
+                  <div> &nbsp;&nbsp;</div>
+                  <div> &nbsp;&nbsp;</div>
+
+                </v-card>
+
+                <v-card color="transparent" flat>
+
+                  &nbsp;&nbsp;
+
+
+                  <v-layout wrap align-center justify-center>
+
+                    <v-card color="transparent" flat>
+
+
+
+                      <div>
+
+                        <h1 style="text-align: justify">
+                          <b>Publications</b>
+                        </h1>
+
+                        <v-card flat color="transparent" flat>
+
+                          <v-card color="transparent" height="20px" flat>
+                            <div>&nbsp;</div>
+                          </v-card>
+                          <div>&nbsp;</div>
+                          <h2 id="publications"> Journal Articles
+                          </h2>
+                          <div>&nbsp;</div>
+                          <template v-for="(item, index) in journals">
+
+                            <v-card flat color="transparent">
+
+                              <div>
+                                <p align="left" style=" font-weight: bold;  font-size: 18px;">
+                                  <v-chip text label small> {{item.year}} </v-chip> {{item.title}}
+                                </p>
+                                <p align="left" style="  font-size: 18px;">
+                                  {{item.authors}} {{item.src}} <v-chip variant="tonal" color="indigo"
+                                    v-on:click="onPDF(item.url)" text>Link</v-chip>
+                                </p>
+
+                              </div>
+
+                            </v-card>
+
+
+                          </template>
+
+                          <div>&nbsp;</div>
+
+                          <h2>Conference Papers
+                          </h2>
+
+                          <div>&nbsp;</div>
+                          <template v-for="(item, index) in conferences">
+
+                            <v-card flat color="transparent">
+                              <div>
+                                <p align="left" style=" font-weight: bold;  font-size: 18px;">
+                                  <v-chip text label small> {{item.year}} </v-chip> {{item.title}}
+                                </p>
+                                <p align="left" style="  font-size: 18px;">
+                                  {{item.authors}} {{item.src}} <v-chip variant="tonal" color="indigo"
+                                    v-on:click="onPDF(item.url)" text>Link</v-chip>
+                                </p>
+
+
+                              </div>
+
+                            </v-card>
+
+
+                          </template>
+
+
+                          </template>
+
+                          <div>&nbsp;</div>
+
+                          <h2>Book Chapters
+                          </h2>
+
+                          <div>&nbsp;</div>
+                          <template v-for="(item, index) in books">
+
+                            <v-card flat color="transparent">
+
+                              <div>
+                                <p align="left" style=" font-weight: bold;  font-size: 18px;">
+                                  <v-chip text label small> {{item.year}} </v-chip> {{item.title}}
+                                </p>
+                                <p align="left" style="  font-size: 18px;">
+                                  {{item.authors}} {{item.src}} <v-chip variant="tonal" color="indigo"
+                                    v-on:click="onPDF(item.url)" text>Link</v-chip>
+
+                                </p>
+
+                              </div>
+
+                            </v-card>
+
+
+                          </template>
 
 
 
 
-                </div>
+
+                          </template>
+
+                          <div>&nbsp;</div>
+                          <h2>Invited talks
+                          </h2>
+                          <div>&nbsp;</div>
+                          <template v-for="(item, index) in talks">
+
+                            <v-card flat color="transparent">
+                              <div>
+                                <p align="left" style=" font-weight: bold;  font-size: 18px;">
+                                  <v-chip text label small> {{item.year}} </v-chip> {{item.title}}
+                                </p>
+                                <p align="left" style="  font-size: 18px;">
+                                  {{item.authors}} {{item.src}} <v-chip variant="tonal" color="indigo"
+                                    v-on:click="onPDF(item.url)" text>Link</v-chip>
+                                </p>
+                              </div>
+
+                            </v-card>
+
+
+                          </template>
+
+
+                          <div>&nbsp;</div>
+                          <h2>Service</h2>
+                          <div>&nbsp;</div>
+                          <v-card flat color="transparent">
+                            <div>
+                              <p align="left" style="font-weight: bold; font-size: 18px;">
+                                <v-chip text label small>2024</v-chip> Website Chair, RSS 2024
+                              </p>
+                              <!-- Add other service details following the same structure -->
+                            </div>
+                            <div>&nbsp;</div>
+                            <div>
+                              <p align="left" style="font-weight: bold; font-size: 18px;">
+                                <v-chip text label small>2023</v-chip> Associate Editor, IEEE Robotics and Automation Letters (Until now)
+                              </p>
+                              <!-- Add other service details following the same structure -->
+                            </div>
+                          </v-card>
+
+
+
+
+
+
+                        </v-card>
+
+
+
+
+
+                      </div>
 
 
 
@@ -711,19 +590,423 @@
 
 
 
-              </v-card>
+                    </v-card>
 
 
 
 
-            </v-layout>
+                  </v-layout>
 
-          </v-card>
+                </v-card>
 
 
 
-        </v-container>
-      </v-main>
+              </v-container>
+            </v-main>
+
+          </v-app>
+
+        </div>
+
+        <script>
+          const { createApp } = Vue
+          const { createVuetify } = Vuetify
+
+          const vuetify = createVuetify()
+
+          const app = createApp({
+            data() {
+              return {
+
+                dark_theme: true,
+                chips: ['Robot Programming', 'Human-Robot Interaction', 'Deep Learning', 'Artificial Intelligence', 'Robot design', 'Social Robots', 'Robot Control', 'Software Architectured for Robotics'],
+                items: ['Robot Programming', 'Human-Robot Interaction', 'Deep Learning', 'Artificial Intelligence', 'Robot design', 'Social Robots', 'Robot Control', 'Software Architectured for Robotics'],
+
+                books: [
+                  {
+                    title: 'From Motion to Emotion Prediction: A Hidden Biometrics Approach.',
+                    authors: "F. Rida, L.R. Ardila, E. Coronado, A. Nait-ali, G. Venture.",
+                    src: "Hidden Biometrics",
+                    year: 2019,
+                    url: "https://link.springer.com/chapter/10.1007/978-981-13-0956-4_11",
+
+                  }
+                ],
+
+                years: [
+                  {
+                    color: 'cyan',
+                    year: '2017  - 2020',
+                    school: ' Tokyo University of Agriculture and Technology, Japan',
+                    title: 'Phd in Mechanical Systems Engineering',
+                  },
+                  {
+                    color: 'teal',
+                    year: '2015-2017 ',
+                    title: 'MSc in Advanced Robotics (EMARO+)',
+                    school: 'University of Genova, Italy, and Ecole Centrale de Nantes, France',
+                  },
+                  {
+                    color: 'green',
+                    year: '2007 - 2012',
+                    title: 'BSc in Mechatronics Engineering',
+                    school: 'Autonomous University of San Luis Potosí, Mexico',
+                  },],
+
+                conferences: [
+
+                  {
+                    "title": "Integration of a Presence Robot in a Smart Home",
+                    "authors": "Capy, S., Coronado, E., Osorio, P., Hagane, S., Deuff, D., & Venture, G.",
+                    "src": "2023 3rd International Conference on Computer, Control and Robotics (ICCCR) (pp. 192-197). IEEE",
+                    "year": 2023,
+                    "url": ""
+                  },
+
+
+                  {
+                    title: 'Together alone, Yōkobo, a sensible presence robject for the home of newly retired couples',
+                    authors: "Deuff, D., Milleville-Pennel, I., Ocnarescu, I., Garcin, D., Aznar, C., Capy, S., Hagane, S., Osorio Marin, P.F., Coronado Zuniga, E., Rincon Ardila, L. and Venture, G.,",
+                    src: "In Designing Interactive Systems Conference (pp. 1773-1787).",
+                    year: 2022,
+                    url: "https://dl.acm.org/doi/abs/10.1145/3532106.3533485",
+                  },
+
+                  {
+                    title: 'Un robot dans les foyers deux jours avec pepper',
+                    authors: "Deuff, D., Coronado, E., Milleville-Pennel, I., Ocnarescu, I., & Venture, G.",
+                    src: "In Drôles d'objets: un nouvel art de faire",
+                    year: 2021,
+                    url: "https://hal.archives-ouvertes.fr/hal-03618857/document",
+                  },
+
+
+                  {
+                    title: 'Human Motion Retargeting to Pepper Humanoid Robot from Uncalibrated Videos Using Human Pose Estimation*',
+                    authors: "Khalil, H., Coronado, E., & Venture, G.",
+                    src: "30th IEEE International Conference on Robot & Human Interactive Communication (RO-MAN). IEEE, 2021.",
+                    year: 2021,
+                    url: "https://ieeexplore.ieee.org/abstract/document/9515495",
+                  },
+
+                  {
+                    title: 'Impression evaluation of robot’s behavior when assisting human in a cooking task*',
+                    authors: "Yamamoto, M., Hu, Y., Coronado, E., & Venture, G",
+                    src: "In 2021 30th IEEE International Conference on Robot & Human Interactive Communication (RO-MAN) (pp. 743-748). IEEE. 2021",
+                    year: 2021,
+                    url: "https://ieeexplore.ieee.org/abstract/document/9515527",
+                  },
+
+
+                  {
+                    title: 'User expectations of robots in public spaces: A co-design methodology',
+                    authors: "Tian, L., Carreno-Medrano, P., Sumartojo, S., Mintrom, M., Coronado, E., Venture, G. and Kulić, D",
+                    src: "In International Conference on Social Robotics, pp. 259-270. Springer, Cham, 2020.",
+                    year: 2020,
+                    url: "https://link.springer.com/chapter/10.1007/978-3-030-62056-1_22",
+                  },
+
+                  {
+                    title: 'Connecting MATLAB/Octave to Perceptual, Cognitive and Control Components for the Development of Intelligent Robotic Systems',
+                    authors: "Coronado, E., Rincon, L., & Venture, G",
+                    src: "Symposium on Robot Design, Dynamics and Control. Springer, Cham, 2020.",
+                    year: 2020,
+                    url: "https://link.springer.com/chapter/10.1007/978-3-030-58380-4_44",
+                  },
+
+
+
+                  {
+                    title: 'Designerly way of thinking in a robotics research project',
+                    authors: "Deuff, Dominique, Ioana Ocnarescu, Luis Enrique Coronado, Liz Rincon-Ardila, Isabelle Milleville, and Gentiane Venture.",
+                    src: "日本ロボット学会誌 38.8 (2020): 692-702.",
+                    year: 2020,
+                    url: "https://www.jstage.jst.go.jp/article/jrsj/38/8/38_38_692/_article/-char/ja/",
+                  },
+
+
+
+                  {
+                    title: 'Intention and Engagement Recognition for Personalized Human-Robot Interaction, an integrated and Deep Learning approach.',
+                    authors: "SP. Pattar, E. Coronado, LR. Ardila, G. Venture",
+                    src: "IEEE 4th International Conference on Advanced Robotics and Mechatronics (ICARM)",
+                    year: 2019,
+                    url: "https://ieeexplore.ieee.org/abstract/document/8834226",
+                  },
+                  {
+                    title: 'Robots Meet Children, Development of Semi-Autonomous Control Systems for Children-Robot Interaction in the Wild.',
+                    authors: "E. Coronado, X. Indurkhya, G. Venture",
+                    src: "IEEE 4th International Conference on Advanced Robotics and Mechatronics (ICARM)",
+                    year: 2019,
+                    url: "https://ieeexplore.ieee.org/abstract/document/8833751",
+                  },
+                  {
+                    title: 'Adaptive cognitive robot using dynamic perception with fast deep-learning and adaptive on-line predictive control.',
+                    authors: "L. Rincon,  E. Coronado,  C. Law, & G. Venture",
+                    src: "IFToMM World Congress on Mechanism and Machine Science (pp. 2429-2438)",
+                    year: 2019,
+                    url: "https://link.springer.com/chapter/10.1007/978-3-030-20131-9_240",
+                  },
+                  {
+                    title: 'Development of Intelligent Behaviors for Social Robots via User-Friendly and Modular Programming Tools.',
+                    authors: "E. Coronado, F. Mastrogiovanni, G. Venture. ",
+                    src: "IEEE Workshop on Advanced Robotics and its Social Impacts (ARSO) (pp. 62-68).",
+                    year: 2018,
+                    url: "https://ieeexplore.ieee.org/abstract/document/8625839"
+                  },
+                  {
+                    title: 'Design of a Human-Centered Robot Framework for End-User Programming and Applications.',
+                    authors: "E. Coronado, F. Mastrogiovanni, G. Venture. ",
+                    src: "ROMANSY 22–Robot Design, Dynamics and Control, 450-457.",
+                    year: 2018,
+                    url: "https://link.springer.com/chapter/10.1007/978-3-319-78963-7_56"
+                  },
+                  {
+                    title: 'Expressive states with a robot arm using adaptive fuzzy and robust predictive controllers.',
+                    authors: "L. Rincon, E. Coronado, H. Hendra, J. Phan, Z. Zainalkefli, G. Venture. ",
+                    src: " 2018 3rd International Conference on Control and Robotics Engineering (ICCRE)",
+                    year: 2018,
+                    url: "https://ieeexplore.ieee.org/abstract/document/8376425",
+                  },
+
+                  {
+                    title: 'Gesture-based Robot Control: Design Challenges and Evaluation with Humans.',
+                    authors: "E. Coronado, J. Villalobos, B. Bruno, F. Mastrogiovanni. ",
+                    src: "2017 IEEE International Conference on Robotics and Automation (ICRA).",
+                    year: 2017,
+                    url: "https://ieeexplore.ieee.org/abstract/document/7989321",
+                  },
+
+                  {
+                    title: 'Time-based identification of human ankle impedance via Microsoft Kinect.',
+                    authors: "M.E. Segura, E. Coronado, A. Cardenas, D. Piovesan. ",
+                    src: " IEEE Signal Processing in Medicine and Biology Symposium (SPMB) (pp. 1-5).",
+                    year: 2015,
+                    url: "https://ieeexplore.ieee.org/abstract/document/7405424",
+                  },
+                ],
+
+                journals: [
+
+                  {
+                    "title": "NEP+: A Human-Centered Framework for Inclusive Human-Machine Interaction Development",
+                    "authors": "Coronado, E., Yamanobe, N., & Venture, G.",
+                    "src": "Sensors 23(22), 9136",
+                    "year": 2023,
+                    "url": "https://www.mdpi.com/1424-8220/23/12/5692"
+                  },
+
+                  {
+                    title: 'A Human-Centered and Adaptive Robotic System Using Deep Learning and Adaptive Predictive Controllers',
+                    authors: 'Toyoguchi, S., Coronado, E., & Venture, G',
+                    src: 'Journal of Robotics and Mechatronics, 35(3), 834-843.',
+                    year: 2023,
+                    url: "https://www.jstage.jst.go.jp/article/jrobomech/35/3/35_834/_article/-char/ja/",
+
+                  },
+
+
+                  {
+                    title: 'Hold My Hand: Development of a Force Controller and System Architecture for Joint Walking with a Companion Robot',
+                    authors: 'Coronado, E., Shinya, T., & Venture, G. ',
+                    src: 'Sensors 23.12 (2023): 5692',
+                    year: 2023,
+                    url: "https://www.mdpi.com/1424-8220/23/12/5692",
+
+                  },
+
+
+                  {
+                    title: 'Integrating Virtual, Mixed, and Augmented Reality to Human–Robot Interaction Applications Using Game Engines: A Brief Review of Accessible Software Tools and Frameworks',
+                    authors: 'Coronado, E., Itadera, S. and Ramirez-Alpizar, I.G',
+                    src: 'Applied Sciences 13.3 (2023)',
+                    year: 2023,
+                    url: "https://www.mdpi.com/2076-3417/13/3/1292",
+
+                  },
+
+
+
+                  {
+                    title: 'Expanding the Frontiers of Industrial Robots beyond Factories: Design and in the Wild Validation',
+                    authors: 'Capy, S., Rincon, L., Coronado, E., Hagane, S., Yamaguchi, S., Leve, V., Kawasumi, Y., Kudou, Y. and Venture, G',
+                    src: 'Machines 10.12 (2022): 1179.',
+                    year: 2022,
+                    url: "https://www.mdpi.com/2075-1702/10/12/1179",
+
+                  },
+
+
+                  {
+                    title: 'Yookobo: A Robot to Strengthen Links Amongst Users with Non-Verbal Behaviours',
+                    authors: 'Capy Siméon, Pablo Osorio, Shohei Hagane, Corentin Aznar, Dora Garcin, Enrique Coronado, Dominique Deuff, Ioana Ocnarescu, Isabelle Milleville, and Gentiane Venture.',
+                    src: 'Machines 10.8 (2022): 708',
+                    year: 2022,
+                    url: "https://www.mdpi.com/2075-1702/10/8/708",
+
+                  },
+
+                  {
+                    title: ' Evaluating quality in human-robot interaction: A systematic search and classification of performance and human-centered factors',
+                    authors: "Coronado, E., Kiyokawa, T., Ricardez, G. A. G., Ramirez-Alpizar, I. G., Venture, G., & Yamanobe, N. ",
+                    src: "Journal of Manufacturing Systems, 63, 392-410.",
+                    year: 2022,
+                    url: "https://doi.org/10.1016/j.jmsy.2022.04.007",
+                  },
+
+                  {
+                    title: ' Applying kansei/affective engineering methodologies in the design of social and service robots: A systematic review',
+                    authors: "Coronado, Enrique, Gentiane Venture, and Natsuki Yamanobe.",
+                    src: "International Journal of Social Robotics 13.5 (2021): 1161-1171.",
+                    year: 2021,
+                    url: "https://link.springer.com/article/10.1007/s12369-020-00709-x",
+                  },
+
+                  {
+                    title: ' Towards a modular and distributed end-user development framework for human-robot interaction',
+                    authors: "Coronado, E., Deuff, D., Carreno-Medrano, P., Tian, L., Kulić, D., Sumartojo, S., Mastrogiovanni, F. and Venture, G.",
+                    src: "IEEE Access",
+                    year: 2021,
+                    url: "https://ieeexplore.ieee.org/abstract/document/9323043",
+                  },
+
+                  {
+                    title: ' Visual programming environments for end-user development of intelligent and social robots, a systematic review',
+                    authors: "Coronado, E., Mastrogiovanni, F., Indurkhya, B., & Venture, G.",
+                    src: "Journal of Computer Languages",
+                    year: 2021,
+                    url: "https://doi.org/10.1016/j.cola.2020.100970",
+                  },
+
+                  {
+                    title: ' Towards iot-aided human–robot interaction using nep and ros: A platform-independent, accessible and distributed approach',
+                    authors: "Coronado, E., & Venture, G.",
+                    src: "Sensors, 20(5), 1500.",
+                    year: 2020,
+                    url: "https://www.mdpi.com/1424-8220/20/5/1500",
+                  },
+
+
+                  {
+                    title: " Self-Tuning Extended Kalman Filter Parameters to Identify Ankle's Third-Order Mechanics",
+                    authors: "E. Coronado, A. González, A. Cárdenas, M. Maya, E. Chiovetto, D. Piovesan",
+                    src: "Journal of Biomechanical Engineering ",
+                    year: 2020,
+                    url: " https://doi.org/10.1115/1.4048042",
+                  },
+
+
+                  {
+                    title: 'Can Human-Inspired Learning Behaviour Facilitate Human–Robot Interaction?',
+                    authors: "Carfì, A., Villalobos, J., Coronado, E., Bruno, B., & Mastrogiovanni, F. ",
+                    src: "International Journal of Social Robotics, 1-14.",
+                    year: 2019,
+                    url: "https://link.springer.com/article/10.1007/s12369-019-00548-5",
+                  },
+
+                  {
+                    title: 'Vision-based Control of a Delta Parallel Robot via Linear Camera-Space Manipulation.',
+                    authors: "E. Coronado, M. Maya, A. Cardenas, O. Guarneros, D. Piovesan. ",
+                    src: "Journal of Intelligent & Robotic Systems 85 (1), 93-106.",
+                    year: 2017,
+                    url: "https://link.springer.com/article/10.1007/s10846-016-0413-5",
+                  },
+
+                  {
+                    title: 'Analysis of recoverable falls via Microsoft Kinect: Identification of third-order ankle dynamics.',
+                    authors: "M.E. Segura, E. Coronado, A. Cardenas, D. Piovesan. ",
+                    src: "Journal of Dynamic Systems, Measurement, and Control 138 (9), 091006",
+                    year: 2016,
+                    url: "https://dynamicsystems.asmedigitalcollection.asme.org/article.aspx?articleid=2499047",
+                  },
+
+                ],
+
+                talks: [
+
+                  {
+                    title: 'Empowering End-Users with Behavior Trees, Development of Human-Robot Applications Performing "in the Wild"',
+                    authors: "Coronado, E.",
+                    src: "IROS 2019 Workshop: Behavior Trees for Robotics Systems: Tools, Applications, and Lessons Learned, Macau, 4th-8th November, 2019",
+                    year: 2019,
+                    url: "https://behavior-trees-iros-workshop.github.io/",
+                  },
+                ],
+
+
+
+                ref1:
+                  `
+              @article{coronado2020towards,
+                    title={Towards IoT-aided human--robot interaction using NEP and ROS: A platform-independent, accessible and distributed approach},
+                    author={Coronado, Enrique and Venture, Gentiane},
+                    journal={Sensors},
+                    volume={20},
+                    number={5},
+                    pages={1500},
+                    year={2020},
+                    publisher={Multidisciplinary Digital Publishing Institute}
+                  }`,
+
+
+
+
+
+                color_nav: "grey lighten-2",
+              }
+            },
+
+            methods: {
+
+              initialize() {
+
+              },
+
+              onPDF: function (value) {
+                window.open(value, '_blank')
+              },
+
+              onAbout() {
+                document.getElementById("about").scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+              },
+
+              remove(item) {
+                this.chips.splice(this.chips.indexOf(item), 1)
+                this.chips = [...this.chips]
+              },
+
+              onPublications() {
+
+                document.getElementById("publications").scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+              },
+
+              onEducation() {
+                document.getElementById("education").scrollIntoView({ behavior: 'smooth', block: 'center' });
+              },
+
+
+
+              onExperience() {
+
+                document.getElementById("experience").scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+              },
+
+              onInterests() {
+
+                document.getElementById("interest").scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+              },
+            },
+
+
+          }).use(vuetify).mount('#app')
+
+        </script>
+
+      </body>
 
     </v-app>
 
@@ -922,7 +1205,7 @@
 
             },
 
-          
+
             {
               title: 'Integrating Virtual, Mixed, and Augmented Reality to Human–Robot Interaction Applications Using Game Engines: A Brief Review of Accessible Software Tools and Frameworks',
               authors: 'Coronado, E., Itadera, S. and Ramirez-Alpizar, I.G',
@@ -1093,9 +1376,7 @@
           document.getElementById("education").scrollIntoView({ behavior: 'smooth', block: 'center' });
         },
 
-        onProjects() {
-          document.getElementById("projects").scrollIntoView({ behavior: 'smooth', block: 'center' });
-        },
+
 
         onExperience() {
 
