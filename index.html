@@ -262,7 +262,7 @@
 
                           <p style="text-align: center;">
                             <strong>Most recent interests:</strong> Teleoperation, Imitation Learning, Generative AI,
-                            Digital Twins, and Extended Reality as applied to Robotics.
+                            Digital Twins, and Extended Reality applied to Robotics.
                           </p>
 
 
@@ -562,9 +562,11 @@
                                   <v-chip text label small> {{item.year}} </v-chip> {{item.title}}
                                 </p>
                                 <p align="left" style="  font-size: 18px;">
-                                  {{item.authors}} {{item.src}} <v-chip variant="tonal" color="indigo"
-                                    v-on:click="onPDF(item.url)" text>Link</v-chip>
+                                  {{item.authors}} {{item.src}} 
                                 </p>
+                                <div style="text-align: right;">
+                                  <v-chip variant="tonal" color="indigo" v-on:click="onPDF(item.url)" text>Link</v-chip>
+                                </div>
                               </div>
 
                             </v-card>
