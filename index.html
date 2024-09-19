@@ -197,7 +197,7 @@
                       </p>
                       <div>&nbsp;</div>
                       <p style="text-align: center; font-size: 30px; color:#616161;">
-                        Researcher in <b>AIST</b>, Tokyo, Japan
+                        <b>Senior Researcher</b> in <b>AIST</b>, Tokyo, Japan
                       </p>
                     </div>
                     <div>&nbsp;</div>
@@ -227,7 +227,7 @@
               <div>&nbsp;&nbsp;</div>
               <h1 style="text-align: justify"><b>Education</b></h1>
               <v-card id="education" flat color="transparent">
-                <v-timeline>
+                <v-timeline  align="start" side="end">
                   <v-timeline-item v-for="(year, i) in years" :color="year.color" :key="i" small>
                     <span slot="opposite" :class="`font-weight-bold ${year.color}--text`" style="font-size: 20px"
                       v-text="year.year"></span>
@@ -254,51 +254,21 @@
             <v-card color="transparent" flat>
               <div>&nbsp;&nbsp;</div>
               <h1 style="text-align: justify"><b>Academic experience</b></h1>
-              <v-row dense>
-                <v-col cols="12">&nbsp;&nbsp;</v-col>
-                <v-col cols="12">&nbsp;&nbsp;</v-col>
-                <v-col cols="12">&nbsp;&nbsp;</v-col>
-
-                <v-col cols="4">
-                  <p style="text-align: center;"> Lecturer in </p>
-                  <div>&nbsp;&nbsp;</div>
-                  <v-img class="mx-auto" max-width="300" src="img/uaslp-logo.png"></v-img>
-                </v-col>
-                <v-col id="experience" cols="4">
-                  <p style="text-align: center;"> Assistant Professor in </p>
-                  <div>&nbsp;&nbsp;</div>
-                  <v-img class="mx-auto" max-width="300" src="img/tuat-logo2.png"></v-img>
-                </v-col>
-                <v-col cols="4">
-                  <p style="text-align: center;"> Research Scientist in </p>
-                  <div>&nbsp;&nbsp;</div>
-                  <v-img class="mx-auto" max-width="300" src="img/aist-logo2.png"></v-img>
-                </v-col>
-
-                <v-col class="d-flex justify-center align-center" cols="4">
-                  <p style="text-align: center; font-size: 18px;">
-                    Autonomous University of San Luis Potosí (UASLP)
-                    <br> San Luis Potosí, Mexico
-                    <br>
-                    <strong>2013-2015</strong>
-                  </p>
-                </v-col>
-
-                <v-col class="d-flex justify-center align-center" cols="4">
-                  <p style="text-align: center; font-size: 18px;">
-                    Tokyo University of Agriculture and Technology (TUAT)
-                    <br> Tokyo, Japan
-                    <br>
-                    <strong>2020-2022</strong>
-                  </p>
-                </v-col>
-                <v-col class="d-flex justify-center align-center" cols="4">
-                  <p style="text-align: center; font-size: 18px;">
-                    National Institute of Advanced Industrial Science and Technology (AIST), Tokyo, Japan
-                    <br><strong>2022-today</strong>
-                  </p>
-                </v-col>
-              </v-row>
+              <v-card id="experience" flat color="transparent">
+                <v-timeline  align="start" side="end">
+                  <v-timeline-item v-for="(position, i) in positions" :color="position.color" :key="i" small>
+                    <span slot="opposite" :class="`font-weight-bold ${position.color}--text`" style="font-size: 20px"
+                      v-text="position.year"></span>
+                    <div class="py-3">
+                      <h3 style="font-size: 20px" :class="`font-weight-bold font-weight-light mb-3 ${position.color}--text`">
+                        {{position.title}}
+                      </h3>
+                      <div>
+                        <h4>{{position.school}}</h4>
+                      </div>
+                    </div>
+                  </v-timeline-item>
+                </v-timeline>
             </v-card>
 
             <!-- New Software Section -->
@@ -515,6 +485,32 @@
             year: '2007 - 2012',
             title: 'BSc in Mechatronics Engineering',
             school: 'Autonomous University of San Luis Potosí, Mexico',
+          },],
+
+          positions: [
+          {
+            color: 'cyan',
+            year: '2024  - today',
+            school: 'National Institute of Advanced Industrial Science and Technology (AIST), Tokyo, Japan',
+            title: 'Senior Researcher',
+          },
+          {
+            color: 'cyan',
+            year: '2022  - 2024',
+            school: 'National Institute of Advanced Industrial Science and Technology (AIST), Tokyo, Japan',
+            title: 'Researcher',
+          },
+          {
+            color: 'teal',
+            year: '2020-2022',
+            title: 'Assistant Professor',
+            school: 'Tokyo University of Agriculture and Technology (TUAT), Tokyo, Japan',
+          },
+          {
+            color: 'green',
+            year: '2013-2015',
+            title: 'Lecturer',
+            school: 'Autonomous University of San Luis Potosí (UASLP), Mexico',
           },],
 
         conferences: [
