@@ -137,12 +137,11 @@
         </v-toolbar-title>
         <v-spacer></v-spacer>
         <v-toolbar-items class="hidden-sm-and-down">
-          <v-btn text @click="onAbout()">01. About</v-btn>
-          <v-btn text @click="onEducation()">02. Education</v-btn>
-          <v-btn text @click="onExperience()">03. Experience</v-btn>
-          <v-btn text @click="onSoftware()">04. Software</v-btn>
-          <v-btn text @click="onResearch()">05. Research</v-btn>
-          <v-btn text @click="onPublications()">06. Publications</v-btn>
+          <v-btn text @click="onAbout()">About</v-btn>
+          <v-btn text @click="onBiography()">Biography</v-btn>
+          <v-btn text @click="onSoftware()">Software</v-btn>
+          <v-btn text @click="onResearch()">Research</v-btn>
+          <v-btn text @click="onPublications()">Publications</v-btn>
         </v-toolbar-items>
 
       </v-app-bar>
@@ -162,7 +161,7 @@
                     <div>&nbsp;</div>
 
 
-                    <v-img :width="300" aspect-ratio="16/9" src="img/coronado.jpg"></v-img>
+                    <v-img :max-width="200" aspect-ratio="16/9" src="img/coronado.jpg"></v-img>
                   </v-col>
 
                   <v-col cols="12" md="2"></v-col>
@@ -178,20 +177,9 @@
                       </p>
                       <div>&nbsp;</div>
                       <p style="text-align: center; font-size: 26px; color:#616161;">
-                        <b>Senior Researcher</b> in <b>AIST</b>, Tokyo, Japan
+                        <b>Senior Researcher</b> on <b>Human-Centered Robotics and Industry 5.0</b>
                       </p>
                     </div>
-                    <div>&nbsp;</div>
-                    <p style="text-align: center;">
-                      <strong>Main areas of expertise:</strong> Human-Robot Interaction, Human-Centered Robotics,
-                      Industry 5.0, Social and Service Robotics, and Robotics Software Engineering.
-                    </p>
-
-                    <p style="text-align: center;">
-                      <strong>Most recent interests:</strong> Robot Teleoperation, Imitation Learning, Generative AI,
-                      Digital Twins, and Extended Reality applied to Robotics.
-                    </p>
-
                     <div>&nbsp;</div>
                     <div>&nbsp;</div>
 
@@ -231,21 +219,27 @@
 
           <v-card color="transparent" flat>
             <div>&nbsp;&nbsp;</div>
-            <h1 style="text-align: justify"><b>Education</b></h1>
-            <v-card id="education" flat color="transparent">
-              <v-timeline align="start" side="end">
-                <v-timeline-item v-for="(year, i) in years" :color="year.color" :key="i" small>
-                  <span slot="opposite" :class="`font-weight-bold ${year.color}--text`" style="font-size: 20px"
-                    v-text="year.year"></span>
-                  <div class="py-3">
-                    <h3 style="font-size: 20px" :class="`font-weight-light mb-3 ${year.color}--text`">{{year.title}}
-                    </h3>
-                    <div>
-                      <h4>{{year.school}}</h4>
-                    </div>
-                  </div>
-                </v-timeline-item>
-              </v-timeline>
+            <h1 style="text-align: justify"><b>Biography</b></h1>
+            <v-card id="Biography" flat color="transparent">
+
+              <div>&nbsp;&nbsp;</div>
+              <div>&nbsp;&nbsp;</div>
+
+              <p style="text-align: justify;">
+                Enrique Coronado holds a B.S. in Mechatronics Engineering (2012) from the Autonomous University of San
+                Luis Potosí (UASLP), Mexico, an M.S. in Advanced Robotics (2017) through the EMARO+ program, and a Ph.D.
+                in Mechanical Systems Engineering (2020) from the Tokyo University of Agriculture and Technology (TUAT),
+                Japan. He has served as a Lecturer at UASLP, an Assistant Professor at TUAT, and a Researcher (2022) at
+                the National Institute of Advanced Industrial Science and Technology (AIST), Japan.
+              </p>
+              <div>&nbsp;&nbsp;</div>
+              <p style="text-align: justify;">
+                Dr. Coronado is currently a Senior Researcher in the Collaborative Robotics Research Group (CRRG) at
+                AIST. His work focuses on advancing robotics to address social and economic challenges through a
+                human-centered
+                perspective. His research interests include human-robot interaction, social and service robotics,
+                robotics software engineering, human digital twins, robot teleoperation, and extended reality.
+              </p>
             </v-card>
           </v-card>
 
@@ -257,28 +251,9 @@
             <div>&nbsp;&nbsp;</div>
           </v-card>
 
-          <v-card color="transparent" flat>
-            <div>&nbsp;&nbsp;</div>
-            <h1 style="text-align: justify"><b>Academic experience</b></h1>
-            <v-card id="experience" flat color="transparent">
-              <v-timeline align="start" side="end">
-                <v-timeline-item v-for="(position, i) in positions" :color="position.color" :key="i" small>
-                  <span slot="opposite" :class="`font-weight-bold ${position.color}--text`" style="font-size: 20px"
-                    v-text="position.year"></span>
-                  <div class="py-3">
-                    <h3 style="font-size: 20px" :class="`font-weight-light mb-3 ${position.color}--text`">
-                      {{position.title}}
-                    </h3>
-                    <div>
-                      <h4>{{position.school}}</h4>
-                    </div>
-                  </div>
-                </v-timeline-item>
-              </v-timeline>
-            </v-card>
 
             <!-- New Software Section -->
-            <v-card color="transparent" flat>
+            <v-card  id="Software"  color="transparent" flat>
               <div>&nbsp;&nbsp;</div>
               <h1 style="text-align: justify"><b>Software</b></h1>
               <v-row dense>
@@ -291,7 +266,7 @@
                     <v-card-title>NEP+</v-card-title>
                     <v-card-text>
                       <span style="font-size: 18px; font-family: 'Roboto Mono', monospace;">
-                        NEP+ is a cross-disciplinary, cross-platform, multi-language, and
+                        A cross-disciplinary, cross-platform, multi-language, and
                         human-centered middleware framework for busy practitioners, researchers, and
                         newcomers in robotics and IoT.
                       </span>
@@ -308,13 +283,6 @@
               </v-row>
             </v-card>
 
-
-            <v-card color="transparent" flat>
-              <div>&nbsp;&nbsp;</div>
-              <div>&nbsp;&nbsp;</div>
-              <div>&nbsp;&nbsp;</div>
-              <div>&nbsp;&nbsp;</div>
-            </v-card>
 
             <v-card color="transparent" flat>
               <div>&nbsp;&nbsp;</div>
@@ -828,6 +796,7 @@
 
       onSoftware() {
 
+        document.getElementById("Software").scrollIntoView({ behavior: 'smooth', block: 'center' });
       },
 
       onResearch() {
@@ -840,17 +809,12 @@
 
       },
 
-      onEducation() {
-        document.getElementById("education").scrollIntoView({ behavior: 'smooth', block: 'center' });
+      onBiography() {
+        document.getElementById("Biography").scrollIntoView({ behavior: 'smooth', block: 'center' });
       },
 
 
 
-      onExperience() {
-
-        document.getElementById("experience").scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-      },
 
       onInterests() {
 
