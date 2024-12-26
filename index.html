@@ -112,7 +112,6 @@
 
   p {
     font-size: 20px;
-    color: #616161;
     text-align: left
   }
 </style>
@@ -132,7 +131,7 @@
 
     <v-app>
 
-      <v-app-bar color="white" app dense flat clipped-right>
+      <v-app-bar  app dense flat clipped-right>
 
         <v-toolbar-title>
           Coronado E.
@@ -141,8 +140,8 @@
         <v-toolbar-items class="hidden-sm-and-down">
           <v-btn text @click="onAbout()">About</v-btn>
           <v-btn text @click="onBiography()">Biography</v-btn>
-          <v-btn text @click="onSoftware()">Software</v-btn>
           <v-btn text @click="onResearch()">Research</v-btn>
+          <v-btn text @click="onSoftware()">Software</v-btn>
           <v-btn text @click="onPublications()">Publications</v-btn>
         </v-toolbar-items>
 
@@ -174,11 +173,11 @@
 
 
                     <div>
-                      <p style="text-align: center; font-size: 38px; color:#616161;">
+                      <p style="text-align: center; font-size: 40px;">
                         Luis <b> Enrique Coronado </b> Zuñiga
                       </p>
                       <div>&nbsp;</div>
-                      <p style="text-align: center; font-size: 26px; color:#616161;">
+                      <p style="text-align: center; font-size: 28px;">
                         <b>Senior Researcher</b> on <b>Human-Centered Robotics and Industry 5.0</b>
                       </p>
                     </div>
@@ -187,17 +186,17 @@
 
                     <!-- Social Media Icons -->
                     <div style="text-align: center;">
-                      <v-btn icon href="https://github.com/enriquecoronadozu" target="_blank" class="mx-2">
+                      <v-btn flat color="indigo" icon href="https://github.com/enriquecoronadozu" target="_blank" class="mx-2">
                         <v-icon>mdi-github</v-icon>
                       </v-btn>
-                      <v-btn icon href="https://www.linkedin.com/in/enrique-coronado-zu/" target="_blank" class="mx-2">
+                      <v-btn icon color="indigo" href="https://www.linkedin.com/in/enrique-coronado-zu/" target="_blank" class="mx-2">
                         <v-icon>mdi-linkedin</v-icon>
                       </v-btn>
-                      <v-btn icon href="https://x.com/enrique_hcr" target="_blank" class="mx-2">
+                      <v-btn icon color="indigo" href="https://x.com/enrique_hcr" target="_blank" class="mx-2">
                         <v-icon>mdi-twitter</v-icon>
                       </v-btn>
 
-                      <v-btn icon href="https://scholar.google.com/citations?user=2usIS0EAAAAJ&hl=en"
+                      <v-btn icon color="indigo" href="https://scholar.google.com/citations?user=2usIS0EAAAAJ&hl=en"
                         target="_blank" class="mx-2">
                         <v-icon>mdi-school</v-icon>
                       </v-btn>
@@ -224,21 +223,22 @@
 
               <div>&nbsp;&nbsp;</div>
               <div>&nbsp;&nbsp;</div>
+              
 
-              <p style="text-align: justify;">
+              <p style="text-align: justify;">  <b>
                 Enrique Coronado holds a B.S. in Mechatronics Engineering (2012) from the Autonomous University of San
-                Luis Potosí (UASLP), Mexico, an M.S. in Advanced Robotics (2017) through the EMARO+ program, and a Ph.D.
+                Luis Potosí (UASLP), Mexico, an M.S. in Advanced Robotics (2017) through the EMARO+ program, Italy and France, and a Ph.D.
                 in Mechanical Systems Engineering (2020) from the Tokyo University of Agriculture and Technology (TUAT),
-                Japan. He has served as a Lecturer at UASLP, an Assistant Professor at TUAT, and a Researcher (2022) at
-                the National Institute of Advanced Industrial Science and Technology (AIST), Japan.
+                Japan. He has served as an Assistant Professor (2020-2022) at TUAT, and as a Researcher (2022-2024) at
+                the National Institute of Advanced Industrial Science and Technology (AIST), Japan. </b>
               </p>
               <div>&nbsp;&nbsp;</div>
-              <p style="text-align: justify;">
+              <p style="text-align: justify;"><b>
                 Dr. Coronado is currently a Senior Researcher in the Collaborative Robotics Research Group (CRRG) at
                 AIST. His work focuses on advancing robotics to address social and economic challenges through a
                 human-centered
                 perspective. His research interests include human-robot interaction, social and service robotics,
-                robotics software engineering, human digital twins, robot teleoperation, and extended reality.
+                robotics software engineering, human digital twins, robot teleoperation, and extended reality. </b>
               </p>
             </v-card>
           </v-card>
@@ -424,10 +424,34 @@
 </div>
 
 <script>
-  const { createApp } = Vue
-  const { createVuetify } = Vuetify
+  const { createApp } = Vue;
+  const { createVuetify } = Vuetify;
+  const { ThemeDefinition } = Vuetify;
 
-  const vuetify = createVuetify()
+  const myCustomDarkTheme = {
+    dark: true,
+    colors: {
+      background: '#1A1A1A',
+      surface: '#1A1A1A',
+      primary: '#283593',
+      secondary: '#424242',
+      accent: '#82B1FF',
+      error: '#FF5252',
+      info: '#2196F3',
+      success: '#4CAF50',
+      warning: '#FFC107'
+    }
+  };
+
+  const vuetify = createVuetify({
+    theme: {
+      defaultTheme: 'myCustomDarkTheme',
+      themes: {
+        myCustomDarkTheme
+      }
+    }
+  });
+
 
   const app = createApp({
     data() {
