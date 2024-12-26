@@ -8,7 +8,7 @@
   <title>Enrique Coronado</title>
   <link rel="shortcut icon" type="image/png" href="img/nep.png" />
   <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@3.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/vuetify@3.3.0/dist/vuetify.min.css" rel="stylesheet">
 
 
@@ -102,14 +102,14 @@
   }
 
   li {
-    font-size: 22px;
+    font-size: 20px;
     color: #0277BD;
     text-align: left
   }
 
 
   p {
-    font-size: 22px;
+    font-size: 20px;
     color: #616161;
     text-align: left
   }
@@ -132,40 +132,18 @@
 
       <v-app-bar color="white" app dense flat clipped-right>
 
-        &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-        <v-toolbar-title href="https://enriquecoronadozu.github.io/NEP/start" target="_blank">
+        <v-toolbar-title>
           Coronado E.
         </v-toolbar-title>
-
         <v-spacer></v-spacer>
-
-        <v-toolbar-items>
-
-          <!-- <v-switch hide-details insert v-model="$vuetify.theme.dark"></v-switch> -->
-          <v-btn text @click="onAbout()"> 01. About
-          </v-btn>
-
-          <v-btn text @click="onEducation">
-            02. Education
-          </v-btn>
-
-          <v-btn text @click="onExperience">
-            03. Experience
-          </v-btn>
-
-          <v-btn text @click="onSoftware">
-            04. Software
-          </v-btn>
-
-          <v-btn text @click="onResearch">
-            05. Research
-          </v-btn>
-
-          <v-btn text @click="onPublications()"> 06. Publications
-          </v-btn>
-
+        <v-toolbar-items class="hidden-sm-and-down">
+          <v-btn text @click="onAbout()">01. About</v-btn>
+          <v-btn text @click="onEducation()">02. Education</v-btn>
+          <v-btn text @click="onExperience()">03. Experience</v-btn>
+          <v-btn text @click="onSoftware()">04. Software</v-btn>
+          <v-btn text @click="onResearch()">05. Research</v-btn>
+          <v-btn text @click="onPublications()">06. Publications</v-btn>
         </v-toolbar-items>
-        <div>&nbsp;</div>
 
       </v-app-bar>
 
@@ -175,41 +153,68 @@
             <v-layout wrap align-center justify-center>
               <v-card color="transparent" flat>
                 <div id="about">&nbsp;</div>
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
+
+
 
                 <v-row dense>
-                  <v-col cols="3">
-                    <!--<v-img class="mx-auto" max-width="350" src="img/cute.png"></v-img>-->
-                    <v-img :width="300" aspect-ratio="16/9" cover src="img/coronado.jpg"></v-img>
+                  <v-col cols="12" md="3" class="justify-center align-center hidden-sm-and-down">
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+
+
+                    <v-img :width="300" aspect-ratio="16/9" src="img/coronado.jpg"></v-img>
                   </v-col>
 
-                  <v-col cols="2"></v-col>
+                  <v-col cols="12" md="2"></v-col>
 
-                  <v-col cols="7">
+                  <v-col cols="12" md="7">
                     <div>&nbsp;</div>
-                    <div>&nbsp;</div>
-                    <div>&nbsp;</div>
+
+
 
                     <div>
-                      <p style="text-align: center; font-size: 40px; color:#616161;">
+                      <p style="text-align: center; font-size: 38px; color:#616161;">
                         Luis <b> Enrique Coronado </b> Zuñiga
                       </p>
                       <div>&nbsp;</div>
-                      <p style="text-align: center; font-size: 30px; color:#616161;">
+                      <p style="text-align: center; font-size: 26px; color:#616161;">
                         <b>Senior Researcher</b> in <b>AIST</b>, Tokyo, Japan
                       </p>
                     </div>
                     <div>&nbsp;</div>
                     <p style="text-align: center;">
-                      <strong>Areas of expertise:</strong> Human-Robot Interaction, Human-Centered Robotics,
+                      <strong>Main areas of expertise:</strong> Human-Robot Interaction, Human-Centered Robotics,
                       Industry 5.0, Social and Service Robotics, and Robotics Software Engineering.
                     </p>
 
                     <p style="text-align: center;">
-                      <strong>Most recent interests:</strong> Teleoperation, Imitation Learning, Generative AI,
+                      <strong>Most recent interests:</strong> Robot Teleoperation, Imitation Learning, Generative AI,
                       Digital Twins, and Extended Reality applied to Robotics.
                     </p>
+
+                    <div>&nbsp;</div>
+                    <div>&nbsp;</div>
+
+                    <!-- Social Media Icons -->
+                    <div style="text-align: center;">
+                      <v-btn icon href="https://github.com/your-github" target="_blank" class="mx-2">
+                        <v-icon>mdi-github</v-icon>
+                      </v-btn>
+                      <v-btn icon href="https://linkedin.com/in/your-linkedin" target="_blank" class="mx-2">
+                        <v-icon>mdi-linkedin</v-icon>
+                      </v-btn>
+                      <v-btn icon href="https://twitter.com/your-twitter" target="_blank" class="mx-2">
+                        <v-icon>mdi-twitter</v-icon>
+                      </v-btn>
+                      <v-btn icon href="https://instagram.com/your-instagram" target="_blank" class="mx-2">
+                        <v-icon>mdi-instagram</v-icon>
+                      </v-btn>
+                      <v-btn icon href="https://scholar.google.com/citations?user=your-google-scholar-id"
+                        target="_blank" class="mx-2">
+                        <v-icon>mdi-school</v-icon>
+                      </v-btn>
+                    </div>
+
                   </v-col>
                   <v-col cols="12">
                     <div>&nbsp;</div>
@@ -218,57 +223,58 @@
                 </v-row>
               </v-card>
             </v-layout>
+          </v-card>
 
-            <v-card color="transparent" flat>
-              <div>&nbsp;&nbsp;</div>
-            </v-card>
+          <v-card color="transparent" flat>
+            <div>&nbsp;&nbsp;</div>
+          </v-card>
 
-            <v-card color="transparent" flat>
-              <div>&nbsp;&nbsp;</div>
-              <h1 style="text-align: justify"><b>Education</b></h1>
-              <v-card id="education" flat color="transparent">
-                <v-timeline  align="start" side="end">
-                  <v-timeline-item v-for="(year, i) in years" :color="year.color" :key="i" small>
-                    <span slot="opposite" :class="`font-weight-bold ${year.color}--text`" style="font-size: 20px"
-                      v-text="year.year"></span>
-                    <div class="py-3">
-                      <h3 style="font-size: 20px" :class="`font-weight-light mb-3 ${year.color}--text`">{{year.title}}
-                      </h3>
-                      <div>
-                        <h4>{{year.school}}</h4>
-                      </div>
+          <v-card color="transparent" flat>
+            <div>&nbsp;&nbsp;</div>
+            <h1 style="text-align: justify"><b>Education</b></h1>
+            <v-card id="education" flat color="transparent">
+              <v-timeline align="start" side="end">
+                <v-timeline-item v-for="(year, i) in years" :color="year.color" :key="i" small>
+                  <span slot="opposite" :class="`font-weight-bold ${year.color}--text`" style="font-size: 20px"
+                    v-text="year.year"></span>
+                  <div class="py-3">
+                    <h3 style="font-size: 20px" :class="`font-weight-light mb-3 ${year.color}--text`">{{year.title}}
+                    </h3>
+                    <div>
+                      <h4>{{year.school}}</h4>
                     </div>
-                  </v-timeline-item>
-                </v-timeline>
-              </v-card>
+                  </div>
+                </v-timeline-item>
+              </v-timeline>
             </v-card>
+          </v-card>
 
-            <v-card color="transparent" flat>
-              <div>&nbsp;&nbsp;</div>
-            </v-card>
+          <v-card color="transparent" flat>
+            <div>&nbsp;&nbsp;</div>
+          </v-card>
 
-            <v-card color="transparent" flat>
-              <div>&nbsp;&nbsp;</div>
-            </v-card>
+          <v-card color="transparent" flat>
+            <div>&nbsp;&nbsp;</div>
+          </v-card>
 
-            <v-card color="transparent" flat>
-              <div>&nbsp;&nbsp;</div>
-              <h1 style="text-align: justify"><b>Academic experience</b></h1>
-              <v-card id="experience" flat color="transparent">
-                <v-timeline  align="start" side="end">
-                  <v-timeline-item v-for="(position, i) in positions" :color="position.color" :key="i" small>
-                    <span slot="opposite" :class="`font-weight-bold ${position.color}--text`" style="font-size: 20px"
-                      v-text="position.year"></span>
-                    <div class="py-3">
-                      <h3 style="font-size: 20px" :class="`font-weight-light mb-3 ${position.color}--text`">
-                        {{position.title}}
-                      </h3>
-                      <div>
-                        <h4>{{position.school}}</h4>
-                      </div>
+          <v-card color="transparent" flat>
+            <div>&nbsp;&nbsp;</div>
+            <h1 style="text-align: justify"><b>Academic experience</b></h1>
+            <v-card id="experience" flat color="transparent">
+              <v-timeline align="start" side="end">
+                <v-timeline-item v-for="(position, i) in positions" :color="position.color" :key="i" small>
+                  <span slot="opposite" :class="`font-weight-bold ${position.color}--text`" style="font-size: 20px"
+                    v-text="position.year"></span>
+                  <div class="py-3">
+                    <h3 style="font-size: 20px" :class="`font-weight-light mb-3 ${position.color}--text`">
+                      {{position.title}}
+                    </h3>
+                    <div>
+                      <h4>{{position.school}}</h4>
                     </div>
-                  </v-timeline-item>
-                </v-timeline>
+                  </div>
+                </v-timeline-item>
+              </v-timeline>
             </v-card>
 
             <!-- New Software Section -->
@@ -281,7 +287,7 @@
                 <v-col cols="12">&nbsp;&nbsp;</v-col>
 
                 <v-col cols="12">
-                  <v-card color="indigo" >
+                  <v-card color="indigo">
                     <v-card-title>NEP+</v-card-title>
                     <v-card-text>
                       <span style="font-size: 18px; font-family: 'Roboto Mono', monospace;">
@@ -292,7 +298,8 @@
                     </v-card-text>
                     <v-card-actions>
                       <v-spacer></v-spacer>
-                      <v-btn  variant="outlined" color="white" href="https://enrique-coronado.gitbook.io/nep+" target="_blank">
+                      <v-btn variant="outlined" color="white" href="https://enrique-coronado.gitbook.io/nep+"
+                        target="_blank">
                         <v-icon left>mdi-arrow-right</v-icon> &nbsp; Documentation
                       </v-btn>
                     </v-card-actions>
@@ -300,7 +307,7 @@
                 </v-col>
               </v-row>
             </v-card>
-            
+
 
             <v-card color="transparent" flat>
               <div>&nbsp;&nbsp;</div>
@@ -429,6 +436,7 @@
                 </v-card>
               </v-layout>
             </v-card>
+
         </v-container>
       </v-main>
 
@@ -453,6 +461,8 @@
       return {
 
         dark_theme: true,
+        drawer: false,
+        menu: false, // Add this line
         chips: ['Robot Programming', 'Human-Robot Interaction', 'Deep Learning', 'Artificial Intelligence', 'Robot design', 'Social Robots', 'Robot Control', 'Software Architectured for Robotics'],
         items: ['Robot Programming', 'Human-Robot Interaction', 'Deep Learning', 'Artificial Intelligence', 'Robot design', 'Social Robots', 'Robot Control', 'Software Architectured for Robotics'],
 
@@ -487,7 +497,7 @@
             school: 'Autonomous University of San Luis Potosí, Mexico',
           },],
 
-          positions: [
+        positions: [
           {
             color: 'cyan',
             year: '2024  - today',
@@ -814,6 +824,14 @@
       remove(item) {
         this.chips.splice(this.chips.indexOf(item), 1)
         this.chips = [...this.chips]
+      },
+
+      onSoftware() {
+
+      },
+
+      onResearch() {
+
       },
 
       onPublications() {
