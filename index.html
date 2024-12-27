@@ -239,8 +239,8 @@
                   Dr. Coronado is currently a Senior Researcher in the Collaborative Robotics Research Group (CRRG) at
                   AIST. His work focuses on advancing robotics to address social and economic challenges through a
                   human-centered
-                  perspective. His research interests include human-robot interaction, social and service robotics,
-                  robotics software engineering, human digital twins, robot teleoperation, and extended reality. </b>
+                  perspective. His research interests include Human-Robot Interaction, Social and Service Robotics,
+                  Robotics Software Engineering, Human Digital Twins, Robot Teleoperation, Imitation Learning, and Extended Reality for Enhanced Human-Robot Collaboration. </b>
               </p>
             </v-card>
           </v-card>
@@ -254,12 +254,13 @@
             <h1 style="text-align: justify"><b>Research</b></h1>
             <div>&nbsp;&nbsp;</div>
             <v-row dense>
-              <v-col v-for="(topic, index) in researchTopics" :key="index" cols="12" md="3">
-                <v-card :color="topic.color" dark>
-                  <v-img :src="topic.image" height="200px"></v-img>
+              <v-col v-for="(topic, index) in researchTopics" :key="index" cols="12" md="6">
+                <v-card color="transparent"  flat>
+                  <v-img cover :src="topic.image" height="300px"></v-img>
                   <v-card-title>{{ topic.title }}</v-card-title>
                   <v-card-text>{{ topic.description }}</v-card-text>
                   <v-card-actions>
+                    <v-spacer></v-spacer>
                     <v-btn :href="topic.pdfLink" target="_blank" color="white">
                       <v-icon left>mdi-file-pdf</v-icon> PDF
                     </v-btn>
@@ -507,61 +508,47 @@
             videoTopics: [
           {
             title: "Human-Robot Interaction in the Wild",
-            description: "An in-depth exploration of human-robot interaction in real-world environments.",
+            description: "This research focuses on enabling robots to coexist and interact seamlessly with humans. The objective is to bring robots into public settings, showcasing their true capabilities. Achieving this requires the design of multi-modal interactive systems that integrate advanced sensing, perception, cognition, control, and user-friendly interfaces capable of engaging people and facilitating meaningful interactions.",
             thumbnail: "img/hri_video.jpg",
             videoLink: "https://www.youtube.com/embed/nb775Ahd3yM?si=7cWSfClSt3OuTFEV",
             color: "indigo"
           },
           {
             title: "Imitation Learning",
-            description: "A detailed introduction to imitation learning techniques in robotics.",
+            description: "This research explores imitation learning as a means for robots to perform repetitive, contact-rich tasks, such as wiping with soft, deformable objects, freeing humans for more meaningful activities. It focuses on enabling robots to not only mimic actions but also adapt to new environments with minimal demonstrations, addressing challenges like limited training data and real-world variability.",
             thumbnail: "img/imitation_learning_video.jpg",
             videoLink: "https://www.youtube.com/embed/wjS1Om5kO2Q?si=1KVv0QKlG5avYM1_",
             color: "purple"
           },
           {
-            title: "Advanced Human-Robot Interaction",
-            description: "A comprehensive look at advanced techniques in human-robot interaction.",
+            title: "Joint Walking with a Companion Robot",
+            description: "This research focuses on developing innovative system architectures for the Pepper humanoid robot, enabling it to walk side-by-side with users, hold hands, and interactively respond to its surroundings, fostering meaningful engagement and support.",
             thumbnail: "img/advanced_hri_video.jpg",
             videoLink: "https://www.youtube.com/embed/aVKmIPbaSO8?si=q3YHc-k-_5jJfNsq",
             color: "teal"
           },
           {
-            title: "End-User Programming",
-            description: "Exploring how end-users can program robots using deep learning techniques.",
+            title: "Design of Social Robots",
+            description: "This research focuses on designing social robots to enhance mental and physical well-being through empathetic interactions, health monitoring, and personalized support, fostering social connection and healthier lifestyles. In this context, Yōkobo is a robject designed to strengthen the bond between members (e.g., a couple). ",
             thumbnail: "img/deep_learning_robotics_video.jpg",
-            videoLink: "https://www.youtube.com/embed/4NYbTJC4nfo?si=0ygWHnc_g2d-FbJD",
+            videoLink: "https://www.youtube.com/embed/YIrGxi4nnt4?si=Iqrx1LQnZ-LDeTYL",
             color: "green"
           }
         ],
 
         researchTopics: [
           {
-            title: "Human-Robot Interaction",
-            description: "Exploring the dynamics of interaction between humans and robots.",
-            image: "img/hri.jpg",
-            pdfLink: "pdf/hri.pdf",
+            title: "Human-Centered System Integration for Industry 5.0",
+            description: "This research tackles the complexity of integrating diverse hardware and software components to develop human-centered systems for Industry 5.0, with a focus on human digital twins. It introduces a novel approach that combines the technical robustness of the Robot Operating System (ROS) with the cross-platform accessibility of NEP+, enabling users and developers from varied backgrounds to create interactive human-machine systems.",
+            image: "https://www.mdpi.com/robotics/robotics-13-00028/article_deploy/html/images/robotics-13-00028-g001.png",
+            pdfLink: "https://www.mdpi.com/2218-6581/13/2/28",
             color: "teal-darken-4"
           },
           {
-            title: "Robot Teleoperation",
-            description: "Advancements in remote control of robots.",
-            image: "img/teleoperation.jpg",
-            pdfLink: "pdf/teleoperation.pdf",
-            color: "teal-darken-4"
-          },
-          {
-            title: "Robot Learning",
-            description: "Using deep learning techniques to enhance robotic capabilities.",
-            image: "img/generative_ai.jpg",
-            pdfLink: "pdf/generative_ai.pdf",
-            color: "teal-darken-4"
-          },
-          {
-            title: "Digital Twins",
-            description: "Creating digital replicas of physical robots for simulation and testing.",
-            image: "img/digital_twins.jpg",
-            pdfLink: "pdf/digital_twins.pdf",
+            title: "Quality Models for Human-Robot Interaction in Industry 5.0",
+            description: "Industry 5.0 represents a paradigm shift, prioritizing social and environmental challenges alongside economic goals. A key focus is designing human-centered smart environments fostering collaboration between humans and robots. This research develops conceptual frameworks for Human-Robot Interaction (HRI), offering practitioners and researchers an overview of factors, metrics, and methods used to design and evaluate HRI applications.",
+            image: "img/model.png",
+            pdfLink: "https://www.sciencedirect.com/science/article/abs/pii/S0278612522000577",
             color: "teal-darken-4"
           }
         ],
@@ -755,6 +742,13 @@
 
         journals: [
 
+          {
+            title: 'Adaptive contact-rich manipulation through few-shot imitation learning with Force-Torque feedback and pre-trained object representations',
+            authors: 'Tsuji, C., Coronado, E., Osorio, P., & Venture, G. ',
+            src: 'IEEE Robotics and Automation Letters.',
+            year: 2024,
+            url: "https://ieeexplore.ieee.org/abstract/document/10752344",
+          },
 
           {
             title: 'A Path to Industry 5.0 Digital Twins for Human–Robot Collaboration by Bridging NEP+ and ROS',
