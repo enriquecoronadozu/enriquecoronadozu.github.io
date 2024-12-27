@@ -37,8 +37,6 @@
 </head>
 
 <style>
-
-  
   .v-btn {
     text-transform: none !important;
     font-family: 'Roboto Mono', monospace;
@@ -131,7 +129,7 @@
 
     <v-app>
 
-      <v-app-bar  app dense flat clipped-right>
+      <v-app-bar app dense flat clipped-right>
 
         <v-toolbar-title>
           Coronado E.
@@ -186,10 +184,12 @@
 
                     <!-- Social Media Icons -->
                     <div style="text-align: center;">
-                      <v-btn flat color="indigo" icon href="https://github.com/enriquecoronadozu" target="_blank" class="mx-2">
+                      <v-btn flat color="indigo" icon href="https://github.com/enriquecoronadozu" target="_blank"
+                        class="mx-2">
                         <v-icon>mdi-github</v-icon>
                       </v-btn>
-                      <v-btn icon color="indigo" href="https://www.linkedin.com/in/enrique-coronado-zu/" target="_blank" class="mx-2">
+                      <v-btn icon color="indigo" href="https://www.linkedin.com/in/enrique-coronado-zu/" target="_blank"
+                        class="mx-2">
                         <v-icon>mdi-linkedin</v-icon>
                       </v-btn>
                       <v-btn icon color="indigo" href="https://x.com/enrique_hcr" target="_blank" class="mx-2">
@@ -223,22 +223,24 @@
 
               <div>&nbsp;&nbsp;</div>
               <div>&nbsp;&nbsp;</div>
-              
 
-              <p style="text-align: justify;">  <b>
-                Enrique Coronado holds a B.S. in Mechatronics Engineering (2012) from the Autonomous University of San
-                Luis Potosí (UASLP), Mexico, an M.S. in Advanced Robotics (2017) through the EMARO+ program, Italy and France, and a Ph.D.
-                in Mechanical Systems Engineering (2020) from the Tokyo University of Agriculture and Technology (TUAT),
-                Japan. He has served as an Assistant Professor (2020-2022) at TUAT, and as a Researcher (2022-2024) at
-                the National Institute of Advanced Industrial Science and Technology (AIST), Japan. </b>
+
+              <p style="text-align: justify;"> <b>
+                  Enrique Coronado holds a B.S. in Mechatronics Engineering (2012) from the Autonomous University of San
+                  Luis Potosí (UASLP), Mexico, an M.S. in Advanced Robotics (2017) through the EMARO+ program, Italy and
+                  France, and a Ph.D.
+                  in Mechanical Systems Engineering (2020) from the Tokyo University of Agriculture and Technology
+                  (TUAT),
+                  Japan. He has served as an Assistant Professor (2020-2022) at TUAT, and as a Researcher (2022-2024) at
+                  the National Institute of Advanced Industrial Science and Technology (AIST), Japan. </b>
               </p>
               <div>&nbsp;&nbsp;</div>
               <p style="text-align: justify;"><b>
-                Dr. Coronado is currently a Senior Researcher in the Collaborative Robotics Research Group (CRRG) at
-                AIST. His work focuses on advancing robotics to address social and economic challenges through a
-                human-centered
-                perspective. His research interests include human-robot interaction, social and service robotics,
-                robotics software engineering, human digital twins, robot teleoperation, and extended reality. </b>
+                  Dr. Coronado is currently a Senior Researcher in the Collaborative Robotics Research Group (CRRG) at
+                  AIST. His work focuses on advancing robotics to address social and economic challenges through a
+                  human-centered
+                  perspective. His research interests include human-robot interaction, social and service robotics,
+                  robotics software engineering, human digital twins, robot teleoperation, and extended reality. </b>
               </p>
             </v-card>
           </v-card>
@@ -247,168 +249,207 @@
             <div>&nbsp;&nbsp;</div>
           </v-card>
 
-
-  
-          <v-card color="transparent" flat>
+          <v-card id="Research" color="transparent" flat>
             <div>&nbsp;&nbsp;</div>
+            <h1 style="text-align: justify"><b>Research</b></h1>
+            <div>&nbsp;&nbsp;</div>
+            <v-row dense>
+              <v-col v-for="(topic, index) in researchTopics" :key="index" cols="12" md="3">
+                <v-card :color="topic.color" dark>
+                  <v-img :src="topic.image" height="200px"></v-img>
+                  <v-card-title>{{ topic.title }}</v-card-title>
+                  <v-card-text>{{ topic.description }}</v-card-text>
+                  <v-card-actions>
+                    <v-btn :href="topic.pdfLink" target="_blank" color="white">
+                      <v-icon left>mdi-file-pdf</v-icon> PDF
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-card>
+
+          <v-card id="Videos" color="transparent" flat>
+            <div>&nbsp;&nbsp;</div>
+            <v-row dense>
+              <v-col v-for="(video, index) in videoTopics" :key="index" cols="12" md="6">
+                <v-card :color="video.color" dark>
+                  <iframe :src="video.videoLink" width="100%" height="200px" frameborder="0" allowfullscreen></iframe>
+                  <v-card-title>{{ video.title }}</v-card-title>
+                  <v-card-text>{{ video.description }}</v-card-text>
+                </v-card>
+              </v-col>
+            </v-row>
           </v-card>
 
 
-            <!-- New Software Section -->
-            <v-card  id="Software"  color="transparent" flat>
-              <div>&nbsp;&nbsp;</div>
-              <h1 style="text-align: justify"><b>Software</b></h1>
-              <v-row dense>
-                <v-col cols="12">&nbsp;&nbsp;</v-col>
-                <v-col cols="12">&nbsp;&nbsp;</v-col>
-                <v-col cols="12">&nbsp;&nbsp;</v-col>
-
-                <v-col cols="12">
-                  <v-card color="indigo">
-                    <v-card-title>NEP+</v-card-title>
-                    <v-card-text>
-                      <span style="font-size: 18px; font-family: 'Roboto Mono', monospace;">
-                        A cross-disciplinary, cross-platform, multi-language, and
-                        human-centered middleware framework for busy practitioners, researchers, and
-                        newcomers in robotics and IoT.
-                      </span>
-                    </v-card-text>
-                    <v-card-actions>
-                      <v-spacer></v-spacer>
-                      <v-btn variant="outlined" color="white" href="https://enrique-coronado.gitbook.io/nep+"
-                        target="_blank">
-                        <v-icon left>mdi-arrow-right</v-icon> &nbsp; Documentation
-                      </v-btn>
-                    </v-card-actions>
-                  </v-card>
-                </v-col>
-              </v-row>
-            </v-card>
 
 
-            <v-card color="transparent" flat>
-              <div>&nbsp;&nbsp;</div>
-              <div>&nbsp;&nbsp;</div>
-              <div>&nbsp;&nbsp;</div>
-            </v-card>
+          <v-card color="transparent" flat>
+            <div>&nbsp;&nbsp;</div>
+            <v-row dense>
+              <v-col cols="12">&nbsp;&nbsp;</v-col>
+              <v-col cols="12">&nbsp;&nbsp;</v-col>
+              <v-col cols="12">&nbsp;&nbsp;</v-col>
+            </v-row>
+          </v-card>
 
-            <v-card color="transparent" flat>
-              <div>&nbsp;&nbsp;</div>
-              <div>&nbsp;&nbsp;</div>
-              <div>&nbsp;&nbsp;</div>
-            </v-card>
 
-            <v-card color="transparent" flat>
-              <v-layout wrap align-center justify-center>
-                <v-card color="transparent" flat>
-                  <div>
-                    <h1 style="text-align: justify"><b>Publications</b></h1>
-                    <v-card flat color="transparent">
-                      <div>&nbsp;</div>
-                      <h2 id="publications">Journal Articles</h2>
-                      <div>&nbsp;</div>
-                      <template v-for="(item, index) in journals">
-                        <v-card flat color="transparent">
-                          <div>
-                            <p align="left" style="font-weight: bold; font-size: 18px;">
-                              <v-chip text label small>{{item.year}}</v-chip> {{item.title}}
-                            </p>
-                            <p align="left" style="font-size: 18px;">
-                              {{item.authors}} <span class="italic-roboto">{{item.src}}</span>
-                            </p>
-                            <div style="text-align: right;">
-                              <v-chip variant="tonal" color="indigo" v-on:click="onPDF(item.url)" text>Link</v-chip>
-                            </div>
-                          </div>
-                        </v-card>
-                      </template>
+          <!-- New Software Section -->
+          <v-card id="Software" color="transparent" flat>
+            <div>&nbsp;&nbsp;</div>
+            <h1 style="text-align: justify"><b>Software</b></h1>
+            <v-row dense>
+              <v-col cols="12">&nbsp;&nbsp;</v-col>
+              <v-col cols="12">&nbsp;&nbsp;</v-col>
+              <v-col cols="12">&nbsp;&nbsp;</v-col>
 
-                      <div>&nbsp;</div>
-                      <h2>Conference Papers</h2>
-                      <div>&nbsp;</div>
-                      <template v-for="(item, index) in conferences">
-                        <v-card flat color="transparent">
-                          <div>
-                            <p align="left" style="font-weight: bold; font-size: 18px;">
-                              <v-chip text label small>{{item.year}}</v-chip> {{item.title}}
-                            </p>
-                            <p align="left" style="font-size: 18px;">
-                              {{item.authors}} <span class="italic-roboto">{{item.src}}</span>
-                            </p>
-                            <div style="text-align: right;">
-                              <v-chip variant="tonal" color="indigo" v-on:click="onPDF(item.url)" text>Link</v-chip>
-                            </div>
-                          </div>
-                        </v-card>
-                      </template>
+              <v-col cols="12">
+                <v-card color="indigo">
+                  <v-card-title>NEP+</v-card-title>
+                  <v-card-text>
+                    <span style="font-size: 18px; font-family: 'Roboto Mono', monospace;">
+                      A cross-disciplinary, cross-platform, multi-language, and
+                      human-centered middleware framework for busy practitioners, researchers, and
+                      newcomers in robotics and IoT.
+                    </span>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn variant="outlined" color="white" href="https://enrique-coronado.gitbook.io/nep+"
+                      target="_blank">
+                      <v-icon left>mdi-arrow-right</v-icon> &nbsp; Documentation
+                    </v-btn>
+                  </v-card-actions>
+                </v-card>
+              </v-col>
+            </v-row>
+          </v-card>
 
-                      <div>&nbsp;</div>
-                      <h2>Book Chapters</h2>
-                      <div>&nbsp;</div>
-                      <template v-for="(item, index) in books">
-                        <v-card flat color="transparent">
-                          <div>
-                            <p align="left" style="font-weight: bold; font-size: 18px;">
-                              <v-chip text label small>{{item.year}}</v-chip> {{item.title}}
-                            </p>
-                            <p align="left" style="font-size: 18px;">
-                              <span class="roboto">{{item.authors}}</span>.
-                              <span class="italic-roboto">{{item.src}}</span>
-                            </p>
-                            <div style="text-align: right;">
-                              <v-chip variant="tonal" color="indigo" v-on:click="onPDF(item.url)" text>Link</v-chip>
-                            </div>
-                          </div>
-                        </v-card>
-                      </template>
 
-                      <div>&nbsp;</div>
-                      <h2>Invited Talks</h2>
-                      <div>&nbsp;</div>
-                      <template v-for="(item, index) in talks">
-                        <v-card flat color="transparent">
-                          <div>
-                            <p align="left" style="font-weight: bold; font-size: 18px;">
-                              <v-chip text label small>{{item.year}}</v-chip> {{item.title}}
-                            </p>
-                            <p align="left" style="font-size: 18px;">
-                              {{item.authors}} {{item.src}}
-                            </p>
-                            <div style="text-align: right;">
-                              <v-chip variant="tonal" color="indigo" v-on:click="onPDF(item.url)" text>Link</v-chip>
-                            </div>
-                          </div>
-                        </v-card>
-                      </template>
+          <v-card color="transparent" flat>
+            <div>&nbsp;&nbsp;</div>
+            <div>&nbsp;&nbsp;</div>
+            <div>&nbsp;&nbsp;</div>
+          </v-card>
 
-                      <div>&nbsp;</div>
-                      <h2>Service</h2>
-                      <div>&nbsp;</div>
+          <v-card color="transparent" flat>
+            <div>&nbsp;&nbsp;</div>
+            <div>&nbsp;&nbsp;</div>
+            <div>&nbsp;&nbsp;</div>
+          </v-card>
+
+          <v-card color="transparent" flat>
+            <v-layout wrap align-center justify-center>
+              <v-card color="transparent" flat>
+                <div>
+                  <h1 style="text-align: justify"><b>Publications</b></h1>
+                  <v-card flat color="transparent">
+                    <div>&nbsp;</div>
+                    <h2 id="publications">Journal Articles</h2>
+                    <div>&nbsp;</div>
+                    <template v-for="(item, index) in journals">
                       <v-card flat color="transparent">
                         <div>
                           <p align="left" style="font-weight: bold; font-size: 18px;">
-                            <v-chip text label small>2024</v-chip> Website Chair, Robotics: Science and System 2024
+                            <v-chip text label small>{{item.year}}</v-chip> {{item.title}}
                           </p>
-                          <div>&nbsp;</div>
-                          <p align="left" style="font-weight: bold; font-size: 18px;">
-                            <v-chip text label small>2024</v-chip> Publications Chair, Robotics: Science and System 2024
+                          <p align="left" style="font-size: 18px;">
+                            {{item.authors}} <span class="italic-roboto">{{item.src}}</span>
                           </p>
-                          <div>&nbsp;</div>
-                          <p align="left" style="font-weight: bold; font-size: 18px;">
-                            <v-chip text label small>2024</v-chip> Proceedings Chair, Robotics: Science and System 2024
-                          </p>
-                          <div>&nbsp;</div>
-                          <p align="left" style="font-weight: bold; font-size: 18px;">
-                            <v-chip text label small>2023</v-chip> Associate Editor, IEEE Robotics and Automation
-                            Letters (Until now)
-                          </p>
+                          <div style="text-align: right;">
+                            <v-chip variant="tonal" color="indigo" v-on:click="onPDF(item.url)" text>Link</v-chip>
+                          </div>
                         </div>
                       </v-card>
+                    </template>
+
+                    <div>&nbsp;</div>
+                    <h2>Conference Papers</h2>
+                    <div>&nbsp;</div>
+                    <template v-for="(item, index) in conferences">
+                      <v-card flat color="transparent">
+                        <div>
+                          <p align="left" style="font-weight: bold; font-size: 18px;">
+                            <v-chip text label small>{{item.year}}</v-chip> {{item.title}}
+                          </p>
+                          <p align="left" style="font-size: 18px;">
+                            {{item.authors}} <span class="italic-roboto">{{item.src}}</span>
+                          </p>
+                          <div style="text-align: right;">
+                            <v-chip variant="tonal" color="indigo" v-on:click="onPDF(item.url)" text>Link</v-chip>
+                          </div>
+                        </div>
+                      </v-card>
+                    </template>
+
+                    <div>&nbsp;</div>
+                    <h2>Book Chapters</h2>
+                    <div>&nbsp;</div>
+                    <template v-for="(item, index) in books">
+                      <v-card flat color="transparent">
+                        <div>
+                          <p align="left" style="font-weight: bold; font-size: 18px;">
+                            <v-chip text label small>{{item.year}}</v-chip> {{item.title}}
+                          </p>
+                          <p align="left" style="font-size: 18px;">
+                            <span class="roboto">{{item.authors}}</span>.
+                            <span class="italic-roboto">{{item.src}}</span>
+                          </p>
+                          <div style="text-align: right;">
+                            <v-chip variant="tonal" color="indigo" v-on:click="onPDF(item.url)" text>Link</v-chip>
+                          </div>
+                        </div>
+                      </v-card>
+                    </template>
+
+                    <div>&nbsp;</div>
+                    <h2>Invited Talks</h2>
+                    <div>&nbsp;</div>
+                    <template v-for="(item, index) in talks">
+                      <v-card flat color="transparent">
+                        <div>
+                          <p align="left" style="font-weight: bold; font-size: 18px;">
+                            <v-chip text label small>{{item.year}}</v-chip> {{item.title}}
+                          </p>
+                          <p align="left" style="font-size: 18px;">
+                            {{item.authors}} {{item.src}}
+                          </p>
+                          <div style="text-align: right;">
+                            <v-chip variant="tonal" color="indigo" v-on:click="onPDF(item.url)" text>Link</v-chip>
+                          </div>
+                        </div>
+                      </v-card>
+                    </template>
+
+                    <div>&nbsp;</div>
+                    <h2>Service</h2>
+                    <div>&nbsp;</div>
+                    <v-card flat color="transparent">
+                      <div>
+                        <p align="left" style="font-weight: bold; font-size: 18px;">
+                          <v-chip text label small>2024</v-chip> Website Chair, Robotics: Science and System 2024
+                        </p>
+                        <div>&nbsp;</div>
+                        <p align="left" style="font-weight: bold; font-size: 18px;">
+                          <v-chip text label small>2024</v-chip> Publications Chair, Robotics: Science and System 2024
+                        </p>
+                        <div>&nbsp;</div>
+                        <p align="left" style="font-weight: bold; font-size: 18px;">
+                          <v-chip text label small>2024</v-chip> Proceedings Chair, Robotics: Science and System 2024
+                        </p>
+                        <div>&nbsp;</div>
+                        <p align="left" style="font-weight: bold; font-size: 18px;">
+                          <v-chip text label small>2023</v-chip> Associate Editor, IEEE Robotics and Automation
+                          Letters (Until now)
+                        </p>
+                      </div>
                     </v-card>
-                  </div>
-                </v-card>
-              </v-layout>
-            </v-card>
+                  </v-card>
+                </div>
+              </v-card>
+            </v-layout>
+          </v-card>
 
         </v-container>
       </v-main>
@@ -463,6 +504,67 @@
         chips: ['Robot Programming', 'Human-Robot Interaction', 'Deep Learning', 'Artificial Intelligence', 'Robot design', 'Social Robots', 'Robot Control', 'Software Architectured for Robotics'],
         items: ['Robot Programming', 'Human-Robot Interaction', 'Deep Learning', 'Artificial Intelligence', 'Robot design', 'Social Robots', 'Robot Control', 'Software Architectured for Robotics'],
 
+            videoTopics: [
+          {
+            title: "Human-Robot Interaction in the Wild",
+            description: "An in-depth exploration of human-robot interaction in real-world environments.",
+            thumbnail: "img/hri_video.jpg",
+            videoLink: "https://www.youtube.com/embed/nb775Ahd3yM?si=7cWSfClSt3OuTFEV",
+            color: "indigo"
+          },
+          {
+            title: "Imitation Learning",
+            description: "A detailed introduction to imitation learning techniques in robotics.",
+            thumbnail: "img/imitation_learning_video.jpg",
+            videoLink: "https://www.youtube.com/embed/wjS1Om5kO2Q?si=1KVv0QKlG5avYM1_",
+            color: "purple"
+          },
+          {
+            title: "Advanced Human-Robot Interaction",
+            description: "A comprehensive look at advanced techniques in human-robot interaction.",
+            thumbnail: "img/advanced_hri_video.jpg",
+            videoLink: "https://www.youtube.com/embed/aVKmIPbaSO8?si=q3YHc-k-_5jJfNsq",
+            color: "teal"
+          },
+          {
+            title: "End-User Programming",
+            description: "Exploring how end-users can program robots using deep learning techniques.",
+            thumbnail: "img/deep_learning_robotics_video.jpg",
+            videoLink: "https://www.youtube.com/embed/4NYbTJC4nfo?si=0ygWHnc_g2d-FbJD",
+            color: "green"
+          }
+        ],
+
+        researchTopics: [
+          {
+            title: "Human-Robot Interaction",
+            description: "Exploring the dynamics of interaction between humans and robots.",
+            image: "img/hri.jpg",
+            pdfLink: "pdf/hri.pdf",
+            color: "teal-darken-4"
+          },
+          {
+            title: "Robot Teleoperation",
+            description: "Advancements in remote control of robots.",
+            image: "img/teleoperation.jpg",
+            pdfLink: "pdf/teleoperation.pdf",
+            color: "teal-darken-4"
+          },
+          {
+            title: "Robot Learning",
+            description: "Using deep learning techniques to enhance robotic capabilities.",
+            image: "img/generative_ai.jpg",
+            pdfLink: "pdf/generative_ai.pdf",
+            color: "teal-darken-4"
+          },
+          {
+            title: "Digital Twins",
+            description: "Creating digital replicas of physical robots for simulation and testing.",
+            image: "img/digital_twins.jpg",
+            pdfLink: "pdf/digital_twins.pdf",
+            color: "teal-darken-4"
+          }
+        ],
         books: [
           {
             title: 'From Motion to Emotion Prediction: A Hidden Biometrics Approach.',
