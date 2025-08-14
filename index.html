@@ -8,7 +8,7 @@
   <!-- Tailwind Play CDN (for demo / quick start) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
   <!-- Icons (Lucide via CDN) -->
   <script type="module" src="https://unpkg.com/lucide@latest"></script>
   <!-- Vue 3 CDN -->
@@ -68,6 +68,68 @@
       opacity: 1;
       transform: none
     }
+
+    svg {
+      width: min(960px, 96vw);
+      height: auto;
+      background: transparent;
+    }
+
+
+    .stageFrame {
+      fill: none;
+    }
+
+    .link {
+      fill: url(#linkGrad);
+    }
+
+    .joint {
+      fill: #0f111a;
+      stroke: #3ce8f2;
+      stroke-width: 2;
+    }
+
+    .ee {
+      fill: #0f111a;
+      stroke: #8d8bff;
+      stroke-width: 2;
+    }
+
+    .gripBase {
+      fill: #151a28;
+      stroke: #6ea8ff;
+      stroke-width: 1.5;
+      opacity: .9;
+    }
+
+    .jaw,
+    .jawFixed {
+      stroke: #9cd2ff;
+      stroke-width: 1.5;
+    }
+
+    .jaw {
+      fill: #1b2a55;
+    }
+
+    .jawFixed {
+      fill: #26376b;
+      opacity: .9;
+    }
+
+    .pad {
+      fill: #13223a;
+      stroke: #214a8a;
+      stroke-width: 1;
+      opacity: .85;
+    }
+
+    .cube {
+      fill: #2fe3ff;
+      stroke: #0bbcd1;
+      stroke-width: 2;
+    }
   </style>
 </head>
 
@@ -112,8 +174,7 @@
               title="Zoom in (+)">
               <i data-lucide="plus" class="w-4 h-4"></i>
             </button>
-            <button @click="zoomReset" class="px-2 py-1 text-xs hover:bg-black/5 dark:hover:bg-white/10"
-              title="Reset">
+            <button @click="zoomReset" class="px-2 py-1 text-xs hover:bg-black/5 dark:hover:bg-white/10" title="Reset">
               Reset
             </button>
           </div>
@@ -156,35 +217,114 @@
               <span class="px-2 py-1 rounded bg-white/5 border border-white/10">LLMs • VLMs</span>
             </div>
           </div>
-          <!-- Futuristic illustration -->
-          <div class="fade-up lg:justify-self-end">
-            <div class="relative">
-              <div class="absolute -inset-6 -z-10 rounded-3xl bg-primary-500/10 blur-2xl"></div>
-              <svg viewBox="0 0 600 420" class="w-full h-auto rounded-3xl border border-white/10 bg-zinc-900/40">
-                <!-- Robot arm -->
-                <g stroke="#9AE6FF" stroke-width="2" fill="none">
-                  <circle cx="110" cy="300" r="40" opacity="0.4" />
-                  <path d="M110 300 L220 250 L300 200 L420 180" />
-                  <circle cx="220" cy="250" r="12" />
-                  <circle cx="300" cy="200" r="12" />
-                  <circle cx="420" cy="180" r="18" />
-                  <path d="M420 180 l40 -20 l40 20 l-40 20 z" />
+          <!-- Animated 3-DOF arm (your code) -->
+          <svg viewBox="0 0 920 580">
+            <defs>
+              <linearGradient id="linkGrad" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#23d5e6" />
+                <stop offset="100%" stop-color="#2d3c9a" />
+              </linearGradient>
+              <clipPath id="stageClip" clipPathUnits="userSpaceOnUse">
+                <rect x="20" y="20" width="880" height="540" rx="14" ry="14"></rect>
+              </clipPath>
+            </defs>
+
+            <rect class="stageFrame" x="20" y="20" width="880" height="540" rx="14" ry="14"></rect>
+
+            <g clip-path="url(#stageClip)">
+              <!-- Grid -->
+              <g class="grid">
+                <g>
+                  <line x1="80" y1="20" x2="80" y2="560" />
+                  <line x1="180" y1="20" x2="180" y2="560" />
+                  <line x1="280" y1="20" x2="280" y2="560" />
+                  <line x1="380" y1="20" x2="380" y2="560" />
+                  <line x1="480" y1="20" x2="480" y2="560" />
+                  <line x1="580" y1="20" x2="580" y2="560" />
+                  <line x1="680" y1="20" x2="680" y2="560" />
+                  <line x1="780" y1="20" x2="780" y2="560" />
                 </g>
-                <!-- Scene graph nodes -->
-                <g stroke="#A5B4FC" stroke-width="1.5" fill="none">
-                  <circle cx="480" cy="90" r="10" />
-                  <circle cx="520" cy="130" r="10" />
-                  <circle cx="560" cy="80" r="10" />
-                  <path d="M480 90 L520 130 L560 80 Z" />
+                <g>
+                  <line x1="20" y1="80" x2="900" y2="80" />
+                  <line x1="20" y1="160" x2="900" y2="160" />
+                  <line x1="20" y1="240" x2="900" y2="240" />
+                  <line x1="20" y1="320" x2="900" y2="320" />
+                  <line x1="20" y1="400" x2="900" y2="400" />
+                  <line x1="20" y1="480" x2="900" y2="480" />
                 </g>
-                <!-- HUD -->
-                <g fill="#14B8A6" opacity="0.7">
-                  <rect x="24" y="24" width="120" height="60" rx="10" fill="none" stroke="#14B8A6" />
-                  <text x="38" y="58" font-family="ui-monospace, SFMono-Regular" font-size="16">LLM INTENT</text>
+              </g>
+
+              <!-- Pads (world space) -->
+              <!-- pick pad -->
+              <rect class="pad" x="465" y="420" width="60" height="12" rx="3"></rect>
+              <!-- lift/place pad -->
+              <rect class="pad" x="315" y="390" width="60" height="12" rx="3"></rect>
+
+              <!-- Cube (world space) – starts on pick pad, centered -->
+              <!-- pad center = x+30; cube is 28x => center offset 14 -->
+              <!-- y on top of pad = padY - cubeSize -->
+              <rect id="cube" class="cube" x="481" y="392" width="28" height="28" rx="3"></rect>
+
+              <!-- ROBOT -->
+              <g id="robot" transform="translate(240,380) scale(0.95)">
+                <rect x="-56" y="18" width="112" height="22" rx="6" fill="#1b2233"></rect>
+                <circle cx="0" cy="0" r="14" class="joint"></circle>
+
+                <!-- Joint 1 -->
+                <g id="j1" transform="rotate(0)">
+                  <rect x="0" y="-12" width="180" height="24" rx="12" class="link"></rect>
+                  <circle cx="0" cy="0" r="10" class="joint"></circle>
+
+                  <!-- end of L1 -->
+                  <g transform="translate(180,0)">
+                    <!-- Joint 2 -->
+                    <g id="j2" transform="rotate(0)">
+                      <rect x="0" y="-10" width="140" height="20" rx="10" class="link"></rect>
+                      <circle cx="0" cy="0" r="9" class="joint"></circle>
+
+                      <!-- end of L2 -->
+                      <g transform="translate(140,0)">
+                        <!-- Joint 3 (wrist) -->
+                        <g id="j3" transform="rotate(0)">
+                          <rect x="0" y="-9" width="110" height="18" rx="9" class="link"></rect>
+                          <circle cx="0" cy="0" r="8" class="joint"></circle>
+
+                          <!-- End-effector (parallel gripper rotated 90°) -->
+                          <g id="ee" transform="translate(110,0)">
+                            <circle cx="0" cy="0" r="9" class="ee"></circle>
+
+                            <g id="eeInner" transform="translate(30,0)">
+                              <g id="j3Inner" transform="rotate(90)">
+                                <!-- gripper body -->
+                                <rect class="gripBase" x="-14" y="20" width="28" height="24" rx="4"></rect>
+
+                                <!-- fixed bar -->
+                                <g id="jawFixed" transform="translate(0,18)">
+                                  <rect class="jawFixed" x="-20" y="-3" width="40" height="6" rx="2"></rect>
+                                </g>
+
+                                <!-- anchor used to attach payload so it follows the EE exactly -->
+                                <g id="payloadAnchor"></g>
+
+                                <!-- moving jaws (I  I) -->
+                                <g id="jawL" transform="translate(-14,0)">
+                                  <rect class="jaw" x="-3" y="-20" width="6" height="40" rx="2"></rect>
+                                </g>
+                                <g id="jawR" transform="translate(14,0)">
+                                  <rect class="jaw" x="-3" y="-20" width="6" height="40" rx="2"></rect>
+                                </g>
+                              </g>
+                            </g>
+                          </g>
+                          <!-- /EE -->
+                        </g>
+                      </g>
+                    </g>
+                  </g>
                 </g>
-              </svg>
-            </div>
-          </div>
+              </g>
+            </g>
+          </svg>
         </div>
       </div>
     </section>
@@ -839,13 +979,129 @@
 
 
         return {
-           uiScale, zoomIn, zoomOut, zoomReset, 
+          uiScale, zoomIn, zoomOut, zoomReset,
           meta, nav, currentProjects, projects, publications, skills,
           query, filter, filteredProjects, form, news, newsSorted, formatDate,
           bio,
         }
       }
     }).mount('#app')
+  </script>
+
+  <script>
+    const ease = 'easeInOutCubic';
+
+    // —— Elements
+    const j1 = document.querySelector('#j1');
+    const j2 = document.querySelector('#j2');
+    const j3 = document.querySelector('#j3');          // wrist (unique)
+    const jawL = document.querySelector('#jawL');
+    const jawR = document.querySelector('#jawR');
+    const cube = document.querySelector('#cube');
+    const stage = document.querySelector('g[clip-path]');   // world layer
+    const anchor = document.querySelector('#payloadAnchor'); // child of gripper
+
+    // —— Geometry (keep in sync with your pads / cube)
+    const padPick = { x: 465, y: 420, w: 60, h: 12 };
+    const padLift = { x: 315, y: 390, w: 60, h: 12 };
+    const cubeSize = 28;
+
+    const pickXY = { x: padPick.x + padPick.w / 2 - cubeSize / 2, y: padPick.y - cubeSize };
+    const placeXY = { x: padLift.x + padLift.w / 2 - cubeSize / 2, y: padLift.y - cubeSize };
+
+    // —— Poses (deg)
+    const home = [-60, 20, 90];
+    const pick = [-45, 45, 90];
+    const lift = [-100, 100, 90];  // "place" pose
+    const finish = [-60, 20, 90];
+
+    // —— Gripper gaps
+    const OPEN = 22;
+    const CLOSED = 18;
+
+    // —— Helpers
+    function resetState() {
+      // Kill any running tweens to avoid fighting values
+      anime.remove([j1, j2, j3, jawL, jawR, cube]);
+
+      // Make sure cube lives in world, not inside gripper
+      if (cube.parentNode !== stage) stage.appendChild(cube);
+
+      // Put cube back on pick pad
+      cube.setAttribute('x', pickXY.x);
+      cube.setAttribute('y', pickXY.y);
+
+      // Reset joints + jaws instantly
+      anime.set(j1, { rotate: home[0] });
+      anime.set(j2, { rotate: home[1] });
+      anime.set(j3, { rotate: home[2] });
+      anime.set(jawL, { translateX: -OPEN });
+      anime.set(jawR, { translateX: OPEN });
+    }
+
+    function attachCube() {
+      // Center cube between jaws in gripper-local coords
+      if (cube.parentNode !== anchor) {
+        cube.setAttribute('x', -cubeSize / 2);
+        cube.setAttribute('y', -cubeSize);
+        anchor.appendChild(cube);
+      }
+    }
+
+    function detachCubeAtPlace() {
+      if (cube.parentNode === anchor) {
+        stage.appendChild(cube);
+        cube.setAttribute('x', placeXY.x);
+        cube.setAttribute('y', placeXY.y);
+      }
+    }
+
+    // —— One full cycle (recreated every time for a clean loop)
+    function startCycle() {
+      resetState();
+
+      const tMove = 1100, tGrip = 450, tLift = 800, tHome = 1100;
+
+      const tl = anime.timeline({
+        autoplay: true,
+        loop: false,            // we loop manually via complete callback
+        easing: ease,
+        complete: startCycle    // run again when the cycle ends
+      });
+
+      // 1) Move to PICK (parallel)
+      tl.add({ targets: j1, rotate: pick[0], duration: tMove }, 0)
+        .add({ targets: j2, rotate: pick[1], duration: tMove }, 0)
+        .add({ targets: j3, rotate: pick[2], duration: tMove }, 0)
+        .add({ duration: 150 });
+
+      // 2) CLOSE jaws, then ATTACH cube (strict order)
+      tl.add({ targets: jawL, translateX: -CLOSED, duration: tGrip })
+        .add({ targets: jawR, translateX: CLOSED, duration: tGrip }, `-=${tGrip}`)
+        .add({ duration: 1, begin: attachCube })
+        .add({ duration: 150 });
+
+      // 3) Carry to LIFT pose (cube follows because it's parented)
+      tl.add({ targets: j1, rotate: lift[0], duration: tLift })
+        .add({ targets: j2, rotate: lift[1], duration: tLift }, `-=${tLift}`)
+        .add({ targets: j3, rotate: lift[2], duration: tLift }, `-=${tLift}`)
+        .add({ duration: 150 });
+
+      // 4) OPEN jaws, then DETACH cube at the lift pad
+      tl.add({ targets: jawL, translateX: -OPEN, duration: tGrip })
+        .add({ targets: jawR, translateX: OPEN, duration: tGrip }, `-=${tGrip}`)
+        .add({ duration: 1, begin: detachCubeAtPlace })
+        .add({ duration: 200 });
+
+      // 5) Return HOME (parallel)
+      tl.add({ targets: j1, rotate: finish[0], duration: tHome })
+        .add({ targets: j2, rotate: finish[1], duration: tHome }, `-=${tHome}`)
+        .add({ targets: j3, rotate: finish[2], duration: tHome }, `-=${tHome}`)
+        .add({ duration: 3000 });
+    }
+
+    // Kick off
+    startCycle();
   </script>
 </body>
 

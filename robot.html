@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>3-DOF Robot Arm — Pick & Place (same trajectory)</title>
+  <title>3-DOF Robot Arm — Pick at “pick”, Place at “lift”</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
@@ -63,16 +63,18 @@
       opacity: .9;
     }
 
-    .jaw {
-      fill: #1b2a55;
+    .jaw,
+    .jawFixed {
       stroke: #9cd2ff;
       stroke-width: 1.5;
     }
 
+    .jaw {
+      fill: #1b2a55;
+    }
+
     .jawFixed {
       fill: #26376b;
-      stroke: #9cd2ff;
-      stroke-width: 1.5;
       opacity: .9;
     }
 
@@ -107,7 +109,7 @@
     <rect class="stageFrame" x="20" y="20" width="880" height="540" rx="14" ry="14"></rect>
 
     <g clip-path="url(#stageClip)">
-      <!-- grid -->
+      <!-- Grid -->
       <g class="grid">
         <g>
           <line x1="80" y1="20" x2="80" y2="560" />
@@ -129,10 +131,16 @@
         </g>
       </g>
 
-      <!-- pads + cube (world space) -->
+      <!-- Pads (world space) -->
+      <!-- pick pad -->
       <rect class="pad" x="465" y="420" width="60" height="12" rx="3"></rect>
-      <rect class="pad" x="360" y="280" width="60" height="12" rx="3"></rect>
-      <rect id="cube" class="cube" x="576" y="388" width="28" height="28" rx="3"></rect>
+      <!-- lift/place pad -->
+      <rect class="pad" x="315" y="390" width="60" height="12" rx="3"></rect>
+
+      <!-- Cube (world space) – starts on pick pad, centered -->
+      <!-- pad center = x+30; cube is 28x => center offset 14 -->
+      <!-- y on top of pad = padY - cubeSize -->
+      <rect id="cube" class="cube" x="481" y="392" width="28" height="28" rx="3"></rect>
 
       <!-- ROBOT -->
       <g id="robot" transform="translate(240,380) scale(0.95)">
@@ -153,30 +161,29 @@
 
               <!-- end of L2 -->
               <g transform="translate(140,0)">
-                <!-- Joint 3 -->
+                <!-- Joint 3 (wrist) -->
                 <g id="j3" transform="rotate(0)">
                   <rect x="0" y="-9" width="110" height="18" rx="9" class="link"></rect>
                   <circle cx="0" cy="0" r="8" class="joint"></circle>
 
-                  <!-- End-effector: PARALLEL JAW GRIPPER rotated 90° -->
-                  <g id="eeT" transform="translate(110,0)">
+                  <!-- End-effector (parallel gripper rotated 90°) -->
+                  <g id="ee" transform="translate(110,0)">
                     <circle cx="0" cy="0" r="9" class="ee"></circle>
 
-                    <!-- YOUR exact inner structure -->
-                    <g id="eeT" transform="translate(30,0)">
-                      <g id="j3" transform="rotate(90)">
+                    <g id="eeInner" transform="translate(30,0)">
+                      <g id="j3Inner" transform="rotate(90)">
                         <!-- gripper body -->
                         <rect class="gripBase" x="-14" y="20" width="28" height="24" rx="4"></rect>
 
-                        <!-- fixed bar (optional) -->
+                        <!-- fixed bar -->
                         <g id="jawFixed" transform="translate(0,18)">
                           <rect class="jawFixed" x="-20" y="-3" width="40" height="6" rx="2"></rect>
                         </g>
 
-                        <!-- PAYLOAD ANCHOR (cube attaches here when grasped) -->
+                        <!-- anchor used to attach payload so it follows the EE exactly -->
                         <g id="payloadAnchor"></g>
 
-                        <!-- moving jaws -->
+                        <!-- moving jaws (I  I) -->
                         <g id="jawL" transform="translate(-14,0)">
                           <rect class="jaw" x="-3" y="-20" width="6" height="40" rx="2"></rect>
                         </g>
@@ -185,8 +192,8 @@
                         </g>
                       </g>
                     </g>
-                    <!-- end of gripper -->
                   </g>
+                  <!-- /EE -->
                 </g>
               </g>
             </g>
@@ -199,46 +206,64 @@
   <script>
     const ease = 'easeInOutCubic';
 
-    // Select outer joints (note duplicate #j3 exists; we need the FIRST one = wrist)
+    // —— Elements
     const j1 = document.querySelector('#j1');
     const j2 = document.querySelector('#j2');
-    const j3 = document.querySelectorAll('#j3')[0];
-
+    const j3 = document.querySelector('#j3');          // wrist (unique)
     const jawL = document.querySelector('#jawL');
     const jawR = document.querySelector('#jawR');
     const cube = document.querySelector('#cube');
-
-    // Stage (world) group and anchor (inside gripper)
     const stage = document.querySelector('g[clip-path]');   // world layer
     const anchor = document.querySelector('#payloadAnchor'); // child of gripper
 
-    // Jaw gaps (gripper-local X)
-    const OPEN = 14;
-    const CLOSED = 5;
+    // —— Geometry (keep in sync with your pads / cube)
+    const padPick = { x: 465, y: 420, w: 60, h: 12 };
+    const padLift = { x: 315, y: 390, w: 60, h: 12 };
+    const cubeSize = 28;
 
-    // Poses (deg) — tune to align with pads visually
-    const homePose = [-60, 20, 90];
-    const pickPose = [-45, 45, 90];
-    const liftPose = [-45, 45, 90];
-    const placePose = [-65, 65, 90];
+    const pickXY = { x: padPick.x + padPick.w / 2 - cubeSize / 2, y: padPick.y - cubeSize };
+    const placeXY = { x: padLift.x + padLift.w / 2 - cubeSize / 2, y: padLift.y - cubeSize };
 
-    // Cube world positions
-    const pickXY = { x: 480, y: 388 };
-    const placeXY = { x: 376, y: 248 };
-    cube.setAttribute('x', pickXY.x);
-    cube.setAttribute('y', pickXY.y);
+    // —— Poses (deg)
+    const home = [-60, 20, 90];
+    const pick = [-45, 45, 90];
+    const lift = [-100, 100, 90];  // "place" pose
+    const finish = [-60, 20, 90];
 
-    // Reparent helpers
+    // —— Gripper gaps
+    const OPEN = 22;
+    const CLOSED = 18;
+
+    // —— Helpers
+    function resetState() {
+      // Kill any running tweens to avoid fighting values
+      anime.remove([j1, j2, j3, jawL, jawR, cube]);
+
+      // Make sure cube lives in world, not inside gripper
+      if (cube.parentNode !== stage) stage.appendChild(cube);
+
+      // Put cube back on pick pad
+      cube.setAttribute('x', pickXY.x);
+      cube.setAttribute('y', pickXY.y);
+
+      // Reset joints + jaws instantly
+      anime.set(j1, { rotate: home[0] });
+      anime.set(j2, { rotate: home[1] });
+      anime.set(j3, { rotate: home[2] });
+      anime.set(jawL, { translateX: -OPEN });
+      anime.set(jawR, { translateX: OPEN });
+    }
+
     function attachCube() {
-      // move cube inside gripper; center it between jaws (28x28 cube => -14,-14 offset)
+      // Center cube between jaws in gripper-local coords
       if (cube.parentNode !== anchor) {
-        cube.setAttribute('x', -14);
-        cube.setAttribute('y', -14);
+        cube.setAttribute('x', -cubeSize / 2);
+        cube.setAttribute('y', -cubeSize );
         anchor.appendChild(cube);
       }
     }
-    function detachCube() {
-      // put cube back into world at the place pad
+
+    function detachCubeAtPlace() {
       if (cube.parentNode === anchor) {
         stage.appendChild(cube);
         cube.setAttribute('x', placeXY.x);
@@ -246,34 +271,52 @@
       }
     }
 
-    const tMove = 1200;
-    const tGrip = 500;
-    const tLift = 600;
-    const tCarry = 1400;
-    const dwell = 250;
+    // —— One full cycle (recreated every time for a clean loop)
+    function startCycle() {
+      resetState();
 
-    const tl = anime.timeline({ autoplay: true, loop: true });
+      const tMove = 1100, tGrip = 450, tLift = 800, tHome = 1100;
 
-    // Home, open
-    tl.add({ targets: j1, rotate: homePose[0], duration: 0 })
-      .add({ targets: j2, rotate: homePose[1], duration: 0 }, 0)
-      .add({ targets: j3, rotate: homePose[2], duration: 0 }, 0)
-      .add({ targets: jawL, translateX: -OPEN, duration: 0 }, 0)
-      .add({ targets: jawR, translateX: OPEN, duration: 0 }, 0)
-      .add({ duration: 100 });
+      const tl = anime.timeline({
+        autoplay: true,
+        loop: false,            // we loop manually via complete callback
+        easing: ease,
+        complete: startCycle    // run again when the cycle ends
+      });
 
+      // 1) Move to PICK (parallel)
+      tl.add({ targets: j1, rotate: pick[0], duration: tMove }, 0)
+        .add({ targets: j2, rotate: pick[1], duration: tMove }, 0)
+        .add({ targets: j3, rotate: pick[2], duration: tMove }, 0)
+        .add({ duration: 150 });
 
-    // Move to pick
-    tl.add({ targets: j1, rotate: pickPose[0], duration: tMove, easing: ease }, )
-      .add({ targets: j2, rotate: pickPose[1], duration: tMove, easing: ease }, `-=${tMove}`)
-      .add({ targets: j3, rotate: pickPose[2], duration: tMove, easing: ease }, `-=${tMove}`)
-      .add({ duration: 100 });
+      // 2) CLOSE jaws, then ATTACH cube (strict order)
+      tl.add({ targets: jawL, translateX: -CLOSED, duration: tGrip })
+        .add({ targets: jawR, translateX: CLOSED, duration: tGrip }, `-=${tGrip}`)
+        .add({ duration: 1, begin: attachCube })
+        .add({ duration: 150 });
 
-    // Return home
-    tl.add({ targets: j1, rotate: homePose[0], duration: tMove, easing: ease })
-      .add({ targets: j2, rotate: homePose[1], duration: tMove, easing: ease }, `-=${tMove}`)
-      .add({ targets: j3, rotate: homePose[2], duration: tMove, easing: ease }, `-=${tMove}`)
-      .add({ duration: 600, endDelay: 250  });
+      // 3) Carry to LIFT pose (cube follows because it's parented)
+      tl.add({ targets: j1, rotate: lift[0], duration: tLift })
+        .add({ targets: j2, rotate: lift[1], duration: tLift }, `-=${tLift}`)
+        .add({ targets: j3, rotate: lift[2], duration: tLift }, `-=${tLift}`)
+        .add({ duration: 150 });
+
+      // 4) OPEN jaws, then DETACH cube at the lift pad
+      tl.add({ targets: jawL, translateX: -OPEN, duration: tGrip })
+        .add({ targets: jawR, translateX: OPEN, duration: tGrip }, `-=${tGrip}`)
+        .add({ duration: 1, begin: detachCubeAtPlace })
+        .add({ duration: 200 });
+
+      // 5) Return HOME (parallel)
+      tl.add({ targets: j1, rotate: finish[0], duration: tHome })
+        .add({ targets: j2, rotate: finish[1], duration: tHome }, `-=${tHome}`)
+        .add({ targets: j3, rotate: finish[2], duration: tHome }, `-=${tHome}`)
+        .add({ duration: 3000 });
+    }
+
+    // Kick off
+    startCycle();
   </script>
 </body>
 
