@@ -862,7 +862,7 @@
           { label: 'Video demostrations', href: '#projects' },
           { label: 'Publications', href: '#publications' },
           { label: 'Biography', href: '#bio' },   // ← add this
-          { label: 'Collaborate & Concat', href: '#collab' },   // <-- add this
+          { label: 'Collaborate & Contact', href: '#collab' },   // <-- add this
         ]
 
         const bio = Vue.reactive({
@@ -1010,10 +1010,10 @@
     const placeXY = { x: padLift.x + padLift.w / 2 - cubeSize / 2, y: padLift.y - cubeSize };
 
     // —— Poses (deg)
-    const home = [-60, 20, 90];
+    const home = [-100, 70, 20];
     const pick = [-45, 45, 90];
     const lift = [-100, 100, 90];  // "place" pose
-    const finish = [-60, 20, 90];
+    const finish = [-100, 70, 20];
 
     // —— Gripper gaps
     const OPEN = 22;
@@ -1097,7 +1097,7 @@
       tl.add({ targets: j1, rotate: finish[0], duration: tHome })
         .add({ targets: j2, rotate: finish[1], duration: tHome }, `-=${tHome}`)
         .add({ targets: j3, rotate: finish[2], duration: tHome }, `-=${tHome}`)
-        .add({ duration: 3000 });
+        .add({ duration: 10000 });
     }
 
     // Kick off
