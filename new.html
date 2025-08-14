@@ -8,29 +8,29 @@
   <!-- Tailwind Play CDN (for demo / quick start) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            primary: {
-              50: '#ECFEFF', 100: '#CFFAFE', 200: '#A5F3FC', 300: '#67E8F9', 400: '#22D3EE', 500: '#06B6D4', 600: '#0891B2', 700: '#0E7490', 800: '#155E75', 900: '#164E63'
-            },
-            neon: '#3BF5FF'
-          },
-          boxShadow: {
-            glow: '0 0 40px rgba(59,245,255,0.25)'
-          }
-        }
-      }
-    }
-  </script>
+  
   <!-- Icons (Lucide via CDN) -->
   <script type="module" src="https://unpkg.com/lucide@latest"></script>
   <!-- Vue 3 CDN -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   <style>
+    /* Smooth page zoom by changing root font size (Tailwind uses rem) */
+    :root {
+      --font-scale: 16px;
+    }
+
+    html {
+      font-size: var(--font-scale);
+      transition: font-size .2s ease;
+    }
+
+    /* Respect user/system theme on first load */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+      }
+    }
+
     /* Subtle animated grid background */
     .grid-bg {
       background-image: linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
@@ -71,7 +71,7 @@
   </style>
 </head>
 
-<body class="bg-zinc-950 text-zinc-100 selection:bg-primary-400/40">
+<body class="bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 selection:bg-primary-400/40">
   <div id="app" class="min-h-screen">
     <!-- NAVBAR -->
     <header class="sticky top-0 z-50 backdrop-blur border-b border-white/5 bg-zinc-950/70">
@@ -97,17 +97,31 @@
             </a>
           </li>
         </ul>
-        <div class="flex items-center gap-3">
-          <button @click="toggleTheme"
-            class="p-2 rounded-lg border border-white/10 hover:border-primary-400/40 hover:text-primary-200"
-            title="Toggle theme">
-            <i data-lucide="moon" class="w-4 h-4"></i>
-          </button>
-          <a :href="meta.cvUrl" target="_blank"
-            class="px-3 py-1.5 rounded-lg bg-primary-500/20 text-primary-100 border border-primary-500/40 hover:bg-primary-500/30">CV</a>
+        <div class="flex items-center gap-2">
+          <!-- Zoom controls -->
+          <div
+            class="hidden sm:flex items-center rounded-lg border border-white/10 dark:border-white/10 border-zinc-200">
+            <button @click="zoomOut" class="px-2 py-1 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+              title="Zoom out (−)">
+              <i data-lucide="minus" class="w-4 h-4"></i>
+            </button>
+            <div class="px-2 py-1 text-xs tabular-nums min-w-[3.5rem] text-center">
+              {{ Math.round(uiScale * 100) }}%
+            </div>
+            <button @click="zoomIn" class="px-2 py-1 text-sm hover:bg-black/5 dark:hover:bg-white/10"
+              title="Zoom in (+)">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+            </button>
+            <button @click="zoomReset" class="px-2 py-1 text-xs hover:bg-black/5 dark:hover:bg-white/10"
+              title="Reset">
+              Reset
+            </button>
+          </div>
         </div>
       </nav>
     </header>
+
+
 
     <!-- HERO -->
     <section class="relative grid-bg scanline">
@@ -128,11 +142,11 @@
               robots.
             </p>
             <div class="mt-6 flex flex-wrap gap-3">
-              <a href="#highlights"
-                class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10">Research Highlights</a>
               <a href="#projects"
-                class="px-4 py-2 rounded-xl bg-primary-500/20 border border-primary-500/40 text-primary-100 hover:bg-primary-500/30">Projects
+                class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10">Projects
                 & Demos</a>
+              <a href="#bio"
+                class="px-4 py-2 rounded-xl bg-primary-500/20 border border-primary-500/40 text-primary-100 hover:bg-primary-500/30">Biography</a>
             </div>
             <div class="mt-6 flex flex-wrap gap-2 text-xs text-zinc-400">
               <span class="px-2 py-1 rounded bg-white/5 border border-white/10">ROS 2</span>
@@ -175,27 +189,77 @@
       </div>
     </section>
 
-    <!-- RESEARCH HIGHLIGHTS -->
-    <section id="highlights" class="py-16">
+    <!-- NEWS & UPDATES -->
+    <section id="news" class="py-16 border-t border-white/5 bg-zinc-950">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="fade-up flex items-end justify-between gap-4 flex-wrap">
+          <div>
+            <h2 class="text-2xl font-semibold">News & Updates</h2>
+            <p class="mt-2 text-zinc-400">Recent milestones, talks, papers, and lab activities.</p>
+          </div>
+          <a :href="meta.linkedin" target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-sm">
+            <i data-lucide="linkedin" class="w-4 h-4"></i>
+            Follow on LinkedIn
+          </a>
+        </div>
+
+        <ol class="mt-6 space-y-4">
+          <li v-for="n in newsSorted" :key="n.date + n.title"
+            class="fade-up grid grid-cols-[120px,1fr] gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/10">
+            <!-- Date + type -->
+            <div class="relative pl-5">
+              <span
+                class="absolute left-0 top-1.5 h-2 w-2 rounded-full bg-primary-400/80 ring-2 ring-primary-400/20"></span>
+              <div class="text-xs text-zinc-500">{{ formatDate(n.date) }}</div>
+              <div v-if="n.type"
+                class="mt-1 inline-block text-[11px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-zinc-300">
+                {{ n.type }}
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div>
+              <div class="font-medium">{{ n.title }}</div>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+
+
+    <!-- CURRENT PROJECTS -->
+    <section id="current-projects" class="py-16 border-t border-white/5 bg-zinc-950">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="fade-up">
-          <h2 class="text-2xl font-semibold">Research Highlights</h2>
-          <p class="mt-2 text-zinc-400">Selected themes across Human–Robot Interaction, teleoperation, and digital
-            twins.</p>
+          <h2 class="text-2xl font-semibold">Ongoing Projects</h2>
+          <p class="mt-2 text-zinc-400">Active lines across Human–Robot Interaction, Social Robotics, and Digital twins.
+          </p>
         </div>
+
         <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <article v-for="h in highlights" :key="h.title"
+          <article v-for="p in currentProjects" :key="p.title"
             class="fade-up rounded-2xl border border-white/10 bg-white/[0.02] p-5 hover:shadow-glow">
             <div class="flex items-center gap-3">
               <span
                 class="h-9 w-9 rounded-lg bg-primary-500/15 border border-primary-500/30 flex items-center justify-center">
-                <i :data-lucide="h.icon" class="w-4 h-4 text-primary-300"></i>
+                <i :data-lucide="p.icon" class="w-4 h-4 text-primary-300"></i>
               </span>
-              <h3 class="font-medium">{{ h.title }}</h3>
+              <div class="flex-1">
+                <h3 class="font-medium">{{ p.title }}</h3>
+                <div class="mt-1 flex items-center gap-2 text-xs text-zinc-500">
+                  <span v-if="p.since">Since {{ p.since }}</span>
+                  <span v-if="p.status"
+                    class="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-[11px] text-zinc-300">
+                    {{ p.status }}
+                  </span>
+                </div>
+              </div>
             </div>
-            <p class="mt-3 text-sm text-zinc-400">{{ h.desc }}</p>
+            <p class="mt-3 text-sm text-zinc-400">{{ p.desc }}</p>
             <ul class="mt-3 flex flex-wrap gap-2 text-[11px] text-zinc-400">
-              <li v-for="t in h.tags" :key="t" class="px-2 py-0.5 rounded bg-white/5 border border-white/10">{{ t }}
+              <li v-for="t in p.tags" :key="t" class="px-2 py-0.5 rounded bg-white/5 border border-white/10">{{ t }}
               </li>
             </ul>
           </article>
@@ -203,12 +267,14 @@
       </div>
     </section>
 
+
+
     <!-- PROJECTS & DEMOS -->
     <section id="projects" class="py-16 border-t border-white/5 bg-zinc-950">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 fade-up">
           <div>
-            <h2 class="text-2xl font-semibold">Projects & Demos</h2>
+            <h2 class="text-2xl font-semibold">Completed projects & demos</h2>
             <p class="mt-2 text-zinc-400">Hands‑on systems, open‑source tools, and real‑world deployments.</p>
           </div>
           <div class="flex items-center gap-2">
@@ -259,12 +325,20 @@
     </section>
 
     <!-- PUBLICATIONS -->
-    <section id="publications" class="py-16">
+    <section id="publications" class="py-16 border-t border-white/5 bg-zinc-950">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="fade-up">
-          <h2 class="text-2xl font-semibold">Publications</h2>
-          <p class="mt-2 text-zinc-400">Recent peer‑reviewed outputs (sample entries).</p>
+        <div class="fade-up flex items-end justify-between gap-4 flex-wrap">
+          <div>
+            <h2 class="text-2xl font-semibold">Selected publications</h2>
+            <p class="mt-2 text-zinc-400">High-impact, peer-reviewed research</p>
+          </div>
+          <a :href="meta.scholar" target="_blank" rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-sm">
+            <i data-lucide="graduation-cap" class="w-4 h-4"></i>
+            View all on Google Scholar
+          </a>
         </div>
+
         <ol class="mt-6 space-y-4">
           <li v-for="pub in publications" :key="pub.title"
             class="fade-up p-4 rounded-xl bg-white/[0.02] border border-white/10">
@@ -284,63 +358,265 @@
       </div>
     </section>
 
-    <!-- SKILLS & TOOLS -->
-    <section id="skills" class="py-16 border-t border-white/5 bg-zinc-950">
+
+    <!-- BIOGRAPHY -->
+    <section id="bio" class="py-16 border-t border-white/5 bg-zinc-950">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="fade-up">
-          <h2 class="text-2xl font-semibold">Skills & Tools</h2>
-          <p class="mt-2 text-zinc-400">From simulation and middleware to evaluation and standardization.</p>
+        <div class="fade-up flex items-end justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-semibold">Biography</h2>
+            <p class="mt-2 text-zinc-400">Robotics with a human-centered lens.</p>
+          </div>
+
         </div>
-        <div class="mt-6 flex flex-wrap gap-2">
-          <span v-for="s in skills" :key="s"
-            class="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm hover:border-primary-400/40">{{ s
-            }}</span>
+
+        <div class="mt-8 grid  gap-8 items-start">
+
+          <!-- Bio + Timeline: half / half -->
+          <main class="fade-up grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- BIO (left) -->
+            <article
+              class="rounded-2xl border border-white/10 bg-white/[0.02] p-6 space-y-4 text-justify [hyphens:auto]">
+              <p class="text-zinc-300 leading-relaxed">
+                Enrique Coronado holds a B.S. in Mechatronics Engineering (2012) from the Autonomous University of San
+                Luis Potosí (UASLP), Mexico, an M.S. in Advanced Robotics (2017) through the EMARO+ program in Italy and
+                France, and a Ph.D. in Mechanical Systems Engineering (2020) from the Tokyo University of Agriculture
+                and Technology (TUAT), Japan. He has served as an Assistant Professor (2020–2022) at TUAT, and as a
+                Researcher (2022–2024) at the National Institute of Advanced Industrial Science and Technology (AIST),
+                Japan.
+              </p>
+              <p class="text-zinc-300 leading-relaxed">
+                In 2024, Dr. Coronado became a Senior Researcher at AIST’s Human-Evolving AI & Robotics Team (HEART).
+                His research blends
+                human–robot interaction, multimodal interfaces, and large language models (LLMs) with digital twins to
+                create plug-and-play robotic applications that are safer, more intuitive, and genuinely helpful.
+              </p>
+
+            </article>
+
+            <!-- TIMELINE (right) -->
+            <section class="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+              <div class="flex items-center justify-between">
+                <h3 class="font-medium">Timeline</h3>
+                <div class="text-xs text-zinc-500">Education &amp; Positions</div>
+              </div>
+
+              <!-- Each item: date | details -->
+              <ol class="mt-4 divide-y divide-white/5">
+                <li v-for="item in bio.timeline" :key="item.when"
+                  class="grid grid-cols-[110px,1fr] gap-4 py-3 items-start">
+                  <!-- Date column with dot -->
+                  <div class="relative pl-5 text-xs text-zinc-500">
+                    <span
+                      class="absolute left-0 top-1.5 h-2 w-2 rounded-full bg-primary-400/80 ring-2 ring-primary-400/20"></span>
+                    {{ item.when }}
+                  </div>
+                  <!-- Details column -->
+                  <div>
+                    <div class="font-medium">{{ item.title }}</div>
+                    <div class="text-sm text-zinc-500">{{ item.place }}</div>
+                  </div>
+                </li>
+              </ol>
+            </section>
+          </main>
+
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="py-16">
+
+    <!-- COLLABORATE -->
+    <section id="collab" class="py-16 border-t border-white/5 bg-zinc-950">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-2 gap-8 items-start">
-          <div class="fade-up">
-            <h2 class="text-2xl font-semibold">Get in touch</h2>
-            <p class="mt-2 text-zinc-400">Open to collaborations in HRI, teleoperation, and human‑centered robotics.</p>
-            <div class="mt-6 space-y-2 text-sm text-zinc-300">
-              <div class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-primary-300"></i> <a
-                  :href="`mailto:${meta.email}`" class="hover:text-white">{{ meta.email }}</a></div>
-              <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-primary-300"></i> {{
-                meta.location }}</div>
-              <div class="flex items-center gap-2"><i data-lucide="github" class="w-4 h-4 text-primary-300"></i> <a
-                  :href="meta.github" target="_blank" class="hover:text-white">GitHub</a></div>
-              <div class="flex items-center gap-2"><i data-lucide="linkedin" class="w-4 h-4 text-primary-300"></i> <a
-                  :href="meta.linkedin" target="_blank" class="hover:text-white">LinkedIn</a></div>
+        <div class="fade-up">
+          <div class="flex items-center justify-between gap-4 flex-wrap">
+            <div>
+              <h2 class="text-2xl font-semibold">Collaborate with HEART @ AIST</h2>
+              <p class="mt-2 text-zinc-400">
+                We welcome international collaborators—postdocs, graduate and undergraduate international
+                students—interested in
+                <span class="text-primary-300">Human-Robot Interaction</span>, <span class="text-primary-300">Social and
+                  Service Robotics</span>, <span class="text-primary-300">Robotic
+                  Teleoperation and Shared Autonomy</span>,
+                <span class="text-primary-300">LLM/VLM interfaces for Robotics Systems</span>, <span
+                  class="text-primary-300">Robot Learning</span> and <span class="text-primary-300">Digital
+                  Twins and XR for Industry 5.0</span>.
+              </p>
+
+              <!-- Preferred channel -->
+              <div class="mt-4 flex justify-center items-center gap-3">
+                <a :href="meta.linkedin" target="_blank" rel="noopener noreferrer"
+                  class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 inline-flex items-center gap-2">
+                  <i data-lucide="linkedin" class="w-4 h-4"></i>
+                  First contact me via LinkedIn
+                </a>
+              </div>
+
+
+              <!-- Cards -->
+              <div class="mt-8 grid md:grid-cols-2 gap-6">
+                <!-- Researchers -->
+                <article class="fade-up rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="h-9 w-9 rounded-lg bg-primary-500/15 border border-primary-500/30 flex items-center justify-center">
+                      <i data-lucide="handshake" class="w-4 h-4 text-primary-300"></i>
+                    </span>
+                    <h3 class="font-medium">For Researchers</h3>
+                  </div>
+                  <p class="mt-3 text-zinc-400 text-sm">
+                    If you’re interested in my research, let’s co-define a joint study, dataset, or tool. Current
+                    priorities include ergonomics and safety in manufacturing systems, social robots for well-being, and
+                    intuitive, safety-aware teleoperation.
+                  </p>
+                  <ul class="mt-3 space-y-2 text-sm text-zinc-300">
+                    <li class="flex items-start gap-2"><i data-lucide="sparkles"
+                        class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                      Short research visits (1–3 months) or remote collaboration</li>
+                    <li class="flex items-start gap-2"><i data-lucide="git-branch"
+                        class="w-4 h-4 text-primary-300 mt-0.5"></i> Co-authored papers, open-source releases, and demos
+                    </li>
+                    <li class="flex items-start gap-2"><i data-lucide="cpu" class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                      Access to robots and compute</li>
+                  </ul>
+                </article>
+
+                <!-- Postdocs & Students (International-friendly) -->
+                <article class="fade-up rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="h-9 w-9 rounded-lg bg-primary-500/15 border border-primary-500/30 flex items-center justify-center">
+                      <i data-lucide="graduation-cap" class="w-4 h-4 text-primary-300"></i>
+                    </span>
+                    <h3 class="font-medium">Postdocs & Students (International)</h3>
+                  </div>
+                  <p class="mt-3 text-zinc-400 text-sm">
+                    We regularly work with international postdocs, graduate and undergraduate students. If you’re in
+                    Japan, AIST’s RA
+                    system
+                    may be available.
+                    Outside Japan? We can explore fellowships, visiting positions. For undergraduate students you can
+                    ask about technical training internships.
+                  </p>
+                  <ul class="mt-3 space-y-2 text-sm text-zinc-300">
+                    <li class="flex items-start gap-2">
+                      <i data-lucide="globe-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                      Visiting/postdoc paths for candidates abroad; consider fellowships such as JSPS <a
+                        :href="meta.jspsUrl" target="_blank" class="underline hover:text-white ml-1">Learn more</a>
+                    </li>
+                    <li class="flex items-start gap-2">
+                      <i data-lucide="message-square" class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                      Communication skills on English or Spanish is required; basic Japanese is welcome but not required
+                    </li>
+                  </ul>
+                </article>
+              </div>
+
+              <!-- How to reach out -->
+              <div class="fade-up mt-8 mb-10 rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+                <h3 class="font-medium">What to send</h3>
+                <div class="mt-3 grid md:grid-cols-2 gap-4 text-sm text-zinc-300">
+                  <ul class="space-y-2">
+                    <li class="flex items-start gap-2"><i data-lucide="file-text"
+                        class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                      CV / short bio + Google Scholar profile (optional)</li>
+                    <li class="flex items-start gap-2"><i data-lucide="target"
+                        class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                      1–2 paragraph idea aligned with the focus areas</li>
+                  </ul>
+                  <ul class="space-y-2">
+                    <li class="flex items-start gap-2"><i data-lucide="calendar"
+                        class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                      Availability window (start/end dates, time zone)</li>
+                    <li class="flex items-start gap-2"><i data-lucide="link"
+                        class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                      Links to code, demos, or papers (if any)</li>
+                  </ul>
+                </div>
+              </div>
             </div>
-          </div>
-          <form @submit.prevent="sendMessage" class="fade-up rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-            <div class="grid sm:grid-cols-2 gap-4">
-              <label class="text-sm">Name
-                <input v-model="form.name" required
-                  class="mt-1 w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10" />
-              </label>
-              <label class="text-sm">Email
-                <input v-model="form.email" type="email" required
-                  class="mt-1 w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10" />
-              </label>
+
+            <!-- Skills we're looking for -->
+
+
+
+            <h3 class="font-medium">Skills we’re looking for</h3>
+            <p class="mt-2 text-zinc-400 text-sm">
+              You don’t need all of these—bring your strengths and curiosity. We work at the intersection of
+              <span class="text-primary-300">robotics technology</span>, and
+              <span class="text-primary-300">social science</span>.
+            </p>
+
+            <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Engineering & Robotics -->
+              <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="h-9 w-9 rounded-lg bg-primary-500/15 border border-primary-500/30 flex items-center justify-center">
+                    <i data-lucide="wrench" class="w-4 h-4 text-primary-300"></i>
+                  </span>
+                  <h4 class="font-medium">Engineering & Robotics</h4>
+                </div>
+                <ul class="mt-4 space-y-2 text-sm text-zinc-300">
+                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                    ROS 2, C++ or Python, Github, Docker, Ubuntu, OpenCV </li>
+                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                    Basic skills on Robot Kinematics, Dynamics, Control and Learning</li>
+                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                    3D modeling (Solid Works), Simulation (Blender, Unity, Unreal, NVIDIA Isaac Sim), 3D printing</li>
+                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                    LLM/VLM integration for robotics; tool use & prompting</li>
+                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                    Machine Learning, Deep Learning, and AI integration</li>
+                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                    Web development (HTML, CSS, JavaScript)</li>
+                  <div class="mt-3 flex flex-wrap gap-2 text-[11px] text-zinc-400">
+                    <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">JavaScript</span>
+                    <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">LLMs/VLMs</span>
+                    <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">ROS 2</span>
+                    <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">Unity / Isaac Sim</span>
+                  </div>
+              </div>
+
+              <!-- Social Science & Design -->
+              <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
+                <div class="flex items-center gap-3">
+                  <span
+                    class="h-9 w-9 rounded-lg bg-primary-500/15 border border-primary-500/30 flex items-center justify-center">
+                    <i data-lucide="users" class="w-4 h-4 text-primary-300"></i>
+                  </span>
+                  <h4 class="font-medium">Social Science & Design</h4>
+                </div>
+                <ul class="mt-4 space-y-2 text-sm text-zinc-300">
+                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                    HCI/HRI study design, ethics/IRB, participant studies</li>
+                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                    Qualitative and Mixed methods (interviews, thematic analysis)</li>
+                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                    Evaluation metrics (SUS, NASA-TLX, trust, well-being)</li>
+                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                    UX/UI design, Human-centered design</li>
+                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                    Participatory/co-design, accessibility, cross-cultural research</li>
+                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
+                    Design Thinking, Empathy Maps, Personas, User Journey Mapping, Scenarios, Prototyping, User Testing
+                  </li>
+                </ul>
+                <div class="mt-3 flex flex-wrap gap-2 text-[11px] text-zinc-400">
+                  <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">User Studies</span>
+                  <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">Well-being</span>
+                  <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">Trust & Safety</span>
+                  <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">UX/UI </span>
+                  <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">Co-design</span>
+                  <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">Design Thinking</span>
+                </div>
+              </div>
             </div>
-            <label class="text-sm block mt-4">Message
-              <textarea v-model="form.message" rows="4" required
-                class="mt-1 w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10"></textarea>
-            </label>
-            <div class="mt-4 flex items-center justify-between">
-              <div class="text-xs text-zinc-400">This demo logs to console. Replace with your handler.</div>
-              <button
-                class="px-4 py-2 rounded-xl bg-primary-500/20 border border-primary-500/40 hover:bg-primary-500/30">Send</button>
-            </div>
-          </form>
-        </div>
-      </div>
+
+
     </section>
+
 
     <footer class="border-t border-white/5 py-8 text-center text-xs text-zinc-500">© {{ new Date().getFullYear() }} {{
       meta.name }} — Built with Vue 3 & Tailwind</footer>
@@ -351,6 +627,82 @@
 
     createApp({
       setup() {
+
+        // UI scale (zoom)
+        const uiScale = Vue.ref(1);
+
+        // Theme (light/dark)
+        const theme = Vue.ref('dark'); // default; will be corrected onMounted
+
+        function applyScale() {
+          const px = (16 * uiScale.value).toFixed(2) + 'px';
+          document.documentElement.style.setProperty('--font-scale', px);
+          localStorage.setItem('uiScale', String(uiScale.value));
+          // refresh icons so sizes realign nicely
+          requestAnimationFrame(() => lucide.createIcons());
+        }
+
+        function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
+        function zoomIn() { uiScale.value = clamp(uiScale.value + 0.1, 0.8, 1.6); applyScale(); }
+        function zoomOut() { uiScale.value = clamp(uiScale.value - 0.1, 0.8, 1.6); applyScale(); }
+        function zoomReset() { uiScale.value = 1.2; applyScale(); }
+
+        function applyTheme(next) {
+          theme.value = next;
+          if (next === 'dark') document.documentElement.classList.add('dark');
+          else document.documentElement.classList.remove('dark');
+          localStorage.setItem('theme', next);
+          requestAnimationFrame(() => lucide.createIcons());
+        }
+
+
+        // Initialize from saved prefs or system
+        onMounted(() => {
+          // Theme
+          zoomReset();
+          const savedTheme = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+
+          // Scale
+          const savedScale = parseFloat(localStorage.getItem('uiScale') || '1');
+          uiScale.value = isNaN(savedScale) ? 1 : savedScale;
+          applyScale();
+
+          // Icons + intersection observer you already have
+          lucide.createIcons();
+          const io = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+          }, { threshold: .12 });
+          document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+        });
+
+        const news = Vue.ref([
+          // Use ISO dates (YYYY-MM-DD)
+          {
+            date: '2025-07-22',
+            type: 'Award',
+            title: 'Our article, "TeleSign: A Flexible and Intuitive Gesture-Based Teleoperation Framework" was nomitated for the Best Paper Award at IEEE ARSO 2025',
+            href: '#'
+          },
+          {
+            date: '2024-02-29',
+            type: 'Award',
+            title: 'Our article, "Evaluating Quality in Human-Robot Interaction: A Systematic Search and Classification of Performance and Human-Centered Factors, Measures, and Metrics towards Industry 5.0" was awarded the AIST ITH Best Paper Award',
+            href: '#'
+          },
+        ])
+
+        // Sorted (newest first)
+        const newsSorted = computed(() =>
+          [...news.value].sort((a, b) => new Date(b.date) - new Date(a.date))
+        )
+
+        // Optional: nice date formatter
+        function formatDate(d) {
+          const dt = new Date(d)
+          return isNaN(dt) ? d : dt.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+        }
         const meta = Vue.reactive({
           name: 'Enrique Coronado',
           position: 'Senior Researcher',
@@ -358,41 +710,97 @@
           tagline: 'Industry 5.0 • Human-Centered Robotics • Social Robots',
           email: 'name@example.com',
           location: 'Tokyo, Japan',
-          github: '#',
-          linkedin: '#',
-          cvUrl: '#'
+          github: 'https://github.com/enriquecoronadozu',
+          linkedin: 'https://www.linkedin.com/in/enrique-coronado-zu/',
+          scholar: 'https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID',
+          raUrl: '#',     // AIST RA information page (JP)
+          jspsUrl: 'https://www.jsps.go.jp/english/e-fellow/',   // JSPS fellowship info
         })
 
         const nav = [
-          { label: 'Highlights', href: '#highlights' },
-          { label: 'Projects', href: '#projects' },
+          { label: 'Ongoing Projects', href: '#current-projects' },
+          { label: 'Video demostrations', href: '#projects' },
           { label: 'Publications', href: '#publications' },
-          { label: 'Skills', href: '#skills' },
-          { label: 'Contact', href: '#contact' }
+          { label: 'Biography', href: '#bio' },   // ← add this
+          { label: 'Collaborate & Concat', href: '#collab' },   // <-- add this
         ]
 
-        const highlights = [
-          { title: 'LLM‑Driven Intent Recognition', desc: 'Natural language + gestures + context‑aware scene graphs for robust teleoperation.', tags: ['LLMs', 'Scene Graphs', 'Multimodal'], icon: 'brain-circuit' },
-          { title: 'Digital Twins for Safe HRI', desc: 'Unity / Isaac Sim twins for training, validation, and shared autonomy.', tags: ['Isaac Sim', 'Unity', 'ROS 2'], icon: 'box' },
-          { title: 'Plug‑and‑Play Middleware', desc: 'NEP+/Ryza bridges ROS 2 with non‑ROS stacks (ZeroMQ/Zenoh).', tags: ['Middleware', 'ROS 2', 'ZeroMQ', 'Zenoh'], icon: 'cable' },
-          { title: 'Evaluation & Well‑being', desc: 'SUS, NASA‑TLX, and task metrics for long‑term teleoperation by non‑experts.', tags: ['SUS', 'NASA‑TLX', 'UX'], icon: 'gauge' },
-          { title: 'Standardization & Ethics', desc: 'Human‑centered robotics guidelines and safety‑by‑design practices.', tags: ['ISO/TC 299', 'Ethics'], icon: 'shield' },
-          { title: 'XR‑Assisted Co‑Design', desc: 'Participatory design loops using VR/AR and generative AI.', tags: ['XR', 'GenAI', 'Co‑Design'], icon: 'sparkles' }
+        const bio = Vue.reactive({
+          focus: [
+            'Human–Robot Interaction',
+            'Teleoperation',
+            'Social & Service Robotics',
+            'Robotics Software',
+            'Human Digital Twins',
+            'Imitation Learning',
+            'XR for Collaboration'
+          ],
+          timeline: [
+            { when: '2024 — Present', title: 'Senior Researcher', place: 'AIST (Japan)' },
+            { when: '2022 — 2024', title: 'Researcher', place: 'AIST (Japan)' },
+            { when: '2020 — 2022', title: 'Assistant Professor', place: 'TUAT (Japan)' },
+            { when: '2020', title: 'Ph.D., Mechanical Systems Engineering', place: 'TUAT (Japan)' },
+            { when: '2017', title: 'M.S., Advanced Robotics (EMARO+)', place: 'Italy & France' },
+            { when: '2012', title: 'B.S., Mechatronics Engineering', place: 'UASLP (Mexico)' }
+          ]
+        })
+
+
+
+        const currentProjects = [
+          {
+            title: 'LLM-Driven and Multimodal Teleoperation',
+            desc: 'Natural language + gestures + mixed-initiative teleoperation.',
+            tags: ['LLMs', 'Mediapipe', 'Multimodal'],
+            icon: 'brain-circuit',
+            since: '2025',
+            status: 'Active'
+          },
+          {
+            title: 'Digital Twins for Safe HRI',
+            desc: 'Unity / Isaac Sim digital twins for shared autonomy in manufacturing and retail tasks.',
+            tags: ['Isaac Sim', 'Unity', 'ROS 2'],
+            icon: 'box',
+            since: '2025',
+            status: 'Active'
+          },
+          {
+            title: 'Plug-and-Play Middleware (NEP+/Ryza)',
+            desc: 'Bridging ROS 2 with non-ROS stacks with ZeroMQ for rapid HRI prototyping and deployment.',
+            tags: ['Middleware', 'ROS 2', 'ZeroMQ'],
+            icon: 'cable',
+            since: '2024',
+            status: 'Active'
+          }
         ]
 
         const projects = Vue.ref([
-          { title: 'TeleSign', year: '2025', desc: 'Vision‑based gesture teleoperation with safety constraints.', tags: ['ROS 2', 'Isaac Sim', 'Gestures'], url: '#' },
-          { title: 'NICE', year: '2025', desc: 'LLM‑powered reasoning fused with scene graphs for disambiguation.', tags: ['LLMs', 'Scene Graphs'], url: '#' },
-          { title: 'NEP+ / Ryza', year: '2024', desc: 'Simple bridge between ROS 2 and non‑ROS stacks for rapid prototyping.', tags: ['ZeroMQ', 'Zenoh', 'ROS 2'], url: '#' },
-          { title: 'MRTwin', year: '2024', desc: 'VR/AR telepresence with shared autonomy and intent prompting.', tags: ['Unity', 'XR', 'Telepresence'], url: '#' },
-          { title: 'IREX 2019', year: '2023', desc: 'Showcase cutting-edge robot interaction in a public venue, engaging of hundreds of visitors', tags: ['Human–obot interaction', 'Robots in the wild'], youtube: 'nb775Ahd3yM' },
-          { title: 'Yokobo', year: '2023', desc: 'Yōkobo is a robject designed to strengthen the bond between members (e.g., a couple).', tags: ['Social robotics', 'Human-Centered Design'], youtube: 'YIrGxi4nnt4' }
+          { title: 'TeleSign (soon)', year: '2025', desc: 'Gesture-based teleoperation for inclusion.', tags: ['ROS 2', 'Isaac Sim', 'Gestures'], url: '#' },
+          { title: 'NICE (soon)', year: '2025', desc: 'LLM‑powered reasoning fused with scene graphs for navigation.', tags: ['LLMs', 'Scene Graphs'], url: '#' },
+          { title: 'MRTwin (soon)', year: '2025', desc: 'VR/AR telepresence with shared autonomy and intent prompting.', tags: ['Unity', 'XR', 'Telepresence'], url: '#' },
+          {
+            title: 'Few-shot Imitation Learning',
+            year: '2024',
+            desc: 'Enabling robots to not only mimic actions but also adapt to new environments with minimal demonstrations.',
+            tags: ['Imitation Learning'],
+            youtube: 'wjS1Om5kO2Q'
+          },
+          {
+            title: 'Hold My Hand',
+            year: '2023',
+            desc: 'Enabling Pepper robot to walk side-by-side while holding hands and reacting to the environment',
+            tags: ['Humanoid', 'Force Control', 'Companion Robot'],
+            youtube: 'aVKmIPbaSO8' // from https://www.youtube.com/embed/aVKmIPbaSO8?...
+          },
+          { title: 'Yokobo', year: '2022', desc: 'Yōkobo is a robject designed to strengthen the bond between members (e.g., a couple).', tags: ['Social robotics', 'Human-Centered Design'], youtube: 'YIrGxi4nnt4' },
+          { title: 'IREX 2019', year: '2020', desc: 'Showcase cutting-edge robot interaction in a public venue, engaging of hundreds of visitors', tags: ['Human–obot interaction', 'Robots in the wild'], youtube: 'nb775Ahd3yM' },
         ])
 
         const publications = Vue.ref([
-          { year: '2025', venue: 'HRI', title: 'Mixed‑Initiative Teleoperation via LLM‑Grounded Scene Graphs', authors: 'E. Coronado et al.', doi: '#', pdf: '#', code: '#' },
-          { year: '2024', venue: 'IROS', title: 'Ryza: Minimalist Middleware for Cross‑Domain HRI Prototyping', authors: 'E. Coronado et al.', doi: '#', pdf: '#' },
-          { year: '2023', venue: 'RAS', title: 'Participatory Design Loops for Office Well‑being Robots', authors: 'E. Coronado et al.', doi: '#' }
+          { year: '2024', venue: 'IEEE Robotics and Automation Letters', title: 'Adaptive contact-rich manipulation through few-shot imitation learning with Force-Torque feedback and pre-trained object representations', authors: 'Tsuji, C., Coronado, E., Osorio, P., & Venture, G.', doi: 'https://doi.org/10.1109/LRA.2024.3497713' },
+          { year: '2023', venue: 'Applied Sciences', title: 'Integrating virtual, mixed, and augmented reality to human–robot interaction applications using game engines: A brief review of accessible software tools and frameworks', authors: 'E. Coronado et al.', doi: 'https://doi.org/10.3390/app13031292' },
+          { year: '2022', venue: 'Journal of Manufacturing Systems', title: 'Evaluating quality in human-robot interaction: A systematic search and classification of performance and human-centered factors, measures and metrics towards an industry 5.0', authors: 'E. Coronado et al.', doi: 'https://doi.org/10.1016/j.jmsy.2022.04.007' },
+          { year: '2021', venue: 'IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)', title: 'Assembly action understanding from fine-grained hand motions, a multi-camera and deep learning approach', authors: 'E. Coronado et al.', doi: 'https://doi.org/10.1109/IROS51168.2021.9636715' },
         ])
 
         const skills = [
@@ -410,9 +818,6 @@
           })
         })
 
-        function toggleTheme() {
-          document.documentElement.classList.toggle('dark')
-        }
 
         function sendMessage() {
           console.log('Contact form submitted:', JSON.parse(JSON.stringify(form)))
@@ -431,7 +836,14 @@
           document.querySelectorAll('.fade-up').forEach(el => io.observe(el))
         })
 
-        return { meta, nav, highlights, projects, publications, skills, query, filter, filteredProjects, form, toggleTheme, sendMessage }
+
+
+        return {
+           uiScale, zoomIn, zoomOut, zoomReset, 
+          meta, nav, currentProjects, projects, publications, skills,
+          query, filter, filteredProjects, form, news, newsSorted, formatDate,
+          bio,
+        }
       }
     }).mount('#app')
   </script>
