@@ -136,7 +136,8 @@
                 <div class="text-lg text-slate-600 leading-relaxed space-y-4">
                   <p>
                     Dr. Enrique Coronado holds a <span class="text-slate-900 font-semibold">B.S. in Mechatronics
-                      Engineering (2012)</span> from Autonomous University of San Luis Potosí (UASLP), Mexico, an <span class="text-slate-900 font-semibold">M.S.
+                      Engineering (2012)</span> from Autonomous University of San Luis Potosí (UASLP), Mexico, an <span
+                      class="text-slate-900 font-semibold">M.S.
                       in Advanced Robotics (2017)</span> from the EMARO+ program (Italy/France), and a <span
                       class="text-slate-900 font-semibold">Ph.D. in Mechanical Systems Engineering (2020)</span> from
                     Tokyo University of Agriculture and Technology (TUAT), Japan.
@@ -152,7 +153,8 @@
                     <span class="text-slate-900 font-bold">Human-Evolving AI & Robotics Team (HEART) </span> team at
                     AIST, where he leads initiatives in Responsible Agentic AI and Robotics. During this period, he has
                     fostered
-                    international research collaborations with academic institutions in Mexico, Canada, Norway, and Australia,
+                    international research collaborations with academic institutions in Mexico, Canada, Norway, and
+                    Australia,
                     among others. Since 2026, he has also served as a Visiting Researcher at the <span
                       class="text-slate-900 font-semibold">University of Tokyo</span>, co-supervising undergraduate and
                     graduate students.
@@ -250,8 +252,7 @@
       <h2 class="text-xs uppercase tracking-[0.2em] font-bold text-slate-400 flex items-center gap-2 mb-8">
         <span class="w-2 h-2 bg-blue-700 rounded-full animate-pulse"></span> Latest Updates
       </h2>
-      <div class="bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-100 shadow-sm">
-        <div id="news-container" class="grid grid-cols-1 md:grid-cols-3 gap-12 relative"></div>
+      <div id="news-container" class="grid grid-cols-1 md:grid-cols-3 gap-8">
       </div>
     </section>
 
@@ -438,20 +439,53 @@
     });
 
     const SITE_NEWS = [
-      { date: "APR 2026", text: "New framework for Responsible Agentic Robotics (RAR) released." },
-      { date: "MAR 2026", text: "Successfully deployed ROBOCYCLE PET-sorting at the local facility." },
-      { date: "FEB 2026", text: "Axobotl well-being study results presented at HRI 2026." },
+      {
+        date: "JUL 22, 2025",
+        category: "Award",
+        title: "Best Paper Nomination",
+        text: "Our article 'TeleSign' was nominated for the Best Paper Award at IEEE ARSO 2025, featuring internship contributions from J. C. Hernández Ríos and J. I. Molina Daniel (Tec of Monterrey, Mexico).",
+        img: "https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&q=80&w=400" // Replace with actual image path
+      },
+      {
+        date: "NOV 13, 2024",
+        category: "Q1 Journal",
+        title: "IEEE RA-L Publication",
+        text: "Article on 'Adaptive Contact-Rich Manipulation' accepted in IEEE Robotics and Automation Letters, featuring work by C. Tsuji from the University of Tokyo.",
+        img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=400"
+      },
+      {
+        date: "FEB 29, 2024",
+        category: "Award",
+        title: "AIST ITH Best Paper",
+        text: "Our systematic review on HRI metrics towards Industry 5.0 was awarded the AIST ITH Best Paper Award.",
+        img: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=400"
+      }
     ];
 
     const newsContainer = document.getElementById('news-container');
     SITE_NEWS.forEach(item => {
       newsContainer.innerHTML += `
-        <div class="relative pl-8 group">
-            <div class="absolute left-0 top-1.5 w-2.5 h-2.5 rounded-full border-2 border-white bg-blue-700 shadow-sm z-10 group-hover:scale-150 transition-transform"></div>
-            <p class="text-[10px] font-bold text-blue-700 mb-1 uppercase tracking-tighter">${item.date}</p>
-            <p class="text-sm text-slate-600 leading-snug group-hover:text-slate-900 transition-colors">${item.text}</p>
+    <div class="group flex flex-col bg-slate-50 rounded-3xl overflow-hidden border border-slate-100 hover:border-blue-200 transition-all duration-300 hover:shadow-xl hover:shadow-blue-900/5">
+      <div class="h-40 overflow-hidden relative">
+        <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+        <div class="absolute top-4 left-4">
+          <span class="px-3 py-1 bg-white/90 backdrop-blur-sm text-[10px] font-bold text-blue-700 uppercase tracking-widest rounded-full shadow-sm">
+            ${item.category}
+          </span>
         </div>
-    `;
+      </div>
+      
+      <div class="p-6 flex flex-col flex-1">
+        <p class="text-[10px] font-bold text-slate-400 mb-2 uppercase tracking-tighter">${item.date}</p>
+        <h4 class="font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors leading-tight">
+          ${item.title}
+        </h4>
+        <p class="text-sm text-slate-500 leading-relaxed font-light">
+          ${item.text}
+        </p>
+      </div>
+    </div>
+  `;
     });
 
     fetch('publications.json')
