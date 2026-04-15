@@ -1,0 +1,60 @@
+[
+  {
+    "id": "coronado2026large",
+    "type": "article",
+    "title": "From Large Language Models to Agentic AI in Industry 5.0 and the Post-ChatGPT Era: A Socio-Technical Framework and Review on Human--Robot Collaboration",
+    "year": "2026",
+    "journal": "Robotics",
+    "booktitle": null,
+    "publisher": "MDPI",
+    "author": [
+      "Coronado Enrique"
+    ]
+  },
+  {
+    "id": "coronado2023integrating",
+    "type": "article",
+    "title": "Integrating virtual, mixed, and augmented reality to human--robot interaction applications using game engines: A brief review of accessible software tools and frameworks",
+    "year": "2023",
+    "journal": "Applied Sciences",
+    "booktitle": null,
+    "publisher": "MDPI",
+    "author": [
+      "Coronado Enrique",
+      "Itadera Shunki",
+      "Ramirez-Alpizar Ixchel"
+    ]
+  },
+  {
+    "id": "coronado2022evaluating",
+    "type": "article",
+    "title": "Evaluating quality in human-robot interaction: A systematic search and classification of performance and human-centered factors, measures and metrics towards an industry 5.0",
+    "year": "2022",
+    "journal": "Journal of Manufacturing Systems",
+    "booktitle": null,
+    "publisher": "Elsevier",
+    "author": [
+      "Coronado Enrique",
+      "Kiyokawa Takuya",
+      "Ricardez Gustavo",
+      "Ramirez-Alpizar Ixchel",
+      "Venture Gentiane",
+      "Yamanobe Natsuki"
+    ]
+  },
+  {
+    "id": "coronado2020visual",
+    "type": "article",
+    "title": "Visual programming environments for end-user development of intelligent and social robots, a systematic review",
+    "year": "2020",
+    "journal": "Journal of Computer Languages",
+    "booktitle": null,
+    "publisher": "Elsevier",
+    "author": [
+      "Coronado Enrique",
+      "Mastrogiovanni Fulvio",
+      "Indurkhya Bipin",
+      "Venture Gentiane"
+    ]
+  }
+]

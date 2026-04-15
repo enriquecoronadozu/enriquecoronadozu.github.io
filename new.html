@@ -1,851 +1,498 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Robotics & HRI — Research Portfolio</title>
-  <!-- Tailwind Play CDN (for demo / quick start) -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enrique Coronado | Responsible AI & Robotics</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-  
-  <!-- Icons (Lucide via CDN) -->
-  <script type="module" src="https://unpkg.com/lucide@latest"></script>
-  <!-- Vue 3 CDN -->
-  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Smooth page zoom by changing root font size (Tailwind uses rem) */
-    :root {
-      --font-scale: 16px;
+    body {
+      font-family: 'Inter', sans-serif;
     }
 
-    html {
-      font-size: var(--font-scale);
-      transition: font-size .2s ease;
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
     }
 
-    /* Respect user/system theme on first load */
-    @media (prefers-color-scheme: dark) {
-      :root {
-        color-scheme: dark;
-      }
-    }
-
-    /* Subtle animated grid background */
-    .grid-bg {
-      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-      background-size: 24px 24px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .scanline:before {
-      content: '';
-      position: absolute;
-      inset: -100% 0 0;
-      background: linear-gradient(180deg, transparent, rgba(59, 245, 255, .05), transparent);
-      animation: scan 6s linear infinite;
-    }
-
-    @keyframes scan {
-      from {
-        transform: translateY(-100%)
-      }
-
-      to {
-        transform: translateY(100%)
-      }
-    }
-
-    .fade-up {
-      opacity: 0;
-      transform: translateY(12px);
-      transition: all .6s ease
-    }
-
-    .fade-up.show {
-      opacity: 1;
-      transform: none
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #e2e8f0;
+      border-radius: 10px;
     }
   </style>
 </head>
 
-<body class="bg-white text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 selection:bg-primary-400/40">
-  <div id="app" class="min-h-screen">
-    <!-- NAVBAR -->
-    <header class="sticky top-0 z-50 backdrop-blur border-b border-white/5 bg-zinc-950/70">
-      <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-        <div class="flex items-center gap-3">
-          <span
-            class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-primary-500/10 ring-1 ring-primary-500/30 shadow-glow">
-            <!-- Simple robot arm icon -->
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-primary-300">
-              <path d="M4 20h16" />
-              <path d="M4 16h2l3-6 5 2 4-8" />
-              <circle cx="14" cy="12" r="1.5" />
-            </svg>
-          </span>
-          <a href="#" class="font-semibold tracking-tight">{{ meta.name }}</a>
-          <span class="text-xs px-2 py-0.5 rounded-full bg-white/5 border border-white/10">Robotics & HRI</span>
-        </div>
-        <ul class="hidden md:flex items-center gap-6 text-sm">
-          <li v-for="item in nav" :key="item.href">
-            <a :href="item.href" class="text-zinc-300 hover:text-white relative group">
-              {{ item.label }}
-              <span class="absolute left-0 -bottom-1 h-0.5 w-0 bg-primary-400 transition-all group-hover:w-full"></span>
-            </a>
-          </li>
-        </ul>
-        <div class="flex items-center gap-2">
-          <!-- Zoom controls -->
-          <div
-            class="hidden sm:flex items-center rounded-lg border border-white/10 dark:border-white/10 border-zinc-200">
-            <button @click="zoomOut" class="px-2 py-1 text-sm hover:bg-black/5 dark:hover:bg-white/10"
-              title="Zoom out (−)">
-              <i data-lucide="minus" class="w-4 h-4"></i>
-            </button>
-            <div class="px-2 py-1 text-xs tabular-nums min-w-[3.5rem] text-center">
-              {{ Math.round(uiScale * 100) }}%
-            </div>
-            <button @click="zoomIn" class="px-2 py-1 text-sm hover:bg-black/5 dark:hover:bg-white/10"
-              title="Zoom in (+)">
-              <i data-lucide="plus" class="w-4 h-4"></i>
-            </button>
-            <button @click="zoomReset" class="px-2 py-1 text-xs hover:bg-black/5 dark:hover:bg-white/10"
-              title="Reset">
-              Reset
-            </button>
+<body class="bg-slate-50 text-slate-900">
+
+  <nav class="bg-white/80 backdrop-blur-md border-b sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 h-24 flex items-center justify-between">
+      <div class="flex items-center gap-6">
+        <div class="flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
+          <a href="#" class="font-extrabold text-2xl tracking-tighter uppercase whitespace-nowrap">
+            Enrique <span class="text-blue-700">Coronado</span>
+          </a>
+          <span class="hidden md:block h-10 w-px bg-slate-200"></span>
+          <div class="flex flex-col justify-center leading-snug">
+            <span class="text-sm font-bold text-blue-700 uppercase tracking-widest">AIST — HEART</span>
+            <span class="text-xs font-semibold text-slate-400 uppercase tracking-widest mt-0.5">Tokyo, Japan</span>
           </div>
         </div>
-      </nav>
-    </header>
-
-
-
-    <!-- HERO -->
-    <section class="relative grid-bg scanline">
-      <div
-        class="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(59,245,255,.12),transparent_30%),radial-gradient(circle_at_80%_0%,rgba(99,102,241,.12),transparent_30%)]">
       </div>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 relative">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-          <div class="fade-up">
-            <p class="text-xs uppercase tracking-[0.2em] text-zinc-400">{{ meta.tagline }}</p>
-            <h1 class="mt-3 text-4xl sm:text-5xl font-bold leading-tight">
-              {{ meta.name }}
-            </h1>
-            <p class="mt-2 text-lg text-primary-300 font-medium">{{ meta.position }} — {{ meta.affiliation }}</p>
-            <p class="mt-4 text-zinc-300 max-w-prose">I design plug‑and‑play frameworks that blend <span
-                class="text-primary-300">LLMs</span>, <span class="text-primary-300">multimodal interfaces</span>, and
-              <span class="text-primary-300">digital twins</span> for safe, intuitive collaboration between humans and
-              robots.
-            </p>
-            <div class="mt-6 flex flex-wrap gap-3">
-              <a href="#projects"
-                class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10">Projects
-                & Demos</a>
-              <a href="#bio"
-                class="px-4 py-2 rounded-xl bg-primary-500/20 border border-primary-500/40 text-primary-100 hover:bg-primary-500/30">Biography</a>
-            </div>
-            <div class="mt-6 flex flex-wrap gap-2 text-xs text-zinc-400">
-              <span class="px-2 py-1 rounded bg-white/5 border border-white/10">ROS 2</span>
-              <span class="px-2 py-1 rounded bg-white/5 border border-white/10">Isaac Sim</span>
-              <span class="px-2 py-1 rounded bg-white/5 border border-white/10">Unity</span>
-              <span class="px-2 py-1 rounded bg-white/5 border border-white/10">ZeroMQ </span>
-              <span class="px-2 py-1 rounded bg-white/5 border border-white/10">LLMs • VLMs</span>
-            </div>
-          </div>
-          <!-- Futuristic illustration -->
-          <div class="fade-up lg:justify-self-end">
-            <div class="relative">
-              <div class="absolute -inset-6 -z-10 rounded-3xl bg-primary-500/10 blur-2xl"></div>
-              <svg viewBox="0 0 600 420" class="w-full h-auto rounded-3xl border border-white/10 bg-zinc-900/40">
-                <!-- Robot arm -->
-                <g stroke="#9AE6FF" stroke-width="2" fill="none">
-                  <circle cx="110" cy="300" r="40" opacity="0.4" />
-                  <path d="M110 300 L220 250 L300 200 L420 180" />
-                  <circle cx="220" cy="250" r="12" />
-                  <circle cx="300" cy="200" r="12" />
-                  <circle cx="420" cy="180" r="18" />
-                  <path d="M420 180 l40 -20 l40 20 l-40 20 z" />
-                </g>
-                <!-- Scene graph nodes -->
-                <g stroke="#A5B4FC" stroke-width="1.5" fill="none">
-                  <circle cx="480" cy="90" r="10" />
-                  <circle cx="520" cy="130" r="10" />
-                  <circle cx="560" cy="80" r="10" />
-                  <path d="M480 90 L520 130 L560 80 Z" />
-                </g>
-                <!-- HUD -->
-                <g fill="#14B8A6" opacity="0.7">
-                  <rect x="24" y="24" width="120" height="60" rx="10" fill="none" stroke="#14B8A6" />
-                  <text x="38" y="58" font-family="ui-monospace, SFMono-Regular" font-size="16">LLM INTENT</text>
-                </g>
+
+      <div class="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm font-semibold">
+        <a href="#about" class="text-slate-600 hover:text-blue-700 transition-colors">About</a>
+        <a href="#news" class="text-slate-600 hover:text-blue-700 transition-colors">News</a>
+        <a href="#methodology" class="text-slate-600 hover:text-blue-700 transition-colors">Methodology</a>
+        <a href="#projects" class="text-slate-600 hover:text-blue-700 transition-colors">Projects</a>
+        <a href="javascript:void(0)" onclick="toggleResearch(true)"
+          class="text-slate-600 hover:text-blue-700 transition-colors">Publications</a>
+        <a href="#internships"
+          class="ml-2 text-blue-700 border-2 border-blue-700 px-6 py-2.5 rounded-full hover:bg-blue-700 hover:text-white transition-all duration-300 active:scale-95 shadow-sm">Opportunities</a>
+      </div>
+
+      <button class="md:hidden text-slate-600 p-2" onclick="toggleMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <header id="about" class="max-w-6xl mx-auto px-6 py-12 md:py-24 border-b border-slate-100">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+      <div class="md:col-span-8 order-2 md:order-1 text-center md:text-left">
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+          Responsible <span class="text-blue-700">Agentic & Physical AI</span> with
+          <span class="text-blue-700">Humanity</span> in the <span class="text-blue-700">HEART</span>
+        </h1>
+        <p class="text-lg text-slate-600 mb-8 max-w-2xl mx-auto md:mx-0 leading-relaxed">
+          I serve as a <span class="text-slate-900 font-semibold">Senior Researcher</span> for the
+          <span class="text-slate-900 font-semibold">Human-Evolving AI & Robotics Research Team (HEART)</span>
+          at <span class="text-slate-900 font-semibold">AIST</span>.
+        </p>
+        <p class="text-lg text-slate-600 mb-8 max-w-2xl mx-auto md:mx-0 leading-relaxed">
+          My research begins with empathizing with and understanding <span class="text-slate-900 font-semibold">human
+            and planetary needs</span>, using these insights to propose <span
+            class="text-slate-900 font-semibold">sustainable solutions.</span>
+        </p>
+        <p class="text-lg text-slate-600 mb-8 max-w-2xl mx-auto md:mx-0 leading-relaxed">
+          I believe the true value of <span class="text-slate-900 font-semibold">intelligent systems</span> lies in
+          their capacity to <span class="text-slate-900 font-semibold">enhance human well-being</span> and <span
+            class="text-slate-900 font-semibold">safeguard the environment</span>.
+        </p>
+      </div>
+
+      <div class="md:col-span-4 order-1 md:order-2 flex justify-center">
+        <div
+          class="w-48 h-48 md:w-64 md:h-64 rounded-3xl bg-blue-50 shadow-2xl rotate-3 border-8 border-white flex items-center justify-center overflow-hidden">
+          <svg id="beating-heart" class="w-24 h-24 text-blue-700" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M16.4 3C14.6 3 13.1 3.9 12 5.2C10.9 3.9 9.4 3 7.6 3C4.5 3 2 5.5 2 8.6C2 12.6 5.6 15.8 11.1 20.8L12 21.6L12.9 20.8C18.4 15.8 22 12.6 22 8.6C22 5.5 19.5 3 16.4 3Z"
+              fill="currentColor" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
+
+    <section id="biography" class="max-w-6xl mx-auto px-6 mt-24">
+      <div
+        class="bg-white rounded-[2.5rem] border border-slate-100 shadow-sm overflow-hidden transition-all duration-500 hover:shadow-md">
+
+        <button onclick="toggleBio()"
+          class="w-full flex items-center justify-between p-8 md:p-12 text-left focus:outline-none group">
+          <div class="flex items-center gap-6">
+            <div
+              class="hidden md:flex w-16 h-16 rounded-2xl bg-blue-50 items-center justify-center text-blue-700 group-hover:bg-blue-700 group-hover:text-white transition-colors">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- NEWS & UPDATES -->
-    <section id="news" class="py-16 border-t border-white/5 bg-zinc-950">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="fade-up flex items-end justify-between gap-4 flex-wrap">
-          <div>
-            <h2 class="text-2xl font-semibold">News & Updates</h2>
-            <p class="mt-2 text-zinc-400">Recent milestones, talks, papers, and lab activities.</p>
-          </div>
-          <a :href="meta.linkedin" target="_blank" rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-sm">
-            <i data-lucide="linkedin" class="w-4 h-4"></i>
-            Follow on LinkedIn
-          </a>
-        </div>
-
-        <ol class="mt-6 space-y-4">
-          <li v-for="n in newsSorted" :key="n.date + n.title"
-            class="fade-up grid grid-cols-[120px,1fr] gap-4 p-5 rounded-2xl bg-white/[0.02] border border-white/10">
-            <!-- Date + type -->
-            <div class="relative pl-5">
-              <span
-                class="absolute left-0 top-1.5 h-2 w-2 rounded-full bg-primary-400/80 ring-2 ring-primary-400/20"></span>
-              <div class="text-xs text-zinc-500">{{ formatDate(n.date) }}</div>
-              <div v-if="n.type"
-                class="mt-1 inline-block text-[11px] px-2 py-0.5 rounded bg-white/5 border border-white/10 text-zinc-300">
-                {{ n.type }}
-              </div>
-            </div>
-
-            <!-- Content -->
             <div>
-              <div class="font-medium">{{ n.title }}</div>
+              <h2 class="text-xs uppercase tracking-[0.2em] font-bold text-slate-400 mb-1">About me</h2>
+              <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">Biography & Career Journey</h3>
             </div>
-          </li>
-        </ol>
-      </div>
-    </section>
+          </div>
 
+          <div id="bio-chevron"
+            class="w-12 h-12 rounded-full border border-slate-100 flex items-center justify-center text-slate-400 group-hover:text-blue-700 group-hover:border-blue-200 transition-all duration-300">
+            <svg class="w-6 h-6 transform transition-transform duration-500" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </button>
 
+        <div id="bio-content" class="max-h-0 overflow-hidden transition-all duration-700 ease-in-out bg-slate-50/30">
+          <div class="p-8 md:p-12 border-t border-slate-50">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
-    <!-- CURRENT PROJECTS -->
-    <section id="current-projects" class="py-16 border-t border-white/5 bg-zinc-950">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="fade-up">
-          <h2 class="text-2xl font-semibold">Ongoing Projects</h2>
-          <p class="mt-2 text-zinc-400">Active lines across Human–Robot Interaction, Social Robotics, and Digital twins.
-          </p>
-        </div>
+              <div class="lg:col-span-7 space-y-6">
+                <h4 class="text-sm font-bold text-blue-700 uppercase tracking-widest mb-4">Biography</h4>
+                <div class="text-lg text-slate-600 leading-relaxed space-y-4">
+                  <p>
+                    Dr. Enrique Coronado holds a <span class="text-slate-900 font-semibold">B.S. in Mechatronics
+                      Engineering (2012)</span> from Autonomous University of San Luis Potosí (UASLP), Mexico, an <span class="text-slate-900 font-semibold">M.S.
+                      in Advanced Robotics (2017)</span> from the EMARO+ program (Italy/France), and a <span
+                      class="text-slate-900 font-semibold">Ph.D. in Mechanical Systems Engineering (2020)</span> from
+                    Tokyo University of Agriculture and Technology (TUAT), Japan.
+                  </p>
+                  <p>
+                    His career spans pivotal roles in Japanese academia, serving as an Assistant Professor
+                    at <span class="text-slate-900 font-semibold">TUAT</span> and a Researcher at <span
+                      class="text-slate-900 font-semibold">National Institute of Advanced Industrial Science and
+                      Technology (AIST)</span>.
+                  </p>
+                  <p>
+                    In 2024, he was appointed <span class="text-slate-900 font-bold">Senior Researcher</span> at the
+                    <span class="text-slate-900 font-bold">Human-Evolving AI & Robotics Team (HEART) </span> team at
+                    AIST, where he leads initiatives in Responsible Agentic AI and Robotics. During this period, he has
+                    fostered
+                    international research collaborations with academic institutions in Mexico, Canada, Norway, and Australia,
+                    among others. Since 2026, he has also served as a Visiting Researcher at the <span
+                      class="text-slate-900 font-semibold">University of Tokyo</span>, co-supervising undergraduate and
+                    graduate students.
+                  </p>
+                </div>
+              </div>
 
-        <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <article v-for="p in currentProjects" :key="p.title"
-            class="fade-up rounded-2xl border border-white/10 bg-white/[0.02] p-5 hover:shadow-glow">
-            <div class="flex items-center gap-3">
-              <span
-                class="h-9 w-9 rounded-lg bg-primary-500/15 border border-primary-500/30 flex items-center justify-center">
-                <i :data-lucide="p.icon" class="w-4 h-4 text-primary-300"></i>
-              </span>
-              <div class="flex-1">
-                <h3 class="font-medium">{{ p.title }}</h3>
-                <div class="mt-1 flex items-center gap-2 text-xs text-zinc-500">
-                  <span v-if="p.since">Since {{ p.since }}</span>
-                  <span v-if="p.status"
-                    class="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-[11px] text-zinc-300">
-                    {{ p.status }}
-                  </span>
+              <div class="lg:col-span-5 relative">
+                <h4 class="text-base font-bold text-slate-400 uppercase tracking-[0.2em] mb-10">Professional Timeline
+                </h4>
+
+                <div
+                  class="relative space-y-12 before:absolute before:inset-0 before:ml-1 before:-translate-x-px before:h-full before:w-0.5 before:bg-slate-200">
+
+                  <div class="relative pl-10 group">
+                    <div class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 border-white bg-blue-700 z-10">
+                    </div>
+
+                    <p class="text-sm font-bold text-blue-700 uppercase tracking-widest mb-1">2024 — Present</p>
+                    <h5 class="font-bold text-slate-900 text-lg leading-tight">Senior Researcher</h5>
+                    <p class="text-sm text-slate-500">Human-Evolving AI & Robotics Team (HEART), AIST, Japan</p>
+                  </div>
+
+                  <div class="relative pl-10 group">
+                    <div
+                      class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 border-white bg-slate-300 z-10 group-hover:bg-blue-700 transition-colors">
+                    </div>
+
+                    <p
+                      class="text-sm font-bold text-slate-400 uppercase tracking-widest group-hover:text-blue-700 transition-colors mb-1">
+                      2022 — 2024</p>
+                    <h5 class="font-bold text-slate-900 text-lg leading-tight">Researcher</h5>
+                    <p class="text-sm text-slate-500">Automation Research Team (ART), AIST</p>
+                  </div>
+
+                  <div class="relative pl-10 group">
+                    <div
+                      class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 border-white bg-slate-300 z-10 group-hover:bg-blue-700 transition-colors">
+                    </div>
+
+                    <p
+                      class="text-sm font-bold text-slate-400 uppercase tracking-widest group-hover:text-blue-700 transition-colors mb-1">
+                      2020 — 2022</p>
+                    <h5 class="font-bold text-slate-900 text-lg leading-tight">Assistant Professor</h5>
+                    <p class="text-sm text-slate-500">Tokyo University of Agriculture and Technology (TUAT), Japan</p>
+                  </div>
+
+                  <div class="relative pl-10 group">
+                    <div
+                      class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 border-white bg-slate-300 z-10 group-hover:bg-blue-700 transition-colors">
+                    </div>
+                    <p
+                      class="text-sm font-bold text-slate-400 uppercase tracking-widest group-hover:text-blue-700 transition-colors mb-1">
+                      2020</p>
+                    <h5 class="font-bold text-slate-900 text-lg leading-tight">Ph.D. in Mechanical Systems Engineering
+                    </h5>
+                    <p class="text-sm text-slate-500">Tokyo University of Agriculture and Technology (TUAT), Japan</p>
+                  </div>
+
+                  <div class="relative pl-10 group">
+                    <div
+                      class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 border-white bg-slate-300 z-10 group-hover:bg-blue-700 transition-colors">
+                    </div>
+                    <p
+                      class="text-sm font-bold text-slate-400 uppercase tracking-widest group-hover:text-blue-700 transition-colors mb-1">
+                      2017</p>
+                    <h5 class="font-bold text-slate-900 text-lg leading-tight">M.S. in Advanced Robotics (EMARO+)</h5>
+                    <p class="text-sm text-slate-500">Univ. of Genoa (Italy) & Ecole Centrale de Nantes (France)</p>
+                  </div>
+
+                  <div class="relative pl-10 group">
+                    <div
+                      class="absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 border-white bg-slate-300 z-10 group-hover:bg-blue-700 transition-colors">
+                    </div>
+                    <p
+                      class="text-sm font-bold text-slate-400 uppercase tracking-widest group-hover:text-blue-700 transition-colors mb-1">
+                      2012</p>
+                    <h5 class="font-bold text-slate-900 text-lg leading-tight">B.S. in Mechatronics Engineering</h5>
+                    <p class="text-sm text-slate-500">Autonomous University of San Luis Potosí (UASLP), Mexico</p>
+                  </div>
+
                 </div>
               </div>
             </div>
-            <p class="mt-3 text-sm text-zinc-400">{{ p.desc }}</p>
-            <ul class="mt-3 flex flex-wrap gap-2 text-[11px] text-zinc-400">
-              <li v-for="t in p.tags" :key="t" class="px-2 py-0.5 rounded bg-white/5 border border-white/10">{{ t }}
-              </li>
-            </ul>
-          </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 space-y-24 py-24">
+
+    <section id="news">
+      <h2 class="text-xs uppercase tracking-[0.2em] font-bold text-slate-400 flex items-center gap-2 mb-8">
+        <span class="w-2 h-2 bg-blue-700 rounded-full animate-pulse"></span> Latest Updates
+      </h2>
+      <div class="bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-100 shadow-sm">
+        <div id="news-container" class="grid grid-cols-1 md:grid-cols-3 gap-12 relative"></div>
+      </div>
+    </section>
+
+    <section id="methodology">
+      <h2 class="text-xs uppercase tracking-[0.2em] font-bold text-slate-400 flex items-center gap-2 mb-8">
+        <span class="w-2 h-2 bg-blue-700 rounded-full"></span> Methodology
+      </h2>
+      <div class="bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-100 shadow-sm">
+        <h3 class="text-3xl font-extrabold mb-6 tracking-tight text-slate-900">Co-Creation & Responsibility</h3>
+        <p class="text-lg text-slate-600 leading-relaxed mb-8">
+          My research methodology is built on the <span class="font-semibold text-slate-900">Responsible Agentic
+            Robotics (RAR)</span> framework, utilizing a <span class="font-semibold text-slate-900">Double
+            Diamond</span> approach.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:border-blue-200 transition-colors">
+            <div class="text-blue-700 font-bold uppercase text-xs tracking-widest mb-2">Phase 01</div>
+            <h4 class="font-bold text-xl mb-2 text-slate-900">Empathic Discovery</h4>
+            <p class="text-sm text-slate-500 leading-relaxed">Engagement with stakeholders to define socio-technical
+              needs and environmental constraints.</p>
+          </div>
+          <div class="p-8 bg-slate-50 rounded-3xl border border-slate-100 hover:border-blue-200 transition-colors">
+            <div class="text-blue-700 font-bold uppercase text-xs tracking-widest mb-2">Phase 02</div>
+            <h4 class="font-bold text-xl mb-2 text-slate-900">Iterative Prototyping</h4>
+            <p class="text-sm text-slate-500 leading-relaxed">Deployment of ROS 2-based systems for real-world testing,
+              focusing on manipulation fluency.</p>
+          </div>
         </div>
       </div>
     </section>
 
 
-
-    <!-- PROJECTS & DEMOS -->
-    <section id="projects" class="py-16 border-t border-white/5 bg-zinc-950">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 fade-up">
-          <div>
-            <h2 class="text-2xl font-semibold">Completed projects & demos</h2>
-            <p class="mt-2 text-zinc-400">Hands‑on systems, open‑source tools, and real‑world deployments.</p>
-          </div>
-          <div class="flex items-center gap-2">
-            <!--  <input v-model="query" type="text" placeholder="Search projects…"
-              class="px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-sm placeholder:text-zinc-500 focus:outline-none focus:ring-2 focus:ring-primary-400/40" />
-            <select v-model="filter" class="px-3 py-2 rounded-lg bg-white/5 border border-white/10 text-sm">
-              <option value="all">All</option>
-              <option value="HRI">HRI</option>
-              <option value="Teleoperation">Teleoperation</option>
-              <option value="Digital Twin">Digital Twin</option>
-              <option value="Standardization">Standardization</option>
-            </select>-->
-          </div>
-        </div>
-
-        <div class="mt-8 grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-          <div v-for="p in filteredProjects" :key="p.title"
-            class="fade-up group rounded-2xl border border-white/10 overflow-hidden bg-white/[0.02] hover:shadow-glow">
-            <!-- Video Embed -->
-            <div class="aspect-video relative">
-              <!-- Make overlay ignore clicks -->
-              <div class="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary-500/20 to-transparent">
-              </div>
-
-              <iframe v-if="p.youtube" class="w-full h-full"
-                :src="`https://www.youtube.com/embed/${p.youtube}?rel=0&modestbranding=1&controls=1`"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" loading="lazy" allowfullscreen></iframe>
-            </div>
-
-            <!-- Project Details -->
-            <div class="p-5">
-              <div class="flex items-center gap-2 text-xs text-zinc-400">
-                <span>{{ p.year }}</span>
-              </div>
-              <h3 class="mt-2 font-medium group-hover:text-white">{{ p.title }}</h3>
-              <p class="mt-1 text-sm text-zinc-400">{{ p.desc }}</p>
-              <div class="mt-3 flex flex-wrap gap-2 text-[11px] text-zinc-400">
-                <span v-for="t in p.tags" :key="t" class="px-2 py-0.5 rounded bg-white/5 border border-white/10">{{ t
-                  }}</span>
+    <section id="projects">
+      <h2 class="text-xs uppercase tracking-[0.2em] font-bold text-slate-400 flex items-center gap-2 mb-8">
+        <span class="w-2 h-2 bg-blue-700 rounded-full"></span> Featured Projects
+      </h2>
+      <div class="grid grid-cols-1 gap-8">
+        <div class="group relative bg-slate-900 p-8 md:p-12 rounded-[2.5rem] text-white overflow-hidden shadow-2xl">
+          <div class="absolute -bottom-12 -right-12 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl"></div>
+          <div class="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+            <div class="flex-1">
+              <span class="text-blue-400 text-[10px] font-bold uppercase tracking-[0.2em]">Sustainability</span>
+              <h3 class="text-3xl font-bold mt-2 mb-4">ROBOCYCLE</h3>
+              <p class="text-slate-400 leading-relaxed mb-6">A physical dual-arm robotic platform integrating UR5e and
+                xArm7 robots for PET-oriented waste sorting.</p>
+              <div class="flex gap-2">
+                <span class="px-3 py-1 bg-white/5 rounded-full text-[10px] border border-white/10 uppercase">ROS
+                  2</span>
+                <span
+                  class="px-3 py-1 bg-white/5 rounded-full text-[10px] border border-white/10 uppercase">Manipulation</span>
               </div>
             </div>
           </div>
         </div>
-
-      </div>
-    </section>
-
-    <!-- PUBLICATIONS -->
-    <section id="publications" class="py-16 border-t border-white/5 bg-zinc-950">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="fade-up flex items-end justify-between gap-4 flex-wrap">
-          <div>
-            <h2 class="text-2xl font-semibold">Selected publications</h2>
-            <p class="mt-2 text-zinc-400">High-impact, peer-reviewed research</p>
+        <div
+          class="group bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-100 shadow-sm hover:border-blue-200 transition-all">
+          <span class="text-blue-700 text-[10px] font-bold uppercase tracking-[0.2em]">Well-Being</span>
+          <h3 class="text-3xl font-bold mt-2 mb-4 text-slate-900">Axobotl</h3>
+          <p class="text-slate-600 leading-relaxed mb-6">Evaluating social robots for supporting concentration and
+            emotional well-being in hybrid work environments.</p>
+          <div class="flex gap-2">
+            <span class="px-3 py-1 bg-slate-100 rounded-full text-[10px] text-slate-500 uppercase">Social HRI</span>
+            <span class="px-3 py-1 bg-slate-100 rounded-full text-[10px] text-slate-500 uppercase">User Study</span>
           </div>
-          <a :href="meta.scholar" target="_blank" rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-sm">
-            <i data-lucide="graduation-cap" class="w-4 h-4"></i>
-            View all on Google Scholar
-          </a>
-        </div>
-
-        <ol class="mt-6 space-y-4">
-          <li v-for="pub in publications" :key="pub.title"
-            class="fade-up p-4 rounded-xl bg-white/[0.02] border border-white/10">
-            <div class="text-sm text-zinc-400">{{ pub.year }} • {{ pub.venue }}</div>
-            <div class="mt-1 font-medium">{{ pub.title }}</div>
-            <div class="mt-1 text-sm text-zinc-400">{{ pub.authors }}</div>
-            <div class="mt-2 flex gap-3 text-xs">
-              <a v-if="pub.doi" :href="pub.doi" target="_blank"
-                class="px-2 py-1 rounded bg-white/5 border border-white/10 hover:bg-white/10">DOI</a>
-              <a v-if="pub.pdf" :href="pub.pdf" target="_blank"
-                class="px-2 py-1 rounded bg-white/5 border border-white/10 hover:bg-white/10">PDF</a>
-              <a v-if="pub.code" :href="pub.code" target="_blank"
-                class="px-2 py-1 rounded bg-white/5 border border-white/10 hover:bg-white/10">Code</a>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-
-    <!-- BIOGRAPHY -->
-    <section id="bio" class="py-16 border-t border-white/5 bg-zinc-950">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="fade-up flex items-end justify-between gap-4">
-          <div>
-            <h2 class="text-2xl font-semibold">Biography</h2>
-            <p class="mt-2 text-zinc-400">Robotics with a human-centered lens.</p>
-          </div>
-
-        </div>
-
-        <div class="mt-8 grid  gap-8 items-start">
-
-          <!-- Bio + Timeline: half / half -->
-          <main class="fade-up grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- BIO (left) -->
-            <article
-              class="rounded-2xl border border-white/10 bg-white/[0.02] p-6 space-y-4 text-justify [hyphens:auto]">
-              <p class="text-zinc-300 leading-relaxed">
-                Enrique Coronado holds a B.S. in Mechatronics Engineering (2012) from the Autonomous University of San
-                Luis Potosí (UASLP), Mexico, an M.S. in Advanced Robotics (2017) through the EMARO+ program in Italy and
-                France, and a Ph.D. in Mechanical Systems Engineering (2020) from the Tokyo University of Agriculture
-                and Technology (TUAT), Japan. He has served as an Assistant Professor (2020–2022) at TUAT, and as a
-                Researcher (2022–2024) at the National Institute of Advanced Industrial Science and Technology (AIST),
-                Japan.
-              </p>
-              <p class="text-zinc-300 leading-relaxed">
-                In 2024, Dr. Coronado became a Senior Researcher at AIST’s Human-Evolving AI & Robotics Team (HEART).
-                His research blends
-                human–robot interaction, multimodal interfaces, and large language models (LLMs) with digital twins to
-                create plug-and-play robotic applications that are safer, more intuitive, and genuinely helpful.
-              </p>
-
-            </article>
-
-            <!-- TIMELINE (right) -->
-            <section class="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-              <div class="flex items-center justify-between">
-                <h3 class="font-medium">Timeline</h3>
-                <div class="text-xs text-zinc-500">Education &amp; Positions</div>
-              </div>
-
-              <!-- Each item: date | details -->
-              <ol class="mt-4 divide-y divide-white/5">
-                <li v-for="item in bio.timeline" :key="item.when"
-                  class="grid grid-cols-[110px,1fr] gap-4 py-3 items-start">
-                  <!-- Date column with dot -->
-                  <div class="relative pl-5 text-xs text-zinc-500">
-                    <span
-                      class="absolute left-0 top-1.5 h-2 w-2 rounded-full bg-primary-400/80 ring-2 ring-primary-400/20"></span>
-                    {{ item.when }}
-                  </div>
-                  <!-- Details column -->
-                  <div>
-                    <div class="font-medium">{{ item.title }}</div>
-                    <div class="text-sm text-zinc-500">{{ item.place }}</div>
-                  </div>
-                </li>
-              </ol>
-            </section>
-          </main>
-
         </div>
       </div>
     </section>
 
-
-    <!-- COLLABORATE -->
-    <section id="collab" class="py-16 border-t border-white/5 bg-zinc-950">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="fade-up">
-          <div class="flex items-center justify-between gap-4 flex-wrap">
-            <div>
-              <h2 class="text-2xl font-semibold">Collaborate with HEART @ AIST</h2>
-              <p class="mt-2 text-zinc-400">
-                We welcome international collaborators—postdocs, graduate and undergraduate international
-                students—interested in
-                <span class="text-primary-300">Human-Robot Interaction</span>, <span class="text-primary-300">Social and
-                  Service Robotics</span>, <span class="text-primary-300">Robotic
-                  Teleoperation and Shared Autonomy</span>,
-                <span class="text-primary-300">LLM/VLM interfaces for Robotics Systems</span>, <span
-                  class="text-primary-300">Robot Learning</span> and <span class="text-primary-300">Digital
-                  Twins and XR for Industry 5.0</span>.
-              </p>
-
-              <!-- Preferred channel -->
-              <div class="mt-4 flex justify-center items-center gap-3">
-                <a :href="meta.linkedin" target="_blank" rel="noopener noreferrer"
-                  class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 inline-flex items-center gap-2">
-                  <i data-lucide="linkedin" class="w-4 h-4"></i>
-                  First contact me via LinkedIn
-                </a>
-              </div>
-
-
-              <!-- Cards -->
-              <div class="mt-8 grid md:grid-cols-2 gap-6">
-                <!-- Researchers -->
-                <article class="fade-up rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-                  <div class="flex items-center gap-3">
-                    <span
-                      class="h-9 w-9 rounded-lg bg-primary-500/15 border border-primary-500/30 flex items-center justify-center">
-                      <i data-lucide="handshake" class="w-4 h-4 text-primary-300"></i>
-                    </span>
-                    <h3 class="font-medium">For Researchers</h3>
-                  </div>
-                  <p class="mt-3 text-zinc-400 text-sm">
-                    If you’re interested in my research, let’s co-define a joint study, dataset, or tool. Current
-                    priorities include ergonomics and safety in manufacturing systems, social robots for well-being, and
-                    intuitive, safety-aware teleoperation.
-                  </p>
-                  <ul class="mt-3 space-y-2 text-sm text-zinc-300">
-                    <li class="flex items-start gap-2"><i data-lucide="sparkles"
-                        class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                      Short research visits (1–3 months) or remote collaboration</li>
-                    <li class="flex items-start gap-2"><i data-lucide="git-branch"
-                        class="w-4 h-4 text-primary-300 mt-0.5"></i> Co-authored papers, open-source releases, and demos
-                    </li>
-                    <li class="flex items-start gap-2"><i data-lucide="cpu" class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                      Access to robots and compute</li>
-                  </ul>
-                </article>
-
-                <!-- Postdocs & Students (International-friendly) -->
-                <article class="fade-up rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-                  <div class="flex items-center gap-3">
-                    <span
-                      class="h-9 w-9 rounded-lg bg-primary-500/15 border border-primary-500/30 flex items-center justify-center">
-                      <i data-lucide="graduation-cap" class="w-4 h-4 text-primary-300"></i>
-                    </span>
-                    <h3 class="font-medium">Postdocs & Students (International)</h3>
-                  </div>
-                  <p class="mt-3 text-zinc-400 text-sm">
-                    We regularly work with international postdocs, graduate and undergraduate students. If you’re in
-                    Japan, AIST’s RA
-                    system
-                    may be available.
-                    Outside Japan? We can explore fellowships, visiting positions. For undergraduate students you can
-                    ask about technical training internships.
-                  </p>
-                  <ul class="mt-3 space-y-2 text-sm text-zinc-300">
-                    <li class="flex items-start gap-2">
-                      <i data-lucide="globe-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                      Visiting/postdoc paths for candidates abroad; consider fellowships such as JSPS <a
-                        :href="meta.jspsUrl" target="_blank" class="underline hover:text-white ml-1">Learn more</a>
-                    </li>
-                    <li class="flex items-start gap-2">
-                      <i data-lucide="message-square" class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                      Communication skills on English or Spanish is required; basic Japanese is welcome but not required
-                    </li>
-                  </ul>
-                </article>
-              </div>
-
-              <!-- How to reach out -->
-              <div class="fade-up mt-8 mb-10 rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-                <h3 class="font-medium">What to send</h3>
-                <div class="mt-3 grid md:grid-cols-2 gap-4 text-sm text-zinc-300">
-                  <ul class="space-y-2">
-                    <li class="flex items-start gap-2"><i data-lucide="file-text"
-                        class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                      CV / short bio + Google Scholar profile (optional)</li>
-                    <li class="flex items-start gap-2"><i data-lucide="target"
-                        class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                      1–2 paragraph idea aligned with the focus areas</li>
-                  </ul>
-                  <ul class="space-y-2">
-                    <li class="flex items-start gap-2"><i data-lucide="calendar"
-                        class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                      Availability window (start/end dates, time zone)</li>
-                    <li class="flex items-start gap-2"><i data-lucide="link"
-                        class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                      Links to code, demos, or papers (if any)</li>
-                  </ul>
-                </div>
-              </div>
+    <section id="internships">
+      <h2 class="text-xs uppercase tracking-[0.2em] font-bold text-slate-400 flex items-center gap-2 mb-8">
+        <span class="w-2 h-2 bg-blue-700 rounded-full"></span> Join the Lab
+      </h2>
+      <div
+        class="group relative overflow-hidden bg-slate-900 p-8 md:p-16 rounded-[2.5rem] text-white shadow-2xl transition-all">
+        <div
+          class="absolute -top-24 -right-24 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px] group-hover:bg-blue-600/20 transition-all duration-700">
+        </div>
+        <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
+          <div class="md:max-w-2xl">
+            <div class="flex flex-wrap gap-2 mb-6">
+              <span
+                class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-[10px] font-bold uppercase tracking-widest text-blue-400">Internships</span>
+              <span
+                class="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-[10px] font-bold uppercase tracking-widest text-emerald-400">Technical
+                Training</span>
+              <span
+                class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-[10px] font-bold uppercase tracking-widest text-purple-400">Research
+                Assistant</span>
             </div>
-
-            <!-- Skills we're looking for -->
-
-
-
-            <h3 class="font-medium">Skills we’re looking for</h3>
-            <p class="mt-2 text-zinc-400 text-sm">
-              You don’t need all of these—bring your strengths and curiosity. We work at the intersection of
-              <span class="text-primary-300">robotics technology</span>, and
-              <span class="text-primary-300">social science</span>.
+            <h3 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight leading-tight">Pioneering <span
+                class="text-blue-500">Agentic & Physical AI.</span></h3>
+            <p class="text-slate-400 text-lg leading-relaxed font-light">
+              We invite motivated Graduate and Undergraduate students to contribute to the intersection of <span
+                class="text-white font-medium">Physical AI</span>, <span class="text-white font-medium">Agentic
+                AI</span>, and <span class="text-white font-medium">Social Robotics</span>.
             </p>
-
-            <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-6">
-              <!-- Engineering & Robotics -->
-              <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-                <div class="flex items-center gap-3">
-                  <span
-                    class="h-9 w-9 rounded-lg bg-primary-500/15 border border-primary-500/30 flex items-center justify-center">
-                    <i data-lucide="wrench" class="w-4 h-4 text-primary-300"></i>
-                  </span>
-                  <h4 class="font-medium">Engineering & Robotics</h4>
-                </div>
-                <ul class="mt-4 space-y-2 text-sm text-zinc-300">
-                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                    ROS 2, C++ or Python, Github, Docker, Ubuntu, OpenCV </li>
-                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                    Basic skills on Robot Kinematics, Dynamics, Control and Learning</li>
-                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                    3D modeling (Solid Works), Simulation (Blender, Unity, Unreal, NVIDIA Isaac Sim), 3D printing</li>
-                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                    LLM/VLM integration for robotics; tool use & prompting</li>
-                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                    Machine Learning, Deep Learning, and AI integration</li>
-                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                    Web development (HTML, CSS, JavaScript)</li>
-                  <div class="mt-3 flex flex-wrap gap-2 text-[11px] text-zinc-400">
-                    <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">JavaScript</span>
-                    <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">LLMs/VLMs</span>
-                    <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">ROS 2</span>
-                    <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">Unity / Isaac Sim</span>
-                  </div>
-              </div>
-
-              <!-- Social Science & Design -->
-              <div class="rounded-2xl border border-white/10 bg-white/[0.02] p-6">
-                <div class="flex items-center gap-3">
-                  <span
-                    class="h-9 w-9 rounded-lg bg-primary-500/15 border border-primary-500/30 flex items-center justify-center">
-                    <i data-lucide="users" class="w-4 h-4 text-primary-300"></i>
-                  </span>
-                  <h4 class="font-medium">Social Science & Design</h4>
-                </div>
-                <ul class="mt-4 space-y-2 text-sm text-zinc-300">
-                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                    HCI/HRI study design, ethics/IRB, participant studies</li>
-                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                    Qualitative and Mixed methods (interviews, thematic analysis)</li>
-                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                    Evaluation metrics (SUS, NASA-TLX, trust, well-being)</li>
-                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                    UX/UI design, Human-centered design</li>
-                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                    Participatory/co-design, accessibility, cross-cultural research</li>
-                  <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-primary-300 mt-0.5"></i>
-                    Design Thinking, Empathy Maps, Personas, User Journey Mapping, Scenarios, Prototyping, User Testing
-                  </li>
-                </ul>
-                <div class="mt-3 flex flex-wrap gap-2 text-[11px] text-zinc-400">
-                  <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">User Studies</span>
-                  <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">Well-being</span>
-                  <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">Trust & Safety</span>
-                  <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">UX/UI </span>
-                  <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">Co-design</span>
-                  <span class="px-2 py-0.5 rounded bg-white/5 border border-white/10">Design Thinking</span>
-                </div>
-              </div>
-            </div>
-
-
+          </div>
+          <div class="flex flex-col gap-4 w-full md:w-auto">
+            <a href="mailto:your@email.com"
+              class="flex items-center justify-center gap-3 bg-blue-700 hover:bg-blue-600 text-white px-10 py-5 rounded-2xl font-bold text-base transition-all active:scale-95 shadow-xl shadow-blue-900/40 whitespace-nowrap">
+              Application Instructions
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+            <p class="text-[10px] text-slate-500 text-center uppercase tracking-widest font-bold">Inquiries open for
+              2026-2027</p>
+          </div>
+        </div>
+      </div>
     </section>
 
+    <section id="research" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
+      <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-md" onclick="toggleResearch(false)"></div>
+      <div
+        class="relative bg-white w-full max-w-7xl max-h-[92vh] rounded-[3rem] shadow-2xl border border-slate-200 overflow-hidden flex flex-col animate-in fade-in zoom-in duration-300">
 
-    <footer class="border-t border-white/5 py-8 text-center text-xs text-zinc-500">© {{ new Date().getFullYear() }} {{
-      meta.name }} — Built with Vue 3 & Tailwind</footer>
-  </div>
+        <div class="flex items-center justify-between px-10 py-8 border-b border-slate-100 bg-slate-50/50">
+          <div class="flex items-center gap-6">
+            <button onclick="toggleResearch(false)"
+              class="group flex items-center justify-center w-10 h-10 rounded-full bg-slate-200 hover:bg-red-500 transition-all">
+              <svg class="w-5 h-5 text-slate-600 group-hover:text-white" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <h2 class="text-xs uppercase tracking-[0.3em] font-bold text-slate-500 flex items-center gap-3">
+              <span class="w-2.5 h-2.5 bg-blue-700 rounded-full"></span> Scientific Contributions
+            </h2>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Global Publications</span>
+            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-bold border border-blue-100"
+              id="pub-count">0</span>
+          </div>
+        </div>
+
+        <div id="pub-container"
+          class="p-10 overflow-y-auto custom-scrollbar bg-white flex-1 grid grid-cols-1 md:grid-cols-2 gap-8">
+        </div>
+
+        <div class="px-10 py-6 border-t border-slate-50 bg-slate-50/30 text-center">
+          <p class="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">AIST — Human-Evolving AI &
+            Robotics Team</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="border-t py-12 text-center text-slate-400 text-xs uppercase tracking-widest">
+    &copy; 2026 Enrique Coronado &bull; AIST - HEART
+  </footer>
 
   <script>
-    const { createApp, computed, onMounted } = Vue
 
-    createApp({
-      setup() {
+    function toggleBio() {
+      const content = document.getElementById('bio-content');
+      const chevron = document.querySelector('#bio-chevron svg');
 
-        // UI scale (zoom)
-        const uiScale = Vue.ref(1);
-
-        // Theme (light/dark)
-        const theme = Vue.ref('dark'); // default; will be corrected onMounted
-
-        function applyScale() {
-          const px = (16 * uiScale.value).toFixed(2) + 'px';
-          document.documentElement.style.setProperty('--font-scale', px);
-          localStorage.setItem('uiScale', String(uiScale.value));
-          // refresh icons so sizes realign nicely
-          requestAnimationFrame(() => lucide.createIcons());
-        }
-
-        function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
-        function zoomIn() { uiScale.value = clamp(uiScale.value + 0.1, 0.8, 1.6); applyScale(); }
-        function zoomOut() { uiScale.value = clamp(uiScale.value - 0.1, 0.8, 1.6); applyScale(); }
-        function zoomReset() { uiScale.value = 1.2; applyScale(); }
-
-        function applyTheme(next) {
-          theme.value = next;
-          if (next === 'dark') document.documentElement.classList.add('dark');
-          else document.documentElement.classList.remove('dark');
-          localStorage.setItem('theme', next);
-          requestAnimationFrame(() => lucide.createIcons());
-        }
-
-
-        // Initialize from saved prefs or system
-        onMounted(() => {
-          // Theme
-          zoomReset();
-          const savedTheme = localStorage.getItem('theme');
-          const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-          applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
-
-          // Scale
-          const savedScale = parseFloat(localStorage.getItem('uiScale') || '1');
-          uiScale.value = isNaN(savedScale) ? 1 : savedScale;
-          applyScale();
-
-          // Icons + intersection observer you already have
-          lucide.createIcons();
-          const io = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
-          }, { threshold: .12 });
-          document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
-        });
-
-        const news = Vue.ref([
-          // Use ISO dates (YYYY-MM-DD)
-          {
-            date: '2025-07-22',
-            type: 'Award',
-            title: 'Our article, "TeleSign: A Flexible and Intuitive Gesture-Based Teleoperation Framework" was nomitated for the Best Paper Award at IEEE ARSO 2025',
-            href: '#'
-          },
-          {
-            date: '2024-02-29',
-            type: 'Award',
-            title: 'Our article, "Evaluating Quality in Human-Robot Interaction: A Systematic Search and Classification of Performance and Human-Centered Factors, Measures, and Metrics towards Industry 5.0" was awarded the AIST ITH Best Paper Award',
-            href: '#'
-          },
-        ])
-
-        // Sorted (newest first)
-        const newsSorted = computed(() =>
-          [...news.value].sort((a, b) => new Date(b.date) - new Date(a.date))
-        )
-
-        // Optional: nice date formatter
-        function formatDate(d) {
-          const dt = new Date(d)
-          return isNaN(dt) ? d : dt.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
-        }
-        const meta = Vue.reactive({
-          name: 'Enrique Coronado',
-          position: 'Senior Researcher',
-          affiliation: 'AIST, Tokyo, Japan',
-          tagline: 'Industry 5.0 • Human-Centered Robotics • Social Robots',
-          email: 'name@example.com',
-          location: 'Tokyo, Japan',
-          github: 'https://github.com/enriquecoronadozu',
-          linkedin: 'https://www.linkedin.com/in/enrique-coronado-zu/',
-          scholar: 'https://scholar.google.com/citations?user=YOUR_SCHOLAR_ID',
-          raUrl: '#',     // AIST RA information page (JP)
-          jspsUrl: 'https://www.jsps.go.jp/english/e-fellow/',   // JSPS fellowship info
-        })
-
-        const nav = [
-          { label: 'Ongoing Projects', href: '#current-projects' },
-          { label: 'Video demostrations', href: '#projects' },
-          { label: 'Publications', href: '#publications' },
-          { label: 'Biography', href: '#bio' },   // ← add this
-          { label: 'Collaborate & Concat', href: '#collab' },   // <-- add this
-        ]
-
-        const bio = Vue.reactive({
-          focus: [
-            'Human–Robot Interaction',
-            'Teleoperation',
-            'Social & Service Robotics',
-            'Robotics Software',
-            'Human Digital Twins',
-            'Imitation Learning',
-            'XR for Collaboration'
-          ],
-          timeline: [
-            { when: '2024 — Present', title: 'Senior Researcher', place: 'AIST (Japan)' },
-            { when: '2022 — 2024', title: 'Researcher', place: 'AIST (Japan)' },
-            { when: '2020 — 2022', title: 'Assistant Professor', place: 'TUAT (Japan)' },
-            { when: '2020', title: 'Ph.D., Mechanical Systems Engineering', place: 'TUAT (Japan)' },
-            { when: '2017', title: 'M.S., Advanced Robotics (EMARO+)', place: 'Italy & France' },
-            { when: '2012', title: 'B.S., Mechatronics Engineering', place: 'UASLP (Mexico)' }
-          ]
-        })
-
-
-
-        const currentProjects = [
-          {
-            title: 'LLM-Driven and Multimodal Teleoperation',
-            desc: 'Natural language + gestures + mixed-initiative teleoperation.',
-            tags: ['LLMs', 'Mediapipe', 'Multimodal'],
-            icon: 'brain-circuit',
-            since: '2025',
-            status: 'Active'
-          },
-          {
-            title: 'Digital Twins for Safe HRI',
-            desc: 'Unity / Isaac Sim digital twins for shared autonomy in manufacturing and retail tasks.',
-            tags: ['Isaac Sim', 'Unity', 'ROS 2'],
-            icon: 'box',
-            since: '2025',
-            status: 'Active'
-          },
-          {
-            title: 'Plug-and-Play Middleware (NEP+/Ryza)',
-            desc: 'Bridging ROS 2 with non-ROS stacks with ZeroMQ for rapid HRI prototyping and deployment.',
-            tags: ['Middleware', 'ROS 2', 'ZeroMQ'],
-            icon: 'cable',
-            since: '2024',
-            status: 'Active'
-          }
-        ]
-
-        const projects = Vue.ref([
-          { title: 'TeleSign (soon)', year: '2025', desc: 'Gesture-based teleoperation for inclusion.', tags: ['ROS 2', 'Isaac Sim', 'Gestures'], url: '#' },
-          { title: 'NICE (soon)', year: '2025', desc: 'LLM‑powered reasoning fused with scene graphs for navigation.', tags: ['LLMs', 'Scene Graphs'], url: '#' },
-          { title: 'MRTwin (soon)', year: '2025', desc: 'VR/AR telepresence with shared autonomy and intent prompting.', tags: ['Unity', 'XR', 'Telepresence'], url: '#' },
-          {
-            title: 'Few-shot Imitation Learning',
-            year: '2024',
-            desc: 'Enabling robots to not only mimic actions but also adapt to new environments with minimal demonstrations.',
-            tags: ['Imitation Learning'],
-            youtube: 'wjS1Om5kO2Q'
-          },
-          {
-            title: 'Hold My Hand',
-            year: '2023',
-            desc: 'Enabling Pepper robot to walk side-by-side while holding hands and reacting to the environment',
-            tags: ['Humanoid', 'Force Control', 'Companion Robot'],
-            youtube: 'aVKmIPbaSO8' // from https://www.youtube.com/embed/aVKmIPbaSO8?...
-          },
-          { title: 'Yokobo', year: '2022', desc: 'Yōkobo is a robject designed to strengthen the bond between members (e.g., a couple).', tags: ['Social robotics', 'Human-Centered Design'], youtube: 'YIrGxi4nnt4' },
-          { title: 'IREX 2019', year: '2020', desc: 'Showcase cutting-edge robot interaction in a public venue, engaging of hundreds of visitors', tags: ['Human–obot interaction', 'Robots in the wild'], youtube: 'nb775Ahd3yM' },
-        ])
-
-        const publications = Vue.ref([
-          { year: '2024', venue: 'IEEE Robotics and Automation Letters', title: 'Adaptive contact-rich manipulation through few-shot imitation learning with Force-Torque feedback and pre-trained object representations', authors: 'Tsuji, C., Coronado, E., Osorio, P., & Venture, G.', doi: 'https://doi.org/10.1109/LRA.2024.3497713' },
-          { year: '2023', venue: 'Applied Sciences', title: 'Integrating virtual, mixed, and augmented reality to human–robot interaction applications using game engines: A brief review of accessible software tools and frameworks', authors: 'E. Coronado et al.', doi: 'https://doi.org/10.3390/app13031292' },
-          { year: '2022', venue: 'Journal of Manufacturing Systems', title: 'Evaluating quality in human-robot interaction: A systematic search and classification of performance and human-centered factors, measures and metrics towards an industry 5.0', authors: 'E. Coronado et al.', doi: 'https://doi.org/10.1016/j.jmsy.2022.04.007' },
-          { year: '2021', venue: 'IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)', title: 'Assembly action understanding from fine-grained hand motions, a multi-camera and deep learning approach', authors: 'E. Coronado et al.', doi: 'https://doi.org/10.1109/IROS51168.2021.9636715' },
-        ])
-
-        const skills = [
-          'ROS 2', 'ZeroMQ', 'Isaac Sim', 'Unity', 'Python', 'Vue', 'LLMs/VLMs', 'Human‑Centered Design'
-        ]
-
-        const query = Vue.ref('')
-        const filter = Vue.ref('all')
-
-        const filteredProjects = computed(() => {
-          return projects.value.filter(p => {
-            const inFilter = filter.value === 'all' || p.area === filter.value
-            const inQuery = (p.title + ' ' + p.desc + ' ' + p.tags.join(' ')).toLowerCase().includes(query.value.toLowerCase())
-            return inFilter && inQuery
-          })
-        })
-
-
-        function sendMessage() {
-          console.log('Contact form submitted:', JSON.parse(JSON.stringify(form)))
-          alert('Thanks! Your message was logged to the console. Replace with a real endpoint.')
-        }
-
-        const form = Vue.reactive({ name: '', email: '', message: '' })
-
-        onMounted(() => {
-          // Icon mount
-          lucide.createIcons()
-          // Scroll‑in animations
-          const io = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('show') } })
-          }, { threshold: .12 })
-          document.querySelectorAll('.fade-up').forEach(el => io.observe(el))
-        })
-
-
-
-        return {
-           uiScale, zoomIn, zoomOut, zoomReset, 
-          meta, nav, currentProjects, projects, publications, skills,
-          query, filter, filteredProjects, form, news, newsSorted, formatDate,
-          bio,
-        }
+      if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        content.style.maxHeight = '0px';
+        chevron.classList.remove('rotate-180');
+      } else {
+        // We use scrollHeight to dynamically calculate the height for a smooth transition
+        content.style.maxHeight = content.scrollHeight + 'px';
+        chevron.classList.add('rotate-180');
       }
-    }).mount('#app')
+    }
+
+    function toggleResearch(show) {
+      const researchSection = document.getElementById('research');
+      if (show) {
+        researchSection.classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+      } else {
+        researchSection.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === "Escape") toggleResearch(false);
+    });
+
+    const SITE_NEWS = [
+      { date: "APR 2026", text: "New framework for Responsible Agentic Robotics (RAR) released." },
+      { date: "MAR 2026", text: "Successfully deployed ROBOCYCLE PET-sorting at the local facility." },
+      { date: "FEB 2026", text: "Axobotl well-being study results presented at HRI 2026." },
+    ];
+
+    const newsContainer = document.getElementById('news-container');
+    SITE_NEWS.forEach(item => {
+      newsContainer.innerHTML += `
+        <div class="relative pl-8 group">
+            <div class="absolute left-0 top-1.5 w-2.5 h-2.5 rounded-full border-2 border-white bg-blue-700 shadow-sm z-10 group-hover:scale-150 transition-transform"></div>
+            <p class="text-[10px] font-bold text-blue-700 mb-1 uppercase tracking-tighter">${item.date}</p>
+            <p class="text-sm text-slate-600 leading-snug group-hover:text-slate-900 transition-colors">${item.text}</p>
+        </div>
+    `;
+    });
+
+    fetch('publications.json')
+      .then(response => response.json())
+      .then(papers => {
+        document.getElementById('pub-count').innerText = papers.length;
+        const pubContainer = document.getElementById('pub-container');
+        papers.forEach(pub => {
+          pubContainer.innerHTML += `
+            <div class="group relative bg-white p-8 rounded-[2.5rem] border border-slate-100 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300">
+                <div class="flex flex-col justify-between h-full gap-6">
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="text-[10px] font-bold px-3 py-1 bg-slate-100 text-slate-600 rounded-full uppercase tracking-widest border border-slate-200">${pub.venue}</span>
+                        </div>
+                        <h3 class="font-bold text-xl leading-tight text-slate-900 group-hover:text-blue-700 transition-colors">${pub.title}</h3>
+                        <p class="text-slate-500 text-sm mt-4 font-light italic">${pub.authors}</p>
+                    </div>
+                    <div class="flex gap-3 pt-4 border-t border-slate-50">
+                        <a href="${pub.link}" target="_blank" class="flex items-center justify-center w-11 h-11 rounded-2xl bg-slate-50 text-slate-400 hover:bg-blue-700 hover:text-white transition-all shadow-sm">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                        </a>
+                        <button onclick="navigator.clipboard.writeText(\`${pub.bibtex}\`); alert('BibTeX Copied!');" class="flex items-center justify-center w-11 h-11 rounded-2xl bg-slate-50 text-slate-400 hover:bg-blue-700 hover:text-white transition-all shadow-sm">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        });
+      }).catch(err => console.log("Missing publications.json"));
+
+    anime({
+      targets: '#beating-heart',
+      scale: [1, 1.15],
+      opacity: [0.9, 1],
+      easing: 'easeInOutElastic(1, .6)',
+      duration: 1200,
+      loop: true,
+      direction: 'alternate',
+    });
   </script>
 </body>
 
