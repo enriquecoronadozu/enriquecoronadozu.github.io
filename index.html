@@ -30,7 +30,7 @@
     <div class="max-w-6xl mx-auto px-6 h-24 flex items-center justify-between">
       <div class="flex items-center gap-6">
         <div class="flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
-          <a href="#" class="font-extrabold text-2xl tracking-tighter uppercase whitespace-nowrap">
+          <a href="index.html" class="font-extrabold text-2xl tracking-tighter uppercase whitespace-nowrap">
             Enrique <span class="text-blue-700">Coronado</span>
           </a>
           <span class="hidden md:block h-10 w-px bg-slate-200"></span>
@@ -42,18 +42,23 @@
       </div>
 
       <div class="hidden md:flex items-center space-x-6 lg:space-x-8 text-sm font-semibold">
-        <a href="#about" onclick="toggleResearch(false)"
-          class="text-slate-600 hover:text-blue-700 transition-colors">About</a>
-        <a href="#news" onclick="toggleResearch(false)"
-          class="text-slate-600 hover:text-blue-700 transition-colors">News</a>
-        <a href="#methodology" onclick="toggleResearch(false)"
-          class="text-slate-600 hover:text-blue-700 transition-colors">Methodology</a>
-        <a href="#projects" onclick="toggleResearch(false)"
-          class="text-slate-600 hover:text-blue-700 transition-colors">Projects</a>
-        <a href="javascript:void(0)" onclick="toggleResearch(true)"
-          class="text-slate-600 hover:text-blue-700 transition-colors">Publications</a>
-        <a href="#internships" onclick="toggleResearch(false)"
-          class="ml-2 text-blue-700 border-2 border-blue-700 px-6 py-2.5 rounded-full hover:bg-blue-700 hover:text-white transition-all duration-300 active:scale-95 shadow-sm">Opportunities</a>
+        <a href="about.html"
+          class="text-slate-600 hover:text-blue-700 transition-colors underline decoration-transparent hover:decoration-blue-200 underline-offset-8">About
+          Me</a>
+
+        <a href="#news" class="text-slate-600 hover:text-blue-700 transition-colors">News</a>
+        <a href="#methodology" class="text-slate-600 hover:text-blue-700 transition-colors">Methodology</a>
+        <a href="#projects" class="text-slate-600 hover:text-blue-700 transition-colors">Projects</a>
+
+        <a href="research.html"
+          class="text-slate-600 hover:text-blue-700 transition-colors font-bold border-b-2 border-transparent hover:border-blue-700">
+          Publications
+        </a>
+
+        <a href="#internships"
+          class="ml-2 text-blue-700 border-2 border-blue-700 px-6 py-2.5 rounded-full hover:bg-blue-700 hover:text-white transition-all duration-300 active:scale-95 shadow-sm">
+          Opportunities
+        </a>
       </div>
 
       <button class="md:hidden text-slate-600 p-2" onclick="toggleMenu()">
@@ -64,19 +69,21 @@
       </button>
     </div>
 
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-6 space-y-4 shadow-xl">
-      <a href="#about" onclick="toggleMenu()"
-        class="block text-sm font-semibold text-slate-600 hover:text-blue-700">About</a>
-      <a href="#news" onclick="toggleMenu()"
-        class="block text-sm font-semibold text-slate-600 hover:text-blue-700">News</a>
-      <a href="#methodology" onclick="toggleMenu()"
-        class="block text-sm font-semibold text-slate-600 hover:text-blue-700">Methodology</a>
-      <a href="#projects" onclick="toggleMenu()"
-        class="block text-sm font-semibold text-slate-600 hover:text-blue-700">Projects</a>
-      <a href="javascript:void(0)" onclick="toggleMenu(); toggleResearch(true)"
-        class="block text-sm font-semibold text-slate-600 hover:text-blue-700">Publications</a>
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-8 space-y-6 shadow-xl">
+      <a href="about.html" class="block text-lg font-bold text-slate-900">About Me</a>
+      <div class="h-px bg-slate-100 w-full"></div>
+
+      <a href="#news" onclick="toggleMenu()" class="block text-sm font-semibold text-slate-600">News</a>
+      <a href="#methodology" onclick="toggleMenu()" class="block text-sm font-semibold text-slate-600">Methodology</a>
+      <a href="#projects" onclick="toggleMenu()" class="block text-sm font-semibold text-slate-600">Projects</a>
+
+      <div class="h-px bg-slate-100 w-full"></div>
+      <a href="research.html" class="block text-lg font-bold text-blue-700">Publications</a>
+
       <a href="#internships" onclick="toggleMenu()"
-        class="block text-center text-blue-700 border-2 border-blue-700 px-6 py-3 rounded-full font-bold">Opportunities</a>
+        class="block text-center text-white bg-blue-700 px-6 py-4 rounded-2xl font-bold shadow-lg shadow-blue-900/20">
+        Opportunities
+      </a>
     </div>
   </nav>
 
@@ -418,42 +425,6 @@
       </div>
     </section>
 
-    <section id="research" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
-      <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-md" onclick="toggleResearch(false)"></div>
-      <div
-        class="relative bg-white w-full max-w-7xl max-h-[92vh] rounded-[3rem] shadow-2xl border border-slate-200 overflow-hidden flex flex-col animate-in fade-in zoom-in duration-300">
-
-        <div class="flex items-center justify-between px-10 py-8 border-b border-slate-100 bg-slate-50/50">
-          <div class="flex items-center gap-6">
-            <button onclick="toggleResearch(false)"
-              class="group flex items-center justify-center w-10 h-10 rounded-full bg-slate-200 hover:bg-red-500 transition-all">
-              <svg class="w-5 h-5 text-slate-600 group-hover:text-white" fill="none" stroke="currentColor"
-                viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-            <h2 class="text-xs uppercase tracking-[0.3em] font-bold text-slate-500 flex items-center gap-3">
-              <span class="w-2.5 h-2.5 bg-blue-700 rounded-full"></span> Scientific Contributions (in construction)
-            </h2>
-          </div>
-          <div class="flex items-center gap-4">
-            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Global Publications</span>
-            <span class="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-xs font-bold border border-blue-100"
-              id="pub-count">0</span>
-          </div>
-        </div>
-
-        <div id="pub-container"
-          class="p-10 overflow-y-auto custom-scrollbar bg-white flex-1 grid grid-cols-1 md:grid-cols-2 gap-8">
-        </div>
-
-        <div class="px-10 py-6 border-t border-slate-50 bg-slate-50/30 text-center">
-          <p class="text-[10px] text-slate-400 uppercase tracking-widest font-semibold">AIST — Human-Evolving AI &
-            Robotics Team</p>
-        </div>
-      </div>
-    </section>
-
   </main>
 
   <footer class="border-t py-12 text-center text-slate-400 text-xs uppercase tracking-widest">
@@ -475,17 +446,6 @@
         chevron.classList.add('rotate-180');
       }
     }
-    function toggleResearch(show) {
-      const researchSection = document.getElementById('research');
-
-      if (show) {
-        researchSection.classList.remove('hidden');
-        document.body.style.overflow = 'hidden'; // Lock background scroll
-      } else {
-        researchSection.classList.add('hidden');
-        document.body.style.overflow = 'auto'; // Restore background scroll
-      }
-    }
 
     // Make sure to also update your mobile menu links similarly:
     function toggleMenu() {
@@ -503,9 +463,6 @@
       }
     }
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === "Escape") toggleResearch(false);
-    });
 
     const SITE_NEWS = [
       {
@@ -649,38 +606,6 @@
 
     // Initial Call
     renderNews();
-
-    // PUBLICATIONS -----------
-
-    fetch('publications.json')
-      .then(response => response.json())
-      .then(papers => {
-        document.getElementById('pub-count').innerText = papers.length;
-        const pubContainer = document.getElementById('pub-container');
-        papers.forEach(pub => {
-          pubContainer.innerHTML += `
-            <div class="group relative bg-white p-8 rounded-[2.5rem] border border-slate-100 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300">
-                <div class="flex flex-col justify-between h-full gap-6">
-                    <div>
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="text-[10px] font-bold px-3 py-1 bg-slate-100 text-slate-600 rounded-full uppercase tracking-widest border border-slate-200">${pub.venue}</span>
-                        </div>
-                        <h3 class="font-bold text-xl leading-tight text-slate-900 group-hover:text-blue-700 transition-colors">${pub.title}</h3>
-                        <p class="text-slate-500 text-sm mt-4 font-light italic">${pub.authors}</p>
-                    </div>
-                    <div class="flex gap-3 pt-4 border-t border-slate-50">
-                        <a href="${pub.link}" target="_blank" class="flex items-center justify-center w-11 h-11 rounded-2xl bg-slate-50 text-slate-400 hover:bg-blue-700 hover:text-white transition-all shadow-sm">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                        </a>
-                        <button onclick="navigator.clipboard.writeText(\`${pub.bibtex}\`); alert('BibTeX Copied!');" class="flex items-center justify-center w-11 h-11 rounded-2xl bg-slate-50 text-slate-400 hover:bg-blue-700 hover:text-white transition-all shadow-sm">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/></svg>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
-        });
-      }).catch(err => console.log("Missing publications.json"));
 
     anime({
       targets: '#beating-heart',
