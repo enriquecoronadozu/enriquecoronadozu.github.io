@@ -50,19 +50,33 @@
           class="text-slate-600 hover:text-blue-700 transition-colors">Methodology</a>
         <a href="#projects" onclick="toggleResearch(false)"
           class="text-slate-600 hover:text-blue-700 transition-colors">Projects</a>
-
         <a href="javascript:void(0)" onclick="toggleResearch(true)"
           class="text-slate-600 hover:text-blue-700 transition-colors">Publications</a>
-
         <a href="#internships" onclick="toggleResearch(false)"
           class="ml-2 text-blue-700 border-2 border-blue-700 px-6 py-2.5 rounded-full hover:bg-blue-700 hover:text-white transition-all duration-300 active:scale-95 shadow-sm">Opportunities</a>
       </div>
 
       <button class="md:hidden text-slate-600 p-2" onclick="toggleMenu()">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 transition-transform" fill="none"
+          viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
         </svg>
       </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-6 space-y-4 shadow-xl">
+      <a href="#about" onclick="toggleMenu()"
+        class="block text-sm font-semibold text-slate-600 hover:text-blue-700">About</a>
+      <a href="#news" onclick="toggleMenu()"
+        class="block text-sm font-semibold text-slate-600 hover:text-blue-700">News</a>
+      <a href="#methodology" onclick="toggleMenu()"
+        class="block text-sm font-semibold text-slate-600 hover:text-blue-700">Methodology</a>
+      <a href="#projects" onclick="toggleMenu()"
+        class="block text-sm font-semibold text-slate-600 hover:text-blue-700">Projects</a>
+      <a href="javascript:void(0)" onclick="toggleMenu(); toggleResearch(true)"
+        class="block text-sm font-semibold text-slate-600 hover:text-blue-700">Publications</a>
+      <a href="#internships" onclick="toggleMenu()"
+        class="block text-center text-blue-700 border-2 border-blue-700 px-6 py-3 rounded-full font-bold">Opportunities</a>
     </div>
   </nav>
 
@@ -476,7 +490,17 @@
     // Make sure to also update your mobile menu links similarly:
     function toggleMenu() {
       const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
+      const icon = document.getElementById('menu-icon');
+
+      if (menu.classList.contains('hidden')) {
+        menu.classList.remove('hidden');
+        // Optional: Change icon to an "X" when open
+        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
+      } else {
+        menu.classList.add('hidden');
+        // Reset to Hamburger icon
+        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />';
+      }
     }
 
     document.addEventListener('keydown', (e) => {
