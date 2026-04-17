@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,22 +8,37 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #f1f5f9;
+            border-radius: 10px;
+        }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col">
+
+<body class="bg-white text-slate-900 min-h-screen flex flex-col">
 
     <nav class="bg-white/80 backdrop-blur-md border-b sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="group flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-hover:bg-blue-700 group-hover:text-white transition-all">
+                <div
+                    class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-hover:bg-blue-700 group-hover:text-white transition-all">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
                 </div>
-                <span class="font-bold text-sm uppercase tracking-widest text-slate-400 group-hover:text-slate-900 transition-colors">Back to Home</span>
+                <span
+                    class="font-bold text-sm uppercase tracking-widest text-slate-400 group-hover:text-slate-900 transition-colors">Back
+                    to Home</span>
             </a>
             <div class="text-right">
                 <h1 class="text-sm font-bold text-blue-700 uppercase tracking-widest">Scientific Contributions</h1>
@@ -31,50 +47,72 @@
         </div>
     </nav>
 
-    <main class="flex-1 max-w-6xl mx-auto px-6 py-12 md:py-20 w-full">
-        <header class="mb-16">
-            <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">Research & <span class="text-blue-700">Publications</span></h2>
-            <p class="text-lg text-slate-500 max-w-3xl leading-relaxed font-light">
-                A comprehensive list of my work in Responsible AI, Physical Robotics, and Human-Robot Interaction. 
-                Currently maintaining <span id="pub-count" class="font-bold text-blue-700">0</span> indexed contributions.
-            </p>
-        </header>
 
-        <div id="pub-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+
+    <main class="flex-1 max-w-6xl mx-auto px-6 py-12 md:py-24 w-full">
+        <header class="mb-16 md:mb-24">
+            <div
+                class="inline-block px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-[10px] font-bold uppercase tracking-widest mb-6">
+                Open Science
             </div>
+            <h2 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight mb-6">
+                Research & <span class="text-blue-700">Publications</span>
+            </h2>
+            <p class="text-lg md:text-xl text-slate-500 max-w-2xl leading-relaxed font-light">
+                A repository of peer-reviewed work in <span class="text-slate-900 font-medium">Responsible AI</span>,
+                dual-arm manipulation, and human-centric design. Currently tracking
+                <span id="pub-count" class="font-bold text-blue-700 border-b-2 border-blue-100">0</span> contributions.
+            </p>
+
+        </header>
+        
+
+        <div id="pub-container" class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+        </div>
     </main>
 
-    <footer class="bg-white border-t py-12 text-center">
-        <p class="text-[10px] text-slate-400 uppercase tracking-[0.3em] font-bold">
-            Human-Evolving AI & Robotics Team &bull; AIST Japan
+    <footer class="border-t border-slate-100 py-16 text-center">
+        <p class="text-[10px] text-slate-400 uppercase tracking-[0.4em] font-bold mb-2">
+            Human-Evolving AI & Robotics Team
+        </p>
+        <p class="text-[9px] text-slate-300 uppercase tracking-widest">
+            National Institute of Advanced Industrial Science and Technology
         </p>
     </footer>
 
     <script>
-        // Load data from your existing publications.json file
         fetch('publications.json')
             .then(response => response.json())
             .then(papers => {
                 document.getElementById('pub-count').innerText = papers.length;
                 const pubContainer = document.getElementById('pub-container');
-                
+
                 papers.forEach(pub => {
                     pubContainer.innerHTML += `
-                        <div class="group bg-white p-8 rounded-[2.5rem] border border-slate-100 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300 flex flex-col justify-between">
-                            <div>
-                                <div class="flex items-center gap-3 mb-6">
-                                    <span class="text-[10px] font-bold px-3 py-1 bg-blue-50 text-blue-700 rounded-full uppercase tracking-widest border border-blue-100">${pub.venue}</span>
+                        <div class="group flex flex-col h-full border-l-2 border-slate-100 hover:border-blue-700 pl-8 transition-all duration-300">
+                            <div class="flex-1">
+                                <div class="mb-4">
+                                    <span class="text-[9px] font-bold px-2 py-1 bg-slate-50 text-slate-500 rounded uppercase tracking-widest border border-slate-100 group-hover:bg-blue-50 group-hover:text-blue-700 group-hover:border-blue-100 transition-colors">
+                                        ${pub.journal}
+                                    </span>
                                 </div>
-                                <h3 class="font-bold text-xl leading-snug text-slate-900 group-hover:text-blue-700 transition-colors">${pub.title}</h3>
-                                <p class="text-slate-500 text-sm mt-4 font-light italic leading-relaxed">${pub.authors}</p>
+                                <h3 class="font-bold text-xl md:text-2xl leading-tight text-slate-900 group-hover:text-blue-700 transition-colors">
+                                    ${pub.title}
+                                </h3>
+                                <p class="text-slate-500 text-sm mt-4 font-light leading-relaxed">
+                                    ${pub.author}
+                                </p>
                             </div>
                             
-                            <div class="flex gap-3 mt-8 pt-6 border-t border-slate-50">
-                                <a href="${pub.link}" target="_blank" class="flex items-center justify-center w-12 h-12 rounded-2xl bg-slate-50 text-slate-400 hover:bg-blue-700 hover:text-white transition-all shadow-sm" title="Download Paper">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            <div class="flex gap-4 mt-8">
+                                <a href="${pub.link}" target="_blank" class="flex items-center gap-2 text-[10px] font-bold text-slate-400 hover:text-blue-700 uppercase tracking-widest transition-colors" title="Download Paper">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                                    PDF
                                 </a>
-                                <button onclick="navigator.clipboard.writeText(\`${pub.bibtex}\`); alert('BibTeX Copied to Clipboard!');" class="flex items-center justify-center w-12 h-12 rounded-2xl bg-slate-50 text-slate-400 hover:bg-blue-700 hover:text-white transition-all shadow-sm" title="Copy BibTeX">
-                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/></svg>
+                                <button onclick="navigator.clipboard.writeText(\`${pub.bibtex}\`); alert('BibTeX Copied!');" class="flex items-center gap-2 text-[10px] font-bold text-slate-400 hover:text-blue-700 uppercase tracking-widest transition-colors" title="Copy BibTeX">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/></svg>
+                                    BibTeX
                                 </button>
                             </div>
                         </div>
@@ -82,8 +120,8 @@
                 });
             }).catch(err => {
                 document.getElementById('pub-container').innerHTML = '<p class="text-slate-400">Loading publications...</p>';
-                console.error("Error loading JSON:", err);
             });
     </script>
 </body>
+
 </html>
