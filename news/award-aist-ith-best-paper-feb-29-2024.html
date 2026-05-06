@@ -69,9 +69,9 @@
                     </div>
                     <h1 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-8">${article.title}</h1>
                     <p class="font-medium text-slate-600 text-xl leading-relaxed mb-10">${article.summary}</p>
-                    <div class="rounded-[3rem] overflow-hidden shadow-2xl mb-12 aspect-video bg-slate-100">
-                        <img src="${article.img}" class="w-full h-full object-cover">
-                    </div>
+                    <div class="rounded-[3rem] overflow-hidden flex justify-center">
+                      <img src="${article.img}" class="block">
+                  </div>
                 </header>
             `;
             document.title = `${article.title} | Enrique Coronado`;
