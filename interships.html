@@ -47,6 +47,17 @@
 
         <section class="space-y-16">
 
+            <!-- Application Action Button -->
+        <div class="mb-12 flex justify-center md:justify-start">
+            <a href="../topics.html" 
+               class="group inline-flex items-center gap-3 px-8 py-4 bg-blue-700 text-white font-bold rounded-2xl shadow-xl shadow-blue-200 hover:bg-blue-600 hover:-translate-y-1 transition-all duration-300">
+                <span>See reseach topics (in construction)</span>
+                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
+
             <div class="space-y-8">
                 <h2 class="text-2xl font-bold border-l-4 border-blue-700 pl-4">Pre-Application Documents</h2>
 
@@ -191,6 +202,82 @@
 
             </div>
         </section>
+
+        <!-- New Location Section -->
+        <section class="space-y-6 pt-12 border-t border-slate-100">
+            <h3 class="text-3xl font-extrabold text-slate-900">Location & Access</h3>
+
+            <!-- Map Embed -->
+            <div class="w-full h-96 rounded-3xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3242.2741916325515!2d139.77582537604318!3d35.62001553198536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188981e4272101%3A0x6334a17951d02d09!2sAIST%20Tokyo%20Waterfront%20Annex%202!5e0!3m2!1sen!2sjp!4v1715014631383!5m2!1sen!2sjp"
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-2">
+                    <h4 class="text-xl font-bold text-slate-900">Address</h4>
+                    <p class="text-slate-600">
+                        AIST Annex 2 Building<br>
+                        2-4-7 Aomi, Koto-ku, Tokyo, 135-0064, JAPAN
+                    </p>
+                </div>
+
+                <div class="space-y-2">
+                    <h4 class="text-xl font-bold text-slate-900">Access</h4>
+                    <p class="text-slate-600">
+                        We are located in the AIST Annex 2 Building. From the <strong>Tokyo Telecom Center
+                            Station</strong> on the Yurikamome Line, it is a short, direct walk to our facilities.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nearby Attractions Section -->
+<section class="space-y-6 pt-12 border-t border-slate-100">
+    <header class="mb-8">
+        <h3 class="text-3xl font-extrabold text-slate-900">Explore the Area</h3>
+        <p class="mt-4 text-slate-600 text-lg leading-relaxed">
+            Our lab is located in Odaiba, a vibrant, futuristic hub on a high-tech artificial island in Tokyo Bay. It offers a perfect blend of waterfront relaxation and modern entertainment.
+        </p>
+    </header>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Odaiba Card -->
+        <div class="group overflow-hidden rounded-[2rem] bg-slate-50 border border-slate-100 shadow-sm transition-all hover:shadow-md">
+            <div class="w-full h-56 bg-slate-200 overflow-hidden relative">
+                <!-- Replace 'your-odaiba-photo.jpg' with your actual image path -->
+                <img src="../img/odaiba.png" alt="Odaiba Waterfront" class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+            <div class="p-8">
+                <h4 class="text-xl font-bold text-slate-900 mb-2">Odaiba Bay Area</h4>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    Enjoy stunning waterfront views of the Tokyo skyline, the iconic Rainbow Bridge, and expansive seaside parks perfect for a walk after research hours.
+                </p>
+            </div>
+        </div>
+
+        <!-- DiverCity Card -->
+        <div class="group overflow-hidden rounded-[2rem] bg-slate-50 border border-slate-100 shadow-sm transition-all hover:shadow-md">
+            <div class="w-full h-56 bg-slate-200 overflow-hidden relative">
+                <!-- Replace 'your-divercity-photo.jpg' with your actual image path -->
+                <img src="../img/gundam.png" alt="DiverCity Tokyo Plaza" class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+            <div class="p-8">
+                <h4 class="text-xl font-bold text-slate-900 mb-2">DiverCity Tokyo Plaza</h4>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    A premier shopping and entertainment complex just a short distance away, famous for its impressive life-sized Gundam statue and diverse dining options.
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
     </main>
 
     <footer class="py-12 border-t border-slate-50 text-center mt-12">
