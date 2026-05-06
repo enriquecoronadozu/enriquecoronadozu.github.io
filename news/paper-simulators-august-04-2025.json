@@ -1,0 +1,16 @@
+{
+    "id": "paper-simulators-august-04-2025",
+    "date": "August 4, 2025",
+    "category": "Paper",
+    "title": "ROS-Compatible Robotics Simulators for Industry 4.0 and Industry 5.0",
+    "summary": "New article in 'Applied Sciences' introduces a systematic review of 65 peer-reviewed articles analyzing the trends, capabilities, and application domains of ROS-integrated simulators within modern industrial and manufacturing contexts.",
+    "img": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200",
+    "subtitle1": "Connectivity and Ecosystem Integration",
+    "description1": "Moving beyond traditional physics modeling, this study examines simulator capabilities in terms of connectivity and interoperability. It addresses the critical role simulators play in the safe development and testing of complex algorithms before physical deployment in robotic ecosystems.",
+    "subtitle2": "Trends in Industry 4.0 vs. Industry 5.0",
+    "description2": "The findings indicate a clear preference in simulation tools based on the paradigm: Gazebo remains the standard for Industry 4.0 automation due to its native ROS compatibility, while Unity has emerged as the leader for Industry 5.0 for its superior XR and human-centric features.",
+    "highlight": "Simulators provide a safe, cost-effective environment to refine algorithms, effectively bridging the gap between digital validation and the seamless integration of robots into real-world human-centered settings.",
+    "subtitle3": "Evolution of ROS and Interoperability",
+    "description3": "The research tracks the adoption of ROS 1 and ROS 2, identifying bridge technologies such as MQTT, WebSocket, and blockchain that are essential for overcoming current interoperability and security challenges in smart manufacturing.",
+    "url": "https://doi.org/10.3390/app15158637"
+}

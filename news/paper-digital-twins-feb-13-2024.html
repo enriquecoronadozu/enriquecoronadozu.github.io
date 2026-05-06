@@ -54,7 +54,7 @@
         try {
             // 1. Fetch the specific JSON file in the same folder
             // Make sure this filename is EXACTLY what is on your disk
-            const response = await fetch('paper-robotics-april-10-2026.json');
+            const response = await fetch('paper-digital-twins-feb-13-2024.json');
             
             if (!response.ok) throw new Error("Could not find the JSON file");
             
@@ -89,10 +89,12 @@
                     <p>${article.description3}</p>
                 </article>
 
-                <div class="mt-20 pt-12 border-t border-slate-100">
+                <div class="mt-20 pt-12 border-t border-slate-100 flex justify-center">
                     <a href="${article.url}" target="_blank" class="inline-flex items-center px-10 py-5 bg-blue-700 text-white rounded-2xl font-bold hover:bg-blue-800 transition-all shadow-xl shadow-blue-900/20 active:scale-95">
                         Link to Publication
-                        <svg class="h-5 w-5 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        <svg class="h-5 w-5 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
                     </a>
                 </div>
             `;

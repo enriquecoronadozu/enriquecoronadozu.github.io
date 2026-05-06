@@ -409,59 +409,60 @@
 
     const SITE_NEWS = [
       {
-        id: "paper-robotics-april-10-2026",
-        date: "April 10, 2026",
+        id: "paper-robotics-march-12-2026",
+        date: "March 12, 2026",
         category: "Paper",
         title: "Post-ChatGPT Era: Agentic AI in Industry 5.0",
-        text: "New article in 'Robotics' introduces the Responsible Agentic Robotics (RAR) framework, exploring the shift from LLMs to Agentic AI for sustainable and human-centered collaboration.",
+        summary: "New article in 'Robotics' introduces the Responsible Agentic Robotics (RAR) framework, exploring the shift from LLMs to Agentic AI for sustainable and human-centered collaboration.",
         img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=400" // Replace with actual image path
+      },
+      {
+        "id": "paper-simulators-august-04-2025",
+        "date": "August 4, 2025",
+        "category": "Paper",
+        "title": "ROS-Compatible Robotics Simulators for Industry 4.0 and Industry 5.0",
+        "summary": "New article in 'Applied Sciences' introduces a systematic review of 65 peer-reviewed articles analyzing the trends, capabilities, and application domains of ROS-integrated simulators within modern industrial and manufacturing contexts.",
+        "img": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200",
       },
       {
         id: "award-best-january-10-2026",
         date: "January 10, 2026",
         category: "Award",
         title: "Best Paper Nomination",
-        text: "New nomination for the Best Paper Award at IEEE/SICE SII 2026. Our article on 'Tactile-Based Active Inference' features internship contributions from Tatsuya K. (University of Tokyo, Japan).",
+        summary: "New nomination for the Best Paper Award at IEEE/SICE SII 2026. Our article on 'Tactile-Based Active Inference' features internship contributions from Tatsuya K. (University of Tokyo, Japan).",
         img: "img/sii-2026.png"
       },
       {
-        id: "paper-ral-november-13-2024",
-        date: "November 13, 2024",
-        category: "Paper",
-        title: "IEEE RA-L Publication",
-        text: "Article on 'Adaptive Contact-Rich Manipulation' accepted in IEEE Robotics and Automation Letters, featuring work by C. Tsuji from the University of Tokyo.",
-        img: "img/IEEE-RAS.png" // Replace with actual image path
-      },
-      {
-        id: "paper-ros-march-13-2024",
-        date: "March 13, 2024",
-        category: "Paper",
-        title: "Industry 5.0 Digital Twins",
-        text: "New article in 'Robotics' presents a path toward Industry 5.0 digital twins. The work bridges NEP+ and ROS to create accessible, distributed, and platform-independent architectures for advanced human-robot collaboration.",
-        img: "img/ros.png" // Replace with actual image path
+        "id": "paper-digital-twins-feb-13-2024",
+        "date": "February 13, 2024",
+        "category": "Paper",
+        "title": "A Path to Industry 5.0 Digital Twins for Human–Robot Collaboration by Bridging NEP+ and ROS",
+        "summary": "New article in 'Robotics' introduces a framework for Industry 5.0 digital twins by bridging NEP+ and ROS to create accessible, distributed, and platform-independent architectures for advanced human-robot collaboration.",
+        "img": "img/ros.png",
       },
       {
         id: "award-aist-feb-29-2024",
         date: "February 29, 2024",
         category: "Award",
         title: "AIST ITH Best Paper",
-        text: "Our systematic review on HRI metrics towards Industry 5.0 was awarded the AIST ITH Best Paper Award.",
+        summary: "Our systematic review on HRI metrics towards Industry 5.0 was awarded the AIST ITH Best Paper Award.",
         img: "img/asit.png" // Replace with actual image path
       },
       {
-        id: "paper-xr-jan-18-2023",
-        date: "January 18, 2023",
-        category: "Paper",
-        title: "XR in Human-Robot Interaction",
-        text: "New article in 'Applied Sciences' identifies accessible software tools for developing VR, AR, and MR experiences in HRI. The review classifies XR applications across social robotics, industrial programming, and teleoperation.",
-        img: "img/teleop.png"
+        "id": "paper-xr-hri-jan-18-2023",
+        "date": "January 18, 2023",
+        "category": "Paper",
+        "title": "Integrating Virtual, Mixed, and Augmented Reality to HRI Applications Using Game Engines",
+        "summary": "New article in 'Applied Sciences' identifies accessible software tools for developing VR, AR, and MR experiences in HRI. The review classifies XR applications across social robotics, industrial programming, and teleoperation.",
+        "img": "img/teleop.png",
+
       },
       {
         id: "paper-evaluating-apr-28-2022",
         date: "April 28, 2022",
         category: "Paper",
         title: "Evaluating Quality in Human-Robot Interaction",
-        text: "New article in the 'Journal of Manufacturing Systems' establishes a comprehensive framework for Industry 5.0. It classifies the metrics and measures used to evaluate both robotic performance and human well-being in collaborative environments.",
+        summary: "New article in the 'Journal of Manufacturing Systems' establishes a comprehensive framework for Industry 5.0. It classifies the metrics and measures used to evaluate both robotic performance and human well-being in collaborative environments.",
         img: "img/elsevier.png"
       }
     ];
@@ -521,7 +522,7 @@
         <div class="p-8 flex flex-col flex-1">
           <p class="text-[11px] font-bold text-slate-400 mb-2 uppercase tracking-widest">${item.date}</p>
           <h4 class="font-bold text-xl text-slate-900 mb-4 group-hover:text-blue-700 transition-colors leading-tight">${item.title}</h4>
-          <p class="text-sm text-slate-500 leading-relaxed font-light line-clamp-3 mb-6">${item.text}</p>
+          <p class="text-sm text-slate-500 leading-relaxed font-light line-clamp-3 mb-6">${item.summary}</p>
           
           <div class="mt-auto flex items-center text-blue-700 text-xs font-bold uppercase tracking-widest">
             Read More
