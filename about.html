@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biography | Enrique Coronado</title>
+    <title id="page-title">Biography</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -17,84 +17,150 @@
 
 <body class="bg-white text-slate-900 min-h-screen">
 
-    <nav class="bg-white/80 backdrop-blur-md border-b sticky top-0 z-50">
+    <nav class="bg-white/70 backdrop-blur-md border-b sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="index.html" class="group flex items-center gap-3">
-                <div
-                    class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-hover:bg-blue-700 group-hover:text-white transition-all">
+                <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-hover:bg-blue-700 group-hover:text-white transition-all">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                     </svg>
                 </div>
-                <span
+                  <span
                     class="font-bold text-sm uppercase tracking-widest text-slate-400 group-hover:text-slate-900 transition-colors">Back
                     to Home</span>
             </a>
             <div class="text-right">
-                <h1 class="text-sm font-bold text-blue-700 uppercase tracking-widest">Biography</h1>
-                <p class="text-[10px] text-slate-400 font-semibold uppercase">Enrique Coronado — AIST HEART</p>
+                <p id="nav-info" class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter"></p>
             </div>
         </div>
     </nav>
 
 
-    <main class="max-w-4xl mx-auto px-6 py-12 md:py-24">
-        <header class="mb-12 md:mb-16 text-center md:text-left">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                Biography & <span class="text-blue-700"> Interests</span>
+
+    <main class="max-w-5xl mx-auto px-6 py-12 md:py-24">
+        <!-- Name Header -->
+        <header class="mb-12 md:mb-20 text-center md:text-left">
+            <h1 id="header-name" class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tighter leading-none"></h1>
+
             </h1>
         </header>
 
-        <div class="prose prose-slate lg:prose-lg text-slate-600 leading-relaxed space-y-8 max-w-none">
-            <div
-                class="group relative w-48 md:w-64 mx-auto md:float-right md:ml-10 mb-10 aspect-[4/5] overflow-hidden rounded-[2.5rem] border-4 border-white shadow-xl">
-                <img src="img/coronado.jpg" alt="Dr. Enrique Coronado"
-                    class="w-full h-full object-cover  transition-all duration-700">
+        <!-- Main Content Grid -->
+        <div class="flex flex-col md:flex-row gap-12 lg:gap-20">
+            
+            <!-- Sidebar: Image & Expertise -->
+            <aside class="w-full md:w-72 flex-shrink-0">
+                <div class="relative group aspect-[4/5] overflow-hidden rounded-[2rem] bg-slate-100 shadow-2xl mb-10">
+                    <img id="member-img" src="" alt="" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <div id="member-role" class="absolute bottom-4 right-0 bg-blue-700 text-white px-4 py-1 rounded-l-full font-bold text-[12px] uppercase tracking-widest shadow-lg">
+                    </div>
+                </div>
 
-                <div
-                    class="absolute bottom-4 right-0 bg-blue-700 text-white px-4 py-1 rounded-l-full font-bold text-[10px] uppercase tracking-widest shadow-lg">
-                    Senior Researcher
+                <div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="h-px w-6 bg-blue-600"></span>
+                        <h3 class="text-[14px] font-black uppercase tracking-[0.2em] text-slate-400">Expertise</h3>
+                    </div>
+                    <div id="expertise-list" class="flex flex-wrap gap-2"></div>
+                </div>
+            </aside>
+
+            <!-- Biography Text -->
+            <div id="bio-paragraphs" class="prose prose-slate lg:prose-lg text-slate-600 leading-relaxed space-y-6 max-w-none flex-grow">
+            </div>
+        </div>
+
+        <!-- Bottom Social Section -->
+        <section class="mt-20 pt-16 border-t border-slate-100">
+            <div class="flex flex-col items-center">
+
+                <div id="social-links-container" class="flex flex-wrap justify-center gap-4 md:gap-6 w-full">
+                    <!-- Buttons injected here -->
                 </div>
             </div>
-            <p>
-                Dr. Enrique Coronado holds a <span class="text-slate-900 font-semibold">B.S. in Mechatronics Engineering
-                    (2012)</span> from the <span class="text-slate-900 font-semibold">Autonomous University of San Luis
-                    Potosí (UASLP)</span>, Mexico; <span class="text-slate-900 font-semibold">an M.S. in Advanced
-                    Robotics (2017)</span> from the EMARO+ program (<span
-                    class="text-slate-900 font-semibold">University of Genoa</span>, Italy, and <span
-                    class="text-slate-900 font-semibold">École Centrale de Nantes</span>, France); and a <span
-                    class="text-slate-900 font-semibold">Ph.D. in Mechanical Systems Engineering (2020)</span> from
-                <span class="text-slate-900 font-semibold">Tokyo University of Agriculture and Technology (TUAT)</span>,
-                Japan.
-            </p>
-            <p>
-                His career spans pivotal roles in Japanese academia, including serving as an Assistant Professor
-                at <span class="text-slate-900 font-semibold">TUAT</span> (2020–2022) and as a Researcher at the <span
-                    class="text-slate-900 font-semibold">National Institute of Advanced Industrial Science and
-                    Technology (AIST)</span> (2022–2024).
-            </p>
-            <p>
-                In 2024, he was appointed <span class="text-slate-900 font-bold">Senior Researcher</span> for the <span
-                    class="text-slate-900 font-bold">Human-Evolving AI & Robotics Team (HEART)</span> at AIST. He leads
-                initiatives in Responsible Agentic AI and Robotics, <span class="text-slate-900 font-semibold">fostering
-                    international collaborations with institutions in
-                    Japan, Mexico, Canada, Norway, and Australia.</span>
-            </p>
-            <p>
-                His work blends <span class="text-slate-900 font-bold">technology, science, design thinking, and
-                    responsible innovation to co-create physical AI solutions</span> that are empathetic, inclusive, and
-                ethically aligned, placing human and planetary well-being at the center.
-            </p>
-        </div>
+        </section>
     </main>
 
-    <footer class="py-12 border-t border-slate-50 text-center">
-        <p class="text-[10px] text-slate-400 uppercase tracking-[0.4em] font-bold">
-            AIST &bull; National Institute of Advanced Industrial Science and Technology
-        </p>
+    <footer class="py-12 text-center">
+        <p id="footer-text" class="text-[10px] text-slate-300 uppercase tracking-[0.4em] font-bold"></p>
     </footer>
 
-</body>
+    <script>
+        const teamData = {
+            "enrique": {
+                name: "Enrique Coronado",
+                org: "AIST HEART",
+                role: "Senior Researcher",
+                image: "img/coronado.jpg",
+                footer: "AIST • National Institute of Advanced Industrial Science and Technology",
+                expertise: ["Human-Centric Robotics", "Human-Robot Collaboration", "Industry 5.0", "Responsible AI"],
+                socials: {
+                    scholar: {
+                        url: "https://scholar.google.com/citations?user=2usIS0EAAAAJ&hl=en",
+                        label: "Google Scholar"
+                    },
+                    orcid: {
+                        url: "https://orcid.org/0000-0001-5444-377X",
+                        label: "ORCID iD"
+                    },
+                    linkedin: {
+                        url: "https://www.linkedin.com/in/enrique-coronado-zu/",
+                        label: "LinkedIn"
+                    }
+                },
+                bio: [
+                    "Dr. Luis Enrique Coronado Zuñiga holds a <span class='text-slate-900 font-semibold'>B.S. in Mechatronics Engineering (2012)</span> from the <span class='text-slate-900 font-semibold'>Autonomous University of San Luis Potosí (UASLP)</span>, Mexico; <span class='text-slate-900 font-semibold'>an M.S. in Advanced Robotics (2017)</span> from the EMARO+ program (<span class='text-slate-900 font-semibold'>University of Genoa</span>, Italy, and <span class='text-slate-900 font-semibold'>École Centrale de Nantes</span>, France); and a <span class='text-slate-900 font-semibold'>Ph.D. in Mechanical Systems Engineering (2020)</span> from <span class='text-slate-900 font-semibold'>Tokyo University of Agriculture and Technology (TUAT)</span>, Japan.",
+                    "His career spans pivotal roles in Japanese academia, including serving as an Assistant Professor at <span class='text-slate-900 font-semibold'>TUAT</span> (2020–2022) and as a Researcher at the <span class='text-slate-900 font-semibold'>National Institute of Advanced Industrial Science and Technology (AIST)</span> (2022–2024).",
+                    "In 2024, he was appointed <span class='text-slate-900 font-bold'>Senior Researcher</span> for the <span class='text-slate-900 font-bold'>Human-Evolving AI & Robotics Team (HEART)</span> at AIST. Also, from 2026, Dr. Coronado is an <span class='text-slate-900 font-semibold'> Adjunct Researcher </span> at GVLab, <span class='text-slate-900 font-semibold'>University of Tokyo</span>, Japan.",
+                    " He leads initiatives in Responsible Agentic AI and Robotics, <span class='text-slate-900 font-semibold'>fostering international collaborations with institutions in Japan, Mexico, Canada, UK, Norway, and Australia.</span>",
+                    "His work blends <span class='text-slate-900 font-bold'>technology, science, design thinking, and responsible innovation to co-create physical and agentic AI solutions</span> that are empathetic, inclusive, and ethically aligned, placing human and planetary well-being at the center."
+                ]
+            }
+        };
 
+        function initPage() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const memberId = urlParams.get('id') || 'enrique';
+            const member = teamData[memberId];
+
+            if (!member) return;
+
+            // Name Formatting
+            const nameArr = member.name.split(" ");
+            const firstName = nameArr.shift();
+            const lastName = nameArr.join(" ");
+            document.getElementById('header-name').innerHTML = `${firstName} <span class="text-blue-700">${lastName}</span>`;
+
+            // Core Info
+            document.title = `Biography | ${member.name}`;
+            document.getElementById('member-img').src = member.image;
+            document.getElementById('member-role').textContent = member.role;
+            document.getElementById('footer-text').textContent = member.footer;
+
+            // Expertise
+            document.getElementById('expertise-list').innerHTML = member.expertise.map(skill => 
+                `<span class="bg-blue-50 text-blue-700 border border-blue-100 text-[12px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg shadow-sm">${skill}</span>`
+            ).join('');
+
+            // Modern Social Buttons (Bottom)
+            document.getElementById('social-links-container').innerHTML = Object.keys(member.socials).map(key => {
+                const social = member.socials[key];
+                return `
+                    <a href="${social.url}" target="_blank" 
+                       class="group flex items-center gap-4 px-8 py-5 bg-white border border-blue-600 rounded-full overflow-hidden transition-all duration-500 hover:shadow-lg hover:shadow-blue-200 hover:-translate-y-1 w-full md:w-auto">
+                       
+                        <span class="text-[12px] font-black uppercase tracking-[0.2em] text-slate-500 group-hover:text-slate-900">
+                            ${social.label}
+                        </span>
+                    </a>
+                `;
+            }).join('');
+
+            // Bio
+            document.getElementById('bio-paragraphs').innerHTML = member.bio.map(para => `<p>${para}</p>`).join('');
+        }
+
+        window.onload = initPage;
+    </script>
+</body>
 </html>

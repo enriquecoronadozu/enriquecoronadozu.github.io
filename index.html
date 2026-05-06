@@ -189,7 +189,7 @@
       </div>
     </section>
 -->
-    <!--
+
     <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[300px]">
 
       <div
@@ -272,7 +272,7 @@
       </div>
 
     </div>
--->
+
 
     <!-- 
         <section id="projects">
@@ -409,49 +409,56 @@
 
     const SITE_NEWS = [
       {
-        date: "OCT 2025",
+        id: "paper-robotics-april-10-2026",
+        date: "April 10, 2026",
         category: "Paper",
         title: "Post-ChatGPT Era: Agentic AI in Industry 5.0",
         text: "New article in 'Robotics' introduces the Responsible Agentic Robotics (RAR) framework, exploring the shift from LLMs to Agentic AI for sustainable and human-centered collaboration.",
         img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=400" // Replace with actual image path
       },
       {
-        date: "JAN 10, 2026",
+        id: "award-best-january-10-2026",
+        date: "January 10, 2026",
         category: "Award",
         title: "Best Paper Nomination",
         text: "New nomination for the Best Paper Award at IEEE/SICE SII 2026. Our article on 'Tactile-Based Active Inference' features internship contributions from Tatsuya K. (University of Tokyo, Japan).",
         img: "img/sii-2026.png"
       },
       {
-        date: "NOV 13, 2024",
+        id: "paper-ral-november-13-2024",
+        date: "November 13, 2024",
         category: "Paper",
         title: "IEEE RA-L Publication",
         text: "Article on 'Adaptive Contact-Rich Manipulation' accepted in IEEE Robotics and Automation Letters, featuring work by C. Tsuji from the University of Tokyo.",
         img: "img/IEEE-RAS.png" // Replace with actual image path
       },
       {
-        date: "MAR 13, 2024",
+        id: "paper-ros-march-13-2024",
+        date: "March 13, 2024",
         category: "Paper",
         title: "Industry 5.0 Digital Twins",
         text: "New article in 'Robotics' presents a path toward Industry 5.0 digital twins. The work bridges NEP+ and ROS to create accessible, distributed, and platform-independent architectures for advanced human-robot collaboration.",
         img: "img/ros.png" // Replace with actual image path
       },
       {
-        date: "FEB 29, 2024",
+        id: "award-aist-feb-29-2024",
+        date: "February 29, 2024",
         category: "Award",
         title: "AIST ITH Best Paper",
         text: "Our systematic review on HRI metrics towards Industry 5.0 was awarded the AIST ITH Best Paper Award.",
         img: "img/asit.png" // Replace with actual image path
       },
       {
-        date: "JAN 18, 2023",
+        id: "paper-xr-jan-18-2023",
+        date: "January 18, 2023",
         category: "Paper",
         title: "XR in Human-Robot Interaction",
         text: "New article in 'Applied Sciences' identifies accessible software tools for developing VR, AR, and MR experiences in HRI. The review classifies XR applications across social robotics, industrial programming, and teleoperation.",
         img: "img/teleop.png"
       },
       {
-        date: "APR 28, 2022",
+        id: "paper-evaluating-apr-28-2022",
+        date: "April 28, 2022",
         category: "Paper",
         title: "Evaluating Quality in Human-Robot Interaction",
         text: "New article in the 'Journal of Manufacturing Systems' establishes a comprehensive framework for Industry 5.0. It classifies the metrics and measures used to evaluate both robotic performance and human well-being in collaborative environments.",
@@ -484,8 +491,6 @@
 
     function renderNews() {
       const container = document.getElementById('news-container');
-
-      // Filter items based on category
       const filteredNews = currentCategory === 'All'
         ? SITE_NEWS
         : SITE_NEWS.filter(item => item.category === currentCategory);
@@ -496,14 +501,17 @@
 
       container.innerHTML = '';
 
-      // Show message if no items found
       if (paginatedItems.length === 0) {
-        container.innerHTML = `<div class="col-span-full py-20 text-center text-slate-400 font-medium">No items found in this category.</div>`;
+        container.innerHTML = `<div class="col-span-full py-20 text-center text-slate-400 font-medium">No items found.</div>`;
+        return;
       }
 
       paginatedItems.forEach(item => {
+        // Generate the link path
+        const newsLink = `news/${item.id}.html`;
+
         container.innerHTML += `
-      <div class="group flex flex-col bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 hover:border-blue-200 transition-all duration-300 hover:shadow-xl hover:shadow-blue-900/5 animate-in fade-in zoom-in duration-500">
+      <a href="${newsLink}" class="group flex flex-col bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 hover:border-blue-200 transition-all duration-300 hover:shadow-xl hover:shadow-blue-900/5 animate-in fade-in zoom-in duration-500">
         <div class="h-48 overflow-hidden relative">
           <img src="${item.img}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
           <div class="absolute top-4 left-4">
@@ -513,9 +521,16 @@
         <div class="p-8 flex flex-col flex-1">
           <p class="text-[11px] font-bold text-slate-400 mb-2 uppercase tracking-widest">${item.date}</p>
           <h4 class="font-bold text-xl text-slate-900 mb-4 group-hover:text-blue-700 transition-colors leading-tight">${item.title}</h4>
-          <p class="text-sm text-slate-500 leading-relaxed font-light line-clamp-3">${item.text}</p>
+          <p class="text-sm text-slate-500 leading-relaxed font-light line-clamp-3 mb-6">${item.text}</p>
+          
+          <div class="mt-auto flex items-center text-blue-700 text-xs font-bold uppercase tracking-widest">
+            Read More
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </div>
         </div>
-      </div>
+      </a>
     `;
       });
 
