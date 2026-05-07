@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Themes | Agentic AI & Robotics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-slate-900 min-h-screen">
+
+    <nav class="bg-white/70 backdrop-blur-md border-b sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="group flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-hover:bg-blue-700 group-hover:text-white transition-all">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                </div>
+                <span class="font-bold text-sm uppercase tracking-widest text-slate-400 group-hover:text-slate-900 transition-colors">Back to Home</span>
+            </a>
+          
+        </div>
+    </nav>
+
+    <main id="topics-container" class="max-w-6xl mx-auto px-6 py-12">
+        <!-- Sections will be injected here by JavaScript -->
+    </main>
+
+    <footer class="py-12 text-center border-t border-slate-50">
+        <p id="footer-text" class="text-[10px] text-slate-300 uppercase tracking-[0.4em] font-bold">AIST • Human-Evolving AI & Robotics Team</p>
+    </footer>
+
+    <script>
+        const topicData = [
+            {
+                name: "Social Robotics + Agentic AI",
+                image: "img/social.png",
+                backgrounds: ["Mechatronics", "Electronics", "Design", "Psychology", "Computer Science"],
+                description: [
+                    "Design robots from scratch, including mechanical architecture, electronics, CAD/CAM, and 3D printing.",
+                    "Focus on the seamless integration of hardware and software.",
+                    "Implementation of LLMs and VLMs for advanced human understanding."
+                ]
+            },
+            {
+                name: "Collaborative Digital Twins + Agentic AI",
+                image: "img/digital.png",
+                backgrounds: ["Robotics", "Systems Engineering", "Data Science", "Computer Vision", "Ergonomics"],
+                description: [
+                    "Advanced simulation in Gazebo and Isaac Sim for high-fidelity digital replication.",
+                    "Robot control, human safety, and ergonomics analysis.",
+                    "LLMs, VLMs, and MLLMs for human intention recognition and robot action orchestration."
+                ]
+            },
+            {
+                name: "Shared Autonomy + Agentic AI",
+                image: "img/shared.png",
+                backgrounds: ["HCI", "Software Engineering", "Cognitive Science", "Robotics"],
+                description: [
+                    "Simulation in Unity for complex interaction scenarios.",
+                    "Human intention recognition using LLMs, VLMs, and MLLMs. Action execution using VLAs.",
+                    "Design of User Interfaces and use of diverse robot architectures."
+                ]
+            },
+            {
+                name: "Robot for Education and Cultural Integration + Agentic AI",
+                image: "img/education.png",
+                backgrounds: ["Education", "Sociology", "Psychology", "AR/VR Development"],
+                description: [
+                    "Create simulations of real environments for immersive learning.",
+                    "Robots teaching languages and learning manipulation tasks to train people.",
+                    "Inmersive learning experiences using VR/AR technologies."
+                ]
+            }
+        ];
+
+        function initPage() {
+            const container = document.getElementById('topics-container');
+            
+            const htmlContent = topicData.map((topic, index) => {
+                // Determine if image is on the left or right (alternating)
+                const isEven = index % 2 === 0;
+                const flexOrder = isEven ? 'md:flex-row' : 'md:flex-row-reverse';
+                
+                // Format Title
+                const nameArr = topic.name.split("+");
+                const mainTitle = nameArr[0].trim();
+                const subTitle = nameArr.length > 1 ? `+ ${nameArr[1].trim()}` : '';
+
+                return `
+                <section class="py-20 border-b border-slate-50 last:border-0">
+                    <div class="flex flex-col ${flexOrder} items-center gap-12 lg:gap-20">
+                        
+                        <!-- Image Column -->
+                        <div class="w-full md:w-1/2 flex-shrink-0">
+                            <div class="relative group  overflow-hidden rounded-[2rem] bg-slate-100 shadow-xl">
+                                <img src="${topic.image}" alt="${mainTitle}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                                <div class="absolute bottom-4 right-0 bg-blue-700 text-white px-4 py-1 rounded-l-full font-bold text-[10px] uppercase tracking-widest shadow-lg">
+                                    Research Theme 0${index + 1}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Content Column -->
+                        <div class="w-full md:w-1/2">
+                            <header class="mb-8">
+                                <h2 class="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tighter leading-tight">
+                                    ${mainTitle} <br>
+                                    <span class="text-blue-700">${subTitle}</span>
+                                </h2>
+                            </header>
+
+                            <div class="prose prose-slate lg:prose-lg text-slate-600 leading-relaxed space-y-4 mb-10">
+                                ${topic.description.map(para => `<p class="flex gap-3"><span class="text-blue-500 font-bold">•</span> ${para}</p>`).join('')}
+                            </div>
+
+                       
+                        </div>
+
+                    </div>
+                </section>
+                `;
+            }).join('');
+
+            container.innerHTML = htmlContent;
+        }
+
+        window.onload = initPage;
+    </script>
+</body>
+</html>
