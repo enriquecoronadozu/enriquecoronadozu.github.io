@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corazón de Red Difusa - Interactivo</title>
+<style>
+  html, body { 
+    margin: 0; 
+    height: 100vh; 
+    background: #050a18; 
+    overflow: hidden; 
+    font-family: system-ui, -apple-system, sans-serif;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Contenedor principal de la animación */
+  #canvas-container {
+    flex: 1;
+    position: relative;
+    width: 100%;
+  }
+  #heart-canvas { 
+    position: absolute; 
+    inset: 0; 
+    width: 100%; 
+    height: 100%; 
+    display: block; 
+  }
+
+  /* Título de la presentación superpuesto */
+  .content {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 5vh;
+    color: #cfe9ff; 
+    pointer-events: none;
+    text-shadow: 0 0 12px rgba(0,0,0,.8);
+  }
+
+  /* Panel de Control Inferior */
+  #controls {
+    background: rgba(10, 15, 35, 0.95);
+    border-top: 1px solid rgba(40, 190, 230, 0.3);
+    padding: 20px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    color: #8bb4e0;
+    font-size: 14px;
+    z-index: 10;
+  }
+  
+  .control-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 150px;
+  }
+  
+  .control-group label {
+    margin-bottom: 8px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .control-group span {
+    color: #924613;
+    font-weight: bold;
+  }
+
+  /* Estilo de los sliders y selectores */
+  input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #ff8a3c;
+    cursor: pointer;
+    margin-top: -6px;
+    box-shadow: 0 0 10px rgba(255, 138, 60, 0.8);
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 4px;
+    cursor: pointer;
+    background: #1a2b4c;
+    border-radius: 2px;
+  }
+  input[type=range]:focus {
+    outline: none;
+  }
+  
+  select {
+    width: 100%;
+    background: #1a2b4c;
+    color: #cfe9ff;
+    border: 1px solid rgba(40, 190, 230, 0.5);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<div id="canvas-container">
+  <canvas id="heart-canvas"></canvas>
+  <div class="content"><h1>Título de la Presentación</h1></div>
+</div>
+
+<div id="controls">
+  <div class="control-group">
+    <label>Animación</label>
+    <select id="param-anim">
+      <option value="breathing">Respiración (Lenta)</option>
+      <option value="heartbeat">Latido (Rápida)</option>
+    </select>
+  </div>
+  <div class="control-group">
+    <label>Fondo</label>
+    <select id="param-bg">
+      <option value="dark">Oscuro</option>
+      <option value="light">Claro</option>
+    </select>
+  </div>
+  
+  <div class="control-group">
+    <label>Densidad Interna <span id="val-inner">180</span></label>
+    <input type="range" id="param-inner" min="50" max="500" value="180">
+  </div>
+  <div class="control-group">
+    <label>Nodos del Borde <span id="val-edge">75</span></label>
+    <input type="range" id="param-edge" min="20" max="200" value="75">
+  </div>
+  <div class="control-group">
+    <label>Alcance Conexión <span id="val-reach">4.6</span></label>
+    <input type="range" id="param-reach" min="2.0" max="8.0" step="0.1" value="4.6">
+  </div>
+</div>
+
+<script>
+(() => {
+  const canvas = document.getElementById('heart-canvas');
+  const ctx = canvas.getContext('2d');
+  
+  const inputs = {
+    inner: document.getElementById('param-inner'),
+    edge: document.getElementById('param-edge'),
+    reach: document.getElementById('param-reach'),
+    anim: document.getElementById('param-anim'),
+    bg: document.getElementById('param-bg')
+  };
+  
+  const labels = {
+    inner: document.getElementById('val-inner'),
+    edge: document.getElementById('val-edge'),
+    reach: document.getElementById('val-reach')
+  };
+
+  let W, H, CX, CY, SCALE;
+  let outline = [];  
+  let inner = [];    
+  let outliers = [];
+  let bokeh = [];
+
+  // Actualizar etiquetas numéricas y reconstruir
+  ['inner', 'edge', 'reach'].forEach(key => {
+    inputs[key].addEventListener('input', (e) => {
+      labels[key].innerText = e.target.value;
+      if (key !== 'reach') build(); 
+    });
+  });
+
+  function heartXY(t, scale) {
+    const x = 16 * Math.pow(Math.sin(t), 3);
+    const y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
+    return { x: CX + x * scale, y: CY - y * scale };
+  }
+
+  function insideHeart(px, py) {
+    const x = (px - CX) / (16 * SCALE) * 1.18;
+    const y = (CY - py) / (13 * SCALE) * 1.18;
+    const a = x * x + y * y - 1;
+    return a * a * a - x * x * y * y * y <= 0;
+  }
+
+  function build() {
+    const P_INNER = parseInt(inputs.inner.value);
+    const P_EDGE = parseInt(inputs.edge.value);
+    const P_OUTLIERS = 45; 
+    const P_JITTER = 3.0; 
+
+    W = canvas.width = canvas.parentElement.clientWidth;
+    H = canvas.height = canvas.parentElement.clientHeight;
+    CX = W / 2;
+    CY = H / 2 - Math.min(W, H) * 0.02;
+    SCALE = Math.min(W, H) / 44;   
+
+    outline = [];
+    for (let i = 0; i < P_EDGE; i++) {
+      const t = (i / P_EDGE) * Math.PI * 2;
+      const p = heartXY(t, SCALE);
+      const scatterX = (Math.random() - 0.5) * SCALE * (P_JITTER * 0.8);
+      const scatterY = (Math.random() - 0.5) * SCALE * (P_JITTER * 0.8);
+      outline.push(mkPoint(p.x + scatterX, p.y + scatterY, true, false, P_JITTER));
+    }
+
+    inner = [];
+    const minDist = SCALE * (1.5 + (200 / (P_INNER + 1))); 
+    let guard = 0;
+    
+    while (inner.length < P_INNER && guard++ < 15000) { 
+      const px = CX + (Math.random() * 2 - 1) * 17 * SCALE;
+      const py = CY + (Math.random() * 2 - 1) * 16 * SCALE - 2 * SCALE;
+      if (!insideHeart(px, py)) continue;
+      let ok = true;
+      for (const q of inner) {
+        const dx = q.ox - px, dy = q.oy - py;
+        if (dx * dx + dy * dy < minDist * minDist) { ok = false; break; }
+      }
+      if (ok) inner.push(mkPoint(px, py, false, false, P_JITTER));
+    }
+
+    outliers = [];
+    let outGuard = 0;
+    while (outliers.length < P_OUTLIERS && outGuard++ < 5000) {
+        const px = CX + (Math.random() * 2 - 1) * 22 * SCALE;
+        const py = CY + (Math.random() * 2 - 1) * 20 * SCALE - 2 * SCALE;
+        if (!insideHeart(px, py)) {
+            const distToCenter = Math.hypot(px - CX, py - CY);
+            if (distToCenter < 19 * SCALE) {
+                outliers.push(mkPoint(px, py, false, true, P_JITTER));
+            }
+        }
+    }
+
+    bokeh = [];
+    for (let i = 0; i < 50; i++) {
+      bokeh.push({
+        x: Math.random() * W,
+        y: Math.random() * H * 0.8,
+        r: 1 + Math.random() * 3.5,
+        a: 0.12 + Math.random() * 0.45,
+        ph: Math.random() * Math.PI * 2
+      });
+    }
+  }
+
+  function mkPoint(x, y, isOutline, isOutlier = false, jitterMult = 3.0) {
+    return {
+      ox: x, oy: y, x, y,
+      ph: Math.random() * Math.PI * 2,
+      sp: 0.4 + Math.random() * 0.9,
+      jit: isOutline ? jitterMult + Math.random() * 2 : (jitterMult * 0.7) + Math.random() * 1.5,          
+      blue: (!isOutline && !isOutlier) && Math.random() < 0.12,
+      isOutline,
+      isOutlier
+    };
+  }
+
+  function drawGrid(theme) {
+    const base = H - H * 0.22;
+    // Si el fondo es claro, oscurecemos las líneas del grid para que se vean
+    const gridColor = theme === 'dark' ? '40,190,230' : '30,100,160'; 
+    
+    for (let i = 0; i < 12; i++) {
+      const y = base + i * (H * 0.22 / 12);
+      ctx.strokeStyle = `rgba(${gridColor},${(0.26 - i * 0.02).toFixed(3)})`;
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+    }
+    for (let i = -10; i <= 10; i++) {
+      ctx.strokeStyle = `rgba(${gridColor},0.10)`;
+      ctx.beginPath();
+      ctx.moveTo(CX + i * W * 0.05, base);
+      ctx.lineTo(CX + i * W * 0.14, H);
+      ctx.stroke();
+    }
+  }
+
+  function frame(ts) {
+    const t = ts / 1000;
+    const P_REACH = parseFloat(inputs.reach.value);
+    const LINK = (SCALE * P_REACH) ** 2;
+    const currentTheme = inputs.bg.value;
+    const currentAnim = inputs.anim.value;
+
+    // Aplicar Color de Fondo
+    ctx.fillStyle = currentTheme === 'dark' ? '#050a18' : '#f4f7fa';
+    ctx.fillRect(0, 0, W, H);
+    
+    drawGrid(currentTheme);
+
+    for (const b of bokeh) {
+      const a = b.a * (0.55 + 0.45 * Math.sin(t * 1.2 + b.ph));
+      ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, 6.283);
+      ctx.fillStyle = 'rgba(255,110,40,' + a.toFixed(2) + ')';
+      ctx.shadowColor = 'rgba(255,110,40,0.8)'; ctx.shadowBlur = 8;
+      ctx.fill(); ctx.shadowBlur = 0;
+    }
+
+    // Aplicar Lógica de Animación (Latido vs Respiración)
+    let pulse;
+    if (currentAnim === 'heartbeat') {
+      pulse = 1 + 0.028 * Math.sin(t * 2.4) + 0.012 * Math.sin(t * 4.8 + 1);
+    } else {
+      pulse = 1 + 0.035 * Math.sin(t * 1.2) + 0.01 * Math.sin(t * 2.4 + 1);
+    }
+
+    const all = outline.concat(inner).concat(outliers);
+    
+    for (const p of all) {
+      p.x = CX + (p.ox - CX) * pulse + Math.sin(t * p.sp + p.ph) * p.jit;
+      p.y = CY + (p.oy - CY) * pulse + Math.cos(t * p.sp + p.ph) * p.jit;
+    }
+
+    ctx.lineWidth = 0.6;
+    for (let i = 0; i < all.length; i++) {
+      for (let j = i + 1; j < all.length; j++) {
+        const dx = all[i].x - all[j].x, dy = all[i].y - all[j].y;
+        const d = dx * dx + dy * dy;
+        if (d < LINK) {
+          let opacityMod = (all[i].isOutlier || all[j].isOutlier) ? 0.15 : 0.35;
+          const a = (1 - d / LINK) * opacityMod; 
+          ctx.strokeStyle = 'rgba(255,140,50,' + a.toFixed(2) + ')';
+          ctx.beginPath();
+          ctx.moveTo(all[i].x, all[i].y);
+          ctx.lineTo(all[j].x, all[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    for (const p of all) {
+      const r = p.isOutline ? 1.8 : (p.blue ? 2.2 : (p.isOutlier ? 1.0 : 1.5));
+      ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, 6.283);
+      
+      if (p.isOutlier) {
+        ctx.fillStyle = 'rgba(255, 138, 60, 0.6)';
+        ctx.shadowColor = 'rgba(255, 106, 26, 0.4)';
+      } else {
+        ctx.fillStyle = p.blue ? '#5ad0ff' : '#ff8a3c';
+        ctx.shadowColor = p.blue ? '#5ad0ff' : '#ff6a1a';
+      }
+      
+      // En fondos claros, reducimos un poco el resplandor para que no se vea sucio
+      ctx.shadowBlur = currentTheme === 'dark' ? 8 : 4;
+      ctx.fill(); ctx.shadowBlur = 0;
+    }
+
+    requestAnimationFrame(frame);
+  }
+
+  window.addEventListener('resize', build);
+  build();
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

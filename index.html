@@ -8,51 +8,42 @@
   <meta name="description"
     content="Enrique Coronado is a Senior Researcher at AIST's Integrated Research Center for Wellbeing (HEART team), working on responsible Physical AI, agentic AI, and human-centered robotics.">
 
-  <!-- ============================================================
-       DEPENDENCIES
-       Tailwind via CDN is fine while prototyping. For production,
-       switch to the Tailwind CLI build and a static styles.css.
-       ============================================================ -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap"
     rel="stylesheet">
 
-  <!-- ============================================================
-       DESIGN TOKENS — single source of truth for the whole site.
-       Palette sampled from the HAI reference screenshots.
-       ============================================================ -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            ink: '#16233F',          // navy text
-            body: '#4B5568',         // secondary text
-            faint: '#8B93A3',        // captions
-            line: '#DDE2EC',         // hairlines
-            sky: '#4E9FD9',          // "Watch Our Story" text
-            lime: '#DCF34B',         // NEWS / AWARD chips
+            ink: '#16233F',          
+            body: '#4B5568',         
+            faint: '#8B93A3',        
+            line: '#DDE2EC',         
+            sky: '#4E9FD9',          
+            lime: '#DCF34B',         
             blue: {
-              DEFAULT: '#1173BC',    // spotlight heading, buttons, panel
+              DEFAULT: '#1173BC',    
               deep: '#0A5697',
-              text: '#1B6FB5',       // spotlight paragraph blue
+              text: '#1B6FB5',       
             },
-            cyan: '#A9EAFB',         // headings on blue panel
+            cyan: '#A9EAFB',         
             cyanfill: '#BFF0FC',
-            plum: {                  // 01 Research panel gradient
+            plum: {                  
               from: '#8A4B9B',
               via: '#7A3D8C',
               to: '#5F2D74',
             },
             mint: {
-              DEFAULT: '#AEE8D4',    // filled capsule on purple panel
-              text: '#BDEFE1',       // panel headings
+              DEFAULT: '#AEE8D4',    
+              text: '#BDEFE1',       
               ink: '#123B33',
             },
             teal: {
-              DEFAULT: '#14555A',    // 02 section heading + button
+              DEFAULT: '#14555A',    
               dark: '#0E4347',
             },
           },
@@ -70,15 +61,13 @@
     body {
       font-family: 'Inter', system-ui, sans-serif;
       font-feature-settings: 'cv11', 'ss01';
-      /* Soft lavender-blue page wash, as in the HAI reference */
-      background: linear-gradient(180deg, #F4F6FB 0%, #EAEFF8 55%, #F1F4FA 100%);
+      background: transparent; 
     }
 
     .display {
       letter-spacing: -0.025em;
     }
 
-    /* Mono meta: dates, section numbers */
     .meta {
       font-family: 'IBM Plex Mono', ui-monospace, monospace;
       font-size: 0.75rem;
@@ -87,7 +76,6 @@
       text-transform: uppercase;
     }
 
-    /* Carousel: horizontal snap, hidden scrollbar */
     .carousel {
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
@@ -101,12 +89,10 @@
       scroll-snap-align: start;
     }
 
-    /* Glow behind panel card images, as in the HAI reference */
     .card-glow {
       box-shadow: 0 0 44px rgba(255, 255, 255, 0.28);
     }
 
-    /* Accessibility */
     a:focus-visible,
     button:focus-visible {
       outline: 2px solid #1173BC;
@@ -115,29 +101,17 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        transition-duration: 0.01ms !important;
-      }
-
-      .carousel {
-        scroll-behavior: auto;
-      }
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+      .carousel { scroll-behavior: auto; }
     }
   </style>
 </head>
 
 <body class="text-ink antialiased">
 
-  <!-- ============================================================
-       NAVIGATION — identity left; links center (desktop);
-       hamburger right, HAI-style.
-       ============================================================ -->
+  <canvas id="heart-canvas" class="fixed inset-0 w-full h-full -z-10 pointer-events-none"></canvas>
+
   <nav aria-label="Main">
     <div class="max-w-site mx-auto px-5 h-16 flex items-center justify-between gap-6">
 
@@ -153,7 +127,6 @@
         <a href="#projects" class="hover:text-blue transition-colors">Projects</a>
         <a href="research.html" class="hover:text-blue transition-colors">Publications</a>
         <a href="#news" class="hover:text-blue transition-colors">News</a>
-        <!-- TODO: rename file to internships.html and update every href -->
         <a href="interships.html" class="hover:text-blue transition-colors">Internships</a>
       </div>
 
@@ -178,12 +151,8 @@
     </div>
   </nav>
 
-  <!-- ============================================================
-       HERO — monochrome cinematic video canvas, rounded corners,
-       headline bottom-left, glass capsule CTAs bottom-right.
-       ============================================================ -->
   <header class="max-w-site mx-auto px-5">
-    <div class="relative rounded-3xl overflow-hidden bg-ink">
+    <div class="relative rounded-3xl overflow-hidden bg-ink mt-2">
       <video class="w-full h-[62vh] min-h-[440px] max-h-[720px] object-cover grayscale" autoplay muted loop playsinline
         poster="img/heart1.png">
         <source src="test.mp4" type="video/mp4">
@@ -193,13 +162,10 @@
 
       <div class="absolute inset-x-0 bottom-0 p-6 md:p-10">
         <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-7">
-
           <h1 class="display text-white font-semibold text-3xl md:text-[2.6rem] leading-[1.15] max-w-xl">
             Responsible Physical AI, with humanity at the heart.
           </h1>
-
           <div class="flex flex-wrap items-center gap-4 shrink-0">
-            <!-- TODO: point this to your story video (YouTube or /story.html) -->
             <a href="about.html"
               class="inline-flex items-center gap-2.5 bg-white text-sky px-6 py-3.5 rounded-full font-medium text-[15px] hover:bg-white/90 transition-colors">
               Video (in process)
@@ -216,18 +182,12 @@
               </svg>
             </a>
           </div>
-
         </div>
       </div>
     </div>
   </header>
 
-  <!-- ============================================================
-       NEWS STRIP — two-column rows: title, byline, mono date left;
-       thumbnail with lime chip right; events get a calendar card.
-       ============================================================ -->
   <section id="news" class="max-w-site mx-auto px-5 pt-12 pb-16">
-
     <div class="flex items-end justify-between gap-6 mb-8">
       <h2 class="sr-only">News and achievements</h2>
       <div id="news-filters" class="flex gap-6 text-sm font-medium" role="group" aria-label="Filter news">
@@ -239,15 +199,10 @@
           class="filter-btn text-faint hover:text-ink transition-colors">Awards</button>
       </div>
     </div>
-
     <div id="news-container" class="grid grid-cols-1 lg:grid-cols-2 gap-x-14 min-h-[180px]"></div>
     <div id="pagination-controls" class="mt-10 flex justify-center gap-2"></div>
   </section>
 
-  <!-- ============================================================
-       SPOTLIGHT — featured work: image left, blue heading and
-       blue body text right, solid blue capsule CTA (HAI pattern).
-       ============================================================ -->
   <section class="max-w-site mx-auto px-5 pb-20">
     <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
       <div class="rounded-3xl overflow-hidden">
@@ -278,16 +233,9 @@
   </section>
 
   <main>
-
-    <!-- ============================================================
-         01 RESEARCH — purple gradient panel: mono number + mint
-         title, intro right, glowing image-card carousel with
-         circular arrow, capsule CTAs bottom-right (HAI pattern).
-         ============================================================ -->
     <section id="research" class="max-w-site mx-auto px-5">
       <div class="rounded-3xl bg-gradient-to-b from-plum-from via-plum-via to-plum-to text-white overflow-hidden">
         <div class="py-12 md:py-16">
-
           <div class="px-6 md:px-12 flex flex-col lg:flex-row lg:justify-between gap-8 mb-12">
             <div class="flex items-baseline gap-4">
               <span class="meta text-mint-text/80 text-2xl md:text-3xl">01</span>
@@ -300,102 +248,69 @@
             </p>
           </div>
 
-          <!-- Carousel of research-pillar cards -->
           <div class="relative">
             <div id="research-carousel" class="carousel flex gap-6 overflow-x-auto scroll-smooth px-6 md:px-12 pb-2">
-
               <a href="project.html?id=physical-ai" class="w-[300px] md:w-[360px] shrink-0 flex flex-col group">
                 <div class="rounded-2xl overflow-hidden card-glow mb-6">
-                  <!-- TODO: replace with your own photos -->
-                  <img src="img/interaction.png" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover">
+                  <img src="img/interaction.png" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover bg-white">
                 </div>
-                <h3 class="display font-semibold text-xl mb-2 group-hover:underline underline-offset-4">Social Robotics
-                </h3>
+                <h3 class="display font-semibold text-xl mb-2 group-hover:underline underline-offset-4">Social Robotics</h3>
                 <div class="flex items-end justify-between gap-4">
                   <p class="text-white/80 text-[15px] leading-relaxed">
                     Design of robotics systems that improve well-being , enhance access to services, and support social inclusion.
                   </p>
-                  <svg class="w-6 h-6 shrink-0 text-white/70" fill="none" stroke="currentColor" stroke-width="2"
-                    viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
+                  <svg class="w-6 h-6 shrink-0 text-white/70" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 </div>
               </a>
 
               <a href="project.html?id=agentic-ai" class="w-[300px] md:w-[360px] shrink-0 flex flex-col group">
                 <div class="rounded-2xl overflow-hidden card-glow mb-6">
-                  <img src="img/irex.png" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover">
+                  <img src="img/irex.png" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover bg-white">
                 </div>
                 <h3 class="display font-semibold text-xl mb-2">Agentic and Physical AI</h3>
                 <div class="flex items-end justify-between gap-4">
                   <p class="text-white/80 text-[15px] leading-relaxed">
                     Agentic systems that can perceive, reason, plan, predict, adapt, and safely act in the real-world.
                   </p>
-                  <svg class="w-6 h-6 shrink-0 text-white/70" fill="none" stroke="currentColor" stroke-width="2"
-                    viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
+                  <svg class="w-6 h-6 shrink-0 text-white/70" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 </div>
               </a>
 
               <a href="project.html?id=digital-twins" class="w-[300px] md:w-[360px] shrink-0 flex flex-col group">
                 <div class="rounded-2xl overflow-hidden card-glow mb-6">
-                  <img src="img/teleop.png" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover">
+                  <img src="img/teleop.png" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover bg-white">
                 </div>
                 <h3 class="display font-semibold text-xl mb-2">Human-Robot Collaboration</h3>
                 <div class="flex items-end justify-between gap-4">
                   <p class="text-white/80 text-[15px] leading-relaxed">
                     Development of collaborative digital twin systems for improving human performance, safety, and ergonomics.
                   </p>
-                  <svg class="w-6 h-6 shrink-0 text-white/70" fill="none" stroke="currentColor" stroke-width="2"
-                    viewBox="0 0 24 24" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
+                  <svg class="w-6 h-6 shrink-0 text-white/70" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 </div>
               </a>
-
             </div>
 
-            <!-- Circular carousel arrow, as in the HAI reference -->
-            <button id="carousel-next" aria-label="Scroll research cards"
-              class="hidden md:flex absolute right-6 top-1/3 w-14 h-14 rounded-full bg-white text-ink items-center justify-center shadow-lg hover:scale-105 transition-transform">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
+            <button id="carousel-next" aria-label="Scroll research cards" class="hidden md:flex absolute right-6 top-1/3 w-14 h-14 rounded-full bg-white text-ink items-center justify-center shadow-lg hover:scale-105 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
             </button>
           </div>
 
-          <!-- Capsule CTAs bottom-right -->
           <div class="px-6 md:px-12 mt-10 flex flex-wrap justify-end gap-4">
-            <a href="research.html"
-              class="inline-flex items-center gap-3 border border-white/50 text-mint-text rounded-full pl-1.5 pr-6 py-1.5 font-medium text-[15px] hover:bg-white/10 transition-colors">
+            <a href="research.html" class="inline-flex items-center gap-3 border border-white/50 text-mint-text rounded-full pl-1.5 pr-6 py-1.5 font-medium text-[15px] hover:bg-white/10 transition-colors">
               <img src="img/asit.png" alt="" class="w-10 h-10 rounded-full object-cover">
               View Research Publications
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
             </a>
-            <a href="project.html"
-              class="inline-flex items-center gap-3 bg-mint text-mint-ink rounded-full px-6 py-3 font-medium text-[15px] hover:bg-white transition-colors">
+            <a href="project.html" class="inline-flex items-center gap-3 bg-mint text-mint-ink rounded-full px-6 py-3 font-medium text-[15px] hover:bg-white transition-colors">
               More on Research
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
             </a>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- ============================================================
-         02 PROJECTS — Custom Static Container Target
-         ============================================================ -->
     <section id="projects" class="max-w-site mx-auto px-5 py-20 md:py-24">
-
       <div class="flex flex-col lg:flex-row lg:justify-between gap-8 mb-12">
         <div class="flex items-baseline gap-4">
           <span class="meta text-teal/60 text-2xl md:text-3xl">02</span>
@@ -406,27 +321,18 @@
             Research made physical: platforms and studies where responsible AI meets real robots, real environments, and
             diverse user needs.
           </p>
-          <a href="project.html"
-            class="inline-flex items-center gap-2.5 bg-teal hover:bg-teal-dark text-white px-6 py-3.5 rounded-full font-medium text-[15px] transition-colors">
+          <a href="project.html" class="inline-flex items-center gap-2.5 bg-teal hover:bg-teal-dark text-white px-6 py-3.5 rounded-full font-medium text-[15px] transition-colors">
             More on Projects
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-              aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
           </a>
         </div>
       </div>
-
       <div id="projects-container" class="grid md:grid-cols-2 gap-6"></div>
     </section>
 
-    <!-- ============================================================
-         03 JOIN THE LAB — blue gradient panel with capsule CTAs.
-         ============================================================ -->
     <section id="internships" class="max-w-site mx-auto px-5 pb-6">
-      <div class="rounded-3xl bg-gradient-to-br from-blue to-blue-deep text-white">
+      <div class="rounded-3xl bg-gradient-to-br from-blue to-blue-deep text-white shadow-xl">
         <div class="p-8 md:p-16 flex flex-col lg:flex-row lg:justify-between gap-10">
-
           <div>
             <div class="flex items-baseline gap-4 mb-8">
               <span class="meta text-cyan/70 text-2xl md:text-3xl">03</span>
@@ -436,7 +342,6 @@
               Pioneering agentic &amp; physical AI — with students.
             </h3>
           </div>
-
           <div class="lg:max-w-xl flex flex-col gap-8">
             <p class="text-white/85 text-lg leading-relaxed">
               Graduate and undergraduate students are invited to contribute at the intersection of physical
@@ -444,34 +349,22 @@
               assistant positions. Inquiries open for 2026–2027.
             </p>
             <div class="flex flex-wrap gap-4">
-              <a href="join.html"
-                class="inline-flex items-center gap-3 bg-cyanfill text-ink rounded-full px-6 py-3.5 font-medium text-[15px] hover:bg-white transition-colors">
+              <a href="join.html" class="inline-flex items-center gap-3 bg-cyanfill text-ink rounded-full px-6 py-3.5 font-medium text-[15px] hover:bg-white transition-colors">
                 Application Instructions
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                  aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
               </a>
-              <a href="interships.html"
-                class="inline-flex items-center gap-3 border border-white/50 text-white rounded-full px-6 py-3.5 font-medium text-[15px] hover:bg-white/10 transition-colors">
+              <a href="interships.html" class="inline-flex items-center gap-3 border border-white/50 text-white rounded-full px-6 py-3.5 font-medium text-[15px] hover:bg-white/10 transition-colors">
                 Open Positions
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-                  aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
               </a>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
   </main>
 
-  <!-- ============================================================
-       FOOTER
-       ============================================================ -->
   <footer>
     <div class="max-w-site mx-auto px-5 py-10 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
       <p class="font-semibold display">Enrique Coronado</p>
@@ -479,59 +372,14 @@
     </div>
   </footer>
 
-  <!-- ============================================================
-       DATA — edit news & projects here.
-       ============================================================ -->
   <script>
     const SITE_NEWS = [
-      {
-        id: "paper-robotics-march-12-2026",
-        date: "Mar 12, 2026",
-        category: "Paper",
-        title: "Post-ChatGPT Era: Agentic AI in Industry 5.0",
-        byline: "Robotics (MDPI)",
-        img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=400"
-      },
-      {
-        id: "award-sii-nomination-jan-10-2026",
-        date: "Jan 10, 2026",
-        category: "Award",
-        title: "Best Paper Award Nomination at IEEE/SICE SII 2026",
-        byline: "With internship student Tatsuya K., University of Tokyo",
-        img: "img/sii-2026.png"
-      },
-      {
-        id: "paper-simulators-august-04-2025",
-        date: "Aug 4, 2025",
-        category: "Paper",
-        title: "ROS-Compatible Robotics Simulators for Industry 4.0 and Industry 5.0",
-        byline: "Applied Sciences (MDPI)",
-        img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400"
-      },
-      {
-        id: "paper-digital-twins-feb-13-2024",
-        date: "Feb 13, 2024",
-        category: "Paper",
-        title: "A Path to Industry 5.0 Digital Twins for Human–Robot Collaboration by Bridging NEP+ and ROS",
-        byline: "Robotics (MDPI)",
-        img: "img/Bridging_Robotics_and_Human_Interaction.png"
-      },
-      {
-        id: "award-aist-ith-best-paper-feb-29-2024",
-        date: "Feb 29, 2024",
-        category: "Award",
-        title: "AIST ITH Best Paper Award",
-        byline: "AIST Information Technology and Human Factors",
-        img: "img/best.png"
-      },
-      {
-        id: "paper-xr-hri-jan-18-2023",
-        date: "Jan 18, 2023",
-        category: "Paper",
-        title: "Integrating Virtual, Mixed, and Augmented Reality to HRI Applications Using Game Engines",
-        byline: "Applied Sciences (MDPI)",
-        img: "img/teleop.png"
-      },
+      { id: "paper-robotics-march-12-2026", date: "Mar 12, 2026", category: "Paper", title: "Post-ChatGPT Era: Agentic AI in Industry 5.0", byline: "Robotics (MDPI)", img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=400" },
+      { id: "award-sii-nomination-jan-10-2026", date: "Jan 10, 2026", category: "Award", title: "Best Paper Award Nomination at IEEE/SICE SII 2026", byline: "With internship student Tatsuya K., University of Tokyo", img: "img/sii-2026.png" },
+      { id: "paper-simulators-august-04-2025", date: "Aug 4, 2025", category: "Paper", title: "ROS-Compatible Robotics Simulators for Industry 4.0 and Industry 5.0", byline: "Applied Sciences (MDPI)", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400" },
+      { id: "paper-digital-twins-feb-13-2024", date: "Feb 13, 2024", category: "Paper", title: "A Path to Industry 5.0 Digital Twins for Human–Robot Collaboration by Bridging NEP+ and ROS", byline: "Robotics (MDPI)", img: "img/Bridging_Robotics_and_Human_Interaction.png" },
+      { id: "award-aist-ith-best-paper-feb-29-2024", date: "Feb 29, 2024", category: "Award", title: "AIST ITH Best Paper Award", byline: "AIST Information Technology and Human Factors", img: "img/best.png" },
+      { id: "paper-xr-hri-jan-18-2023", date: "Jan 18, 2023", category: "Paper", title: "Integrating Virtual, Mixed, and Augmented Reality to HRI Applications Using Game Engines", byline: "Applied Sciences (MDPI)", img: "img/teleop.png" }
     ];
 
     const SITE_PROJECTS = [
@@ -562,10 +410,173 @@
     ];
   </script>
 
-  <!-- ============================================================
-       BEHAVIOR — mobile menu, carousel, news, and projects logic.
-       ============================================================ -->
   <script>
+    // ---------- Heart Plexus Animation (Blue Theme, Static Center, Width-Responsive) ----------
+    (() => {
+      const canvas = document.getElementById('heart-canvas');
+      const ctx = canvas.getContext('2d');
+      let W, H, CX, CY_BASE, SCALE;
+
+      function heartXY(t, scale) {
+        const x = 16 * Math.pow(Math.sin(t), 3);
+        const y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
+        return { offsetX: x * scale, offsetY: y * scale };
+      }
+
+      let outline = [];  
+      let inner = [];    
+      let outliers = [];
+      let bokeh = [];
+
+      function insideHeart(pxOffset, pyOffset) {
+        const x = pxOffset / (16 * SCALE) * 1.18;
+        const y = pyOffset / (13 * SCALE) * 1.18;
+        const a = x * x + y * y - 1;
+        return a * a * a - x * x * y * y * y <= 0;
+      }
+
+      function build() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+        CX = W / 2;
+        CY_BASE = H / 2 - Math.min(W, H) * 0.02;
+        
+        // Responsive Scaling: Driven strictly by Width now, so it scales smoothly on resize
+        SCALE = W < 768 ? (W / 25) : (W / 50);
+
+        outline = [];
+        const N_OUT = 75; 
+        for (let i = 0; i < N_OUT; i++) {
+          const t = (i / N_OUT) * Math.PI * 2;
+          const offset = heartXY(t, SCALE);
+          const scatterX = (Math.random() - 0.5) * SCALE * 2.5;
+          const scatterY = (Math.random() - 0.5) * SCALE * 2.5;
+          outline.push(mkPoint(offset.offsetX + scatterX, offset.offsetY + scatterY, true));
+        }
+
+        inner = [];
+        const N_IN = 180; 
+        const minDist = SCALE * 1.8; 
+        let guard = 0;
+        
+        while (inner.length < N_IN && guard++ < 10000) { 
+          const pxOffset = (Math.random() * 2 - 1) * 17 * SCALE;
+          const pyOffset = -(Math.random() * 2 - 1) * 16 * SCALE + 2 * SCALE;
+          if (!insideHeart(pxOffset, pyOffset)) continue;
+          
+          let ok = true;
+          for (const q of inner) {
+            const dx = q.ox - pxOffset, dy = q.oy - pyOffset;
+            if (dx * dx + dy * dy < minDist * minDist) { ok = false; break; }
+          }
+          if (ok) inner.push(mkPoint(pxOffset, pyOffset, false));
+        }
+
+        outliers = [];
+        const N_OUTLIERS = 45;
+        let outGuard = 0;
+        while (outliers.length < N_OUTLIERS && outGuard++ < 5000) {
+            const pxOffset = (Math.random() * 2 - 1) * 22 * SCALE;
+            const pyOffset = -(Math.random() * 2 - 1) * 20 * SCALE + 2 * SCALE;
+            
+            if (!insideHeart(pxOffset, pyOffset)) {
+                const distToCenter = Math.hypot(pxOffset, pyOffset);
+                if (distToCenter < 19 * SCALE) {
+                    outliers.push(mkPoint(pxOffset, pyOffset, false, true)); 
+                }
+            }
+        }
+
+        bokeh = [];
+        for (let i = 0; i < 50; i++) {
+          bokeh.push({
+            x: Math.random() * W,
+            y: Math.random() * H * 0.8,
+            r: 1 + Math.random() * 3.5,
+            a: 0.12 + Math.random() * 0.35,
+            ph: Math.random() * Math.PI * 2
+          });
+        }
+      }
+
+      function mkPoint(ox, oy, isOutline, isOutlier = false) {
+        return {
+          ox: ox, oy: oy, x: 0, y: 0, 
+          ph: Math.random() * Math.PI * 2,
+          sp: 0.4 + Math.random() * 0.9,
+          jit: isOutline ? 3.5 + Math.random() * 3 : 2.5 + Math.random() * 2,          
+          blue: (!isOutline && !isOutlier) && Math.random() < 0.12,
+          isOutline,
+          isOutlier
+        };
+      }
+
+      const LINK = () => (SCALE * 4.6) ** 2; 
+
+      function frame(ts) {
+        const t = ts / 1000;
+        
+        // Render background gradient
+        const grad = ctx.createLinearGradient(0, 0, 0, H);
+        grad.addColorStop(0, '#F4F6FB');
+        grad.addColorStop(0.55, '#EAEFF8');
+        grad.addColorStop(1, '#F1F4FA');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, W, H);
+
+        for (const b of bokeh) {
+          const a = b.a * (0.55 + 0.45 * Math.sin(t * 1.2 + b.ph));
+          ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, 6.283);
+          ctx.fillStyle = `rgba(169, 234, 251, ${a.toFixed(2)})`;
+          ctx.fill(); 
+        }
+
+        const pulse = 1 + 0.035 * Math.sin(t * 1.2) + 0.01 * Math.sin(t * 2.4 + 1);
+        const all = outline.concat(inner).concat(outliers);
+        
+        for (const p of all) {
+          p.x = CX + (p.ox) * pulse + Math.sin(t * p.sp + p.ph) * p.jit;
+          p.y = CY_BASE - (p.oy) * pulse + Math.cos(t * p.sp + p.ph) * p.jit;
+        }
+
+        ctx.lineWidth = 0.6;
+        const th = LINK();
+        for (let i = 0; i < all.length; i++) {
+          for (let j = i + 1; j < all.length; j++) {
+            const dx = all[i].x - all[j].x, dy = all[i].y - all[j].y;
+            const d = dx * dx + dy * dy;
+            if (d < th) {
+              let opacityMod = (all[i].isOutlier || all[j].isOutlier) ? 0.08 : 0.25;
+              const a = (1 - d / th) * opacityMod; 
+              ctx.strokeStyle = `rgba(17, 115, 188, ${a.toFixed(2)})`;
+              ctx.beginPath();
+              ctx.moveTo(all[i].x, all[i].y);
+              ctx.lineTo(all[j].x, all[j].y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        for (const p of all) {
+          const r = p.isOutline ? 1.8 : (p.blue ? 2.2 : (p.isOutlier ? 1.0 : 1.5));
+          ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, 6.283);
+          
+          if (p.isOutlier) {
+            ctx.fillStyle = 'rgba(78, 159, 217, 0.4)';
+          } else {
+            ctx.fillStyle = p.blue ? '#0A5697' : '#1173BC';
+          }
+          
+          ctx.fill(); 
+        }
+        requestAnimationFrame(frame);
+      }
+
+      window.addEventListener('resize', build);
+      build();
+      requestAnimationFrame(frame);
+    })();
+
     // ---------- Mobile menu ----------
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -591,19 +602,18 @@
       carousel.scrollTo({ left: atEnd ? 0 : carousel.scrollLeft + step, behavior: 'smooth' });
     });
 
-    // ---------- Projects Render ----------
+    // ---------- Projects Render (Now with Glass Effect) ----------
     function renderProjects() {
       const projectsContainer = document.getElementById('projects-container');
       if (!projectsContainer) return;
 
-      // Changed dynamically generated href target to match subfolder structural requirement: 'projects/id.html'
       projectsContainer.innerHTML = SITE_PROJECTS.map(project => `
-        <a href="projects/${project.id}.html" class="group rounded-3xl bg-white overflow-hidden flex flex-col shadow-sm">
+        <a href="projects/${project.id}.html" class="group rounded-3xl bg-white/20  overflow-hidden flex flex-col backdrop-blur-[2px] shadow-sm border border-white/20 hover:bg-white/50 hover:shadow-lg transition-all duration-300">
           <div class="h-60 overflow-hidden">
             <img src="${project.img}" alt="${project.title}" loading="lazy"
               class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500">
           </div>
-          <div class="p-8 flex flex-col gap-3 flex-1">
+          <div class="p-8 flex flex-col gap-3 flex-1 ">
             <p class="meta text-teal">${project.meta}</p>
             <h3 class="display font-semibold text-2xl">${project.title}</h3>
             <p class="text-body text-[15px] leading-relaxed">
@@ -652,7 +662,7 @@
       const chip = item.category === 'Award' ? 'AWARD' : 'NEWS';
       return `
         <a href="news/${item.id}.html"
-          class="group border-b border-line py-6 flex gap-5 items-start justify-between">
+          class="group border-b border-line py-6 flex gap-5 items-start justify-between backdrop-blur-sm">
           <div class="min-w-0">
             <h3 class="font-semibold text-[16px] leading-snug mb-2 group-hover:text-sky transition-colors">
               ${item.title}
@@ -672,7 +682,7 @@
     function eventRow(item) {
       const d = item.eventDate;
       return `
-        <a href="${item.href}" class="group border-b border-line py-6 flex gap-5 items-start justify-between">
+        <a href="${item.href}" class="group border-b border-line py-6 flex gap-5 items-start justify-between backdrop-blur-[2px]">
           <div class="min-w-0">
             <h3 class="font-semibold text-[16px] leading-snug mb-2 group-hover:text-sky transition-colors inline-flex items-start gap-1.5">
               ${item.title}
@@ -721,7 +731,7 @@
         btn.textContent = i;
         btn.setAttribute('aria-label', `Page ${i}`);
         if (active) btn.setAttribute('aria-current', 'page');
-        btn.className = `w-9 h-9 rounded-full text-[13px] font-semibold transition-colors ${active ? 'bg-ink text-white' : 'bg-white text-faint hover:text-ink'
+        btn.className = `w-9 h-9 rounded-full text-[13px] font-semibold transition-colors ${active ? 'bg-ink text-white' : 'bg-white text-faint hover:text-ink hover:bg-white'
           }`;
         btn.addEventListener('click', () => {
           currentPage = i;
