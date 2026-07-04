@@ -1,166 +1,242 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Biography</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biography — Enrique Coronado</title>
+  <meta name="description" content="Biography of Enrique Coronado — Senior Researcher at AIST HEART.">
+
+  <!-- ============================================================
+       BIOGRAPHY PAGE
+       Content lives in the teamData object below. Supports
+       multiple people: about.html?id=enrique (default: enrique).
+       ============================================================ -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap"
+    rel="stylesheet">
+
+  <!-- DESIGN TOKENS — identical to index.html; keep in sync -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#16233F', body: '#4B5568', faint: '#8B93A3', line: '#DDE2EC',
+            sky: '#4E9FD9', lime: '#DCF34B',
+            blue: { DEFAULT: '#1173BC', deep: '#0A5697', text: '#1B6FB5' },
+            cyan: '#A9EAFB', cyanfill: '#BFF0FC',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+          },
+          maxWidth: { site: '80rem' },
         }
-    </style>
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-feature-settings: 'cv11', 'ss01';
+      background: linear-gradient(180deg, #F4F6FB 0%, #EAEFF8 55%, #F1F4FA 100%);
+    }
+    .display { letter-spacing: -0.025em; }
+    .meta {
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #1173BC; outline-offset: 3px; border-radius: 4px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
 </head>
 
-<body class="bg-white text-slate-900 min-h-screen">
+<body class="text-ink antialiased">
 
-    <nav class="bg-white/70 backdrop-blur-md border-b sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="group flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-hover:bg-blue-700 group-hover:text-white transition-all">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
-                </div>
-                  <span
-                    class="font-bold text-sm uppercase tracking-widest text-slate-400 group-hover:text-slate-900 transition-colors">Back
-                    to Home</span>
-            </a>
-            <div class="text-right">
-                <p id="nav-info" class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter"></p>
-            </div>
+  <!-- NAVIGATION — same bar as index.html -->
+  <nav aria-label="Main">
+    <div class="max-w-site mx-auto px-5 h-16 flex items-center justify-between gap-6">
+      <a href="index.html" class="leading-tight shrink-0">
+        <span class="block font-bold text-[17px] display">Enrique Coronado</span>
+        <span class="block text-[10px] text-faint font-medium tracking-wide">AIST · INTEGRATED RESEARCH CENTER FOR
+          WELLBEING</span>
+      </a>
+      <div class="hidden lg:flex items-center gap-9 text-[15px] font-medium">
+        <a href="about.html" class="text-blue">About</a>
+        <a href="index.html#research" class="hover:text-blue transition-colors">Research</a>
+        <a href="index.html#projects" class="hover:text-blue transition-colors">Projects</a>
+        <a href="research.html" class="hover:text-blue transition-colors">Publications</a>
+        <a href="index.html#news" class="hover:text-blue transition-colors">News</a>
+        <a href="interships.html" class="hover:text-blue transition-colors">Internships</a>
+      </div>
+      <button id="menu-toggle" class="lg:hidden p-2 -mr-2 text-ink" aria-expanded="false" aria-controls="mobile-menu"
+        aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-line bg-white px-5 py-5">
+      <div class="flex flex-col gap-4 text-[15px] font-medium text-body">
+        <a href="about.html" class="text-blue">About</a>
+        <a href="index.html#research" class="hover:text-ink">Research</a>
+        <a href="index.html#projects" class="hover:text-ink">Projects</a>
+        <a href="research.html" class="hover:text-ink">Publications</a>
+        <a href="index.html#news" class="hover:text-ink">News</a>
+        <a href="interships.html" class="text-blue font-semibold">Internships →</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-site mx-auto px-5 py-10 md:py-16">
+
+    <!-- Name header -->
+    <header class="mb-12 md:mb-16">
+      <p class="meta text-faint mb-4">Biography</p>
+      <h1 id="header-name" class="display font-semibold text-4xl md:text-6xl leading-[1.05]"></h1>
+    </header>
+
+    <!-- Photo + expertise sidebar, biography text -->
+    <div class="flex flex-col md:flex-row gap-10 lg:gap-16">
+
+      <aside class="w-full md:w-80 flex-shrink-0">
+        <div class="relative aspect-[4/5] overflow-hidden rounded-3xl bg-white shadow-sm mb-8">
+          <img id="member-img" src="" alt="" class="w-full h-full object-cover">
+          <span id="member-role"
+            class="absolute bottom-4 left-4 bg-lime text-ink text-[10px] font-bold tracking-wider uppercase rounded-full px-3 py-1.5"></span>
         </div>
-    </nav>
 
+        <p class="meta text-faint mb-4">Expertise</p>
+        <div id="expertise-list" class="flex flex-wrap gap-2"></div>
+      </aside>
 
+      <div class="flex-grow max-w-3xl">
+        <div id="bio-paragraphs" class="space-y-6 text-body text-lg leading-[1.8]"></div>
 
-    <main class="max-w-5xl mx-auto px-6 py-12 md:py-24">
-        <!-- Name Header -->
-        <header class="mb-12 md:mb-20 text-center md:text-left">
-            <h1 id="header-name" class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tighter leading-none"></h1>
-
-            </h1>
-        </header>
-
-        <!-- Main Content Grid -->
-        <div class="flex flex-col md:flex-row gap-12 lg:gap-20">
-            
-            <!-- Sidebar: Image & Expertise -->
-            <aside class="w-full md:w-72 flex-shrink-0">
-                <div class="relative group aspect-[4/5] overflow-hidden rounded-[2rem] bg-slate-100 shadow-2xl mb-10">
-                    <img id="member-img" src="" alt="" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div id="member-role" class="absolute bottom-4 right-0 bg-blue-700 text-white px-4 py-1 rounded-l-full font-bold text-[12px] uppercase tracking-widest shadow-lg">
-                    </div>
-                </div>
-
-                <div>
-                    <div class="flex items-center gap-2 mb-4">
-                        <span class="h-px w-6 bg-blue-600"></span>
-                        <h3 class="text-[14px] font-black uppercase tracking-[0.2em] text-slate-400">Expertise</h3>
-                    </div>
-                    <div id="expertise-list" class="flex flex-wrap gap-2"></div>
-                </div>
-            </aside>
-
-            <!-- Biography Text -->
-            <div id="bio-paragraphs" class="prose prose-slate lg:prose-lg text-slate-600 leading-relaxed space-y-6 max-w-none flex-grow">
-            </div>
+        <!-- Profile links -->
+        <div class="mt-12 pt-10 border-t border-line">
+          <p class="meta text-faint mb-5">Profiles</p>
+          <div id="social-links-container" class="flex flex-wrap gap-4"></div>
         </div>
+      </div>
+    </div>
 
-        <!-- Bottom Social Section -->
-        <section class="mt-20 pt-16 border-t border-slate-100">
-            <div class="flex flex-col items-center">
 
-                <div id="social-links-container" class="flex flex-wrap justify-center gap-4 md:gap-6 w-full">
-                    <!-- Buttons injected here -->
-                </div>
-            </div>
-        </section>
-    </main>
+  </main>
 
-    <footer class="py-12 text-center">
-        <p id="footer-text" class="text-[10px] text-slate-300 uppercase tracking-[0.4em] font-bold"></p>
-    </footer>
+  <footer>
+    <div class="max-w-site mx-auto px-5 py-10 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
+      <p class="font-semibold display">Enrique Coronado</p>
+      <p id="footer-text" class="meta text-faint"></p>
+    </div>
+  </footer>
 
-    <script>
-        const teamData = {
-            "enrique": {
-                name: "Enrique Coronado",
-                org: "AIST HEART",
-                role: "Senior Researcher",
-                image: "img/coronado.jpg",
-                footer: "AIST • National Institute of Advanced Industrial Science and Technology",
-                expertise: ["Human-Centric Robotics", "Human-Robot Collaboration", "Industry 5.0", "Responsible AI"],
-                socials: {
-                    scholar: {
-                        url: "https://scholar.google.com/citations?user=2usIS0EAAAAJ&hl=en",
-                        label: "Google Scholar"
-                    },
-                    orcid: {
-                        url: "https://orcid.org/0000-0001-5444-377X",
-                        label: "ORCID iD"
-                    },
-                    linkedin: {
-                        url: "https://www.linkedin.com/in/enrique-coronado-zu/",
-                        label: "LinkedIn"
-                    }
-                },
-                bio: [
-                    "Dr. Luis Enrique Coronado Zuñiga holds a <span class='text-slate-900 font-semibold'>B.S. in Mechatronics Engineering (2012)</span> from the <span class='text-slate-900 font-semibold'>Autonomous University of San Luis Potosí (UASLP)</span>, Mexico; <span class='text-slate-900 font-semibold'>an M.S. in Advanced Robotics (2017)</span> from the EMARO+ program (<span class='text-slate-900 font-semibold'>University of Genoa</span>, Italy, and <span class='text-slate-900 font-semibold'>École Centrale de Nantes</span>, France); and a <span class='text-slate-900 font-semibold'>Ph.D. in Mechanical Systems Engineering (2020)</span> from <span class='text-slate-900 font-semibold'>Tokyo University of Agriculture and Technology (TUAT)</span>, Japan.",
-                    "His career spans pivotal roles in Japanese academia, including serving as an Assistant Professor at <span class='text-slate-900 font-semibold'>TUAT</span> (2020–2022) and as a Researcher at the <span class='text-slate-900 font-semibold'>National Institute of Advanced Industrial Science and Technology (AIST)</span> (2022–2024).",
-                    "In 2024, he was appointed <span class='text-slate-900 font-bold'>Senior Researcher</span> for the <span class='text-slate-900 font-bold'>Human-Evolving AI & Robotics Team (HEART)</span> at AIST. Also, from 2026, Dr. Coronado is an <span class='text-slate-900 font-semibold'> Adjunct Researcher </span> at GVLab, <span class='text-slate-900 font-semibold'>University of Tokyo</span>, Japan.",
-                    " He leads initiatives in Responsible Agentic AI and Robotics, <span class='text-slate-900 font-semibold'>fostering international collaborations with institutions in Japan, Mexico, Canada, UK, Norway, and Australia.</span>",
-                    "His work blends <span class='text-slate-900 font-bold'>technology, science, design thinking, and responsible innovation to co-create physical and agentic AI solutions</span> that are empathetic, inclusive, and ethically aligned, placing human and planetary well-being at the center."
-                ]
-            }
-        };
+  <!-- ============================================================
+       DATA — edit biography content here. Highlight phrases with
+       <span class='text-ink font-semibold'>...</span>
+       ============================================================ -->
+  <script>
+    const teamData = {
+      "enrique": {
+        name: "Enrique Coronado",
+        org: "AIST HEART",
+        role: "Senior Researcher",
+        image: "img/coronado.jpg",
+        footer: "AIST · National Institute of Advanced Industrial Science and Technology",
+        expertise: ["Human-Centric Robotics", "Human-Robot Collaboration", "Industry 5.0", "Responsible AI"],
+        socials: {
+          scholar: {
+            url: "https://scholar.google.com/citations?user=2usIS0EAAAAJ&hl=en",
+            label: "Google Scholar"
+          },
+          orcid: {
+            url: "https://orcid.org/0000-0001-5444-377X",
+            label: "ORCID iD"
+          },
+          linkedin: {
+            url: "https://www.linkedin.com/in/enrique-coronado-zu/",
+            label: "LinkedIn"
+          }
+        },
+        bio: [
+          "Dr. Luis Enrique Coronado Zuñiga holds a <span class='text-ink font-semibold'>B.S. in Mechatronics Engineering (2012)</span> from the <span class='text-ink font-semibold'>Autonomous University of San Luis Potosí (UASLP)</span>, Mexico; <span class='text-ink font-semibold'>an M.S. in Advanced Robotics (2017)</span> from the EMARO+ program (<span class='text-ink font-semibold'>University of Genoa</span>, Italy, and <span class='text-ink font-semibold'>École Centrale de Nantes</span>, France); and a <span class='text-ink font-semibold'>Ph.D. in Mechanical Systems Engineering (2020)</span> from <span class='text-ink font-semibold'>Tokyo University of Agriculture and Technology (TUAT)</span>, Japan.",
+          "His career spans pivotal roles in Japanese academia, including serving as an Assistant Professor at <span class='text-ink font-semibold'>TUAT</span> (2020–2022) and as a Researcher at the <span class='text-ink font-semibold'>National Institute of Advanced Industrial Science and Technology (AIST)</span> (2022–2024).",
+          "In 2024, he was appointed <span class='text-ink font-bold'>Senior Researcher</span> for the <span class='text-ink font-bold'>Human-Evolving AI & Robotics Team (HEART)</span> at AIST. Also, from 2026, Dr. Coronado is an <span class='text-ink font-semibold'>Adjunct Researcher</span> at GVLab, <span class='text-ink font-semibold'>University of Tokyo</span>, Japan.",
+          "He leads initiatives in Responsible Agentic AI and Robotics, <span class='text-ink font-semibold'>fostering international collaborations with institutions in Japan, Mexico, Canada, UK, Norway, and Australia.</span>",
+          "His work blends <span class='text-ink font-bold'>technology, science, design thinking, and responsible innovation to co-create physical and agentic AI solutions</span> that are empathetic, inclusive, and ethically aligned, placing human and planetary well-being at the center."
+        ]
+      }
+    };
+  </script>
 
-        function initPage() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const memberId = urlParams.get('id') || 'enrique';
-            const member = teamData[memberId];
+  <!-- BEHAVIOR -->
+  <script>
+    // ---------- Mobile menu ----------
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.toggle('hidden');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
 
-            if (!member) return;
+    // ---------- Page rendering ----------
+    function initPage() {
+      const memberId = new URLSearchParams(location.search).get('id') || 'enrique';
+      const member = teamData[memberId];
+      if (!member) return;
 
-            // Name Formatting
-            const nameArr = member.name.split(" ");
-            const firstName = nameArr.shift();
-            const lastName = nameArr.join(" ");
-            document.getElementById('header-name').innerHTML = `${firstName} <span class="text-blue-700">${lastName}</span>`;
+      // Name: last name in blue
+      const nameArr = member.name.split(' ');
+      const firstName = nameArr.shift();
+      const lastName = nameArr.join(' ');
+      document.getElementById('header-name').innerHTML =
+        `${firstName} <span class="text-blue">${lastName}</span>`;
 
-            // Core Info
-            document.title = `Biography | ${member.name}`;
-            document.getElementById('member-img').src = member.image;
-            document.getElementById('member-role').textContent = member.role;
-            document.getElementById('footer-text').textContent = member.footer;
+      // Core info
+      document.title = `Biography — ${member.name}`;
+      const img = document.getElementById('member-img');
+      img.src = member.image;
+      img.alt = member.name;
+      document.getElementById('member-role').textContent = member.role;
+      document.getElementById('footer-text').textContent = member.footer;
 
-            // Expertise
-            document.getElementById('expertise-list').innerHTML = member.expertise.map(skill => 
-                `<span class="bg-blue-50 text-blue-700 border border-blue-100 text-[12px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-lg shadow-sm">${skill}</span>`
-            ).join('');
+      // Expertise chips
+      document.getElementById('expertise-list').innerHTML = member.expertise.map(skill =>
+        `<span class="meta text-body bg-white rounded-full px-3.5 py-2 shadow-sm">${skill}</span>`
+      ).join('');
 
-            // Modern Social Buttons (Bottom)
-            document.getElementById('social-links-container').innerHTML = Object.keys(member.socials).map(key => {
-                const social = member.socials[key];
-                return `
-                    <a href="${social.url}" target="_blank" 
-                       class="group flex items-center gap-4 px-8 py-5 bg-white border border-blue-600 rounded-full overflow-hidden transition-all duration-500 hover:shadow-lg hover:shadow-blue-200 hover:-translate-y-1 w-full md:w-auto">
-                       
-                        <span class="text-[12px] font-black uppercase tracking-[0.2em] text-slate-500 group-hover:text-slate-900">
-                            ${social.label}
-                        </span>
-                    </a>
-                `;
-            }).join('');
+      // Profile capsule links
+      document.getElementById('social-links-container').innerHTML =
+        Object.values(member.socials).map(social => `
+          <a href="${social.url}" target="_blank" rel="noopener"
+            class="group inline-flex items-center gap-2.5 bg-white rounded-full px-6 py-3.5 font-medium text-[15px] text-body shadow-sm hover:text-blue transition-colors">
+            ${social.label}
+            <svg class="w-4 h-4 text-faint group-hover:text-blue transition-colors" fill="none" stroke="currentColor"
+              stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+            </svg>
+          </a>`
+        ).join('');
 
-            // Bio
-            document.getElementById('bio-paragraphs').innerHTML = member.bio.map(para => `<p>${para}</p>`).join('');
-        }
+      // Biography paragraphs
+      document.getElementById('bio-paragraphs').innerHTML =
+        member.bio.map(para => `<p>${para}</p>`).join('');
+    }
 
-        window.onload = initPage;
-    </script>
+    initPage();
+  </script>
 </body>
+
 </html>
