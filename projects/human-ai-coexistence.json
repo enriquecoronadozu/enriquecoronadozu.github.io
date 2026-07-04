@@ -1,0 +1,54 @@
+{
+  "type": "Project",
+  "accent": "green",
+  "eyebrow": "Human-Centred AI & Sustainable Industry",
+  "title": "Human-AI Coexistence Systems",
+  "subtitle": "Inclusive and sustainable manufacturing through human-centred AI and robotics",
+  "heroImage": "../img/coexistence.png",
+  "intro": "Human-AI Coexistence Systems focuses on developing human-centred AI and robotic systems for manufacturing environments, where digital twins, shared autonomy, and collaborative intelligence enhance human work, safety, and global knowledge exchange.",
+  "stats": [
+    {
+      "value": "Active",
+      "label": "Status"
+    },
+    {
+      "value": "2",
+      "label": "Core Themes"
+    }
+  ],
+  "vision": {
+    "text": "Enable manufacturing ecosystems where humans and intelligent systems collaborate through digital twins, shared autonomy, and cross-disciplinary knowledge exchange.",
+    "image": "../img/digital.png"
+  },
+  "mission": {
+    "text": "Advance human-centred AI methodologies that integrate digital twins, collaborative robotics, and transdisciplinary innovation for sustainable and inclusive industry."
+  },
+  "activities": [
+    {
+      "title": "Human-Centred AI & Human-Robot Collaboration",
+      "text": "Designing AI and robotics systems that support workers in production environments through adaptive assistance, digitalization of humans, robots, and environments, ergonomic optimization, shared autonomy, and cognitive augmentation.",
+      "image": "../img/digital.png"
+    },
+    {
+      "title": "Mutual Learning & Transdisciplinary Innovation",
+      "text": "Developing and applying methods and methodologies for bridging cross-disciplinary barriers and advancing global talent development and collaborative innovation when designing and deploying AI & robotics technologies, with the goal of enabling their responsible and desirable adoption in real-world settings.",
+      "image": "../img/digital.png"
+    }
+  ],
+  "publications": [
+    {
+      "title": "Digital Twins and Human-Centred AI for Collaborative Manufacturing Systems",
+      "venue": "AIST HEART Lab Research",
+      "date": "2026",
+      "href": "#"
+    }
+  ],
+  "cta": {
+    "title": "Join the Research",
+    "text": "We welcome collaborations in human-centred AI, digital twins, robotics, and transdisciplinary innovation for sustainable manufacturing.",
+    "primaryLabel": "View Opportunities",
+    "primaryHref": "../interships.html",
+    "secondaryLabel": "Contact",
+    "secondaryHref": "mailto:e.coronado@aist.go.jp"
+  }
+}

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project — Enrique Coronado</title>
+  <meta name="description" content="Research projects by Enrique Coronado — Responsible Physical AI & Robotics.">
+
+  <!-- ============================================================
+       GENERIC PROJECT / RESEARCH DETAIL TEMPLATE
+       One file renders every project page. Usage:
+
+         project.html?id=robocycle
+         project.html?id=physical-ai
+
+       All content comes from js/projects-data.js (JSON-shaped).
+       Opened without an id (or with an unknown id), the page
+       renders an index of all projects instead.
+
+       NOTE ON .json FILES: fetch('data/x.json') only works over
+       HTTP(S); it fails when the site is opened from disk. The
+       script-based data file below works everywhere. If you host
+       on GitHub Pages and prefer pure .json, replace the data
+       <script> include with:
+         fetch('data/projects.json').then(r => r.json()).then(render)
+       ============================================================ -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap"
+    rel="stylesheet">
+
+  <!-- DESIGN TOKENS — identical to index.html; keep in sync -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#16233F', body: '#4B5568', faint: '#8B93A3', line: '#DDE2EC',
+            sky: '#4E9FD9', lime: '#DCF34B',
+            blue: { DEFAULT: '#1173BC', deep: '#0A5697', text: '#1B6FB5' },
+            cyan: '#A9EAFB', cyanfill: '#BFF0FC',
+            plum: { from: '#8A4B9B', via: '#7A3D8C', to: '#5F2D74' },
+            mint: { DEFAULT: '#AEE8D4', text: '#BDEFE1', ink: '#123B33' },
+            teal: { DEFAULT: '#14555A', dark: '#0E4347' },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+          },
+          maxWidth: { site: '80rem' },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-feature-settings: 'cv11', 'ss01';
+      background: linear-gradient(180deg, #F4F6FB 0%, #EAEFF8 55%, #F1F4FA 100%);
+    }
+    .display { letter-spacing: -0.025em; }
+    .meta {
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #1173BC; outline-offset: 3px; border-radius: 4px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+
+<body class="text-ink antialiased">
+
+  <!-- NAVIGATION — same bar as index.html -->
+  <nav aria-label="Main">
+    <div class="max-w-site mx-auto px-5 h-16 flex items-center justify-between gap-6">
+      <a href="index.html" class="leading-tight shrink-0">
+        <span class="block font-bold text-[17px] display">Enrique Coronado</span>
+        <span class="block text-[10px] text-faint font-medium tracking-wide">AIST · INTEGRATED RESEARCH CENTER FOR
+          WELLBEING</span>
+      </a>
+      <div class="hidden lg:flex items-center gap-9 text-[15px] font-medium">
+        <a href="about.html" class="hover:text-blue transition-colors">About</a>
+        <a href="index.html#research" class="hover:text-blue transition-colors">Research</a>
+        <a href="index.html#projects" class="hover:text-blue transition-colors">Projects</a>
+        <a href="research.html" class="hover:text-blue transition-colors">Publications</a>
+        <a href="index.html#news" class="hover:text-blue transition-colors">News</a>
+        <a href="interships.html" class="hover:text-blue transition-colors">Internships</a>
+      </div>
+      <button id="menu-toggle" class="lg:hidden p-2 -mr-2 text-ink" aria-expanded="false" aria-controls="mobile-menu"
+        aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-line bg-white px-5 py-5">
+      <div class="flex flex-col gap-4 text-[15px] font-medium text-body">
+        <a href="about.html" class="hover:text-ink">About</a>
+        <a href="index.html#research" class="hover:text-ink">Research</a>
+        <a href="index.html#projects" class="hover:text-ink">Projects</a>
+        <a href="research.html" class="hover:text-ink">Publications</a>
+        <a href="index.html#news" class="hover:text-ink">News</a>
+        <a href="interships.html" class="text-blue font-semibold">Internships →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Everything below is rendered from PROJECTS_DATA -->
+  <div id="app"></div>
+
+  <footer>
+    <div class="max-w-site mx-auto px-5 py-10 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
+      <p class="font-semibold display">Enrique Coronado</p>
+      <p class="meta text-faint">&copy; 2026 · AIST — HEART</p>
+    </div>
+  </footer>
+
+  <!-- DATA -->
+  <script src="js/projects-data.js"></script>
+
+  <!-- TEMPLATE RENDERER -->
+  <script>
+    // ---------- Mobile menu ----------
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.toggle('hidden');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // ---------- Accent themes (maps data "accent" -> classes) ----------
+    const THEMES = {
+      plum: {
+        panel: 'bg-gradient-to-b from-plum-from via-plum-via to-plum-to',
+        heading: 'text-mint-text',
+        capsule: 'bg-mint text-mint-ink hover:bg-white',
+        eyebrow: 'text-plum-via',
+        button: 'bg-plum-via hover:bg-plum-to text-white',
+      },
+      blue: {
+        panel: 'bg-gradient-to-br from-blue to-blue-deep',
+        heading: 'text-cyan',
+        capsule: 'bg-cyanfill text-ink hover:bg-white',
+        eyebrow: 'text-blue',
+        button: 'bg-blue hover:bg-blue-deep text-white',
+      },
+      teal: {
+        panel: 'bg-gradient-to-br from-teal to-teal-dark',
+        heading: 'text-mint-text',
+        capsule: 'bg-mint text-mint-ink hover:bg-white',
+        eyebrow: 'text-teal',
+        button: 'bg-teal hover:bg-teal-dark text-white',
+      },
+    };
+
+    const arrow = `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>`;
+
+    // ---------- Section builders (each returns '' if data missing) ----------
+
+    function heroSection(p, t) {
+      return `
+      <header class="max-w-site mx-auto px-5 pt-6">
+        <p class="meta text-faint mb-6">
+          <a href="index.html" class="hover:text-ink">Home</a> /
+          <span class="${t.eyebrow}">${p.type}</span>
+        </p>
+        <div class="max-w-3xl mb-10">
+          <p class="meta ${t.eyebrow} mb-4">${p.eyebrow}</p>
+          <h1 class="display font-semibold text-4xl md:text-6xl leading-[1.08] mb-5">${p.title}</h1>
+          <p class="text-xl text-body leading-relaxed">${p.subtitle}</p>
+        </div>
+        <div class="rounded-3xl overflow-hidden">
+          <img src="${p.heroImage}" alt="${p.title}" class="w-full aspect-[21/9] object-cover">
+        </div>
+      </header>`;
+    }
+
+    function introSection(p) {
+      if (!p.intro) return '';
+      return `
+      <section class="max-w-site mx-auto px-5 py-14 md:py-20">
+        <p class="text-blue-text text-xl md:text-2xl leading-relaxed max-w-3xl display font-medium">
+          ${p.intro}
+        </p>
+      </section>`;
+    }
+
+    function statsSection(p) {
+      if (!p.stats || !p.stats.length) return '';
+      const cells = p.stats.map(s => `
+        <div class="bg-white rounded-2xl p-7">
+          <p class="display font-semibold text-4xl mb-2">${s.value}</p>
+          <p class="text-sm text-body leading-snug">${s.label}</p>
+        </div>`).join('');
+      return `
+      <section class="max-w-site mx-auto px-5 pb-16">
+        <div class="grid grid-cols-1 sm:grid-cols-${Math.min(p.stats.length, 3)} gap-5">${cells}</div>
+      </section>`;
+    }
+
+    function visionSection(p, t) {
+      if (!p.vision) return '';
+      return `
+      <section class="max-w-site mx-auto px-5 pb-16 md:pb-24">
+        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div class="rounded-3xl overflow-hidden order-last lg:order-first">
+            <img src="${p.vision.image || p.heroImage}" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover">
+          </div>
+          <div>
+            <div class="flex items-baseline gap-4 mb-6">
+              <span class="meta ${t.eyebrow} text-2xl">01</span>
+              <h2 class="display font-semibold text-3xl md:text-4xl">Vision</h2>
+            </div>
+            <p class="text-body text-lg leading-relaxed">${p.vision.text}</p>
+          </div>
+        </div>
+      </section>`;
+    }
+
+    function missionSection(p, t) {
+      if (!p.mission) return '';
+      return `
+      <section class="max-w-site mx-auto px-5 pb-16 md:pb-24">
+        <div class="rounded-3xl ${t.panel} text-white p-8 md:p-16">
+          <div class="flex flex-col lg:flex-row lg:justify-between gap-8">
+            <div class="flex items-baseline gap-4 shrink-0">
+              <span class="meta ${t.heading} opacity-70 text-2xl">02</span>
+              <h2 class="display font-semibold text-3xl md:text-4xl ${t.heading}">Mission</h2>
+            </div>
+            <p class="text-white/90 text-lg md:text-xl leading-relaxed lg:max-w-2xl">${p.mission.text}</p>
+          </div>
+        </div>
+      </section>`;
+    }
+
+    function activitiesSection(p, t) {
+      if (!p.activities || !p.activities.length) return '';
+      const cards = p.activities.map(a => `
+        <article class="bg-white rounded-3xl overflow-hidden flex flex-col shadow-sm">
+          <div class="h-48 overflow-hidden">
+            <img src="${a.image}" alt="" loading="lazy" class="w-full h-full object-cover">
+          </div>
+          <div class="p-7 flex flex-col gap-2.5">
+            <h3 class="display font-semibold text-xl">${a.title}</h3>
+            <p class="text-body text-[15px] leading-relaxed">${a.text}</p>
+          </div>
+        </article>`).join('');
+      return `
+      <section class="max-w-site mx-auto px-5 pb-16 md:pb-24">
+        <div class="flex items-baseline gap-4 mb-10">
+          <span class="meta ${t.eyebrow} text-2xl">03</span>
+          <h2 class="display font-semibold text-3xl md:text-4xl">What We Do</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">${cards}</div>
+      </section>`;
+    }
+
+    function publicationsSection(p, t) {
+      if (!p.publications || !p.publications.length) return '';
+      const rows = p.publications.map(pub => `
+        <a href="${pub.href}" class="group border-t border-line py-6 flex items-start justify-between gap-6">
+          <div class="min-w-0">
+            <h3 class="font-semibold text-[16px] leading-snug mb-2 group-hover:text-sky transition-colors">${pub.title}</h3>
+            <p class="text-sm text-body">${pub.venue}</p>
+          </div>
+          <p class="meta text-faint shrink-0 pt-1">${pub.date}</p>
+        </a>`).join('');
+      return `
+      <section class="max-w-site mx-auto px-5 pb-16 md:pb-24">
+        <h2 class="display font-semibold text-3xl md:text-4xl mb-8">Related Publications</h2>
+        <div>${rows}</div>
+      </section>`;
+    }
+
+    function ctaSection(p, t) {
+      if (!p.cta) return '';
+      const secondary = p.cta.secondaryLabel ? `
+        <a href="${p.cta.secondaryHref}"
+          class="inline-flex items-center gap-3 border border-white/50 text-white rounded-full px-6 py-3.5 font-medium text-[15px] hover:bg-white/10 transition-colors">
+          ${p.cta.secondaryLabel} ${arrow}
+        </a>` : '';
+      return `
+      <section class="max-w-site mx-auto px-5 pb-6">
+        <div class="rounded-3xl ${t.panel} text-white p-8 md:p-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+          <div class="max-w-xl">
+            <h2 class="display font-semibold text-3xl md:text-4xl ${t.heading} mb-4">${p.cta.title}</h2>
+            <p class="text-white/85 text-lg leading-relaxed">${p.cta.text}</p>
+          </div>
+          <div class="flex flex-wrap gap-4 shrink-0">
+            <a href="${p.cta.primaryHref}"
+              class="inline-flex items-center gap-3 ${t.capsule} rounded-full px-6 py-3.5 font-medium text-[15px] transition-colors">
+              ${p.cta.primaryLabel} ${arrow}
+            </a>
+            ${secondary}
+          </div>
+        </div>
+      </section>`;
+    }
+
+    // ---------- Fallback: index of all projects (no/unknown id) ----------
+    function listingPage() {
+      const cards = Object.entries(PROJECTS_DATA).map(([id, p]) => {
+        const t = THEMES[p.accent] || THEMES.blue;
+        return `
+        <a href="project.html?id=${id}" class="group bg-white rounded-3xl overflow-hidden flex flex-col shadow-sm">
+          <div class="h-52 overflow-hidden">
+            <img src="${p.heroImage}" alt="" loading="lazy"
+              class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500">
+          </div>
+          <div class="p-7 flex flex-col gap-2.5 flex-1">
+            <p class="meta ${t.eyebrow}">${p.type} · ${p.eyebrow}</p>
+            <h3 class="display font-semibold text-2xl group-hover:text-sky transition-colors">${p.title}</h3>
+            <p class="text-body text-[15px] leading-relaxed">${p.subtitle}</p>
+          </div>
+        </a>`;
+      }).join('');
+      return `
+      <header class="max-w-site mx-auto px-5 pt-10 pb-12">
+        <h1 class="display font-semibold text-4xl md:text-6xl mb-5">Research &amp; Projects</h1>
+        <p class="text-xl text-body max-w-2xl">Explore the research areas and active projects of the lab.</p>
+      </header>
+      <section class="max-w-site mx-auto px-5 pb-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6">${cards}</section>`;
+    }
+
+    // ---------- Render ----------
+    const id = new URLSearchParams(location.search).get('id');
+    const project = PROJECTS_DATA[id];
+    const app = document.getElementById('app');
+
+    if (!project) {
+      document.title = 'Research & Projects — Enrique Coronado';
+      app.innerHTML = listingPage();
+    } else {
+      const t = THEMES[project.accent] || THEMES.blue;
+      document.title = `${project.title} — Enrique Coronado`;
+      app.innerHTML = [
+        heroSection(project, t),
+        introSection(project),
+        statsSection(project),
+        visionSection(project, t),
+        missionSection(project, t),
+        activitiesSection(project, t),
+        publicationsSection(project, t),
+        ctaSection(project, t),
+      ].join('');
+    }
+  </script>
+</body>
+
+</html>

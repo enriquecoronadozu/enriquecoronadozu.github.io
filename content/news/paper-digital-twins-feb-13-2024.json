@@ -1,0 +1,16 @@
+{
+    "id": "paper-digital-twins-feb-01-2024",
+    "date": "February 1, 2024",
+    "category": "Paper",
+    "title": "A Path to Industry 5.0 Digital Twins for Human–Robot Collaboration by Bridging NEP+ and ROS",
+    "summary": "New article in 'Robotics' introduces the nep2ros ROS package, designed to bridge the Robot Operating System (ROS) with the cross-platform NEP+ framework to facilitate Industry 5.0 human digital twins.",
+    "img": "../img/ros.png",
+    "subtitle1": "Human-Centric Paradigm Shift",
+    "description1": "Aligning with the Industry 5.0 vision, this framework places humanity at the center by empowering industrial workers and establishing inclusive and flexible production processes.",
+    "subtitle2": "Harmonizing NEP+ and ROS",
+    "description2": "The nep2ros package harmonizes the techno-centered focus of ROS with the platform-independent middleware of NEP+, enabling bidirectional data exchange between diverse hardware and software landscapes.",
+    "highlight": "This initiative facilitates diverse development scenarios beyond conventional robotics, underpinning a transformative shift in Industry 5.0 applications by amplifying accessibility and utility across diverse platforms.",
+    "subtitle3": "Immersive Human-in-the-Loop Validation",
+    "description3": "The framework's usability is demonstrated through an immersive, human-in-the-loop collaborative assembly scenario involving a UR5e industrial robot and an Oculus Quest 2 VR headset.",
+    "url": "https://doi.org/10.3390/robotics13020028"
+}

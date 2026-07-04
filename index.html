@@ -4,560 +4,737 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enrique Coronado | Responsible AI & Robotics</title>
+  <title>Enrique Coronado — Responsible Physical AI &amp; Robotics</title>
+  <meta name="description"
+    content="Enrique Coronado is a Senior Researcher at AIST's Integrated Research Center for Wellbeing (HEART team), working on responsible Physical AI, agentic AI, and human-centered robotics.">
+
+  <!-- ============================================================
+       DEPENDENCIES
+       Tailwind via CDN is fine while prototyping. For production,
+       switch to the Tailwind CLI build and a static styles.css.
+       ============================================================ -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap"
+    rel="stylesheet">
+
+  <!-- ============================================================
+       DESIGN TOKENS — single source of truth for the whole site.
+       Palette sampled from the HAI reference screenshots.
+       ============================================================ -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#16233F',          // navy text
+            body: '#4B5568',         // secondary text
+            faint: '#8B93A3',        // captions
+            line: '#DDE2EC',         // hairlines
+            sky: '#4E9FD9',          // "Watch Our Story" text
+            lime: '#DCF34B',         // NEWS / AWARD chips
+            blue: {
+              DEFAULT: '#1173BC',    // spotlight heading, buttons, panel
+              deep: '#0A5697',
+              text: '#1B6FB5',       // spotlight paragraph blue
+            },
+            cyan: '#A9EAFB',         // headings on blue panel
+            cyanfill: '#BFF0FC',
+            plum: {                  // 01 Research panel gradient
+              from: '#8A4B9B',
+              via: '#7A3D8C',
+              to: '#5F2D74',
+            },
+            mint: {
+              DEFAULT: '#AEE8D4',    // filled capsule on purple panel
+              text: '#BDEFE1',       // panel headings
+              ink: '#123B33',
+            },
+            teal: {
+              DEFAULT: '#14555A',    // 02 section heading + button
+              dark: '#0E4347',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+          },
+          maxWidth: { site: '80rem' },
+        }
+      }
+    }
+  </script>
+
   <style>
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-feature-settings: 'cv11', 'ss01';
+      /* Soft lavender-blue page wash, as in the HAI reference */
+      background: linear-gradient(180deg, #F4F6FB 0%, #EAEFF8 55%, #F1F4FA 100%);
     }
 
-    .custom-scrollbar::-webkit-scrollbar {
-      width: 4px;
+    .display {
+      letter-spacing: -0.025em;
     }
 
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-      background: #f1f5f9;
-      border-radius: 10px;
+    /* Mono meta: dates, section numbers */
+    .meta {
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Carousel: horizontal snap, hidden scrollbar */
+    .carousel {
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .carousel>* {
+      scroll-snap-align: start;
+    }
+
+    /* Glow behind panel card images, as in the HAI reference */
+    .card-glow {
+      box-shadow: 0 0 44px rgba(255, 255, 255, 0.28);
+    }
+
+    /* Accessibility */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid #1173BC;
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+
+      .carousel {
+        scroll-behavior: auto;
+      }
     }
   </style>
 </head>
 
-<body class="bg-white">
+<body class="text-ink antialiased">
 
-  <nav class="bg-white/70 backdrop-blur-md border-b border-slate-100 sticky top-0 z-50">
-    <div class="max-w-none mx-auto px-12 h-24 flex items-center justify-between w-full">
+  <!-- ============================================================
+       NAVIGATION — identity left; links center (desktop);
+       hamburger right, HAI-style.
+       ============================================================ -->
+  <nav aria-label="Main">
+    <div class="max-w-site mx-auto px-5 h-16 flex items-center justify-between gap-6">
 
-      <div class="flex items-center gap-6">
-        <div class="flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
-          <a href="index.html" class="font-extrabold text-2xl tracking-tighter uppercase whitespace-nowrap">
-            Enrique <span
-              class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-500">Coronado</span>
-          </a>
+      <a href="index.html" class="leading-tight shrink-0">
+        <span class="block font-bold text-[17px] display">Enrique Coronado</span>
+        <span class="block text-[10px] text-faint font-medium tracking-wide">AIST · INTEGRATED RESEARCH CENTER FOR
+          WELLBEING</span>
+      </a>
 
-        </div>
+      <div class="hidden lg:flex items-center gap-9 text-[15px] font-medium">
+        <a href="about.html" class="hover:text-blue transition-colors">About</a>
+        <a href="#research" class="hover:text-blue transition-colors">Research</a>
+        <a href="#projects" class="hover:text-blue transition-colors">Projects</a>
+        <a href="research.html" class="hover:text-blue transition-colors">Publications</a>
+        <a href="#news" class="hover:text-blue transition-colors">News</a>
+        <!-- TODO: rename file to internships.html and update every href -->
+        <a href="interships.html" class="hover:text-blue transition-colors">Internships</a>
       </div>
 
-      <div class="hidden md:flex items-center space-x-6 lg:space-x-10 font-semibold">
-        <a href="about.html"
-          class="text-slate-600 hover:text-blue-700 transition-colors underline decoration-transparent hover:decoration-blue-200 underline-offset-8">Biography</a>
-
-        <a href="#news" class="text-slate-600 hover:text-blue-700 transition-colors">News</a>
-        <a href="#research" class="text-slate-600 hover:text-blue-700 transition-colors">Research</a>
-        <a href="#projects" class="text-slate-600 hover:text-blue-700 transition-colors">Projects</a>
-
-        <a href="research.html" class="text-slate-600 hover:text-blue-700 transition-colors">
-          Publications
-        </a>
-
-        <a href="interships.html"
-          class="ml-8 text-blue-700 border-2 border-blue-700 px-8 py-3 rounded-full hover:bg-blue-700 hover:text-white transition-all duration-300 active:scale-95 shadow-sm font-bold">
-          Interships
-        </a>
-      </div>
-
-      <button class="md:hidden text-slate-600 p-2" onclick="toggleMenu()">
-        <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+      <button id="menu-toggle" class="lg:hidden p-2 -mr-2 text-ink" aria-expanded="false" aria-controls="mobile-menu"
+        aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
         </svg>
       </button>
     </div>
+
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-line bg-white px-5 py-5">
+      <div class="flex flex-col gap-4 text-[15px] font-medium text-body">
+        <a href="about.html" class="hover:text-ink">About</a>
+        <a href="#research" class="hover:text-ink">Research</a>
+        <a href="#projects" class="hover:text-ink">Projects</a>
+        <a href="research.html" class="hover:text-ink">Publications</a>
+        <a href="#news" class="hover:text-ink">News</a>
+        <a href="interships.html" class="text-blue font-semibold">Internships →</a>
+      </div>
+    </div>
   </nav>
 
-  <header id="about" class="relative w-full overflow-hidden border-b border-slate-100 bg-white">
-    <div class="relative z-10 w-full flex flex-col items-center">
+  <!-- ============================================================
+       HERO — monochrome cinematic video canvas, rounded corners,
+       headline bottom-left, glass capsule CTAs bottom-right.
+       ============================================================ -->
+  <header class="max-w-site mx-auto px-5">
+    <div class="relative rounded-3xl overflow-hidden bg-ink">
+      <video class="w-full h-[62vh] min-h-[440px] max-h-[720px] object-cover grayscale" autoplay muted loop playsinline
+        poster="img/heart1.png">
+        <source src="test.mp4" type="video/mp4">
+      </video>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" aria-hidden="true">
+      </div>
 
-      <div class="relative w-full h-[500px] md:h-[800px] mb-16 overflow-hidden shadow-2xl">
+      <div class="absolute inset-x-0 bottom-0 p-6 md:p-10">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-7">
 
-        <video
-          class="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-1000 ease-in-out"
-          autoplay muted loop playsinline poster="img/heart1.png">
-          <source src="test.mp4" type="video/mp4">
-        </video>
+          <h1 class="display text-white font-semibold text-3xl md:text-[2.6rem] leading-[1.15] max-w-xl">
+            Responsible Physical AI, with humanity at the heart.
+          </h1>
 
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-
-        <div class="absolute inset-0 flex flex-col justify-end">
-          <div
-            class="max-w-7xl mx-auto w-full p-8 md:p-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
-
-            <div class="w-full h-full">
-              <h1 class="text-white text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
-                Responsible Physical AI <br>
-                <span class="text-blue-400">with Humanity in the HEART</span>
-              </h1>
-            </div>
-
-            <div class="flex-shrink-0">
-              <a href="interships.html"
-                class="inline-flex items-center px-10 py-5 bg-white text-blue-700 text-lg font-bold rounded-full hover:bg-blue-50 transition-all duration-300 shadow-2xl transform hover:-translate-y-2">
-                Internships
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd"
-                    d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                    clip-rule="evenodd" />
-                </svg>
-              </a>
-            </div>
-
+          <div class="flex flex-wrap items-center gap-4 shrink-0">
+            <!-- TODO: point this to your story video (YouTube or /story.html) -->
+            <a href="about.html"
+              class="inline-flex items-center gap-2.5 bg-white text-sky px-6 py-3.5 rounded-full font-medium text-[15px] hover:bg-white/90 transition-colors">
+              Video (in process)
+              <svg class="w-4.5 h-4.5 w-5 h-5 text-ink" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M8 5.5v13l11-6.5-11-6.5z" />
+              </svg>
+            </a>
+            <a href="interships.html"
+              class="inline-flex items-center gap-2.5 border border-white/70 text-white px-6 py-3.5 rounded-full font-medium text-[15px] hover:bg-white/10 backdrop-blur transition-colors">
+              Join the Lab
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
           </div>
+
         </div>
       </div>
-
-      <div
-        class="grid grid-cols-1 md:grid-cols-3 gap-12 text-slate-500 font-light leading-relaxed max-w-5xl px-6 pb-24">
-        <p class="text-lg">
-          I am a <span class="text-slate-900 font-semibold">Senior Researcher</span> with the
-          <span class="text-slate-900 font-semibold">HEART</span> team at AIST’s
-          <span class="text-slate-900 font-semibold">Integrated Research Center for Wellbeing</span>.
-        </p>
-
-        <p class="text-lg">
-          My work begins by empathizing with <span class="text-slate-900 font-semibold">human and planetary
-            needs</span>,
-          translating insights into <span class="text-slate-900 font-semibold">sustainable solutions</span>.
-        </p>
-
-        <p class="text-lg">
-          I believe intelligent systems must <span class="text-slate-900 font-semibold">enhance human
-            well-being</span>
-          and safeguard our collective environment.
-        </p>
-      </div>
-
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-6 space-y-32 py-24">
+  <!-- ============================================================
+       NEWS STRIP — two-column rows: title, byline, mono date left;
+       thumbnail with lime chip right; events get a calendar card.
+       ============================================================ -->
+  <section id="news" class="max-w-site mx-auto px-5 pt-12 pb-16">
 
-    <section id="news" class="w-full">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
-        <div>
-          <h2 class="text-xs uppercase tracking-[0.3em] font-bold text-slate-400 flex items-center gap-2 mb-2">
-            <span class="w-2 h-2 bg-blue-700 rounded-full animate-pulse"></span> Latest Updates
-          </h2>
-          <h3 class="text-3xl font-extrabold text-slate-900 tracking-tight">News & Achievements</h3>
-        </div>
-
-        <div class="flex flex-wrap gap-2 p-1.5 bg-slate-100 rounded-2xl w-fit">
-          <button onclick="filterBy('All')" id="btn-All"
-            class="filter-btn px-6 py-2 rounded-xl text-xs font-bold transition-all bg-blue-700 text-white shadow-sm">
-            All
-          </button>
-          <button onclick="filterBy('Paper')" id="btn-Paper"
-            class="filter-btn px-6 py-2 rounded-xl text-xs font-bold transition-all text-slate-500 hover:text-blue-700">
-            Publications
-          </button>
-          <button onclick="filterBy('Award')" id="btn-Award"
-            class="filter-btn px-6 py-2 rounded-xl text-xs font-bold transition-all text-slate-500 hover:text-blue-700">
-            Awards
-          </button>
-        </div>
+    <div class="flex items-end justify-between gap-6 mb-8">
+      <h2 class="sr-only">News and achievements</h2>
+      <div id="news-filters" class="flex gap-6 text-sm font-medium" role="group" aria-label="Filter news">
+        <button data-category="All" aria-pressed="true"
+          class="filter-btn text-ink underline underline-offset-8 decoration-2 decoration-lime">All</button>
+        <button data-category="Paper" aria-pressed="false"
+          class="filter-btn text-faint hover:text-ink transition-colors">Publications</button>
+        <button data-category="Award" aria-pressed="false"
+          class="filter-btn text-faint hover:text-ink transition-colors">Awards</button>
       </div>
-
-      <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[400px]">
-      </div>
-
-      <div class="mt-12 flex justify-center items-center gap-2" id="pagination-controls"></div>
-    </section>
-
-
-    <!--
-    <section id="research-focus" class="w-full">
-
-
-      <div class="max-w-4xl mb-20">
-        <h3 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-8">
-          Designing intelligent systems that are <br class="hidden md:block">
-          <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-500">Safe,
-            Ethical, and
-            Viable.</span>
-        </h3>
-        <p class="text-lg md:text-xl text-slate-600 leading-relaxed font-light">
-          My research moves beyond simply developing intelligent systems capable of acting, learning, and
-          collaborating.
-          I focus on the <span class="text-slate-900 font-medium">socio-technical alignment</span> of AI and
-          robotics,
-          ensuring
-          that every agent is socially accepted, ethically grounded, and meets the three pillars of impactful
-          design:
-          <span class="text-slate-900 font-medium">Desirability, Feasibility, and Viability.</span>
-        </p>
-      </div>
-      </div>
-    </section>
--->
-
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[300px]">
-
-      <div
-        class="md:col-span-8 md:row-span-2 group relative rounded-[3rem] bg-slate-900 border border-white/10 overflow-hidden transition-all duration-700 shadow-2xl shadow-blue-900/20">
-        <div class="absolute inset-0 z-0">
-          <img src="img/physical-ai.jpg"
-            class="w-full h-full object-cover opacity-50 group-hover:scale-110 group-hover:opacity-30 transition-all duration-1000 grayscale group-hover:grayscale-0"
-            alt="Physical AI">
-          <div
-            class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-500/20 via-transparent to-slate-950">
-          </div>
-        </div>
-
-        <div class="relative z-10 p-10 h-full flex flex-col justify-end">
-          <div class="mb-4">
-            <span
-              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-500/30 backdrop-blur-md text-[10px] font-bold text-blue-400 uppercase tracking-widest">
-              <span class="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse"></span> 01 — The Body
-              (Embodiment)
-            </span>
-          </div>
-          <h4 class="text-5xl font-black text-white mb-6 tracking-tighter leading-none">
-            Physical <span class="text-blue-500">AI</span>
-          </h4>
-          <p
-            class="text-slate-400 max-w-md text-lg font-light leading-relaxed group-hover:text-white transition-colors">
-            AI that touches and moves stuff in the real world.
-          </p>
-        </div>
-      </div>
-
-      <div
-        class="md:col-span-4 group relative rounded-[3rem] bg-blue-700 border border-white/20 p-10 flex flex-col justify-between overflow-hidden transition-all duration-500 hover:shadow-[0_0_50px_rgba(59,130,246,0.3)]">
-        <div
-          class="absolute top-0 right-0 p-4 opacity-10 group-hover:rotate-45 group-hover:scale-150 transition-all duration-700">
-          <svg class="w-64 h-64 text-white" fill="currentColor" viewBox="0 0 24 24">
-            <path
-              d="M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.364-6.364l-.707-.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M12 13a4 4 0 110-8 4 4 0 010 8z" />
-          </svg>
-        </div>
-
-        <div class="relative z-10">
-          <span
-            class="text-[10px] font-bold text-blue-200 uppercase tracking-widest bg-white/10 px-3 py-1 rounded-full backdrop-blur-sm">
-            02 — The Brain (Cognition)
-          </span>
-          <h4 class="text-3xl font-black text-white mt-6 tracking-tighter">Agentic AI</h4>
-        </div>
-
-        <div class="relative z-10">
-          <p class="text-blue-100 text-base leading-snug font-medium">
-            AI that decides what to do next and does it.
-          </p>
-        </div>
-      </div>
-
-      <div
-        class="md:col-span-4 group relative rounded-[3rem] bg-white border border-slate-200 p-10 flex flex-col justify-between transition-all duration-500 hover:border-blue-600">
-        <div>
-          <span class="text-[10px] font-bold text-blue-600 uppercase tracking-[0.3em] mb-4 block">03 — The
-            Heart
-            (Ethics)</span>
-          <h4 class="text-3xl font-black text-slate-900 tracking-tighter">People-Centric</h4>
-        </div>
-
-        <div class="space-y-4">
-          <p class="text-slate-500 text-sm leading-relaxed font-light">
-            AI that works with you, not just for you.
-          </p>
-          <div class="flex items-center gap-2">
-            <div class="flex -space-x-2">
-              <div class="w-6 h-6 rounded-full bg-blue-100 border-2 border-white"></div>
-              <div class="w-6 h-6 rounded-full bg-blue-300 border-2 border-white"></div>
-              <div class="w-6 h-6 rounded-full bg-blue-600 border-2 border-white"></div>
-            </div>
-            <span class="text-[9px] font-black uppercase text-slate-400 tracking-tighter">Humanity in the
-              Core</span>
-          </div>
-        </div>
-      </div>
-
     </div>
 
+    <div id="news-container" class="grid grid-cols-1 lg:grid-cols-2 gap-x-14 min-h-[180px]"></div>
+    <div id="pagination-controls" class="mt-10 flex justify-center gap-2"></div>
+  </section>
 
-    <!-- 
-        <section id="projects">
-            <h2 class="text-xs uppercase tracking-[0.2em] font-bold text-slate-400 flex items-center gap-2 mb-8">
-                <span class="w-2 h-2 bg-blue-700 rounded-full"></span> Featured Projects (in construction)
-            </h2>
-            <div class="grid grid-cols-1 gap-8">
-                <div
-                    class="group relative bg-slate-900 p-8 md:p-12 rounded-[2.5rem] text-white overflow-hidden shadow-2xl">
-                    <div class="absolute -bottom-12 -right-12 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl"></div>
-                    <div class="relative z-10 flex flex-col md:flex-row gap-8 items-center">
-                        <div class="flex-1">
-                            <span
-                                class="text-blue-400 text-[10px] font-bold uppercase tracking-[0.2em]">Sustainability</span>
-                            <h3 class="text-3xl font-bold mt-2 mb-4">ROBOCYCLE</h3>
-                            <p class="text-slate-400 leading-relaxed mb-6">A physical dual-arm robotic platform
-                                integrating UR5e and
-                                xArm7 robots for PET-oriented waste sorting.</p>
-                            <div class="flex gap-2">
-                                <span
-                                    class="px-3 py-1 bg-white/5 rounded-full text-[10px] border border-white/10 uppercase">ROS
-                                    2</span>
-                                <span
-                                    class="px-3 py-1 bg-white/5 rounded-full text-[10px] border border-white/10 uppercase">Manipulation</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    class="group bg-white p-8 md:p-12 rounded-[2.5rem] border border-slate-100 shadow-sm hover:border-blue-200 transition-all">
-                    <span class="text-blue-700 text-[10px] font-bold uppercase tracking-[0.2em]">Well-Being</span>
-                    <h3 class="text-3xl font-bold mt-2 mb-4 text-slate-900">Axobotl</h3>
-                    <p class="text-slate-600 leading-relaxed mb-6">Evaluating social robots for supporting concentration
-                        and
-                        emotional well-being in hybrid work environments.</p>
-                    <div class="flex gap-2">
-                        <span class="px-3 py-1 bg-slate-100 rounded-full text-[10px] text-slate-500 uppercase">Social
-                            HRI</span>
-                        <span class="px-3 py-1 bg-slate-100 rounded-full text-[10px] text-slate-500 uppercase">User
-                            Study</span>
-                    </div>
-                </div>
+  <!-- ============================================================
+       SPOTLIGHT — featured work: image left, blue heading and
+       blue body text right, solid blue capsule CTA (HAI pattern).
+       ============================================================ -->
+  <section class="max-w-site mx-auto px-5 pb-20">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div class="rounded-3xl overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=400" alt="Responsible Agentic Robotics research" loading="lazy"
+          class="w-full aspect-[16/10] object-cover">
+      </div>
+      <div>
+        <h2 class="display font-semibold text-3xl md:text-4xl text-blue leading-tight mb-5">
+          The Responsible Agentic Robotics Framework Is Here
+        </h2>
+        <p class="text-blue-text leading-relaxed text-[17px]">
+          Published in <em>Robotics</em>, the RAR framework maps the shift from LLMs to agentic AI in Industry
+          5.0 — and asks what it takes for autonomous, embodied agents to remain sustainable and
+          human-centered. As robots gain the ability to decide and act, rigorous frameworks for responsibility
+          have never been more critical. This work provides a comprehensive path for aligning agentic robotics
+          with the people it serves.
+        </p>
+        <a href="news/paper-robotics-march-12-2026.html"
+          class="mt-7 inline-flex items-center gap-2.5 bg-blue hover:bg-blue-deep text-white px-6 py-3.5 rounded-full font-medium text-[15px] transition-colors">
+          Read the Paper
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+            aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- ============================================================
+         01 RESEARCH — purple gradient panel: mono number + mint
+         title, intro right, glowing image-card carousel with
+         circular arrow, capsule CTAs bottom-right (HAI pattern).
+         ============================================================ -->
+    <section id="research" class="max-w-site mx-auto px-5">
+      <div class="rounded-3xl bg-gradient-to-b from-plum-from via-plum-via to-plum-to text-white overflow-hidden">
+        <div class="py-12 md:py-16">
+
+          <div class="px-6 md:px-12 flex flex-col lg:flex-row lg:justify-between gap-8 mb-12">
+            <div class="flex items-baseline gap-4">
+              <span class="meta text-mint-text/80 text-2xl md:text-3xl">01</span>
+              <h2 class="display font-semibold text-4xl md:text-5xl text-mint-text">Research</h2>
             </div>
-        </section> -->
+            <p class="text-white/90 text-lg leading-relaxed lg:max-w-xl">
+              My vision is led by a commitment to studying, guiding, and developing human-centered AI and
+              robotics. Intelligent agents should be collaborative, augmentative, and enhance human well-being
+              and quality of life.
+            </p>
+          </div>
 
+          <!-- Carousel of research-pillar cards -->
+          <div class="relative">
+            <div id="research-carousel" class="carousel flex gap-6 overflow-x-auto scroll-smooth px-6 md:px-12 pb-2">
 
-    <!-- 
-        <section id="internships">
-            <h2 class="text-xs uppercase tracking-[0.2em] font-bold text-slate-400 flex items-center gap-2 mb-8">
-                <span class="w-2 h-2 bg-blue-700 rounded-full"></span> Join the Lab (in construction)
-            </h2>
-            <div
-                class="group relative overflow-hidden bg-slate-900 p-8 md:p-16 rounded-[2.5rem] text-white shadow-2xl transition-all">
-                <div
-                    class="absolute -top-24 -right-24 w-96 h-96 bg-blue-600/10 rounded-full blur-[100px] group-hover:bg-blue-600/20 transition-all duration-700">
+              <a href="project.html?id=physical-ai" class="w-[300px] md:w-[360px] shrink-0 flex flex-col group">
+                <div class="rounded-2xl overflow-hidden card-glow mb-6">
+                  <!-- TODO: replace with your own photos -->
+                  <img src="img/interaction.png" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover">
                 </div>
-                <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-12">
-                    <div class="md:max-w-2xl">
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span
-                                class="px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-[10px] font-bold uppercase tracking-widest text-blue-400">Internships</span>
-                            <span
-                                class="px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-[10px] font-bold uppercase tracking-widest text-emerald-400">Technical
-                                Training</span>
-                            <span
-                                class="px-3 py-1 bg-purple-500/10 border border-purple-500/20 rounded-full text-[10px] font-bold uppercase tracking-widest text-purple-400">Research
-                                Assistant</span>
-                        </div>
-                        <h3 class="text-4xl md:text-5xl font-extrabold mb-6 tracking-tight leading-tight">Pioneering
-                            <span class="text-blue-500">Agentic & Physical AI.</span>
-                        </h3>
-                        <p class="text-slate-400 text-lg leading-relaxed font-light">
-                            We invite motivated Graduate and Undergraduate students to contribute to the intersection of
-                            <span class="text-white font-medium">Physical AI</span>, <span
-                                class="text-white font-medium">Agentic
-                                AI</span>, and <span class="text-white font-medium">Social Robotics</span>.
-                        </p>
-                    </div>
-                    <div class="flex flex-col gap-4 w-full md:w-auto">
-                        <a href="join.html"
-                            class="flex items-center justify-center gap-3 bg-blue-700 hover:bg-blue-600 text-white px-10 py-5 rounded-2xl font-bold text-base transition-all active:scale-95 shadow-xl shadow-blue-900/40 whitespace-nowrap">
-                            Application Instructions
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
-                        </a>
-                        <p class="text-[10px] text-slate-500 text-center uppercase tracking-widest font-bold">Inquiries
-                            open for
-                            2026-2027</p>
-                    </div>
+                <h3 class="display font-semibold text-xl mb-2 group-hover:underline underline-offset-4">Social Robotics
+                </h3>
+                <div class="flex items-end justify-between gap-4">
+                  <p class="text-white/80 text-[15px] leading-relaxed">
+                    Design of robotics systems that improve well-being , enhance access to services, and support social inclusion.
+                  </p>
+                  <svg class="w-6 h-6 shrink-0 text-white/70" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
                 </div>
+              </a>
+
+              <a href="project.html?id=agentic-ai" class="w-[300px] md:w-[360px] shrink-0 flex flex-col group">
+                <div class="rounded-2xl overflow-hidden card-glow mb-6">
+                  <img src="img/irex.png" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover">
+                </div>
+                <h3 class="display font-semibold text-xl mb-2">Agentic and Physical AI</h3>
+                <div class="flex items-end justify-between gap-4">
+                  <p class="text-white/80 text-[15px] leading-relaxed">
+                    Agentic systems that can perceive, reason, plan, predict, adapt, and safely act in the real-world.
+                  </p>
+                  <svg class="w-6 h-6 shrink-0 text-white/70" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </div>
+              </a>
+
+              <a href="project.html?id=digital-twins" class="w-[300px] md:w-[360px] shrink-0 flex flex-col group">
+                <div class="rounded-2xl overflow-hidden card-glow mb-6">
+                  <img src="img/teleop.png" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover">
+                </div>
+                <h3 class="display font-semibold text-xl mb-2">Human-Robot Collaboration</h3>
+                <div class="flex items-end justify-between gap-4">
+                  <p class="text-white/80 text-[15px] leading-relaxed">
+                    Development of collaborative digital twin systems for improving human performance, safety, and ergonomics.
+                  </p>
+                  <svg class="w-6 h-6 shrink-0 text-white/70" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </div>
+              </a>
+
             </div>
-        </section> -->
+
+            <!-- Circular carousel arrow, as in the HAI reference -->
+            <button id="carousel-next" aria-label="Scroll research cards"
+              class="hidden md:flex absolute right-6 top-1/3 w-14 h-14 rounded-full bg-white text-ink items-center justify-center shadow-lg hover:scale-105 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Capsule CTAs bottom-right -->
+          <div class="px-6 md:px-12 mt-10 flex flex-wrap justify-end gap-4">
+            <a href="research.html"
+              class="inline-flex items-center gap-3 border border-white/50 text-mint-text rounded-full pl-1.5 pr-6 py-1.5 font-medium text-[15px] hover:bg-white/10 transition-colors">
+              <img src="img/asit.png" alt="" class="w-10 h-10 rounded-full object-cover">
+              View Research Publications
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+            <a href="project.html"
+              class="inline-flex items-center gap-3 bg-mint text-mint-ink rounded-full px-6 py-3 font-medium text-[15px] hover:bg-white transition-colors">
+              More on Research
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         02 PROJECTS — Custom Static Container Target
+         ============================================================ -->
+    <section id="projects" class="max-w-site mx-auto px-5 py-20 md:py-24">
+
+      <div class="flex flex-col lg:flex-row lg:justify-between gap-8 mb-12">
+        <div class="flex items-baseline gap-4">
+          <span class="meta text-teal/60 text-2xl md:text-3xl">02</span>
+          <h2 class="display font-semibold text-4xl md:text-5xl text-teal">Projects</h2>
+        </div>
+        <div class="lg:max-w-xl">
+          <p class="text-body text-lg leading-relaxed mb-6">
+            Research made physical: platforms and studies where responsible AI meets real robots, real environments, and
+            diverse user needs.
+          </p>
+          <a href="project.html"
+            class="inline-flex items-center gap-2.5 bg-teal hover:bg-teal-dark text-white px-6 py-3.5 rounded-full font-medium text-[15px] transition-colors">
+            More on Projects
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div id="projects-container" class="grid md:grid-cols-2 gap-6"></div>
+    </section>
+
+    <!-- ============================================================
+         03 JOIN THE LAB — blue gradient panel with capsule CTAs.
+         ============================================================ -->
+    <section id="internships" class="max-w-site mx-auto px-5 pb-6">
+      <div class="rounded-3xl bg-gradient-to-br from-blue to-blue-deep text-white">
+        <div class="p-8 md:p-16 flex flex-col lg:flex-row lg:justify-between gap-10">
+
+          <div>
+            <div class="flex items-baseline gap-4 mb-8">
+              <span class="meta text-cyan/70 text-2xl md:text-3xl">03</span>
+              <h2 class="display font-semibold text-4xl md:text-5xl text-cyan">Join the Lab</h2>
+            </div>
+            <h3 class="display font-semibold text-2xl md:text-3xl leading-snug max-w-xl">
+              Pioneering agentic &amp; physical AI — with students.
+            </h3>
+          </div>
+
+          <div class="lg:max-w-xl flex flex-col gap-8">
+            <p class="text-white/85 text-lg leading-relaxed">
+              Graduate and undergraduate students are invited to contribute at the intersection of physical
+              AI, agentic AI, and social robotics — through internships, technical training, post-doctoral, and research
+              assistant positions. Inquiries open for 2026–2027.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a href="join.html"
+                class="inline-flex items-center gap-3 bg-cyanfill text-ink rounded-full px-6 py-3.5 font-medium text-[15px] hover:bg-white transition-colors">
+                Application Instructions
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+              <a href="interships.html"
+                class="inline-flex items-center gap-3 border border-white/50 text-white rounded-full px-6 py-3.5 font-medium text-[15px] hover:bg-white/10 transition-colors">
+                Open Positions
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
 
   </main>
 
-  <footer class="border-t py-12 text-center text-slate-400 text-xs uppercase tracking-widest">
-    &copy; 2026 Enrique Coronado &bull; AIST - HEART
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="max-w-site mx-auto px-5 py-10 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
+      <p class="font-semibold display">Enrique Coronado</p>
+      <p class="meta text-faint">&copy; 2026 · AIST — HEART</p>
+    </div>
   </footer>
 
+  <!-- ============================================================
+       DATA — edit news & projects here.
+       ============================================================ -->
   <script>
-
-    function toggleBio() {
-      const content = document.getElementById('bio-content');
-      const chevron = document.querySelector('#bio-chevron svg');
-
-      if (content.style.maxHeight && content.style.maxHeight !== '0px') {
-        content.style.maxHeight = '0px';
-        chevron.classList.remove('rotate-180');
-      } else {
-        // We use scrollHeight to dynamically calculate the height for a smooth transition
-        content.style.maxHeight = content.scrollHeight + 'px';
-        chevron.classList.add('rotate-180');
-      }
-    }
-
-    // Make sure to also update your mobile menu links similarly:
-    function toggleMenu() {
-      const menu = document.getElementById('mobile-menu');
-      const icon = document.getElementById('menu-icon');
-
-      if (menu.classList.contains('hidden')) {
-        menu.classList.remove('hidden');
-        // Optional: Change icon to an "X" when open
-        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
-      } else {
-        menu.classList.add('hidden');
-        // Reset to Hamburger icon
-        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />';
-      }
-    }
-
-
     const SITE_NEWS = [
       {
         id: "paper-robotics-march-12-2026",
-        date: "March 12, 2026",
+        date: "Mar 12, 2026",
         category: "Paper",
         title: "Post-ChatGPT Era: Agentic AI in Industry 5.0",
-        summary: "New article in 'Robotics' introduces the Responsible Agentic Robotics (RAR) framework, exploring the shift from LLMs to Agentic AI for sustainable and human-centered collaboration.",
-        img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=400" // Replace with actual image path
+        byline: "Robotics (MDPI)",
+        img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=400"
       },
       {
-        "id": "award-sii-nomination-jan-10-2026",
-        "date": "January 10, 2026",
-        "category": "Award",
-        "title": "Best Paper Award Nomination at IEEE/SICE SII 2026",
-        "summary": "New nomination for the Best Paper Award at IEEE/SICE SII 2026 for the research 'Tactile-Based Active Inference,' featuring contributions from internship student Tatsuya K. of the University of Tokyo.",
-        "img": "img/sii-2026.png"
+        id: "award-sii-nomination-jan-10-2026",
+        date: "Jan 10, 2026",
+        category: "Award",
+        title: "Best Paper Award Nomination at IEEE/SICE SII 2026",
+        byline: "With internship student Tatsuya K., University of Tokyo",
+        img: "img/sii-2026.png"
       },
       {
-        "id": "paper-simulators-august-04-2025",
-        "date": "August 4, 2025",
-        "category": "Paper",
-        "title": "ROS-Compatible Robotics Simulators for Industry 4.0 and Industry 5.0",
-        "summary": "New article in 'Applied Sciences' introduces a systematic review of 65 peer-reviewed articles analyzing the trends, capabilities, and application domains of ROS-integrated simulators within modern industrial and manufacturing contexts.",
-        "img": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200",
+        id: "paper-simulators-august-04-2025",
+        date: "Aug 4, 2025",
+        category: "Paper",
+        title: "ROS-Compatible Robotics Simulators for Industry 4.0 and Industry 5.0",
+        byline: "Applied Sciences (MDPI)",
+        img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400"
       },
       {
-        "id": "paper-digital-twins-feb-13-2024",
-        "date": "February 13, 2024",
-        "category": "Paper",
-        "title": "A Path to Industry 5.0 Digital Twins for Human–Robot Collaboration by Bridging NEP+ and ROS",
-        "summary": "New article in 'Robotics' introduces a framework for Industry 5.0 digital twins by bridging NEP+ and ROS to create accessible, distributed, and platform-independent architectures for advanced human-robot collaboration.",
-        "img": "img/ros.png",
+        id: "paper-digital-twins-feb-13-2024",
+        date: "Feb 13, 2024",
+        category: "Paper",
+        title: "A Path to Industry 5.0 Digital Twins for Human–Robot Collaboration by Bridging NEP+ and ROS",
+        byline: "Robotics (MDPI)",
+        img: "img/Bridging_Robotics_and_Human_Interaction.png"
       },
       {
-        "id": "award-aist-ith-best-paper-feb-29-2024",
-        "date": "February 29, 2024",
-        "category": "Award",
-        "title": "AIST ITH Best Paper Award",
-        "summary": "The research article 'Evaluating quality in human-robot interaction: A systematic search and classification of performance and human-centered factors, measures and metrics towards an industry 5.0' was honored with the AIST ITH Best Paper Award.",
-        "img": "img/asit.png"
+        id: "award-aist-ith-best-paper-feb-29-2024",
+        date: "Feb 29, 2024",
+        category: "Award",
+        title: "AIST ITH Best Paper Award",
+        byline: "AIST Information Technology and Human Factors",
+        img: "img/best.png"
       },
       {
-        "id": "paper-xr-hri-jan-18-2023",
-        "date": "January 18, 2023",
-        "category": "Paper",
-        "title": "Integrating Virtual, Mixed, and Augmented Reality to HRI Applications Using Game Engines",
-        "summary": "New article in 'Applied Sciences' identifies accessible software tools for developing VR, AR, and MR experiences in HRI. The review classifies XR applications across social robotics, industrial programming, and teleoperation.",
-        "img": "img/teleop.png",
-
+        id: "paper-xr-hri-jan-18-2023",
+        date: "Jan 18, 2023",
+        category: "Paper",
+        title: "Integrating Virtual, Mixed, and Augmented Reality to HRI Applications Using Game Engines",
+        byline: "Applied Sciences (MDPI)",
+        img: "img/teleop.png"
       },
     ];
 
-    // NEWS -----------
+    const SITE_PROJECTS = [
+      {
+        id: "people-centric-ai-robotics",
+        meta: "Human-Robot Interaction",
+        title: "People-Centric AI & Robotics",
+        description: "Developing human-centered robotic systems that enable natural collaboration, social intelligence, and responsible AI deployment aligned with human values and societal needs.",
+        img: "img/social.png",
+        tags: ["HRI", "Social Robotics", "Responsible AI"]
+      },
+      {
+        id: "agentic-physical-ai",
+        meta: "Embodied Intelligence",
+        title: "Agentic & Physical AI",
+        description: "Building embodied autonomous systems that understand human intent, reason over world models, and act safely in complex real-world environments.",
+        img: "img/education.png",
+        tags: ["Embodied AI", "World Models", "Neuro-Symbolic AI"]
+      },
+      {
+        id: "human-ai-coexistence",
+        meta: "Human-Centered Manufacturing & AI Systems",
+        title: "Human-AI Coexistence Systems",
+        description: "Developing human-centred AI and robotics systems for inclusive and sustainable manufacturing, where intelligent agents support workers, enhance wellbeing, and enable ethical, transparent, and resilient industrial ecosystems.",
+        img: "img/digital.png",
+        tags: ["Inclusive Manufacturing", "Human-Centred AI", "Sustainability"]
+      }
+    ];
+  </script>
 
+  <!-- ============================================================
+       BEHAVIOR — mobile menu, carousel, news, and projects logic.
+       ============================================================ -->
+  <script>
+    // ---------- Mobile menu ----------
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.toggle('hidden');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target.closest('a')) {
+        mobileMenu.classList.add('hidden');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // ---------- Research carousel ----------
+    const carousel = document.getElementById('research-carousel');
+    document.getElementById('carousel-next').addEventListener('click', () => {
+      const card = carousel.querySelector('a');
+      const step = card ? card.offsetWidth + 24 : 380;
+      const atEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - step / 2;
+      carousel.scrollTo({ left: atEnd ? 0 : carousel.scrollLeft + step, behavior: 'smooth' });
+    });
+
+    // ---------- Projects Render ----------
+    function renderProjects() {
+      const projectsContainer = document.getElementById('projects-container');
+      if (!projectsContainer) return;
+
+      // Changed dynamically generated href target to match subfolder structural requirement: 'projects/id.html'
+      projectsContainer.innerHTML = SITE_PROJECTS.map(project => `
+        <a href="projects/${project.id}.html" class="group rounded-3xl bg-white overflow-hidden flex flex-col shadow-sm">
+          <div class="h-60 overflow-hidden">
+            <img src="${project.img}" alt="${project.title}" loading="lazy"
+              class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500">
+          </div>
+          <div class="p-8 flex flex-col gap-3 flex-1">
+            <p class="meta text-teal">${project.meta}</p>
+            <h3 class="display font-semibold text-2xl">${project.title}</h3>
+            <p class="text-body text-[15px] leading-relaxed">
+              ${project.description}
+            </p>
+            <div class="mt-auto flex flex-wrap gap-2 pt-3">
+              ${project.tags.map(tag => `<span class="meta text-body bg-line/60 rounded-full px-3 py-1.5">${tag}</span>`).join('')}
+            </div>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    // ---------- News: state ----------
     const ITEMS_PER_PAGE = 6;
     let currentPage = 1;
     let currentCategory = 'All';
 
-    function filterBy(category) {
-      currentCategory = category;
-      currentPage = 1; // Reset to page 1 when filter changes
+    const newsContainer = document.getElementById('news-container');
+    const paginationEl = document.getElementById('pagination-controls');
+    const filtersEl = document.getElementById('news-filters');
 
-      // Update UI Button Styles
-      document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('bg-blue-700', 'text-white', 'shadow-sm');
-        btn.classList.add('text-slate-500');
+    const ACTIVE_FILTER = ['text-ink', 'underline', 'underline-offset-8', 'decoration-2', 'decoration-lime'];
+    const IDLE_FILTER = ['text-faint', 'hover:text-ink'];
+
+    // ---------- News: filters ----------
+    filtersEl.addEventListener('click', (e) => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+
+      currentCategory = btn.dataset.category;
+      currentPage = 1;
+
+      filtersEl.querySelectorAll('.filter-btn').forEach(b => {
+        const active = b === btn;
+        b.classList.remove(...ACTIVE_FILTER, ...IDLE_FILTER);
+        b.classList.add(...(active ? ACTIVE_FILTER : IDLE_FILTER));
+        b.setAttribute('aria-pressed', String(active));
       });
 
-      const activeBtn = document.getElementById(`btn-${category}`);
-      activeBtn.classList.remove('text-slate-500');
-      activeBtn.classList.add('bg-blue-700', 'text-white', 'shadow-sm');
-
       renderNews();
+    });
+
+    // ---------- News: row templates ----------
+    function newsRow(item) {
+      const chip = item.category === 'Award' ? 'AWARD' : 'NEWS';
+      return `
+        <a href="news/${item.id}.html"
+          class="group border-b border-line py-6 flex gap-5 items-start justify-between">
+          <div class="min-w-0">
+            <h3 class="font-semibold text-[16px] leading-snug mb-2 group-hover:text-sky transition-colors">
+              ${item.title}
+            </h3>
+            <p class="text-sm text-body mb-3">${item.byline || ''}</p>
+            <p class="meta text-faint">${item.date}</p>
+          </div>
+          <div class="relative shrink-0">
+            <img src="${item.img}" alt="" loading="lazy" class="w-[86px] h-[86px] rounded-2xl object-cover">
+            <span class="absolute -top-2 right-0 bg-lime text-ink text-[9px] font-bold tracking-wider rounded-full px-2 py-0.5">
+              ${chip}
+            </span>
+          </div>
+        </a>`;
+    }
+
+    function eventRow(item) {
+      const d = item.eventDate;
+      return `
+        <a href="${item.href}" class="group border-b border-line py-6 flex gap-5 items-start justify-between">
+          <div class="min-w-0">
+            <h3 class="font-semibold text-[16px] leading-snug mb-2 group-hover:text-sky transition-colors inline-flex items-start gap-1.5">
+              ${item.title}
+              <svg class="w-3.5 h-3.5 mt-1 shrink-0 text-faint" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+            </h3>
+            <p class="meta text-faint">${item.meta}</p>
+          </div>
+          <div class="shrink-0 w-[86px] rounded-xl border-2 border-blue overflow-hidden text-center bg-white">
+            <p class="bg-blue text-white text-[9px] font-bold tracking-widest uppercase py-1">${d.month}</p>
+            <p class="display font-semibold text-3xl text-blue leading-none pt-1.5">${d.day}</p>
+            <p class="text-[10px] font-semibold text-blue pb-1.5">${d.year}</p>
+          </div>
+        </a>`;
+    }
+
+    function getFilteredNews() {
+      return currentCategory === 'All'
+        ? SITE_NEWS
+        : SITE_NEWS.filter(item => item.category === currentCategory);
     }
 
     function renderNews() {
-      const container = document.getElementById('news-container');
-      const filteredNews = currentCategory === 'All'
-        ? SITE_NEWS
-        : SITE_NEWS.filter(item => item.category === currentCategory);
-
+      const filtered = getFilteredNews();
       const start = (currentPage - 1) * ITEMS_PER_PAGE;
-      const end = start + ITEMS_PER_PAGE;
-      const paginatedItems = filteredNews.slice(start, end);
+      const pageItems = filtered.slice(start, start + ITEMS_PER_PAGE);
 
-      container.innerHTML = '';
+      newsContainer.innerHTML = pageItems.length
+        ? pageItems.map(item => item.category === 'Event' ? eventRow(item) : newsRow(item)).join('')
+        : `<p class="col-span-full py-16 text-center text-faint">No items found.</p>`;
 
-      if (paginatedItems.length === 0) {
-        container.innerHTML = `<div class="col-span-full py-20 text-center text-slate-400 font-medium">No items found.</div>`;
-        return;
-      }
-
-      paginatedItems.forEach(item => {
-        // Generate the link path
-        const newsLink = `news/${item.id}.html`;
-
-        container.innerHTML += `
-      <a href="${newsLink}" class="group flex flex-col bg-white rounded-[2.5rem] overflow-hidden border border-slate-100 hover:border-blue-200 transition-all duration-300 hover:shadow-xl hover:shadow-blue-900/5 animate-in fade-in zoom-in duration-500">
-        <div class="h-48 overflow-hidden relative">
-          <img src="${item.img}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
-          <div class="absolute top-4 left-4">
-            <span class="px-3 py-1 bg-white/90 backdrop-blur-sm text-[10px] font-bold text-blue-700 uppercase tracking-widest rounded-full shadow-sm">${item.category}</span>
-          </div>
-        </div>
-        <div class="p-8 flex flex-col flex-1">
-          <p class="text-[11px] font-bold text-slate-400 mb-2 uppercase tracking-widest">${item.date}</p>
-          <h4 class="font-bold text-xl text-slate-900 mb-4 group-hover:text-blue-700 transition-colors leading-tight">${item.title}</h4>
-          <p class="text-sm text-slate-500 leading-relaxed font-light line-clamp-3 mb-6">${item.summary}</p>
-          
-          <div class="mt-auto flex items-center text-blue-700 text-xs font-bold uppercase tracking-widest">
-            Read More
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </div>
-        </div>
-      </a>
-    `;
-      });
-
-      renderControls(filteredNews.length);
+      renderPagination(filtered.length);
     }
 
-    function renderControls(totalItems) {
-      const controls = document.getElementById('pagination-controls');
+    function renderPagination(totalItems) {
       const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
-      controls.innerHTML = '';
-
-      if (totalPages <= 1) return; // Don't show if only one page
+      paginationEl.innerHTML = '';
+      if (totalPages <= 1) return;
 
       for (let i = 1; i <= totalPages; i++) {
-        const isActive = i === currentPage;
-        controls.innerHTML += `
-      <button onclick="goToPage(${i})" 
-        class="w-10 h-10 rounded-xl font-bold text-xs transition-all 
-        ${isActive ? 'bg-blue-700 text-white shadow-lg' : 'bg-white text-slate-400 border border-slate-100 hover:border-blue-200'}">
-        ${i}
-      </button>
-    `;
+        const btn = document.createElement('button');
+        const active = i === currentPage;
+        btn.textContent = i;
+        btn.setAttribute('aria-label', `Page ${i}`);
+        if (active) btn.setAttribute('aria-current', 'page');
+        btn.className = `w-9 h-9 rounded-full text-[13px] font-semibold transition-colors ${active ? 'bg-ink text-white' : 'bg-white text-faint hover:text-ink'
+          }`;
+        btn.addEventListener('click', () => {
+          currentPage = i;
+          renderNews();
+          document.getElementById('news').scrollIntoView({ behavior: 'smooth' });
+        });
+        paginationEl.appendChild(btn);
       }
     }
 
-    function goToPage(page) {
-      currentPage = page;
-      renderNews();
-      document.getElementById('news').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Initial Call
+    // Run layout renderings
     renderNews();
-
+    renderProjects();
   </script>
 </body>
 

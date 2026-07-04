@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enrique Coronado — Responsible Physical AI &amp; Robotics</title>
+  <meta name="description"
+    content="Enrique Coronado is a Senior Researcher at AIST's Integrated Research Center for Wellbeing (HEART team), working on responsible Physical AI, agentic AI, and human-centered robotics.">
+
+  <!-- ============================================================
+       DEPENDENCIES
+       Tailwind via CDN is fine while prototyping. For production,
+       switch to the Tailwind CLI build and a static styles.css.
+       ============================================================ -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap"
+    rel="stylesheet">
+
+  <!-- ============================================================
+       DESIGN TOKENS — single source of truth for the whole site.
+       Palette sampled from the HAI reference screenshots.
+       ============================================================ -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#16233F',          // navy text
+            body: '#4B5568',         // secondary text
+            faint: '#8B93A3',        // captions
+            line: '#DDE2EC',         // hairlines
+            sky: '#4E9FD9',          // "Watch Our Story" text
+            lime: '#DCF34B',         // NEWS / AWARD chips
+            blue: {
+              DEFAULT: '#1173BC',    // spotlight heading, buttons, panel
+              deep: '#0A5697',
+              text: '#1B6FB5',       // spotlight paragraph blue
+            },
+            cyan: '#A9EAFB',         // headings on blue panel
+            cyanfill: '#BFF0FC',
+            plum: {                  // 01 Research panel gradient
+              from: '#8A4B9B',
+              via: '#7A3D8C',
+              to: '#5F2D74',
+            },
+            mint: {
+              DEFAULT: '#AEE8D4',    // filled capsule on purple panel
+              text: '#BDEFE1',       // panel headings
+              ink: '#123B33',
+            },
+            teal: {
+              DEFAULT: '#14555A',    // 02 section heading + button
+              dark: '#0E4347',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+          },
+          maxWidth: { site: '80rem' },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-feature-settings: 'cv11', 'ss01';
+      /* Soft lavender-blue page wash, as in the HAI reference */
+      background: linear-gradient(180deg, #F4F6FB 0%, #EAEFF8 55%, #F1F4FA 100%);
+    }
+
+    .display { letter-spacing: -0.025em; }
+
+    /* Mono meta: dates, section numbers */
+    .meta {
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    /* Carousel: horizontal snap, hidden scrollbar */
+    .carousel {
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+    .carousel::-webkit-scrollbar { display: none; }
+    .carousel > * { scroll-snap-align: start; }
+
+    /* Glow behind panel card images, as in the HAI reference */
+    .card-glow { box-shadow: 0 0 44px rgba(255, 255, 255, 0.28); }
+
+    /* Accessibility */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #1173BC;
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+      .carousel { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+
+<body class="text-ink antialiased">
+
+  <!-- ============================================================
+       NAVIGATION — identity left; links center (desktop);
+       hamburger right, HAI-style.
+       ============================================================ -->
+  <nav aria-label="Main">
+    <div class="max-w-site mx-auto px-5 h-16 flex items-center justify-between gap-6">
+
+      <a href="index.html" class="leading-tight shrink-0">
+        <span class="block font-bold text-[17px] display">Enrique Coronado</span>
+        <span class="block text-[10px] text-faint font-medium tracking-wide">AIST · INTEGRATED RESEARCH CENTER FOR
+          WELLBEING</span>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-9 text-[15px] font-medium">
+        <a href="about.html" class="hover:text-blue transition-colors">About</a>
+        <a href="#research" class="hover:text-blue transition-colors">Research</a>
+        <a href="#projects" class="hover:text-blue transition-colors">Projects</a>
+        <a href="research.html" class="hover:text-blue transition-colors">Publications</a>
+        <a href="#news" class="hover:text-blue transition-colors">News</a>
+        <!-- TODO: rename file to internships.html and update every href -->
+        <a href="interships.html" class="hover:text-blue transition-colors">Internships</a>
+      </div>
+
+      <button id="menu-toggle" class="lg:hidden p-2 -mr-2 text-ink" aria-expanded="false" aria-controls="mobile-menu"
+        aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-line bg-white px-5 py-5">
+      <div class="flex flex-col gap-4 text-[15px] font-medium text-body">
+        <a href="about.html" class="hover:text-ink">About</a>
+        <a href="#research" class="hover:text-ink">Research</a>
+        <a href="#projects" class="hover:text-ink">Projects</a>
+        <a href="research.html" class="hover:text-ink">Publications</a>
+        <a href="#news" class="hover:text-ink">News</a>
+        <a href="interships.html" class="text-blue font-semibold">Internships →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       HERO — monochrome cinematic video canvas, rounded corners,
+       headline bottom-left, glass capsule CTAs bottom-right.
+       ============================================================ -->
+  <header class="max-w-site mx-auto px-5">
+    <div class="relative rounded-3xl overflow-hidden bg-ink">
+      <video class="w-full h-[62vh] min-h-[440px] max-h-[720px] object-cover grayscale" autoplay muted loop
+        playsinline poster="img/heart1.png">
+        <source src="test.mp4" type="video/mp4">
+      </video>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent" aria-hidden="true">
+      </div>
+
+      <div class="absolute inset-x-0 bottom-0 p-6 md:p-10">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-7">
+
+          <h1 class="display text-white font-semibold text-3xl md:text-[2.6rem] leading-[1.15] max-w-xl">
+            Responsible Physical AI, with humanity at the heart.
+          </h1>
+
+          <div class="flex flex-wrap items-center gap-4 shrink-0">
+            <!-- TODO: point this to your story video (YouTube or /story.html) -->
+            <a href="about.html"
+              class="inline-flex items-center gap-2.5 bg-white text-sky px-6 py-3.5 rounded-full font-medium text-[15px] hover:bg-white/90 transition-colors">
+              Watch Our Story
+              <svg class="w-4.5 h-4.5 w-5 h-5 text-ink" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M8 5.5v13l11-6.5-11-6.5z" />
+              </svg>
+            </a>
+            <a href="interships.html"
+              class="inline-flex items-center gap-2.5 border border-white/70 text-white px-6 py-3.5 rounded-full font-medium text-[15px] hover:bg-white/10 backdrop-blur transition-colors">
+              Join the Lab
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       NEWS STRIP — two-column rows: title, byline, mono date left;
+       thumbnail with lime chip right; events get a calendar card.
+       ============================================================ -->
+  <section id="news" class="max-w-site mx-auto px-5 pt-12 pb-16">
+
+    <div class="flex items-end justify-between gap-6 mb-8">
+      <h2 class="sr-only">News and achievements</h2>
+      <div id="news-filters" class="flex gap-6 text-sm font-medium" role="group" aria-label="Filter news">
+        <button data-category="All" aria-pressed="true"
+          class="filter-btn text-ink underline underline-offset-8 decoration-2 decoration-lime">All</button>
+        <button data-category="Paper" aria-pressed="false"
+          class="filter-btn text-faint hover:text-ink transition-colors">Publications</button>
+        <button data-category="Award" aria-pressed="false"
+          class="filter-btn text-faint hover:text-ink transition-colors">Awards</button>
+      </div>
+    </div>
+
+    <div id="news-container" class="grid grid-cols-1 lg:grid-cols-2 gap-x-14 min-h-[180px]"></div>
+    <div id="pagination-controls" class="mt-10 flex justify-center gap-2"></div>
+  </section>
+
+  <!-- ============================================================
+       SPOTLIGHT — featured work: image left, blue heading and
+       blue body text right, solid blue capsule CTA (HAI pattern).
+       ============================================================ -->
+  <section class="max-w-site mx-auto px-5 pb-20">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <div class="rounded-3xl overflow-hidden">
+        <img src="img/physical-ai.jpg" alt="Responsible Agentic Robotics research" loading="lazy"
+          class="w-full aspect-[16/10] object-cover">
+      </div>
+      <div>
+        <h2 class="display font-semibold text-3xl md:text-4xl text-blue leading-tight mb-5">
+          The Responsible Agentic Robotics Framework Is Here
+        </h2>
+        <p class="text-blue-text leading-relaxed text-[17px]">
+          Published in <em>Robotics</em>, the RAR framework maps the shift from LLMs to agentic AI in Industry
+          5.0 — and asks what it takes for autonomous, embodied agents to remain sustainable and
+          human-centered. As robots gain the ability to decide and act, rigorous frameworks for responsibility
+          have never been more critical. This work provides a comprehensive path for aligning agentic robotics
+          with the people it serves.
+        </p>
+        <a href="news/paper-robotics-march-12-2026.html"
+          class="mt-7 inline-flex items-center gap-2.5 bg-blue hover:bg-blue-deep text-white px-6 py-3.5 rounded-full font-medium text-[15px] transition-colors">
+          Read the Paper
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+            aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- ============================================================
+         01 RESEARCH — purple gradient panel: mono number + mint
+         title, intro right, glowing image-card carousel with
+         circular arrow, capsule CTAs bottom-right (HAI pattern).
+         ============================================================ -->
+    <section id="research" class="max-w-site mx-auto px-5">
+      <div class="rounded-3xl bg-gradient-to-b from-plum-from via-plum-via to-plum-to text-white overflow-hidden">
+        <div class="py-12 md:py-16">
+
+          <div class="px-6 md:px-12 flex flex-col lg:flex-row lg:justify-between gap-8 mb-12">
+            <div class="flex items-baseline gap-4">
+              <span class="meta text-mint-text/80 text-2xl md:text-3xl">01</span>
+              <h2 class="display font-semibold text-4xl md:text-5xl text-mint-text">Research</h2>
+            </div>
+            <p class="text-white/90 text-lg leading-relaxed lg:max-w-xl">
+              My vision is led by a commitment to studying, guiding, and developing human-centered AI and
+              robotics. Intelligent agents should be collaborative, augmentative, and enhance human well-being
+              and quality of life.
+            </p>
+          </div>
+
+          <!-- Carousel of research-pillar cards -->
+          <div class="relative">
+            <div id="research-carousel" class="carousel flex gap-6 overflow-x-auto scroll-smooth px-6 md:px-12 pb-2">
+
+              <article class="w-[300px] md:w-[360px] shrink-0 flex flex-col">
+                <div class="rounded-2xl overflow-hidden card-glow mb-6">
+                  <!-- TODO: replace with your own photos -->
+                  <img src="img/physical-ai.jpg" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover">
+                </div>
+                <h3 class="display font-semibold text-xl mb-2">Physical AI</h3>
+                <div class="flex items-end justify-between gap-4">
+                  <p class="text-white/80 text-[15px] leading-relaxed">
+                    Embodied intelligence that perceives, touches, and manipulates the real world...
+                  </p>
+                  <svg class="w-6 h-6 shrink-0 text-white/70" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </div>
+              </article>
+
+              <article class="w-[300px] md:w-[360px] shrink-0 flex flex-col">
+                <div class="rounded-2xl overflow-hidden card-glow mb-6">
+                  <img src="img/ros.png" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover">
+                </div>
+                <h3 class="display font-semibold text-xl mb-2">Agentic AI</h3>
+                <div class="flex items-end justify-between gap-4">
+                  <p class="text-white/80 text-[15px] leading-relaxed">
+                    Agents that decide what to do next and do it, responsibly...
+                  </p>
+                  <svg class="w-6 h-6 shrink-0 text-white/70" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </div>
+              </article>
+
+              <article class="w-[300px] md:w-[360px] shrink-0 flex flex-col">
+                <div class="rounded-2xl overflow-hidden card-glow mb-6">
+                  <img src="img/teleop.png" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover">
+                </div>
+                <h3 class="display font-semibold text-xl mb-2">People-Centric Robotics</h3>
+                <div class="flex items-end justify-between gap-4">
+                  <p class="text-white/80 text-[15px] leading-relaxed">
+                    Systems that work with people, not just for them...
+                  </p>
+                  <svg class="w-6 h-6 shrink-0 text-white/70" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </div>
+              </article>
+
+              <article class="w-[300px] md:w-[360px] shrink-0 flex flex-col">
+                <div class="rounded-2xl overflow-hidden card-glow mb-6">
+                  <img src="img/heart1.png" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover">
+                </div>
+                <h3 class="display font-semibold text-xl mb-2">Digital Twins &amp; XR</h3>
+                <div class="flex items-end justify-between gap-4">
+                  <p class="text-white/80 text-[15px] leading-relaxed">
+                    Bridging NEP+ and ROS for accessible human-robot collaboration...
+                  </p>
+                  <svg class="w-6 h-6 shrink-0 text-white/70" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </div>
+              </article>
+
+            </div>
+
+            <!-- Circular carousel arrow, as in the HAI reference -->
+            <button id="carousel-next" aria-label="Scroll research cards"
+              class="hidden md:flex absolute right-6 top-1/3 w-14 h-14 rounded-full bg-white text-ink items-center justify-center shadow-lg hover:scale-105 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Capsule CTAs bottom-right -->
+          <div class="px-6 md:px-12 mt-10 flex flex-wrap justify-end gap-4">
+            <a href="research.html"
+              class="inline-flex items-center gap-3 border border-white/50 text-mint-text rounded-full pl-1.5 pr-6 py-1.5 font-medium text-[15px] hover:bg-white/10 transition-colors">
+              <img src="img/asit.png" alt="" class="w-10 h-10 rounded-full object-cover">
+              View Research Publications
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+            <a href="about.html"
+              class="inline-flex items-center gap-3 bg-mint text-mint-ink rounded-full px-6 py-3 font-medium text-[15px] hover:bg-white transition-colors">
+              More on Research
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         02 PROJECTS — light section, dark-teal heading + button
+         (HAI "02 Education" pattern), project cards below.
+         ============================================================ -->
+    <section id="projects" class="max-w-site mx-auto px-5 py-20 md:py-24">
+
+      <div class="flex flex-col lg:flex-row lg:justify-between gap-8 mb-12">
+        <div class="flex items-baseline gap-4">
+          <span class="meta text-teal/60 text-2xl md:text-3xl">02</span>
+          <h2 class="display font-semibold text-4xl md:text-5xl text-teal">Projects</h2>
+        </div>
+        <div class="lg:max-w-xl">
+          <p class="text-body text-lg leading-relaxed mb-6">
+            Research made physical: platforms and studies where responsible AI meets real robots, real waste
+            streams, and real workplaces.
+          </p>
+          <a href="research.html"
+            class="inline-flex items-center gap-2.5 bg-teal hover:bg-teal-dark text-white px-6 py-3.5 rounded-full font-medium text-[15px] transition-colors">
+            More on Projects
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+              aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+
+        <article class="group rounded-3xl bg-white overflow-hidden flex flex-col shadow-sm">
+          <div class="h-60 overflow-hidden">
+            <img src="img/physical-ai.jpg" alt="ROBOCYCLE dual-arm robotic platform" loading="lazy"
+              class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500">
+          </div>
+          <div class="p-8 flex flex-col gap-3 flex-1">
+            <p class="meta text-teal">Sustainability</p>
+            <h3 class="display font-semibold text-2xl">ROBOCYCLE</h3>
+            <p class="text-body text-[15px] leading-relaxed">
+              A physical dual-arm robotic platform integrating UR5e and xArm7 robots for PET-oriented waste
+              sorting.
+            </p>
+            <div class="mt-auto flex flex-wrap gap-2 pt-3">
+              <span class="meta text-body bg-line/60 rounded-full px-3 py-1.5">ROS 2</span>
+              <span class="meta text-body bg-line/60 rounded-full px-3 py-1.5">Manipulation</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="group rounded-3xl bg-white overflow-hidden flex flex-col shadow-sm">
+          <div class="h-60 overflow-hidden">
+            <img src="img/heart1.png" alt="Axobotl social robot study" loading="lazy"
+              class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500">
+          </div>
+          <div class="p-8 flex flex-col gap-3 flex-1">
+            <p class="meta text-teal">Well-being</p>
+            <h3 class="display font-semibold text-2xl">Axobotl</h3>
+            <p class="text-body text-[15px] leading-relaxed">
+              Evaluating social robots for supporting concentration and emotional well-being in hybrid work
+              environments.
+            </p>
+            <div class="mt-auto flex flex-wrap gap-2 pt-3">
+              <span class="meta text-body bg-line/60 rounded-full px-3 py-1.5">Social HRI</span>
+              <span class="meta text-body bg-line/60 rounded-full px-3 py-1.5">User study</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         03 JOIN THE LAB — blue gradient panel with capsule CTAs.
+         ============================================================ -->
+    <section id="internships" class="max-w-site mx-auto px-5 pb-6">
+      <div class="rounded-3xl bg-gradient-to-br from-blue to-blue-deep text-white">
+        <div class="p-8 md:p-16 flex flex-col lg:flex-row lg:justify-between gap-10">
+
+          <div>
+            <div class="flex items-baseline gap-4 mb-8">
+              <span class="meta text-cyan/70 text-2xl md:text-3xl">03</span>
+              <h2 class="display font-semibold text-4xl md:text-5xl text-cyan">Join the Lab</h2>
+            </div>
+            <h3 class="display font-semibold text-2xl md:text-3xl leading-snug max-w-xl">
+              Pioneering agentic &amp; physical AI — with students.
+            </h3>
+          </div>
+
+          <div class="lg:max-w-xl flex flex-col gap-8">
+            <p class="text-white/85 text-lg leading-relaxed">
+              Graduate and undergraduate students are invited to contribute at the intersection of physical
+              AI, agentic AI, and social robotics — through internships, technical training, and research
+              assistant positions. Inquiries open for 2026–2027.
+            </p>
+            <div class="flex flex-wrap gap-4">
+              <a href="join.html"
+                class="inline-flex items-center gap-3 bg-cyanfill text-ink rounded-full px-6 py-3.5 font-medium text-[15px] hover:bg-white transition-colors">
+                Application Instructions
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+              <a href="interships.html"
+                class="inline-flex items-center gap-3 border border-white/50 text-white rounded-full px-6 py-3.5 font-medium text-[15px] hover:bg-white/10 transition-colors">
+                Open Positions
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+                  aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="max-w-site mx-auto px-5 py-10 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
+      <p class="font-semibold display">Enrique Coronado</p>
+      <p class="meta text-faint">&copy; 2026 · AIST — HEART</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       DATA — edit news here only. Later: move to js/news-data.js
+       Item shapes:
+         Paper / Award: { id, date, category, title, byline, img }
+         Event:         { id, category: "Event", title, meta,
+                          eventDate: { month, day, year }, href }
+       ============================================================ -->
+  <script>
+    const SITE_NEWS = [
+      {
+        id: "paper-robotics-march-12-2026",
+        date: "Mar 12, 2026",
+        category: "Paper",
+        title: "Post-ChatGPT Era: Agentic AI in Industry 5.0",
+        byline: "Robotics (MDPI)",
+        img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=400"
+      },
+      {
+        id: "award-sii-nomination-jan-10-2026",
+        date: "Jan 10, 2026",
+        category: "Award",
+        title: "Best Paper Award Nomination at IEEE/SICE SII 2026",
+        byline: "With internship student Tatsuya K., University of Tokyo",
+        img: "img/sii-2026.png"
+      },
+      /* TODO: replace with your real next event (or delete this item).
+         Events render with a calendar date card instead of a photo. */
+      {
+        id: "event-sii-2027",
+        category: "Event",
+        title: "IEEE/SICE International Symposium on System Integration (SII 2027)",
+        meta: "Conference · Jan 2027",
+        eventDate: { month: "January", day: "20", year: "2027" },
+        href: "interships.html"
+      },
+      {
+        id: "paper-simulators-august-04-2025",
+        date: "Aug 4, 2025",
+        category: "Paper",
+        title: "ROS-Compatible Robotics Simulators for Industry 4.0 and Industry 5.0",
+        byline: "Applied Sciences (MDPI)",
+        img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400"
+      },
+      {
+        id: "paper-digital-twins-feb-13-2024",
+        date: "Feb 13, 2024",
+        category: "Paper",
+        title: "A Path to Industry 5.0 Digital Twins for Human–Robot Collaboration by Bridging NEP+ and ROS",
+        byline: "Robotics (MDPI)",
+        img: "img/ros.png"
+      },
+      {
+        id: "award-aist-ith-best-paper-feb-29-2024",
+        date: "Feb 29, 2024",
+        category: "Award",
+        title: "AIST ITH Best Paper Award",
+        byline: "AIST Information Technology and Human Factors",
+        img: "img/asit.png"
+      },
+      {
+        id: "paper-xr-hri-jan-18-2023",
+        date: "Jan 18, 2023",
+        category: "Paper",
+        title: "Integrating Virtual, Mixed, and Augmented Reality to HRI Applications Using Game Engines",
+        byline: "Applied Sciences (MDPI)",
+        img: "img/teleop.png"
+      },
+    ];
+  </script>
+
+  <!-- ============================================================
+       BEHAVIOR — mobile menu, carousel, news filters, pagination.
+       Later: move to js/main.js and load with defer.
+       ============================================================ -->
+  <script>
+    // ---------- Mobile menu ----------
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.toggle('hidden');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target.closest('a')) {
+        mobileMenu.classList.add('hidden');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // ---------- Research carousel ----------
+    const carousel = document.getElementById('research-carousel');
+    document.getElementById('carousel-next').addEventListener('click', () => {
+      const card = carousel.querySelector('article');
+      const step = card ? card.offsetWidth + 24 : 380;
+      const atEnd = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - step / 2;
+      carousel.scrollTo({ left: atEnd ? 0 : carousel.scrollLeft + step, behavior: 'smooth' });
+    });
+
+    // ---------- News: state ----------
+    const ITEMS_PER_PAGE = 6;   // three rows of the 2-column strip
+    let currentPage = 1;
+    let currentCategory = 'All';
+
+    const newsContainer = document.getElementById('news-container');
+    const paginationEl = document.getElementById('pagination-controls');
+    const filtersEl = document.getElementById('news-filters');
+
+    const ACTIVE_FILTER = ['text-ink', 'underline', 'underline-offset-8', 'decoration-2', 'decoration-lime'];
+    const IDLE_FILTER = ['text-faint', 'hover:text-ink'];
+
+    // ---------- News: filters ----------
+    filtersEl.addEventListener('click', (e) => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+
+      currentCategory = btn.dataset.category;
+      currentPage = 1;
+
+      filtersEl.querySelectorAll('.filter-btn').forEach(b => {
+        const active = b === btn;
+        b.classList.remove(...ACTIVE_FILTER, ...IDLE_FILTER);
+        b.classList.add(...(active ? ACTIVE_FILTER : IDLE_FILTER));
+        b.setAttribute('aria-pressed', String(active));
+      });
+
+      renderNews();
+    });
+
+    // ---------- News: row templates (HAI strip) ----------
+    function newsRow(item) {
+      const chip = item.category === 'Award' ? 'AWARD' : 'NEWS';
+      return `
+        <a href="news/${item.id}.html"
+          class="group border-b border-line py-6 flex gap-5 items-start justify-between">
+          <div class="min-w-0">
+            <h3 class="font-semibold text-[16px] leading-snug mb-2 group-hover:text-sky transition-colors">
+              ${item.title}
+            </h3>
+            <p class="text-sm text-body mb-3">${item.byline || ''}</p>
+            <p class="meta text-faint">${item.date}</p>
+          </div>
+          <div class="relative shrink-0">
+            <img src="${item.img}" alt="" loading="lazy" class="w-[86px] h-[86px] rounded-2xl object-cover">
+            <span class="absolute -top-2 right-0 bg-lime text-ink text-[9px] font-bold tracking-wider rounded-full px-2 py-0.5">
+              ${chip}
+            </span>
+          </div>
+        </a>`;
+    }
+
+    // Event rows: calendar date card instead of a photo (HAI pattern)
+    function eventRow(item) {
+      const d = item.eventDate;
+      return `
+        <a href="${item.href}" class="group border-b border-line py-6 flex gap-5 items-start justify-between">
+          <div class="min-w-0">
+            <h3 class="font-semibold text-[16px] leading-snug mb-2 group-hover:text-sky transition-colors inline-flex items-start gap-1.5">
+              ${item.title}
+              <svg class="w-3.5 h-3.5 mt-1 shrink-0 text-faint" fill="none" stroke="currentColor" stroke-width="2"
+                viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+            </h3>
+            <p class="meta text-faint">${item.meta}</p>
+          </div>
+          <div class="shrink-0 w-[86px] rounded-xl border-2 border-blue overflow-hidden text-center bg-white">
+            <p class="bg-blue text-white text-[9px] font-bold tracking-widest uppercase py-1">${d.month}</p>
+            <p class="display font-semibold text-3xl text-blue leading-none pt-1.5">${d.day}</p>
+            <p class="text-[10px] font-semibold text-blue pb-1.5">${d.year}</p>
+          </div>
+        </a>`;
+    }
+
+    function getFilteredNews() {
+      return currentCategory === 'All'
+        ? SITE_NEWS
+        : SITE_NEWS.filter(item => item.category === currentCategory);
+    }
+
+    function renderNews() {
+      const filtered = getFilteredNews();
+      const start = (currentPage - 1) * ITEMS_PER_PAGE;
+      const pageItems = filtered.slice(start, start + ITEMS_PER_PAGE);
+
+      newsContainer.innerHTML = pageItems.length
+        ? pageItems.map(item => item.category === 'Event' ? eventRow(item) : newsRow(item)).join('')
+        : `<p class="col-span-full py-16 text-center text-faint">No items found.</p>`;
+
+      renderPagination(filtered.length);
+    }
+
+    function renderPagination(totalItems) {
+      const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+      paginationEl.innerHTML = '';
+      if (totalPages <= 1) return;
+
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        const active = i === currentPage;
+        btn.textContent = i;
+        btn.setAttribute('aria-label', `Page ${i}`);
+        if (active) btn.setAttribute('aria-current', 'page');
+        btn.className = `w-9 h-9 rounded-full text-[13px] font-semibold transition-colors ${
+          active ? 'bg-ink text-white' : 'bg-white text-faint hover:text-ink'
+        }`;
+        btn.addEventListener('click', () => {
+          currentPage = i;
+          renderNews();
+          document.getElementById('news').scrollIntoView({ behavior: 'smooth' });
+        });
+        paginationEl.appendChild(btn);
+      }
+    }
+
+    renderNews();
+  </script>
+</body>
+
+</html>

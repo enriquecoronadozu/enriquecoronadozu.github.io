@@ -1,0 +1,59 @@
+{
+  "type": "Project",
+  "accent": "blue",
+  "eyebrow": "Human-Robot Collaboration & Responsible AI",
+  "title": "People-Centric AI & Robotics",
+  "subtitle": "Designing intelligent systems that prioritize human needs, safety, and societal value",
+  "heroImage": "../img/social.png",
+  "intro": "People-Centric AI & Robotics focuses on developing interactive systems where humans remain at the center of decision-making, ensuring transparency, trust, and meaningful collaboration between humans and machines.",
+  "stats": [
+    {
+      "value": "Active",
+      "label": "Status"
+    },
+    {
+      "value": "3",
+      "label": "Core Areas"
+    }
+  ],
+  "vision": {
+    "text": "Create AI and robotic systems that enhance human capabilities while preserving autonomy, dignity, and social well-being.",
+    "image": "../img/digital.png"
+  },
+  "mission": {
+    "text": "Advance human-robot collaboration, social intelligence, and responsible AI innovation for real-world impact."
+  },
+  "activities": [
+    {
+      "title": "Human-Robot Collaboration",
+      "text": "Developing shared autonomy systems where humans and robots work together seamlessly in dynamic environments.",
+      "image": "../img/digital.png"
+    },
+    {
+      "title": "Social Robotics",
+      "text": "Designing socially aware robots capable of natural interaction, empathy modeling, and adaptive communication.",
+      "image": "../img/digital.png"
+    },
+    {
+      "title": "Responsible AI & Innovation",
+      "text": "Ensuring ethical, transparent, and safe deployment of AI systems aligned with societal values and regulations.",
+      "image": "../img/digital.png"
+    }
+  ],
+  "publications": [
+    {
+      "title": "Human-Centric Frameworks for Collaborative Robotics",
+      "venue": "AIST HEART Lab Research",
+      "date": "2026",
+      "href": "#"
+    }
+  ],
+  "cta": {
+    "title": "Collaborate With Us",
+    "text": "We are looking for students, researchers, and industry partners interested in human-centered robotics and AI systems.",
+    "primaryLabel": "Join the Lab",
+    "primaryHref": "../interships.html",
+    "secondaryLabel": "Contact",
+    "secondaryHref": "mailto:e.coronado@aist.go.jp"
+  }
+}

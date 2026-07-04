@@ -1,0 +1,89 @@
+{
+"id":"human-centered-physical-ai",
+
+"title":"Human-Centered Physical AI",
+
+"subtitle":"Building embodied intelligence that augments human capabilities",
+
+"heroImage":"../img/projects/hcpi-banner.jpg",
+
+"status":"Active",
+
+"tags":[
+"Embodied AI",
+"Social Robotics",
+"Human Values",
+"Industry 5.0"
+],
+
+"vision":
+"Develop AI systems that coexist naturally with humans while supporting well-being and societal values.",
+
+"mission":
+"Advance physical intelligence by integrating embodiment, human-centered design and adaptive AI.",
+
+"description":
+"Human-Centered Physical AI investigates how robots and embodied systems can perceive, reason and act in real-world human environments.",
+
+"activities":[
+{
+"title":"Human-Robot Interaction",
+"description":"Designing natural communication between humans and robots.",
+"icon":"🤝"
+},
+
+{
+"title":"Embodied Agentic AI",
+"description":"Developing agents capable of adaptive behavior.",
+"icon":"🧠"
+},
+
+{
+"title":"Digital Twins",
+"description":"Simulation environments for learning and validation.",
+"icon":"🌐"
+}
+],
+
+"examples":[
+{
+"title":"CAREBOT",
+"description":"Social assistance robot for elderly support",
+"image":"../img/projects/carebot.jpg"
+},
+
+{
+"title":"Physical Intelligence Framework",
+"description":"Research framework integrating embodiment and values",
+"image":"../img/projects/framework.jpg"
+}
+],
+
+"gallery":[
+"../img/projects/1.jpg",
+"../img/projects/2.jpg",
+"../img/projects/3.jpg"
+],
+
+"team":[
+{
+"name":"Enrique Coronado",
+"role":"Lead Researcher",
+"photo":"../img/team/enrique.jpg"
+}
+],
+
+"join":{
+
+"title":"Join the Project",
+
+"description":"We welcome students, collaborators and industry partners.",
+
+"positions":[
+"Internships",
+"Master Students",
+"PhD Students",
+"Collaborators"
+]
+}
+}

@@ -1,45 +1,404 @@
 [
   {
-    "id": "coronado2026large",
+    "id": "coronado2026agentic",
     "type": "article",
-    "title": "From Large Language Models to Agentic AI in Industry 5.0 and the Post-ChatGPT Era: A Socio-Technical Framework and Review on Human--Robot Collaboration",
+    "title": "From Large Language Models to Agentic AI in Industry 5.0 and the Post-ChatGPT Era: A Socio-Technical Framework and Review on Human-Robot Collaboration",
     "year": "2026",
-    "journal": "Robotics",
-    "booktitle": null,
+    "venue": "Robotics, 15(3)",
     "publisher": "MDPI",
     "author": [
+      "Coronado Enrique"
+    ],
+    "doi": "10.3390/robotics15030058",
+    "url": "news/paper-robotics-march-12-2026.html"
+  },
+  {
+    "id": "kamijo2026tactile",
+    "type": "inproceedings",
+    "title": "Tactile-based Active Inference for Force-Controlled Peg-in-Hole Insertions",
+    "year": "2026",
+    "venue": "IEEE/SICE International Symposium on System Integration (SII), pp. 161-166",
+    "note": "Best Paper Award Nominee",
+    "author": [
+      "Kamijo Tatsuya",
+      "Ramirez-Alpizar Ixchel Georgina",
+      "Coronado Enrique",
+      "Venture Gentiane"
+    ],
+    "doi": "10.1109/SII64115.2026.11404589",
+    "url": "news/award-sii-nomination-jan-10-2026.html"
+  },
+  {
+    "id": "gonzalez2026nais",
+    "type": "inproceedings",
+    "title": "NAIS: A Modular ROS 2 Framework for Real-Time Scene Graph Construction and Language-Guided Navigation",
+    "year": "2026",
+    "venue": "IEEE/SICE International Symposium on System Integration (SII), pp. 869-874",
+    "author": [
+      "Flores Gonzalez Jose M.",
+      "Coronado Enrique",
+      "Yamanobe Natsuki"
+    ],
+    "doi": "10.1109/SII64115.2026.11404724"
+  },
+  {
+    "id": "itadera2025cyberphysical",
+    "type": "article",
+    "title": "Cyber-Physical-Human Systems for Error Recovery in a Bin-Picking Task",
+    "year": "2025",
+    "venue": "Journal of Robotics and Mechatronics, 37(2), pp. 456-465",
+    "publisher": "Fuji Technology Press",
+    "author": [
+      "Itadera Shunki",
+      "Ueshiba Toshio",
+      "Coronado Enrique",
+      "Domae Yukiyasu"
+    ],
+    "doi": "10.20965/jrm.2025.p0456"
+  },
+  {
+    "id": "tsuji2025adaptive",
+    "type": "article",
+    "title": "Adaptive Contact-Rich Manipulation Through Few-Shot Imitation Learning With Force-Torque Feedback and Pre-Trained Object Representations",
+    "year": "2025",
+    "venue": "IEEE Robotics and Automation Letters, 10(1), pp. 240-247",
+    "publisher": "IEEE",
+    "author": [
+      "Tsuji Chikaha",
+      "Coronado Enrique",
+      "Osorio Pablo",
+      "Venture Gentiane"
+    ],
+    "doi": "10.1109/LRA.2024.3497713"
+  },
+  {
+    "id": "flores2025simulators",
+    "type": "article",
+    "title": "ROS-Compatible Robotics Simulators for Industry 4.0 and Industry 5.0: A Systematic Review of Trends and Technologies",
+    "year": "2025",
+    "venue": "Applied Sciences, 15(15), 8637",
+    "publisher": "MDPI",
+    "author": [
+      "Flores Gonzalez Jose M.",
+      "Coronado Enrique",
+      "Yamanobe Natsuki"
+    ],
+    "url": "news/paper-simulators-august-04-2025.html"
+  },
+  {
+    "id": "hernandez2025telesign",
+    "type": "inproceedings",
+    "title": "TeleSign: A Flexible and Intuitive Gesture-Based Teleoperation Framework",
+    "year": "2025",
+    "venue": "IEEE International Conference on Advanced Robotics and its Social Impacts (ARSO)",
+    "publisher": "IEEE",
+    "author": [
+      "Hernandez-Rios J. C.",
+      "Coronado Enrique",
+      "Molina-Daniel J. I.",
+      "Munoz L. A."
+    ]
+  },
+  {
+    "id": "coronado2025wellbeing",
+    "type": "inproceedings",
+    "title": "Robots for Well-being: Design and Integration of a Low-Cost Social Robot Prototype for Promoting Healthy Habits",
+    "year": "2025",
+    "venue": "IEEE International Conference on Advanced Robotics and its Social Impacts (ARSO)",
+    "publisher": "IEEE",
+    "author": [
+      "Coronado Enrique",
+      "Reyes M.",
+      "Ramirez Y.",
+      "Pedraza I."
+    ]
+  },
+  {
+    "id": "coronado2024digitaltwins",
+    "type": "article",
+    "title": "A Path to Industry 5.0 Digital Twins for Human-Robot Collaboration by Bridging NEP+ and ROS",
+    "year": "2024",
+    "venue": "Robotics, 13(2), 28",
+    "publisher": "MDPI",
+    "author": [
+      "Coronado Enrique",
+      "Ueshiba Toshio",
+      "Ramirez-Alpizar Ixchel Georgina"
+    ],
+    "doi": "10.3390/robotics13020028",
+    "url": "news/paper-digital-twins-feb-13-2024.html"
+  },
+  {
+    "id": "kulic2024rss",
+    "type": "editorship",
+    "title": "Robotics: Science and Systems XX (Conference Proceedings)",
+    "year": "2024",
+    "venue": "RSS XX, Delft, The Netherlands. ISBN 979-8-9902848-0-7",
+    "author": [
+      "Kulic Dana",
+      "Venture Gentiane",
+      "Bekris Kostas E.",
       "Coronado Enrique"
     ]
   },
   {
+    "id": "toyoguchi2023humancentered",
+    "type": "article",
+    "title": "A Human-Centered and Adaptive Robotic System Using Deep Learning and Adaptive Predictive Controllers",
+    "year": "2023",
+    "venue": "Journal of Robotics and Mechatronics, 35(3), pp. 834-843",
+    "publisher": "Fuji Technology Press",
+    "author": [
+      "Toyoguchi Sari",
+      "Coronado Enrique",
+      "Venture Gentiane"
+    ],
+    "doi": "10.20965/jrm.2023.p0834"
+  },
+  {
+    "id": "coronado2023holdmyhand",
+    "type": "article",
+    "title": "Hold My Hand: Development of a Force Controller and System Architecture for Joint Walking with a Companion Robot",
+    "year": "2023",
+    "venue": "Sensors, 23(12), 5692",
+    "publisher": "MDPI",
+    "author": [
+      "Coronado Enrique",
+      "Shinya Toshifumi",
+      "Venture Gentiane"
+    ],
+    "doi": "10.3390/s23125692"
+  },
+  {
+    "id": "coronado2023nep",
+    "type": "article",
+    "title": "NEP+: A Human-Centered Framework for Inclusive Human-Machine Interaction Development",
+    "year": "2023",
+    "venue": "Sensors, 23(22), 9136",
+    "publisher": "MDPI",
+    "author": [
+      "Coronado Enrique",
+      "Yamanobe Natsuki",
+      "Venture Gentiane"
+    ],
+    "doi": "10.3390/s23229136"
+  },
+  {
     "id": "coronado2023integrating",
     "type": "article",
-    "title": "Integrating virtual, mixed, and augmented reality to human--robot interaction applications using game engines: A brief review of accessible software tools and frameworks",
+    "title": "Integrating virtual, mixed, and augmented reality to human-robot interaction applications using game engines: A brief review of accessible software tools and frameworks",
     "year": "2023",
-    "journal": "Applied Sciences",
-    "booktitle": null,
+    "venue": "Applied Sciences, 13(3)",
     "publisher": "MDPI",
     "author": [
       "Coronado Enrique",
       "Itadera Shunki",
       "Ramirez-Alpizar Ixchel"
-    ]
+    ],
+    "url": "news/paper-xr-hri-jan-18-2023.html"
+  },
+  {
+    "id": "deuff2022yokobo",
+    "type": "inproceedings",
+    "title": "Together alone, Yōkobo, a sensible presence robject for the home of newly retired couples",
+    "year": "2022",
+    "venue": "ACM Conference on Designing Interactive Systems (DIS), pp. 1773-1787",
+    "publisher": "ACM",
+    "author": [
+      "Deuff Dominique",
+      "Milleville-Pennel Isabelle",
+      "Ocnarescu Ioana",
+      "Garcin Dora",
+      "Aznar Corentin",
+      "Capy Siméon",
+      "Hagane Shohei",
+      "Osorio Marin Pablo Felipe",
+      "Coronado Zuniga Enrique",
+      "Rincon Ardila Liz",
+      "Venture Gentiane"
+    ],
+    "doi": "10.1145/3532106.3533485"
   },
   {
     "id": "coronado2022evaluating",
     "type": "article",
-    "title": "Evaluating quality in human-robot interaction: A systematic search and classification of performance and human-centered factors, measures and metrics towards an industry 5.0",
+    "title": "Evaluating quality in human-robot interaction: A systematic search and classification of performance and human-centered factors, measures and metrics towards an Industry 5.0",
     "year": "2022",
-    "journal": "Journal of Manufacturing Systems",
-    "booktitle": null,
+    "venue": "Journal of Manufacturing Systems",
     "publisher": "Elsevier",
+    "note": "AIST ITH Best Paper Award",
     "author": [
       "Coronado Enrique",
       "Kiyokawa Takuya",
-      "Ricardez Gustavo",
-      "Ramirez-Alpizar Ixchel",
+      "Ricardez Gustavo A. Garcia",
+      "Ramirez-Alpizar Ixchel G.",
       "Venture Gentiane",
       "Yamanobe Natsuki"
+    ],
+    "url": "news/award-aist-ith-best-paper-feb-29-2024.html"
+  },
+  {
+    "id": "capy2022frontiers",
+    "type": "article",
+    "title": "Expanding the Frontiers of Industrial Robots beyond Factories: Design and in the Wild Validation",
+    "year": "2022",
+    "venue": "Machines, 10(12), 1179",
+    "publisher": "MDPI",
+    "author": [
+      "Capy Siméon",
+      "Rincon Liz",
+      "Coronado Enrique",
+      "Hagane Shohei",
+      "Yamaguchi S.",
+      "Leve V.",
+      "Venture Gentiane"
+    ]
+  },
+  {
+    "id": "capy2022yokobo",
+    "type": "article",
+    "title": "Yōkobo: a robot to strengthen links amongst users with non-verbal behaviours",
+    "year": "2022",
+    "venue": "Machines, 10(8), 708",
+    "publisher": "MDPI",
+    "author": [
+      "Capy Siméon",
+      "Osorio Pablo",
+      "Hagane Shohei",
+      "Aznar Corentin",
+      "Garcin Dora",
+      "Coronado Enrique",
+      "Deuff Dominique",
+      "Venture Gentiane"
+    ]
+  },
+  {
+    "id": "coronado2021modular",
+    "type": "article",
+    "title": "Towards a Modular and Distributed End-User Development Framework for Human-Robot Interaction",
+    "year": "2021",
+    "venue": "IEEE Access, 9, pp. 12675-12692",
+    "publisher": "IEEE",
+    "author": [
+      "Coronado Enrique",
+      "Deuff Dominique",
+      "Carreno-Medrano Pamela",
+      "Tian Leimin",
+      "Kulic Dana",
+      "Sumartojo Shanti",
+      "Mastrogiovanni Fulvio",
+      "Venture Gentiane"
+    ],
+    "doi": "10.1109/ACCESS.2021.3051605"
+  },
+  {
+    "id": "coronado2021kansei",
+    "type": "article",
+    "title": "Applying Kansei/Affective Engineering Methodologies in the Design of Social and Service Robots: A Systematic Review",
+    "year": "2021",
+    "venue": "International Journal of Social Robotics, 13(5), pp. 1161-1171",
+    "publisher": "Springer",
+    "author": [
+      "Coronado Enrique",
+      "Venture Gentiane",
+      "Yamanobe Natsuki"
+    ],
+    "doi": "10.1007/s12369-020-00709-x"
+  },
+  {
+    "id": "tian2021redesigning",
+    "type": "inproceedings",
+    "title": "Redesigning Human-Robot Interaction in Response to Robot Failures: a Participatory Design Methodology",
+    "year": "2021",
+    "venue": "CHI Conference on Human Factors in Computing Systems, Extended Abstracts, 57:1-57:8",
+    "publisher": "ACM",
+    "author": [
+      "Tian Leimin",
+      "Carreno-Medrano Pamela",
+      "Allen Aimee",
+      "Sumartojo Shanti",
+      "Mintrom Michael",
+      "Coronado Zuniga Enrique",
+      "Venture Gentiane",
+      "Croft Elizabeth A.",
+      "Kulic Dana"
+    ],
+    "doi": "10.1145/3411763.3443440"
+  },
+  {
+    "id": "coronado2021assembly",
+    "type": "inproceedings",
+    "title": "Assembly Action Understanding from Fine-Grained Hand Motions, a Multi-camera and Deep Learning Approach",
+    "year": "2021",
+    "venue": "IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), pp. 2628-2634",
+    "publisher": "IEEE",
+    "author": [
+      "Coronado Enrique",
+      "Fukuda Kosuke",
+      "Ramirez-Alpizar Ixchel Georgina",
+      "Yamanobe Natsuki",
+      "Venture Gentiane",
+      "Harada Kensuke"
+    ],
+    "doi": "10.1109/IROS51168.2021.9636715"
+  },
+  {
+    "id": "yamamoto2021impression",
+    "type": "inproceedings",
+    "title": "Impression evaluation of robot's behavior when assisting human in a cooking task",
+    "year": "2021",
+    "venue": "IEEE International Conference on Robot and Human Interactive Communication (RO-MAN), pp. 743-748",
+    "publisher": "IEEE",
+    "author": [
+      "Yamamoto Marie",
+      "Hu Yue",
+      "Coronado Enrique",
+      "Venture Gentiane"
+    ],
+    "doi": "10.1109/RO-MAN50785.2021.9515527"
+  },
+  {
+    "id": "khalil2021retargeting",
+    "type": "inproceedings",
+    "title": "Human Motion Retargeting to Pepper Humanoid Robot from Uncalibrated Videos Using Human Pose Estimation",
+    "year": "2021",
+    "venue": "IEEE International Conference on Robot and Human Interactive Communication (RO-MAN)",
+    "publisher": "IEEE",
+    "author": [
+      "Khalil",
+      "Coronado Enrique",
+      "Venture Gentiane"
+    ],
+    "doi": "10.1109/RO-MAN50785.2021.9515495"
+  },
+  {
+    "id": "tian2020expectations",
+    "type": "inproceedings",
+    "title": "User Expectations of Robots in Public Spaces: A Co-design Methodology",
+    "year": "2020",
+    "venue": "International Conference on Social Robotics (ICSR), pp. 259-270",
+    "publisher": "Springer",
+    "author": [
+      "Tian Leimin",
+      "Carreno-Medrano Pamela",
+      "Sumartojo Shanti",
+      "Mintrom Michael",
+      "Coronado Enrique",
+      "Venture Gentiane",
+      "Kulic Dana"
+    ]
+  },
+  {
+    "id": "coronado2020matlab",
+    "type": "inproceedings",
+    "title": "Connecting MATLAB/Octave to Perceptual, Cognitive and Control Components for the Development of Intelligent Robotic Systems",
+    "year": "2020",
+    "venue": "ROMANSY 23 — CISM IFToMM Symposium on Robot Design, Dynamics and Control, pp. 364-371",
+    "publisher": "Springer",
+    "author": [
+      "Coronado Enrique",
+      "Rincon Liz",
+      "Venture Gentiane"
     ]
   },
   {
@@ -47,14 +406,269 @@
     "type": "article",
     "title": "Visual programming environments for end-user development of intelligent and social robots, a systematic review",
     "year": "2020",
-    "journal": "Journal of Computer Languages",
-    "booktitle": null,
+    "venue": "Journal of Computer Languages, 58, 100970",
     "publisher": "Elsevier",
     "author": [
       "Coronado Enrique",
       "Mastrogiovanni Fulvio",
       "Indurkhya Bipin",
       "Venture Gentiane"
+    ]
+  },
+  {
+    "id": "deuff2020unrobot",
+    "type": "inproceedings",
+    "title": "Un robot dans les foyers",
+    "year": "2020",
+    "venue": "Drôles d'objets — Un nouvel art de faire",
+    "author": [
+      "Deuff Dominique",
+      "Coronado Enrique",
+      "Milleville-Pennel Isabelle",
+      "Ocnarescu Ioana",
+      "Venture Gentiane"
+    ]
+  },
+  {
+    "id": "coronado2020nep",
+    "type": "article",
+    "title": "Towards IoT-aided human-robot interaction using NEP and ROS: A platform-independent, accessible and distributed approach",
+    "year": "2020",
+    "venue": "Sensors, 20(5), 1500",
+    "publisher": "MDPI",
+    "author": [
+      "Coronado Enrique",
+      "Venture Gentiane"
+    ]
+  },
+  {
+    "id": "deuff2020designerly",
+    "type": "article",
+    "title": "Designerly way of thinking in a robotics research project",
+    "year": "2020",
+    "venue": "Journal of the Robotics Society of Japan, 38(8), pp. 692-702",
+    "author": [
+      "Deuff Dominique",
+      "Ocnarescu Ioana",
+      "Coronado L. Enrique",
+      "Rincon-Ardila Liz",
+      "Milleville Isabelle",
+      "Venture Gentiane"
+    ]
+  },
+  {
+    "id": "carfi2020learning",
+    "type": "article",
+    "title": "Can human-inspired learning behaviour facilitate human-robot interaction?",
+    "year": "2020",
+    "venue": "International Journal of Social Robotics, 12(1), pp. 173-186",
+    "publisher": "Springer",
+    "author": [
+      "Carfì Alessandro",
+      "Villalobos J.",
+      "Coronado Enrique",
+      "Bruno Barbara",
+      "Mastrogiovanni Fulvio"
+    ]
+  },
+  {
+    "id": "rida2019motion",
+    "type": "article",
+    "title": "From motion to emotion prediction: A hidden biometrics approach",
+    "year": "2019",
+    "venue": "Hidden Biometrics: When Biometric Security Meets Biomedical Engineering, pp. 185-202 (Book Chapter)",
+    "publisher": "Springer",
+    "author": [
+      "Rida F.",
+      "Rincon-Ardila Liz",
+      "Coronado L. Enrique",
+      "Nait-ali Amine",
+      "Venture Gentiane"
+    ]
+  },
+  {
+    "id": "pattar2019intention",
+    "type": "inproceedings",
+    "title": "Intention and Engagement Recognition for Personalized Human-Robot Interaction, an integrated and Deep Learning approach",
+    "year": "2019",
+    "venue": "IEEE International Conference on Advanced Robotics and Mechatronics (ICARM), pp. 93-98",
+    "publisher": "IEEE",
+    "author": [
+      "Pattar S. P.",
+      "Coronado Enrique",
+      "Rincon-Ardila Liz K.",
+      "Venture Gentiane"
+    ]
+  },
+  {
+    "id": "coronado2019children",
+    "type": "inproceedings",
+    "title": "Robots meet children, development of semi-autonomous control systems for children-robot interaction in the wild",
+    "year": "2019",
+    "venue": "IEEE International Conference on Advanced Robotics and Mechatronics (ICARM)",
+    "publisher": "IEEE",
+    "author": [
+      "Coronado Enrique",
+      "Indurkhya X.",
+      "Venture Gentiane"
+    ]
+  },
+  {
+    "id": "rincon2019adaptive",
+    "type": "inproceedings",
+    "title": "Adaptive cognitive robot using dynamic perception with fast deep-learning and adaptive on-line predictive control",
+    "year": "2019",
+    "venue": "IFToMM World Congress on Mechanism and Machine Science, pp. 2429-2438",
+    "publisher": "Springer",
+    "author": [
+      "Rincon Liz",
+      "Coronado Enrique",
+      "Law C.",
+      "Venture Gentiane"
+    ]
+  },
+  {
+    "id": "ardila2019fuzzy",
+    "type": "article",
+    "title": "Adaptive fuzzy and predictive controllers for expressive robot arm movement during human and environment interaction",
+    "year": "2019",
+    "venue": "International Journal of Mechanical Engineering and Robotics Research, 8(2)",
+    "author": [
+      "Rincon-Ardila Liz",
+      "Coronado Enrique",
+      "Hendra H.",
+      "Phan J.",
+      "Zainalkefli Z.",
+      "Venture Gentiane"
+    ]
+  },
+  {
+    "id": "coronado2018behaviors",
+    "type": "inproceedings",
+    "title": "Development of intelligent behaviors for social robots via user-friendly and modular programming tools",
+    "year": "2018",
+    "venue": "IEEE Workshop on Advanced Robotics and its Social Impacts (ARSO), pp. 62-68",
+    "publisher": "IEEE",
+    "author": [
+      "Coronado Enrique",
+      "Mastrogiovanni Fulvio",
+      "Venture Gentiane"
+    ]
+  },
+  {
+    "id": "coronado2018framework",
+    "type": "inproceedings",
+    "title": "Design of a human-centered robot framework for end-user programming and applications",
+    "year": "2018",
+    "venue": "ROMANSY 22 — CISM IFToMM Symposium on Robot Design, Dynamics and Control",
+    "publisher": "Springer",
+    "author": [
+      "Coronado Enrique",
+      "Mastrogiovanni Fulvio",
+      "Venture Gentiane"
+    ]
+  },
+  {
+    "id": "rincon2018expressive",
+    "type": "inproceedings",
+    "title": "Expressive states with a robot arm using adaptive fuzzy and robust predictive controllers",
+    "year": "2018",
+    "venue": "IEEE International Conference on Control and Robotics Engineering (ICCRE)",
+    "publisher": "IEEE",
+    "author": [
+      "Rincon Liz",
+      "Coronado Enrique",
+      "Hendra H.",
+      "Phan J.",
+      "Zainalkefli Z.",
+      "Venture Gentiane"
+    ]
+  },
+  {
+    "id": "coronado2017gesture",
+    "type": "inproceedings",
+    "title": "Gesture-based robot control: Design challenges and evaluation with humans",
+    "year": "2017",
+    "venue": "IEEE International Conference on Robotics and Automation (ICRA), pp. 2761-2767",
+    "publisher": "IEEE",
+    "author": [
+      "Coronado Enrique",
+      "Villalobos J.",
+      "Bruno Barbara",
+      "Mastrogiovanni Fulvio"
+    ]
+  },
+  {
+    "id": "coronado2017delta",
+    "type": "article",
+    "title": "Vision-based control of a delta parallel robot via linear camera-space manipulation",
+    "year": "2017",
+    "venue": "Journal of Intelligent & Robotic Systems, 85(1), pp. 93-106",
+    "publisher": "Springer",
+    "author": [
+      "Coronado Enrique",
+      "Maya M.",
+      "Cardenas Antonio",
+      "Guarneros O.",
+      "Piovesan Davide"
+    ]
+  },
+  {
+    "id": "villalobos2017kinesthetic",
+    "type": "inproceedings",
+    "title": "Is Kinesthetic Teaching What Smart Factories Really Need?",
+    "year": "2017",
+    "venue": "AIRO Workshop @ AI*IA, pp. 22-26",
+    "author": [
+      "Villalobos J.",
+      "Coronado Enrique",
+      "Carfì Alessandro",
+      "Bruno Barbara",
+      "Mastrogiovanni Fulvio"
+    ]
+  },
+  {
+    "id": "segura2016falls",
+    "type": "article",
+    "title": "Analysis of Recoverable Falls via Microsoft Kinect: Identification of Third-Order Ankle Dynamics",
+    "year": "2016",
+    "venue": "Journal of Dynamic Systems, Measurement, and Control, 138(9), 091006",
+    "publisher": "ASME",
+    "author": [
+      "Segura M. E.",
+      "Coronado Enrique",
+      "Maya M.",
+      "Cardenas Antonio",
+      "Piovesan Davide"
+    ]
+  },
+  {
+    "id": "segura2015ankle",
+    "type": "inproceedings",
+    "title": "Time-based identification of human ankle impedance via Microsoft Kinect",
+    "year": "2015",
+    "venue": "IEEE Signal Processing in Medicine and Biology Symposium (SPMB), pp. 1-5",
+    "publisher": "IEEE",
+    "author": [
+      "Segura M. E.",
+      "Coronado Enrique",
+      "Cardenas Antonio",
+      "Piovesan Davide"
+    ]
+  },
+  {
+    "id": "coronado2015kalman",
+    "type": "inproceedings",
+    "title": "Combining genetic algorithms and extended Kalman filter to estimate ankle's muscle-tendon parameters",
+    "year": "2015",
+    "venue": "ASME Dynamic Systems and Control Conference (DSCC)",
+    "publisher": "ASME",
+    "author": [
+      "Coronado L. Enrique",
+      "Chavez-Romero R.",
+      "Maya M.",
+      "Cardenas Antonio",
+      "Piovesan Davide"
     ]
   }
 ]

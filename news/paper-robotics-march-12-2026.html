@@ -4,110 +4,175 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>News | Post-ChatGPT Era: Agentic AI in Industry 5.0</title>
+  <title>News — Enrique Coronado</title>
+
+  <!-- ============================================================
+       NEWS ARTICLE TEMPLATE
+       Do NOT edit copies of this file. Content lives in the JSON
+       file with the SAME NAME as this HTML file:
+
+         news/my-article.html  ->  loads  news/my-article.json
+
+       New article = new JSON + run `python3 generate.py`
+       (or just copy this file with the same name as the JSON).
+
+       Preview needs a local server (fetch fails on file://):
+         python3 -m http.server     -> http://localhost:8000
+
+       JSON FIELDS (only the first six are required):
+         id, date, category ("Paper"|"Award"|"News"), title,
+         summary, img,
+         byline   – journal / organization line (optional)
+         body     – array of paragraphs, blog-style (optional)
+         links    – array of { label, href } buttons (optional)
+       ============================================================ -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap"
+    rel="stylesheet">
+
+  <!-- DESIGN TOKENS — identical to index.html; keep in sync -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#16233F', body: '#4B5568', faint: '#8B93A3', line: '#DDE2EC',
+            sky: '#4E9FD9', lime: '#DCF34B',
+            blue: { DEFAULT: '#1173BC', deep: '#0A5697', text: '#1B6FB5' },
+            cyan: '#A9EAFB', cyanfill: '#BFF0FC',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+          },
+          maxWidth: { site: '80rem' },
+        }
+      }
+    }
+  </script>
+
   <style>
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Inter', system-ui, sans-serif;
+      font-feature-settings: 'cv11', 'ss01';
+      background: linear-gradient(180deg, #F4F6FB 0%, #EAEFF8 55%, #F1F4FA 100%);
     }
-
-    .content-area p {
-      margin-bottom: 1.5rem;
-      line-height: 1.8;
-      color: #475569;
+    .display { letter-spacing: -0.025em; }
+    .meta {
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #1173BC; outline-offset: 3px; border-radius: 4px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
     }
   </style>
 </head>
 
-<body class="bg-white">
+<body class="text-ink antialiased">
 
-  <!-- Navigation (Matching Index) -->
-  <nav class="bg-white/70 backdrop-blur-md border-b sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="../index.html#news" class="group flex items-center gap-3">
-        <div
-          class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-hover:bg-blue-700 group-hover:text-white transition-all">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-        </div>
-        <span
-          class="font-bold text-sm uppercase tracking-widest text-slate-400 group-hover:text-slate-900 transition-colors">Back
-          to News</span>
+  <!-- NAVIGATION — back pill + identity -->
+  <nav aria-label="Main">
+    <div class="max-w-site mx-auto px-5 h-16 flex items-center justify-between gap-6">
+      <a href="../index.html#news"
+        class="group inline-flex items-center gap-2.5 bg-white rounded-full pl-3 pr-5 py-2 text-sm font-medium text-body hover:text-ink shadow-sm transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+          aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to News
       </a>
-      <div class="text-right">
-        <p id="nav-info" class="text-[10px] text-slate-400 font-bold uppercase tracking-tighter"></p>
-      </div>
+      <a href="../index.html" class="leading-tight text-right">
+        <span class="block font-bold text-[15px] display">Enrique Coronado</span>
+        <span class="block text-[10px] text-faint font-medium tracking-wide">AIST · HEART</span>
+      </a>
     </div>
   </nav>
-  <main class="max-w-4xl mx-auto px-6 py-20" id="article-content">
-    <div class="flex justify-center py-20">
-      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-700"></div>
+
+  <main id="article-content" class="max-w-4xl mx-auto px-5 py-14">
+    <div class="flex justify-center py-24" aria-label="Loading">
+      <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-blue"></div>
     </div>
   </main>
 
+  <footer>
+    <div class="max-w-site mx-auto px-5 py-10 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
+      <p class="font-semibold display">Enrique Coronado</p>
+      <p class="meta text-faint">&copy; 2026 · AIST — HEART</p>
+    </div>
+  </footer>
+
   <script>
     async function loadArticle() {
-        const container = document.getElementById('article-content');
+      const container = document.getElementById('article-content');
 
-        try {
-            // 1. Fetch the specific JSON file in the same folder
-            // Make sure this filename is EXACTLY what is on your disk
-            const response = await fetch('paper-robotics-march-12-2026.json');
-            
-            if (!response.ok) throw new Error("Could not find the JSON file");
-            
-            const article = await response.json();
+      // The JSON filename is derived from THIS file's name:
+      // some-article.html -> some-article.json (no editing needed per copy)
+      const slug = decodeURIComponent(location.pathname.split('/').pop() || '')
+        .replace(/\.html?$/i, '');
 
-            // 2. Inject the Template
-            container.innerHTML = `
-                <header class="mb-12">
-                    <div class="flex items-center gap-4 mb-6">
-                        <span class="px-4 py-1.5 bg-blue-50 text-blue-700 text-[10px] font-black uppercase tracking-widest rounded-full">${article.category}</span>
-                        <span class="text-slate-400 text-xs font-bold uppercase tracking-widest">${article.date}</span>
-                    </div>
-                    <h1 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight mb-8">${article.title}</h1>
-                    <p class="font-medium text-slate-600 text-xl leading-relaxed mb-10">${article.summary}</p>
-                    <div class="rounded-[3rem] overflow-hidden shadow-2xl mb-12 aspect-video bg-slate-100">
-                        <img src="${article.img}" class="w-full h-full object-cover">
-                    </div>
-                </header>
+      try {
+        const response = await fetch(`${slug}.json`);
+        if (!response.ok) throw new Error(`Could not load ${slug}.json`);
+        const a = await response.json();
 
-                <article class="content-area text-lg font-light">
-                    <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">${article.subtitle1}</h2>
-                    <p>${article.description1}</p>
-                    
-                    <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">${article.subtitle2}</h2>
-                    <p>${article.description2}</p>
-                    
-                    <div class="my-6 p-6 md:p-6 bg-slate-50 border-l-4 border-blue-700 rounded-r-[2rem]">
-                        <p class="text-slate-600 text-lg leading-relaxed">"${article.highlight}"</p>
-                    </div>
-                    
-                    <h2 class="text-2xl font-bold text-slate-900 mt-12 mb-6">${article.subtitle3}</h2>
-                    <p>${article.description3}</p>
-                </article>
+        const chip = (a.category || 'News').toUpperCase();
+        const byline = a.byline
+          ? `<p class="text-body text-base mb-8">${a.byline}</p>` : '';
+        const bodyHtml = Array.isArray(a.body) && a.body.length
+          ? `<div class="mt-12 space-y-6">${a.body.map(p =>
+              `<p class="text-body text-lg leading-[1.8]">${p}</p>`).join('')}</div>`
+          : '';
+        const linksHtml = Array.isArray(a.links) && a.links.length
+          ? `<div class="mt-10 flex flex-wrap gap-4">${a.links.map(l => `
+              <a href="${l.href}" target="_blank" rel="noopener"
+                class="inline-flex items-center gap-2.5 bg-blue hover:bg-blue-deep text-white px-6 py-3.5 rounded-full font-medium text-[15px] transition-colors">
+                ${l.label}
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
+                </svg>
+              </a>`).join('')}</div>`
+          : '';
 
-                <div class="mt-20 pt-12 border-t border-slate-100 flex justify-center">
-                    <a href="${article.url}" target="_blank" class="inline-flex items-center px-10 py-5 bg-blue-700 text-white rounded-2xl font-bold hover:bg-blue-800 transition-all shadow-xl shadow-blue-900/20 active:scale-95">
-                        Link to Publication
-                        <svg class="h-5 w-5 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </a>
-                </div>
-            `;
-            document.title = `${article.title} | Enrique Coronado`;
+        container.innerHTML = `
+          <article>
+            <header>
+              <div class="flex items-center gap-4 mb-7">
+                <span class="bg-lime text-ink text-[10px] font-bold tracking-wider rounded-full px-3 py-1">${chip}</span>
+                <span class="meta text-faint">${a.date}</span>
+              </div>
+              <h1 class="display font-semibold text-4xl md:text-5xl leading-[1.12] mb-6">${a.title}</h1>
+              ${byline}
+              <p class="text-blue-text text-xl md:text-2xl leading-relaxed display font-medium mb-10">
+                ${a.summary}
+              </p>
+              <div class="rounded-3xl overflow-hidden">
+                <img src="${a.img}" alt="${a.title}" class="w-full object-cover">
+              </div>
+            </header>
+            ${bodyHtml}
+            ${linksHtml}
+          </article>`;
+        document.title = `${a.title} — Enrique Coronado`;
 
-        } catch (error) {
-            console.error(error);
-            container.innerHTML = `<div class="text-center py-20 text-slate-400">Error loading article data. Please check if the JSON file exists.</div>`;
-        }
+      } catch (error) {
+        console.error(error);
+        container.innerHTML = `
+          <div class="text-center py-24">
+            <p class="text-body mb-2">Could not load the article data.</p>
+            <p class="meta text-faint">Expected file: ${slug}.json (and a local server — fetch does not work from file://)</p>
+          </div>`;
+      }
     }
-
     loadArticle();
-</script>
+  </script>
 </body>
 
 </html>

@@ -1,0 +1,16 @@
+{
+    "id": "paper-xr-hri-jan-18-2023",
+    "date": "January 18, 2023",
+    "category": "Paper",
+    "title": "Integrating Virtual, Mixed, and Augmented Reality to HRI Applications Using Game Engines",
+    "summary": "New article in 'Applied Sciences' identifies accessible software tools for developing VR, AR, and MR experiences in HRI. The review classifies XR applications across social robotics, industrial programming, and teleoperation.",
+    "img": "../img/teleop.png",
+    "subtitle1": "The Role of Game Engines in Robotics",
+    "description1": "The study highlights how game engines like Unity and Unreal Engine have emerged as cost-effective and flexible solutions for developing 3D environments and advanced user experiences for the latest XR hardware.",
+    "subtitle2": "Classification of HRI Contexts",
+    "description2": "Research articles are categorized into four primary application groups: social robotics, end-user programming of industrial robots, teleoperation in inaccessible environments, and physical Human-Robot Collaboration (HRC).",
+    "highlight": "The acceptance and success of XR technologies in HRI depend on both system efficiency and human-centered factors, including economic accessibility and the usability of software and hardware elements.",
+    "subtitle3": "Bridging Middleware and Interaction",
+    "description3": "The review identifies key communication tools such as ROS and rosbridge_suite, alongside interaction frameworks like Vuforia, ARCore, and the Mixed Reality Toolkit, which enable seamless two-way data flow between physical robots and virtual systems.",
+    "url": "https://doi.org/10.3390/app13031292"
+}

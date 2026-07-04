@@ -4,7 +4,7 @@
     "category": "Paper",
     "title": "Integrating Virtual, Mixed, and Augmented Reality to HRI Applications Using Game Engines",
     "summary": "New article in 'Applied Sciences' identifies accessible software tools for developing VR, AR, and MR experiences in HRI. The review classifies XR applications across social robotics, industrial programming, and teleoperation.",
-    "img": "../img/teleop.png",
+    "img": "../img/Game_Engines_in_Robotics.png",
     "subtitle1": "The Role of Game Engines in Robotics",
     "description1": "The study highlights how game engines like Unity and Unreal Engine have emerged as cost-effective and flexible solutions for developing 3D environments and advanced user experiences for the latest XR hardware.",
     "subtitle2": "Classification of HRI Contexts",

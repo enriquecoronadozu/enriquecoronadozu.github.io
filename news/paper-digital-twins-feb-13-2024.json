@@ -4,7 +4,7 @@
     "category": "Paper",
     "title": "A Path to Industry 5.0 Digital Twins for Human–Robot Collaboration by Bridging NEP+ and ROS",
     "summary": "New article in 'Robotics' introduces the nep2ros ROS package, designed to bridge the Robot Operating System (ROS) with the cross-platform NEP+ framework to facilitate Industry 5.0 human digital twins.",
-    "img": "../img/ros.png",
+    "img": "../img/Bridging_Robotics_and_Human_Interaction.png",
     "subtitle1": "Human-Centric Paradigm Shift",
     "description1": "Aligning with the Industry 5.0 vision, this framework places humanity at the center by empowering industrial workers and establishing inclusive and flexible production processes.",
     "subtitle2": "Harmonizing NEP+ and ROS",

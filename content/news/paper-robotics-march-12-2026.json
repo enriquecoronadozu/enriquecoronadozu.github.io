@@ -1,0 +1,15 @@
+{
+    "date": "March 12, 2026",
+    "category": "Paper",
+    "title": "From Large Language Models to Agentic AI in Industry 5.0: A Socio-Technical Framework",
+    "summary": "New article in 'Robotics' introduces the Responsible Agentic Robotics (RAR) framework, a conceptual socio-technical perspective that structures the lifecycle deployment of agentic AI-enabled robotic systems around three core layers: context, design, and value.",
+    "img": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200",
+    "subtitle1": "A Socio-Technical Perspective for Industry 5.0",
+    "description1": "The RAR perspective is explicitly grounded in socio-technical systems theory, evolving the 'Human-Centric' paradigm of Industry 5.0 toward a 'People-Centric' model. It argues that successful integration of Foundation Models in industrial settings requires identifying and mitigating human-centered and sustainability issues alongside technical considerations.",
+    "subtitle2": "The RAR Framework Architecture",
+    "description2": "The framework structures agentic AI deployment through three interdependent layers: the Context layer (human, robot, and environment states), the Design layer (mechanisms for advanced perception, cognition, and responsible innovation), and the Value layer (outcomes encompassing both technical usefulness and social well-being).",
+    "highlight": "The transition to agentic AI marks a shift toward 'human-at-the-center-of-the-loop,' where robots are not just isolated inference engines but autonomous collaborators that uphold the values, needs, and fundamental rights of workers.",
+    "subtitle3": "Systematic Review of the Post-ChatGPT Era",
+    "description3": "A review of 21 peer-reviewed studies published between 2023 and 2025 reveals that research remains predominantly technology-centric. The RAR framework addresses this gap by proposing research directions that prioritize worker empowerment, inclusivity, and environmental impact in multimodal human-robot collaboration.",
+    "url": "https://doi.org/10.3390/robotics15030058"
+}
