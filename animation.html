@@ -1,35 +1,35 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Corazón de Red Difusa - Interactivo</title>
+<title>Heart Network — Designer for index.html</title>
 <style>
-  html, body { 
-    margin: 0; 
-    height: 100vh; 
-    background: #050a18; 
-    overflow: hidden; 
+  html, body {
+    margin: 0;
+    height: 100vh;
+    background: #050a18;
+    overflow: hidden;
     font-family: system-ui, -apple-system, sans-serif;
     display: flex;
     flex-direction: column;
   }
-  
-  /* Contenedor principal de la animación */
+
+  /* Main animation container */
   #canvas-container {
     flex: 1;
     position: relative;
     width: 100%;
   }
-  #heart-canvas { 
-    position: absolute; 
-    inset: 0; 
-    width: 100%; 
-    height: 100%; 
-    display: block; 
+  #heart-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
-  /* Título de la presentación superpuesto */
+  /* Overlaid title */
   .content {
     position: absolute;
     inset: 0;
@@ -38,34 +38,34 @@
     align-items: flex-start;
     justify-content: center;
     padding-top: 5vh;
-    color: #cfe9ff; 
+    color: #cfe9ff;
     pointer-events: none;
     text-shadow: 0 0 12px rgba(0,0,0,.8);
   }
 
-  /* Panel de Control Inferior */
+  /* Bottom control panel */
   #controls {
     background: rgba(10, 15, 35, 0.95);
     border-top: 1px solid rgba(40, 190, 230, 0.3);
-    padding: 20px 30px;
+    padding: 16px 24px;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 14px 22px;
     justify-content: center;
     color: #8bb4e0;
-    font-size: 14px;
+    font-size: 13px;
     z-index: 10;
   }
-  
+
   .control-group {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 150px;
+    min-width: 140px;
   }
-  
+
   .control-group label {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     font-weight: 500;
     letter-spacing: 0.5px;
     display: flex;
@@ -74,11 +74,11 @@
   }
 
   .control-group span {
-    color: #924613;
+    color: #ff8a3c;
     font-weight: bold;
   }
 
-  /* Estilo de los sliders y selectores */
+  /* Sliders and selects */
   input[type=range] {
     -webkit-appearance: none;
     width: 100%;
@@ -104,7 +104,7 @@
   input[type=range]:focus {
     outline: none;
   }
-  
+
   select {
     width: 100%;
     background: #1a2b4c;
@@ -117,42 +117,89 @@
     outline: none;
     cursor: pointer;
   }
+
+  #save-design {
+    width: 100%;
+    background: #ff8a3c;
+    color: #050a18;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(255, 138, 60, 0.5);
+    transition: transform .15s, box-shadow .15s;
+  }
+  #save-design:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 18px rgba(255, 138, 60, 0.8);
+  }
+  #save-hint {
+    margin-top: 6px;
+    font-size: 11px;
+    color: #5f7ba8;
+  }
 </style>
 </head>
 <body>
 
 <div id="canvas-container">
   <canvas id="heart-canvas"></canvas>
-  <div class="content"><h1>Título de la Presentación</h1></div>
+  <div class="content"><h1>Heart Animation Designer</h1></div>
 </div>
 
 <div id="controls">
   <div class="control-group">
-    <label>Animación</label>
+    <label>Animation</label>
     <select id="param-anim">
-      <option value="breathing">Respiración (Lenta)</option>
-      <option value="heartbeat">Latido (Rápida)</option>
+      <option value="guided" selected>Guided breathing (Inhale · Hold · Exhale)</option>
+      <option value="breathing">Breathing (slow)</option>
+      <option value="heartbeat">Heartbeat (fast)</option>
     </select>
   </div>
   <div class="control-group">
-    <label>Fondo</label>
+    <label>Background (preview only)</label>
     <select id="param-bg">
-      <option value="dark">Oscuro</option>
-      <option value="light">Claro</option>
+      <option value="dark">Dark</option>
+      <option value="light">Light</option>
     </select>
   </div>
-  
+
   <div class="control-group">
-    <label>Densidad Interna <span id="val-inner">180</span></label>
+    <label>Inner Density <span id="val-inner">180</span></label>
     <input type="range" id="param-inner" min="50" max="500" value="180">
   </div>
   <div class="control-group">
-    <label>Nodos del Borde <span id="val-edge">75</span></label>
+    <label>Edge Nodes <span id="val-edge">75</span></label>
     <input type="range" id="param-edge" min="20" max="200" value="75">
   </div>
   <div class="control-group">
-    <label>Alcance Conexión <span id="val-reach">4.6</span></label>
+    <label>Outliers <span id="val-outliers">12</span></label>
+    <input type="range" id="param-outliers" min="0" max="100" value="12">
+  </div>
+  <div class="control-group">
+    <label>Link Reach <span id="val-reach">4.6</span></label>
     <input type="range" id="param-reach" min="2.0" max="8.0" step="0.1" value="4.6">
+  </div>
+  <div class="control-group">
+    <label>Edge Scatter <span id="val-scatter">2.5</span></label>
+    <input type="range" id="param-scatter" min="0" max="5" step="0.1" value="2.5">
+  </div>
+  <div class="control-group">
+    <label>Node Jitter <span id="val-jitter">2.0</span></label>
+    <input type="range" id="param-jitter" min="0" max="6" step="0.1" value="2.0">
+  </div>
+  <div class="control-group">
+    <label>Breath Amplitude <span id="val-amp">0.13</span></label>
+    <input type="range" id="param-amp" min="0.03" max="0.30" step="0.01" value="0.13">
+  </div>
+
+  <div class="control-group">
+    <label>&nbsp;</label>
+    <button id="save-design" title="Downloads heart-config.json — place it next to index.html">💾 Save design</button>
+    <small id="save-hint">writes heart-config.json</small>
   </div>
 </div>
 
@@ -160,39 +207,105 @@
 (() => {
   const canvas = document.getElementById('heart-canvas');
   const ctx = canvas.getContext('2d');
-  
+
   const inputs = {
     inner: document.getElementById('param-inner'),
     edge: document.getElementById('param-edge'),
+    outliers: document.getElementById('param-outliers'),
     reach: document.getElementById('param-reach'),
+    scatter: document.getElementById('param-scatter'),
+    jitter: document.getElementById('param-jitter'),
+    amp: document.getElementById('param-amp'),
     anim: document.getElementById('param-anim'),
     bg: document.getElementById('param-bg')
   };
-  
+
   const labels = {
     inner: document.getElementById('val-inner'),
     edge: document.getElementById('val-edge'),
-    reach: document.getElementById('val-reach')
+    outliers: document.getElementById('val-outliers'),
+    reach: document.getElementById('val-reach'),
+    scatter: document.getElementById('val-scatter'),
+    jitter: document.getElementById('val-jitter'),
+    amp: document.getElementById('val-amp')
   };
 
   let W, H, CX, CY, SCALE;
-  let outline = [];  
-  let inner = [];    
+  let outline = [];
+  let inner = [];
   let outliers = [];
   let bokeh = [];
 
-  // Actualizar etiquetas numéricas y reconstruir
-  ['inner', 'edge', 'reach'].forEach(key => {
+  // Update numeric labels and rebuild when the geometry changes.
+  // "reach" and "amp" are read every frame — no rebuild needed.
+  Object.keys(labels).forEach(key => {
     inputs[key].addEventListener('input', (e) => {
       labels[key].innerText = e.target.value;
-      if (key !== 'reach') build(); 
+      if (key !== 'reach' && key !== 'amp') build();
     });
   });
+
+  // ---------- Guided breathing cycle (Inhale 4s · Hold 4s · Exhale 6s · Rest 2s) ----------
+  // Change the durations here for another rhythm (e.g. 4-4-4-4 box breathing).
+  // They are included in the saved heart-config.json.
+  const PHASES = [
+    { name: 'inhale', dur: 4 },
+    { name: 'hold', dur: 4 },
+    { name: 'exhale', dur: 6 },
+    { name: 'rest', dur: 2 },
+  ];
+  const CYCLE = PHASES.reduce((s, p) => s + p.dur, 0);
+  const easeInOut = p => 0.5 - 0.5 * Math.cos(Math.PI * p);
+  const BREATH_WORDS = { inhale: 'I N H A L E', hold: 'H O L D', exhale: 'E X H A L E' };
+
+  function breathState(t) {
+    let tc = t % CYCLE;
+    for (const ph of PHASES) {
+      if (tc < ph.dur) {
+        const p = tc / ph.dur;
+        const level = ph.name === 'inhale' ? easeInOut(p)
+          : ph.name === 'hold' ? 1
+            : ph.name === 'exhale' ? 1 - easeInOut(p)
+              : 0;
+        return { name: ph.name, p, level };
+      }
+      tc -= ph.dur;
+    }
+    return { name: 'rest', p: 0, level: 0 };
+  }
 
   function heartXY(t, scale) {
     const x = 16 * Math.pow(Math.sin(t), 3);
     const y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
     return { x: CX + x * scale, y: CY - y * scale };
+  }
+
+  // The parametric heart curve does NOT trace the border at constant speed:
+  // uniform t-steps pile points up at the bottom tip and the top notch.
+  // Re-sample the outline by ARC LENGTH so nodes are spread evenly.
+  function outlinePositions(n) {
+    const M = 720;
+    const xs = [], ys = [], cum = [0];
+    let prev = heartXY(0, SCALE);
+    xs.push(prev.x); ys.push(prev.y);
+    let total = 0;
+    for (let i = 1; i <= M; i++) {
+      const p = heartXY((i / M) * Math.PI * 2, SCALE);
+      total += Math.hypot(p.x - xs[xs.length - 1], p.y - ys[ys.length - 1]);
+      xs.push(p.x); ys.push(p.y); cum.push(total);
+    }
+    const pts = [];
+    let si = 0;
+    for (let k = 0; k < n; k++) {
+      const target = (k / n) * total;
+      while (cum[si + 1] < target) si++;
+      const f = (target - cum[si]) / ((cum[si + 1] - cum[si]) || 1);
+      pts.push({
+        x: xs[si] + (xs[si + 1] - xs[si]) * f,
+        y: ys[si] + (ys[si + 1] - ys[si]) * f
+      });
+    }
+    return pts;
   }
 
   function insideHeart(px, py) {
@@ -205,29 +318,30 @@
   function build() {
     const P_INNER = parseInt(inputs.inner.value);
     const P_EDGE = parseInt(inputs.edge.value);
-    const P_OUTLIERS = 45; 
-    const P_JITTER = 3.0; 
+    const P_OUTLIERS = parseInt(inputs.outliers.value);
+    const P_SCATTER = parseFloat(inputs.scatter.value);
+    const P_JITTER = parseFloat(inputs.jitter.value);
 
     W = canvas.width = canvas.parentElement.clientWidth;
     H = canvas.height = canvas.parentElement.clientHeight;
     CX = W / 2;
     CY = H / 2 - Math.min(W, H) * 0.02;
-    SCALE = Math.min(W, H) / 44;   
+    SCALE = Math.min(W, H) / 44;
 
     outline = [];
-    for (let i = 0; i < P_EDGE; i++) {
-      const t = (i / P_EDGE) * Math.PI * 2;
-      const p = heartXY(t, SCALE);
-      const scatterX = (Math.random() - 0.5) * SCALE * (P_JITTER * 0.8);
-      const scatterY = (Math.random() - 0.5) * SCALE * (P_JITTER * 0.8);
+    for (const p of outlinePositions(P_EDGE)) {
+      const scatterX = (Math.random() - 0.5) * SCALE * P_SCATTER;
+      const scatterY = (Math.random() - 0.5) * SCALE * P_SCATTER;
       outline.push(mkPoint(p.x + scatterX, p.y + scatterY, true, false, P_JITTER));
     }
 
     inner = [];
-    const minDist = SCALE * (1.5 + (200 / (P_INNER + 1))); 
+    // Same spacing formula as index.html: 1.8·SCALE at 180 nodes,
+    // tighter/looser as density goes up/down.
+    const minDist = SCALE * 1.8 * Math.sqrt(180 / P_INNER);
     let guard = 0;
-    
-    while (inner.length < P_INNER && guard++ < 15000) { 
+
+    while (inner.length < P_INNER && guard++ < 15000) {
       const px = CX + (Math.random() * 2 - 1) * 17 * SCALE;
       const py = CY + (Math.random() * 2 - 1) * 16 * SCALE - 2 * SCALE;
       if (!insideHeart(px, py)) continue;
@@ -264,23 +378,50 @@
     }
   }
 
-  function mkPoint(x, y, isOutline, isOutlier = false, jitterMult = 3.0) {
+  function mkPoint(x, y, isOutline, isOutlier = false, jitterMult = 2.0) {
     return {
       ox: x, oy: y, x, y,
       ph: Math.random() * Math.PI * 2,
-      sp: 0.4 + Math.random() * 0.9,
-      jit: isOutline ? jitterMult + Math.random() * 2 : (jitterMult * 0.7) + Math.random() * 1.5,          
+      sp: 0.25 + Math.random() * 0.45,
+      jit: isOutline ? jitterMult + Math.random() * 1.5 : (jitterMult * 0.7) + Math.random() * 1.2,
       blue: (!isOutline && !isOutlier) && Math.random() < 0.12,
       isOutline,
       isOutlier
     };
   }
 
+  // ---------- Save design: downloads heart-config.json ----------
+  // index.html fetches this file on load; drop it in the site root,
+  // next to index.html, replacing the previous one.
+  document.getElementById('save-design').addEventListener('click', () => {
+    const config = {
+      animation: inputs.anim.value,
+      innerDensity: parseInt(inputs.inner.value),
+      edgeNodes: parseInt(inputs.edge.value),
+      outliers: parseInt(inputs.outliers.value),
+      reach: parseFloat(inputs.reach.value),
+      edgeScatter: parseFloat(inputs.scatter.value),
+      jitter: parseFloat(inputs.jitter.value),
+      breathAmplitude: parseFloat(inputs.amp.value),
+      phases: Object.fromEntries(PHASES.map(p => [p.name, p.dur]))
+    };
+    const blob = new Blob([JSON.stringify(config, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'heart-config.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+
+    const hint = document.getElementById('save-hint');
+    hint.textContent = 'saved! move it next to index.html';
+    setTimeout(() => { hint.textContent = 'writes heart-config.json'; }, 4000);
+  });
+
   function drawGrid(theme) {
     const base = H - H * 0.22;
-    // Si el fondo es claro, oscurecemos las líneas del grid para que se vean
-    const gridColor = theme === 'dark' ? '40,190,230' : '30,100,160'; 
-    
+    // On light backgrounds, darken the grid lines so they stay visible
+    const gridColor = theme === 'dark' ? '40,190,230' : '30,100,160';
+
     for (let i = 0; i < 12; i++) {
       const y = base + i * (H * 0.22 / 12);
       ctx.strokeStyle = `rgba(${gridColor},${(0.26 - i * 0.02).toFixed(3)})`;
@@ -299,14 +440,15 @@
   function frame(ts) {
     const t = ts / 1000;
     const P_REACH = parseFloat(inputs.reach.value);
+    const P_AMP = parseFloat(inputs.amp.value);
     const LINK = (SCALE * P_REACH) ** 2;
     const currentTheme = inputs.bg.value;
     const currentAnim = inputs.anim.value;
 
-    // Aplicar Color de Fondo
+    // Background color
     ctx.fillStyle = currentTheme === 'dark' ? '#050a18' : '#f4f7fa';
     ctx.fillRect(0, 0, W, H);
-    
+
     drawGrid(currentTheme);
 
     for (const b of bokeh) {
@@ -317,29 +459,35 @@
       ctx.fill(); ctx.shadowBlur = 0;
     }
 
-    // Aplicar Lógica de Animación (Latido vs Respiración)
+    // Animation logic (guided vs heartbeat vs slow breathing)
     let pulse;
-    if (currentAnim === 'heartbeat') {
+    let breath = null;
+    if (currentAnim === 'guided') {
+      breath = breathState(t);
+      // Expands on the inhale, holds, and slowly releases on the exhale
+      pulse = (1 - P_AMP / 2) + P_AMP * breath.level;
+    } else if (currentAnim === 'heartbeat') {
       pulse = 1 + 0.028 * Math.sin(t * 2.4) + 0.012 * Math.sin(t * 4.8 + 1);
     } else {
       pulse = 1 + 0.035 * Math.sin(t * 1.2) + 0.01 * Math.sin(t * 2.4 + 1);
     }
 
     const all = outline.concat(inner).concat(outliers);
-    
+
     for (const p of all) {
       p.x = CX + (p.ox - CX) * pulse + Math.sin(t * p.sp + p.ph) * p.jit;
       p.y = CY + (p.oy - CY) * pulse + Math.cos(t * p.sp + p.ph) * p.jit;
     }
 
     ctx.lineWidth = 0.6;
+    const breathGlow = breath ? 0.85 + 0.3 * breath.level : 1;
     for (let i = 0; i < all.length; i++) {
       for (let j = i + 1; j < all.length; j++) {
         const dx = all[i].x - all[j].x, dy = all[i].y - all[j].y;
         const d = dx * dx + dy * dy;
         if (d < LINK) {
           let opacityMod = (all[i].isOutlier || all[j].isOutlier) ? 0.15 : 0.35;
-          const a = (1 - d / LINK) * opacityMod; 
+          const a = (1 - d / LINK) * opacityMod * breathGlow;
           ctx.strokeStyle = 'rgba(255,140,50,' + a.toFixed(2) + ')';
           ctx.beginPath();
           ctx.moveTo(all[i].x, all[i].y);
@@ -352,7 +500,7 @@
     for (const p of all) {
       const r = p.isOutline ? 1.8 : (p.blue ? 2.2 : (p.isOutlier ? 1.0 : 1.5));
       ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, 6.283);
-      
+
       if (p.isOutlier) {
         ctx.fillStyle = 'rgba(255, 138, 60, 0.6)';
         ctx.shadowColor = 'rgba(255, 106, 26, 0.4)';
@@ -360,10 +508,28 @@
         ctx.fillStyle = p.blue ? '#5ad0ff' : '#ff8a3c';
         ctx.shadowColor = p.blue ? '#5ad0ff' : '#ff6a1a';
       }
-      
-      // En fondos claros, reducimos un poco el resplandor para que no se vea sucio
+
+      // Softer glow on light backgrounds so it does not look muddy
       ctx.shadowBlur = currentTheme === 'dark' ? 8 : 4;
       ctx.fill(); ctx.shadowBlur = 0;
+    }
+
+    // Breathing cue at the heart's center (guided mode only): the word
+    // fades in and out with each phase — inhale · hold · exhale.
+    if (breath) {
+      const word = BREATH_WORDS[breath.name];
+      if (word) {
+        const labelAlpha = 0.5 * Math.sin(Math.PI * breath.p);
+        if (labelAlpha > 0.01) {
+          ctx.font = '600 14px ui-monospace, monospace';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillStyle = currentTheme === 'dark'
+            ? `rgba(207, 233, 255, ${labelAlpha.toFixed(2)})`
+            : `rgba(22, 35, 63, ${labelAlpha.toFixed(2)})`;
+          ctx.fillText(word, CX, CY);
+        }
+      }
     }
 
     requestAnimationFrame(frame);

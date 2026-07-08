@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundings — Enrique Coronado</title>
+  <meta name="description"
+    content="Research grants and funding programs supporting Enrique Coronado's work on responsible physical AI, agentic AI, and human-centered robotics.">
+
+  <!-- ============================================================
+       FUNDINGS PAGE
+       Content lives in the FUNDINGS array at the bottom of this
+       file — one entry per grant/program. "logo" is optional: when
+       missing, a monogram with "short" is shown instead.
+       ============================================================ -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap"
+    rel="stylesheet">
+
+  <!-- DESIGN TOKENS — identical to index.html; keep in sync -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#16233F', body: '#4B5568', faint: '#8B93A3', line: '#DDE2EC',
+            sky: '#4E9FD9', lime: '#DCF34B',
+            blue: { DEFAULT: '#1173BC', deep: '#0A5697', text: '#1B6FB5' },
+            cyan: '#A9EAFB', cyanfill: '#BFF0FC',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+          },
+          maxWidth: { site: '80rem' },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-feature-settings: 'cv11', 'ss01';
+      background: linear-gradient(180deg, #F4F6FB 0%, #EAEFF8 55%, #F1F4FA 100%);
+    }
+    .display { letter-spacing: -0.025em; }
+    .meta {
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #1173BC; outline-offset: 3px; border-radius: 4px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+
+<body class="text-ink antialiased">
+
+  <!-- NAVIGATION — same bar as index.html -->
+  <nav aria-label="Main">
+    <div class="max-w-site mx-auto px-5 h-16 flex items-center justify-between gap-6">
+      <a href="index.html" class="leading-tight shrink-0">
+        <span class="block font-bold text-[17px] display">Enrique Coronado</span>
+        <span class="block text-[10px] text-faint font-medium tracking-wide">AIST · INTEGRATED RESEARCH CENTER FOR
+          WELLBEING</span>
+      </a>
+      <div class="hidden lg:flex items-center gap-9 text-[15px] font-medium">
+        <a href="about.html" class="text-blue">About</a>
+        <a href="index.html#research" class="hover:text-blue transition-colors">Research</a>
+        <a href="index.html#projects" class="hover:text-blue transition-colors">Projects</a>
+        <a href="research.html" class="hover:text-blue transition-colors">Publications</a>
+        <a href="index.html#news" class="hover:text-blue transition-colors">News</a>
+        <a href="interships.html" class="hover:text-blue transition-colors">Internships</a>
+      </div>
+      <button id="menu-toggle" class="lg:hidden p-2 -mr-2 text-ink" aria-expanded="false" aria-controls="mobile-menu"
+        aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-line bg-white px-5 py-5">
+      <div class="flex flex-col gap-4 text-[15px] font-medium text-body">
+        <a href="about.html" class="text-blue">About</a>
+        <a href="index.html#research" class="hover:text-ink">Research</a>
+        <a href="index.html#projects" class="hover:text-ink">Projects</a>
+        <a href="research.html" class="hover:text-ink">Publications</a>
+        <a href="index.html#news" class="hover:text-ink">News</a>
+        <a href="interships.html" class="text-blue font-semibold">Internships →</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-site mx-auto px-5 py-10 md:py-16">
+
+    <!-- Header -->
+    <header class="mb-14 md:mb-20">
+      <p class="meta text-faint mb-4">
+        <a href="index.html" class="hover:text-ink">Home</a> /
+        <a href="about.html" class="hover:text-ink">About</a> /
+        <span class="text-blue">Fundings</span>
+      </p>
+      <h1 class="display font-semibold text-4xl md:text-6xl leading-[1.05]">
+        Research <span class="text-blue">Fundings</span>
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-body leading-relaxed max-w-3xl">
+        The grants and programs that support this research — from national agencies to international
+        collaboration schemes. Each one funds a piece of the mission: responsible physical and agentic AI
+        with humanity at the heart.
+      </p>
+    </header>
+
+    <!-- Funding cards — rendered from the FUNDINGS array below -->
+    <section id="fundings-grid" class="grid md:grid-cols-2 gap-6"></section>
+
+    <!-- Back to About -->
+    <div class="mt-16 flex flex-wrap gap-4">
+      <a href="about.html"
+        class="inline-flex items-center gap-2.5 bg-blue hover:bg-blue-deep text-white px-6 py-3.5 rounded-full font-medium text-[15px] transition-colors">
+        <svg class="w-4 h-4 rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+          aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+        Back to Biography
+      </a>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="max-w-site mx-auto px-5 py-10 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
+      <p class="font-semibold display">Enrique Coronado</p>
+      <p class="meta text-faint">AIST · National Institute of Advanced Industrial Science and Technology</p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       DATA — edit your fundings here. One object per grant/program.
+       Fields:
+         short       monogram shown when "logo" is empty
+         funder      agency / program name (shown as the eyebrow)
+         title       grant or project title
+         role        e.g. "Principal Investigator", "Co-Investigator"
+         period      e.g. "2024–2027"
+         amount      optional, e.g. "¥12.4M" — leave "" to hide
+         description 1–3 sentences on what the funding supports
+         logo        optional path to the funder's logo in img/
+         href        optional link to the program page — leave "" to hide
+       ============================================================ -->
+  <script>
+    const FUNDINGS = [
+      {
+        short: "KAKENHI",
+        funder: "EDIT ME — JSPS KAKENHI",
+        title: "EDIT ME — Grant or project title",
+        role: "Principal Investigator",
+        period: "2024–2027",
+        amount: "",
+        description: "EDIT ME — one to three sentences describing what this funding supports and its expected impact.",
+        logo: "",
+        href: ""
+      },
+      {
+        short: "AIST",
+        funder: "EDIT ME — AIST Internal Program",
+        title: "EDIT ME — Grant or project title",
+        role: "Co-Investigator",
+        period: "2023–2025",
+        amount: "",
+        description: "EDIT ME — one to three sentences describing what this funding supports and its expected impact.",
+        logo: "img/aist-logo.png",
+        href: ""
+      }
+    ];
+  </script>
+
+  <!-- BEHAVIOR -->
+  <script>
+    // ---------- Mobile menu ----------
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.toggle('hidden');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // ---------- Funding cards ----------
+    function logoBlock(item) {
+      if (item.logo) {
+        return `<img src="${item.logo}" alt="${item.funder}" loading="lazy"
+          class="h-14 w-14 object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300">`;
+      }
+      return `<div class="h-14 w-14 flex items-center justify-center rounded-2xl bg-cyanfill/60
+          text-blue display font-semibold text-sm group-hover:bg-cyanfill transition-colors">${item.short}</div>`;
+    }
+
+    document.getElementById('fundings-grid').innerHTML = FUNDINGS.map(f => {
+      const chips = [
+        `<span class="meta text-body bg-line/60 rounded-full px-3 py-1.5">${f.role}</span>`,
+        `<span class="meta text-body bg-line/60 rounded-full px-3 py-1.5">${f.period}</span>`,
+        f.amount ? `<span class="meta text-ink bg-lime rounded-full px-3 py-1.5">${f.amount}</span>` : ''
+      ].join('');
+      const link = f.href ? `
+        <a href="${f.href}" target="_blank" rel="noopener"
+          class="inline-flex items-center gap-2 text-blue font-medium text-sm hover:underline underline-offset-4 mt-1">
+          Program page
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+          </svg>
+        </a>` : '';
+      return `
+        <article class="group bg-white rounded-3xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col gap-4">
+          <div class="flex items-start justify-between gap-4">
+            ${logoBlock(f)}
+            <p class="meta text-faint text-right">${f.period}</p>
+          </div>
+          <div class="flex flex-col gap-2.5 flex-1">
+            <p class="meta text-blue">${f.funder}</p>
+            <h2 class="display font-semibold text-2xl leading-snug">${f.title}</h2>
+            <p class="text-body text-[15px] leading-relaxed">${f.description}</p>
+            ${link}
+          </div>
+          <div class="flex flex-wrap gap-2 pt-2">${chips}</div>
+        </article>`;
+    }).join('');
+  </script>
+</body>
+
+</html>

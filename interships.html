@@ -1,460 +1,529 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Internships | Enrique Coronado</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research Internships — Enrique Coronado</title>
+  <meta name="description"
+    content="Research internships in human-robot interaction and agentic AI at AIST HEART — application documents, visa requirements, housing, and access.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap"
+    rel="stylesheet">
+
+  <!-- DESIGN TOKENS — identical to index.html; keep in sync -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#16233F', body: '#4B5568', faint: '#8B93A3', line: '#DDE2EC',
+            sky: '#4E9FD9', lime: '#DCF34B',
+            blue: { DEFAULT: '#1173BC', deep: '#0A5697', text: '#1B6FB5' },
+            cyan: '#A9EAFB', cyanfill: '#BFF0FC',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+          },
+          maxWidth: { site: '80rem' },
         }
-    </style>
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-feature-settings: 'cv11', 'ss01';
+      background: linear-gradient(180deg, #F4F6FB 0%, #EAEFF8 55%, #F1F4FA 100%);
+    }
+    .display { letter-spacing: -0.025em; }
+    .meta {
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #1173BC; outline-offset: 3px; border-radius: 4px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
 </head>
 
-<body class="bg-white text-slate-900 min-h-screen">
+<body class="text-ink antialiased">
 
-    <nav class="bg-white/70 backdrop-blur-md border-b sticky top-0 z-50">
-        <div class="max-w-none mx-auto px-12 h-20 flex items-center justify-between">
-            <a href="index.html" class="group flex items-center gap-3">
-                <div
-                    class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-hover:bg-blue-700 group-hover:text-white transition-all">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
-                </div>
-                <span
-                    class="font-bold text-sm uppercase tracking-widest text-slate-400 group-hover:text-slate-900 transition-colors">Back
-                    to Home</span>
+  <!-- NAVIGATION — same bar as index.html -->
+  <nav aria-label="Main">
+    <div class="max-w-site mx-auto px-5 h-16 flex items-center justify-between gap-6">
+      <a href="index.html" class="leading-tight shrink-0">
+        <span class="block font-bold text-[17px] display">Enrique Coronado</span>
+        <span class="block text-[10px] text-faint font-medium tracking-wide">AIST · INTEGRATED RESEARCH CENTER FOR
+          WELLBEING</span>
+      </a>
+      <div class="hidden lg:flex items-center gap-9 text-[15px] font-medium">
+        <a href="about.html" class="hover:text-blue transition-colors">About</a>
+        <a href="index.html#research" class="hover:text-blue transition-colors">Research</a>
+        <a href="index.html#projects" class="hover:text-blue transition-colors">Projects</a>
+        <a href="research.html" class="hover:text-blue transition-colors">Publications</a>
+        <a href="index.html#news" class="hover:text-blue transition-colors">News</a>
+        <a href="interships.html" class="text-blue">Internships</a>
+      </div>
+      <button id="menu-toggle" class="lg:hidden p-2 -mr-2 text-ink" aria-expanded="false" aria-controls="mobile-menu"
+        aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-line bg-white px-5 py-5">
+      <div class="flex flex-col gap-4 text-[15px] font-medium text-body">
+        <a href="about.html" class="hover:text-ink">About</a>
+        <a href="index.html#research" class="hover:text-ink">Research</a>
+        <a href="index.html#projects" class="hover:text-ink">Projects</a>
+        <a href="research.html" class="hover:text-ink">Publications</a>
+        <a href="index.html#news" class="hover:text-ink">News</a>
+        <a href="interships.html" class="text-blue font-semibold">Internships →</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-5 py-10 md:py-16">
+
+    <header class="mb-12 md:mb-16">
+      <p class="meta text-faint mb-4">Internships</p>
+      <h1 class="display font-semibold text-4xl md:text-6xl leading-[1.05]">
+        Join our <span class="text-blue">Team</span>
+      </h1>
+      <p class="mt-6 text-xl text-body leading-relaxed max-w-3xl">
+        We are seeking passionate individuals for research internships in human-robot interaction and agentic
+        AI.
+      </p>
+    </header>
+
+    <section class="space-y-16">
+
+      <!-- Application Action Button -->
+      <div class="mb-12">
+        <a href="topics.html"
+          class="group inline-flex items-center gap-2.5 bg-blue hover:bg-blue-deep text-white px-6 py-3.5 rounded-full font-medium text-[15px] transition-colors">
+          <span>See research topics (in construction)</span>
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
+            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="space-y-8">
+        <h2 class="display text-2xl font-semibold border-l-4 border-blue pl-4">Pre-Application Documents</h2>
+
+        <div class="bg-white rounded-3xl shadow-sm p-8 space-y-8">
+          <div>
+            <h3 class="font-bold text-ink mb-2">1. Curriculum Vitae (CV)</h3>
+            <ul class="space-y-3 text-body text-sm">
+              <li class="flex items-start gap-2">
+                <span class="text-blue font-bold">•</span>
+                <span>
+                  The CV must include the following personal information:
+                  <strong class="text-ink">full name (as written in passport), photograph, sex, date of birth, age, and
+                    citizenship</strong>.
+                </span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blue font-bold">•</span>
+                <span>
+                  <strong class="text-ink">Education Record:</strong> List all academic history from oldest to most
+                  recent. If the original name is not in English, provide the English name.
+                </span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blue font-bold">•</span>
+                <span>
+                  <strong class="text-ink">Continuity Requirement:</strong> Ensure there are no unexplained gaps longer
+                  than <strong class="text-ink">1 month</strong>. Any gaps must include a brief explanation.
+                </span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-blue font-bold">•</span>
+                <span>The CV must be submitted in <strong class="text-ink">PDF format</strong>.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-ink mb-2">2. Digital Photo</h3>
+            <p class="text-sm text-body mb-2">For visa and administrative processing, a digital photo
+              (JPEG or PNG) is required. It must strictly follow the Immigration Services Agency of Japan
+              (ISA) standards.</p>
+            <a href="https://www.moj.go.jp/isa/applications/status/photo_info_00002.html" target="_blank"
+              class="inline-flex items-center text-sm font-bold text-blue hover:text-blue-deep underline transition-colors">
+              View Official Photo Specifications
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </a>
-        </div>
-    </nav>
+          </div>
 
-    <main class="max-w-5xl mx-auto px-6 py-12 md:py-24">
-        <header class="mb-16 text-center md:text-left">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                Join our <span class="text-blue-700">Team</span>
-            </h1>
-            <p class="mt-6 text-xl text-slate-500 font-light max-w-3xl">
-                We are seeking passionate individuals for research internships in human-robot interaction and agentic
-                AI.
+          <div>
+            <h3 class="font-bold text-ink mb-2">3. Copy of Passport</h3>
+            <p class="text-sm text-body mb-3">
+              Provide a high-quality <strong class="text-ink">scan</strong> of the identification page.
             </p>
-        </header>
+            <ul class="space-y-2 text-body text-xs italic">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-sky rounded-full"></span>
+                <span>Passport must be valid for the entire duration of the intended stay in
+                  Japan.</span>
+              </li>
+            </ul>
+          </div>
 
-        <section class="space-y-16">
+          <div>
+            <h3 class="font-bold text-ink mb-2">4. Letter of Financial Guarantee</h3>
+            <p class="text-sm text-body mb-4">
+              A signed letter or formal email from a parent or guardian is required to confirm financial
+              support.
+              Please use the template provided below and send the completed document to
+              <a href="mailto:coronadozuniga.enrique@aist.go.jp"
+                class="text-blue font-bold hover:underline">coronadozuniga.enrique@aist.go.jp</a>.
+            </p>
 
-            <!-- Application Action Button -->
-            <div class="mb-12 flex justify-center md:justify-start">
-                <a href="../topics.html"
-                    class="group inline-flex items-center gap-3 px-8 py-4 bg-blue-700 text-white font-bold rounded-2xl shadow-xl shadow-blue-200 hover:bg-blue-600 hover:-translate-y-1 transition-all duration-300">
-                    <span>See reseach topics (in construction)</span>
-                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none"
-                        stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                </a>
+            <div
+              class="bg-white border border-line rounded-xl p-6 font-mono text-xs text-body leading-relaxed shadow-sm">
+              <p class="mb-4 text-faint italic font-sans">// Template Start</p>
+              [Parent/Guardian Full Name]<br>
+              [Full Address]<br>
+              <br>
+              Date: [Current Date]<br>
+              <br>
+              To whom it may concern,<br>
+              <br>
+              I, <strong>[Parent/Guardian Name]</strong>, hereby state that I will assume all the
+              financial charges of my daughter <strong>[Applicant Name]</strong> in order to provide for
+              her daily needs. This includes round-trip airplane tickets, rent, food, travel, and leisure
+              during her stay in Japan.<br>
+              <br>
+              Please consider this email as an official and formal notification.<br>
+              <br>
+              Sincerely,<br>
+              <br>
+              <strong>[Parent/Guardian Signature/Name]</strong>
             </div>
-
-            <div class="space-y-8">
-                <h2 class="text-2xl font-bold border-l-4 border-blue-700 pl-4">Pre-Application Documents</h2>
-
-                <div class="bg-slate-50 p-8 rounded-2xl space-y-8">
-                    <div>
-                        <h3 class="font-bold text-slate-900 mb-2">1. Curriculum Vitae (CV)</h3>
-                        <ul class="space-y-3 text-slate-600 text-sm">
-                            <li class="flex items-start gap-2">
-                                <span class="text-blue-700 font-bold">•</span>
-                                <span>
-                                    The CV must include the following personal information:
-                                    <strong>full name (as written in passport), photograph, sex, date of birth, age, and
-                                        citizenship</strong>.
-                                </span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-blue-700 font-bold">•</span>
-                                <span>
-                                    <strong>Education Record:</strong> List all academic history from oldest to most
-                                    recent. If the original name is not in English, provide the English name.
-                                </span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-blue-700 font-bold">•</span>
-                                <span>
-                                    <strong>Continuity Requirement:</strong> Ensure there are no unexplained gaps longer
-                                    than <strong>1 month</strong>. Any gaps must include a brief explanation.
-                                </span>
-                            </li>
-                            <li class="flex items-start gap-2">
-                                <span class="text-blue-700 font-bold">•</span>
-                                <span>The CV must be submitted in <strong>PDF format</strong>.</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h3 class="font-bold text-slate-900 mb-2">2. Digital Photo</h3>
-                        <p class="text-sm text-slate-600 mb-2">For visa and administrative processing, a digital photo
-                            (JPEG or PNG) is required. It must strictly follow the Immigration Services Agency of Japan
-                            (ISA) standards.</p>
-                        <a href="https://www.moj.go.jp/isa/applications/status/photo_info_00002.html" target="_blank"
-                            class="inline-flex items-center text-sm font-bold text-blue-700 hover:text-blue-900 underline transition-colors">
-                            View Official Photo Specifications
-                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </a>
-                    </div>
-
-                    <div>
-                        <h3 class="font-bold text-slate-900 mb-2">3. Copy of Passport</h3>
-                        <p class="text-sm text-slate-600 mb-3">
-                            Provide a high-quality <strong>scan</strong> of the identification page.
-                        </p>
-                        <ul class="space-y-2 text-slate-600 text-xs italic">
-                            <li class="flex items-center gap-2">
-                                <span class="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
-                                <span>Passport must be valid for the entire duration of the intended stay in
-                                    Japan.</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h3 class="font-bold text-slate-900 mb-2">4. Letter of Financial Guarantee</h3>
-                        <p class="text-sm text-slate-600 mb-4">
-                            A signed letter or formal email from a parent or guardian is required to confirm financial
-                            support.
-                            Please use the template provided below and send the completed document to
-                            <a href="mailto:coronadozu@gmail.com"
-                                class="text-blue-700 font-bold hover:underline">coronadozuniga.enrique@aist.go.jp</a>.
-                        </p>
-
-                        <div
-                            class="bg-white border border-slate-200 rounded-xl p-6 font-mono text-xs text-slate-500 leading-relaxed shadow-sm">
-                            <p class="mb-4 text-slate-400 italic font-sans">// Template Start</p>
-                            [Parent/Guardian Full Name]<br>
-                            [Full Address]<br>
-                            <br>
-                            Date: [Current Date]<br>
-                            <br>
-                            To whom it may concern,<br>
-                            <br>
-                            I, <strong>[Parent/Guardian Name]</strong>, hereby state that I will assume all the
-                            financial charges of my daughter <strong>[Applicant Name]</strong> in order to provide for
-                            her daily needs. This includes round-trip airplane tickets, rent, food, travel, and leisure
-                            during her stay in Japan.<br>
-                            <br>
-                            Please consider this email as an official and formal notification.<br>
-                            <br>
-                            Sincerely,<br>
-                            <br>
-                            <strong>[Parent/Guardian Signature/Name]</strong>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
+        </div>
+      </div>
 
 
-            <!-- Post-Selection Documents Section -->
-            <div class="space-y-8">
-                <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-blue-700 pl-4">
-                    What additional documents are required if I am pre-selected?
-                </h2>
+      <!-- Post-Selection Documents Section -->
+      <div class="space-y-8">
+        <h2 class="display text-2xl font-semibold border-l-4 border-blue pl-4">
+          What additional documents are required if I am pre-selected?
+        </h2>
 
-                <div class="bg-slate-50 rounded-2xl p-8 space-y-10">
+        <div class="bg-white rounded-3xl shadow-sm p-8 space-y-10">
 
-                    <!-- 1. Accident Insurance -->
-                    <div class="space-y-4">
-                        <h3 class="font-bold text-slate-900 flex items-center gap-2">
-                            <span
-                                class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-700 text-white text-[10px]">01</span>
-                            Accident & Disaster Insurance
-                        </h3>
-                        <p class="text-sm text-slate-600 leading-relaxed">
-                            You must provide written proof of accident insurance equivalent to the Japanese "Gakkensai"
-                            (Personal Accident Insurance for Students Pursuing Education and Research). The document
-                            must explicitly state:
-                        </p>
-                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            <li
-                                class="flex items-center gap-2 text-xs text-slate-500 bg-white p-3 rounded-lg border border-slate-100">
-                                <svg class="w-4 h-4 text-blue-700" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>
-                                Valid within Japan
-                            </li>
-                            <li
-                                class="flex items-center gap-2 text-xs text-slate-500 bg-white p-3 rounded-lg border border-slate-100">
-                                <svg class="w-4 h-4 text-blue-700" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>
-                                Coverage for the entire training period
-                            </li>
-                            <li
-                                class="flex items-center gap-2 text-xs text-slate-500 bg-white p-3 rounded-lg border border-slate-100">
-                                <svg class="w-4 h-4 text-blue-700" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7" />
-                                </svg>
-                                Medical expenses for illness/injury/death
-                            </li>
-                            <li
-                                class="flex items-center gap-2 text-xs text-slate-400 bg-white p-3 rounded-lg border border-slate-100 italic">
-                                <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                </svg>
-                                Personal liability (optional)
-                            </li>
-                        </ul>
-                    </div>
+          <!-- 1. Accident Insurance -->
+          <div class="space-y-4">
+            <h3 class="font-bold text-ink flex items-center gap-2">
+              <span
+                class="flex items-center justify-center w-6 h-6 rounded-full bg-blue text-white text-[10px]">01</span>
+              Accident &amp; Disaster Insurance
+            </h3>
+            <p class="text-sm text-body leading-relaxed">
+              You must provide written proof of accident insurance equivalent to the Japanese "Gakkensai"
+              (Personal Accident Insurance for Students Pursuing Education and Research). The document
+              must explicitly state:
+            </p>
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <li
+                class="flex items-center gap-2 text-xs text-body bg-white p-3 rounded-lg border border-line">
+                <svg class="w-4 h-4 text-blue" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M5 13l4 4L19 7" />
+                </svg>
+                Valid within Japan
+              </li>
+              <li
+                class="flex items-center gap-2 text-xs text-body bg-white p-3 rounded-lg border border-line">
+                <svg class="w-4 h-4 text-blue" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M5 13l4 4L19 7" />
+                </svg>
+                Coverage for the entire training period
+              </li>
+              <li
+                class="flex items-center gap-2 text-xs text-body bg-white p-3 rounded-lg border border-line">
+                <svg class="w-4 h-4 text-blue" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M5 13l4 4L19 7" />
+                </svg>
+                Medical expenses for illness/injury/death
+              </li>
+              <li
+                class="flex items-center gap-2 text-xs text-faint bg-white p-3 rounded-lg border border-line italic">
+                <svg class="w-4 h-4 text-faint" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Personal liability (optional)
+              </li>
+            </ul>
+          </div>
 
-                    <!-- 2. Flight Details -->
-                    <div class="space-y-4">
-                        <h3 class="font-bold text-slate-900 flex items-center gap-2">
-                            <span
-                                class="flex items-center justify-center w-6 h-6 rounded-full bg-blue-700 text-white text-[10px]">02</span>
-                            Potential Round-Trip Flight
-                        </h3>
-                        <p class="text-sm text-slate-600 leading-relaxed">
-                            Provide your intended flight details for visa and administrative planning. Please specify
-                            the <strong>departure and arrival airports</strong> (e.g., Mexico City AICM to Tokyo Narita
-                            NRT).
-                        </p>
-                    </div>
+          <!-- 2. Flight Details -->
+          <div class="space-y-4">
+            <h3 class="font-bold text-ink flex items-center gap-2">
+              <span
+                class="flex items-center justify-center w-6 h-6 rounded-full bg-blue text-white text-[10px]">02</span>
+              Potential Round-Trip Flight
+            </h3>
+            <p class="text-sm text-body leading-relaxed">
+              Provide your intended flight details for visa and administrative planning. Please specify
+              the <strong class="text-ink">departure and arrival airports</strong> (e.g., Mexico City AICM to Tokyo Narita
+              NRT).
+            </p>
+          </div>
 
-                    <!-- 3. Other Documents -->
-                    <div class="pt-6 border-t border-slate-200">
-                        <div class="flex items-start gap-4 p-4 bg-blue-50 rounded-xl border border-blue-100">
-                            <svg class="w-6 h-6 text-blue-700 mt-0.5" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            <div>
-                                <h4 class="text-sm font-bold text-blue-900">Final Acceptance Documents</h4>
-                                <p class="text-xs text-blue-800 mt-1 leading-relaxed">
-                                    Additional specific documents may be required based on your home institution. These will be communicated to you individually once the formal acceptance
-                                    process begins.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Visa & CoE Requirement Section -->
-            <div class="space-y-8">
-                <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-blue-700 pl-4">
-                    What happens if my internship is longer than 3 months (90 days)?
-                </h2>
-
-                <div class="bg-slate-50 rounded-2xl p-8 space-y-6">
-                    <p class="text-slate-600 leading-relaxed">
-                        Internships exceeding 90 days require a <strong>Cultural Activities Visa</strong>. To facilitate
-                        this, we must process a <strong>Certificate of Eligibility (CoE)</strong> through the Japanese
-                        Immigration Bureau. This is a standard legal procedure for long-term research stays.
-                    </p>
-
-                    <div class="space-y-4">
-                        <h3 class="font-bold text-slate-900 flex items-center gap-2">
-                            <svg class="w-5 h-5 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            Main Requirement: Financial Solvency
-                        </h3>
-
-                        <p class="text-sm text-slate-600 leading-relaxed">
-                            You must demonstrate that you have the fixed total amount in your bank account to cover
-                            <strong>175,000 JPY per month</strong> for the entire duration of your stay.
-                        </p>
-
-                        <!-- Calculation Example Box -->
-                        <div class="bg-blue-100/50 border-l-4 border-blue-700 p-6 rounded-r-xl">
-                            <span class="text-xs font-black uppercase tracking-widest text-blue-800">Calculation
-                                Example</span>
-                            <p class="mt-2 text-slate-900 font-medium">
-                                For a <span class="underline decoration-blue-300 underline-offset-4">5-month
-                                    internship</span>, your bank statement must show a minimum balance of:
-                            </p>
-                            <div class="mt-3 text-2xl font-black text-blue-700">
-                                875,000 JPY <span class="text-sm font-normal text-slate-500">(175,000 JPY × 5
-                                    months)</span>
-                            </div>
-                        </div>
-
-                        <ul class="space-y-4 text-sm text-slate-600 pt-2">
-                            <li class="flex items-start gap-3">
-                                <span class="text-blue-700 font-bold">•</span>
-                                <span>
-                                    <strong>Bank Statement:</strong> A PDF copy of a recent statement showing the total
-                                    amount. It must include an <strong>English translation</strong>.
-                                </span>
-                            </li>
-                            <li class="flex items-start gap-3">
-                                <span class="text-blue-700 font-bold">•</span>
-                                <span>
-                                    <strong>Financial Sponsorship:</strong> If using a parent's account, you must
-                                    provide a <strong>copy of your Birth Certificate</strong> (with English translation)
-                                    to verify the relationship.
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="space-y-8">
-                <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-blue-700 pl-4">Housing Resources</h2>
-
-                <div class="bg-slate-50 rounded-2xl p-8">
-                    <ul class="space-y-4">
-                        <li class="flex items-center gap-3">
-                            <span class="w-1.5 h-1.5 bg-blue-700 rounded-full"></span>
-                            <span class="font-semibold text-slate-700 w-32">Sakura House:</span>
-                            <a href="https://www.sakura-house.com/es/" target="_blank"
-                                class="text-blue-700 hover:underline">sakura-house.com/es</a>
-
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="w-1.5 h-1.5 bg-blue-700 rounded-full"></span>
-                            <span class="font-semibold text-slate-700 w-32">Oakhouse:</span>
-                            <a href="https://www.oakhouse.jp/eng/" target="_blank"
-                                class="text-blue-700 hover:underline">oakhouse.jp/eng/</a>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="w-1.5 h-1.5 bg-blue-700 rounded-full"></span>
-                            <span class="font-semibold text-slate-700 w-32">Tokyo Share:</span>
-                            <a href="https://tokyosharehouse.com/eng/" target="_blank"
-                                class="text-blue-700 hover:underline">tokyosharehouse.com/eng/</a>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="w-1.5 h-1.5 bg-blue-700 rounded-full"></span>
-                            <span class="font-semibold text-slate-700 w-32">Fujimi House:</span>
-                            <a href="https://fujimihouse.jp/?lang=en" target="_blank"
-                                class="text-blue-700 hover:underline">fujimihouse.jp/?lang=en</a>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <span class="w-1.5 h-1.5 bg-blue-700 rounded-full"></span>
-                            <span class="font-semibold text-slate-700 w-32">Leopalace 21:</span>
-                            <a href="https://en.leopalace21.com" target="_blank"
-                                class="text-blue-700 hover:underline">en.leopalace21.com</a>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- New Location Section -->
-        <section class="space-y-6 pt-12 border-t border-slate-100">
-            <h3 class="text-3xl font-extrabold text-slate-900">Location & Access</h3>
-
-            <!-- Map Embed -->
-            <div class="w-full h-96 rounded-3xl overflow-hidden shadow-sm border border-slate-200 bg-slate-100">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3242.2741916325515!2d139.77582537604318!3d35.62001553198536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188981e4272101%3A0x6334a17951d02d09!2sAIST%20Tokyo%20Waterfront%20Annex%202!5e0!3m2!1sen!2sjp!4v1715014631383!5m2!1sen!2sjp"
-                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="space-y-2">
-                    <h4 class="text-xl font-bold text-slate-900">Address</h4>
-                    <p class="text-slate-600">
-                        AIST Annex 2 Building<br>
-                        2-4-7 Aomi, Koto-ku, Tokyo, 135-0064, JAPAN
-                    </p>
-                </div>
-
-                <div class="space-y-2">
-                    <h4 class="text-xl font-bold text-slate-900">Access</h4>
-                    <p class="text-slate-600">
-                        We are located in the AIST Annex 2 Building. From the <strong>Tokyo Telecom Center
-                            Station</strong> on the Yurikamome Line, it is a short, direct walk to our facilities.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Nearby Attractions Section -->
-        <section class="space-y-6 pt-12 border-t border-slate-100">
-            <header class="mb-8">
-                <h3 class="text-3xl font-extrabold text-slate-900">Explore the Area</h3>
-                <p class="mt-4 text-slate-600 text-lg leading-relaxed">
-                    Our lab is located in Odaiba, a vibrant, futuristic hub on a high-tech artificial island in Tokyo
-                    Bay. It offers a perfect blend of waterfront relaxation and modern entertainment.
+          <!-- 3. Other Documents -->
+          <div class="pt-6 border-t border-line">
+            <div class="flex items-start gap-4 p-4 bg-cyanfill/50 rounded-xl border border-cyan">
+              <svg class="w-6 h-6 text-blue mt-0.5" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <div>
+                <h4 class="text-sm font-bold text-blue-deep">Final Acceptance Documents</h4>
+                <p class="text-xs text-body mt-1 leading-relaxed">
+                  Additional specific documents may be required based on your home institution. These will be communicated to you individually once the formal acceptance
+                  process begins.
                 </p>
-            </header>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-                <!-- Odaiba Card -->
-                <div
-                    class="group overflow-hidden rounded-[2rem] bg-slate-50 border border-slate-100 shadow-sm transition-all hover:shadow-md">
-                    <div class="w-full h-56 bg-slate-200 overflow-hidden relative">
-                        <!-- Replace 'your-odaiba-photo.jpg' with your actual image path -->
-                        <img src="../img/odaiba.png" alt="Odaiba Waterfront"
-                            class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h4 class="text-xl font-bold text-slate-900 mb-2">Odaiba Bay Area</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            Enjoy stunning waterfront views of the Tokyo skyline, the iconic Rainbow Bridge, and
-                            expansive seaside parks perfect for a walk after research hours.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- DiverCity Card -->
-                <div
-                    class="group overflow-hidden rounded-[2rem] bg-slate-50 border border-slate-100 shadow-sm transition-all hover:shadow-md">
-                    <div class="w-full h-56 bg-slate-200 overflow-hidden relative">
-                        <!-- Replace 'your-divercity-photo.jpg' with your actual image path -->
-                        <img src="../img/gundam.png" alt="DiverCity Tokyo Plaza"
-                            class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105">
-                        <div
-                            class="absolute inset-0 bg-gradient-to-t from-slate-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h4 class="text-xl font-bold text-slate-900 mb-2">DiverCity Tokyo Plaza</h4>
-                        <p class="text-slate-600 text-sm leading-relaxed">
-                            A premier shopping and entertainment complex just a short distance away, famous for its
-                            impressive life-sized Gundam statue and diverse dining options.
-                        </p>
-                    </div>
-                </div>
-
+              </div>
             </div>
-        </section>
-    </main>
+          </div>
 
-    <footer class="py-12 border-t border-slate-50 text-center mt-12">
-        <p class="text-[10px] text-slate-400 uppercase tracking-[0.4em] font-bold">
-            AIST &bull; National Institute of Advanced Industrial Science and Technology
+        </div>
+      </div>
+
+      <!-- Visa & CoE Requirement Section -->
+      <div class="space-y-8">
+        <h2 class="display text-2xl font-semibold border-l-4 border-blue pl-4">
+          What happens if my internship is longer than 3 months (90 days)?
+        </h2>
+
+        <div class="bg-white rounded-3xl shadow-sm p-8 space-y-6">
+          <p class="text-body leading-relaxed">
+            Internships exceeding 90 days require a <strong class="text-ink">Cultural Activities Visa</strong>. To facilitate
+            this, we must process a <strong class="text-ink">Certificate of Eligibility (CoE)</strong> through the Japanese
+            Immigration Bureau. This is a standard legal procedure for long-term research stays.
+          </p>
+
+          <div class="space-y-4">
+            <h3 class="font-bold text-ink flex items-center gap-2">
+              <svg class="w-5 h-5 text-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Main Requirement: Financial Solvency
+            </h3>
+
+            <p class="text-sm text-body leading-relaxed">
+              You must demonstrate that you have the fixed total amount in your bank account to cover
+              <strong class="text-ink">175,000 JPY per month</strong> for the entire duration of your stay.
+            </p>
+
+            <!-- Calculation Example Box -->
+            <div class="bg-cyanfill/50 border-l-4 border-blue p-6 rounded-r-xl">
+              <span class="meta text-blue-deep">Calculation Example</span>
+              <p class="mt-2 text-ink font-medium">
+                For a <span class="underline decoration-cyan underline-offset-4">5-month
+                  internship</span>, your bank statement must show a minimum balance of:
+              </p>
+              <div class="mt-3 display text-2xl font-bold text-blue">
+                875,000 JPY <span class="text-sm font-normal text-body">(175,000 JPY × 5
+                  months)</span>
+              </div>
+            </div>
+
+            <ul class="space-y-4 text-sm text-body pt-2">
+              <li class="flex items-start gap-3">
+                <span class="text-blue font-bold">•</span>
+                <span>
+                  <strong class="text-ink">Bank Statement:</strong> A PDF copy of a recent statement showing the total
+                  amount. It must include an <strong class="text-ink">English translation</strong>.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="text-blue font-bold">•</span>
+                <span>
+                  <strong class="text-ink">Financial Sponsorship:</strong> If using a parent's account, you must
+                  provide a <strong class="text-ink">copy of your Birth Certificate</strong> (with English translation)
+                  to verify the relationship.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="space-y-8">
+        <h2 class="display text-2xl font-semibold border-l-4 border-blue pl-4">Housing Resources</h2>
+
+        <div class="bg-white rounded-3xl shadow-sm p-8">
+          <ul class="space-y-4">
+            <li class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 bg-blue rounded-full"></span>
+              <span class="font-semibold text-ink w-32">Sakura House:</span>
+              <a href="https://www.sakura-house.com/es/" target="_blank"
+                class="text-blue hover:underline">sakura-house.com/es</a>
+
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 bg-blue rounded-full"></span>
+              <span class="font-semibold text-ink w-32">Oakhouse:</span>
+              <a href="https://www.oakhouse.jp/eng/" target="_blank"
+                class="text-blue hover:underline">oakhouse.jp/eng/</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 bg-blue rounded-full"></span>
+              <span class="font-semibold text-ink w-32">Tokyo Share:</span>
+              <a href="https://tokyosharehouse.com/eng/" target="_blank"
+                class="text-blue hover:underline">tokyosharehouse.com/eng/</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 bg-blue rounded-full"></span>
+              <span class="font-semibold text-ink w-32">Fujimi House:</span>
+              <a href="https://fujimihouse.jp/?lang=en" target="_blank"
+                class="text-blue hover:underline">fujimihouse.jp/?lang=en</a>
+            </li>
+            <li class="flex items-center gap-3">
+              <span class="w-1.5 h-1.5 bg-blue rounded-full"></span>
+              <span class="font-semibold text-ink w-32">Leopalace 21:</span>
+              <a href="https://en.leopalace21.com" target="_blank"
+                class="text-blue hover:underline">en.leopalace21.com</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="space-y-6 pt-12 mt-12 border-t border-line">
+      <h2 class="display text-3xl font-semibold text-ink">Location &amp; Access</h2>
+
+      <!-- Map Embed -->
+      <div class="w-full h-96 rounded-3xl overflow-hidden shadow-sm border border-line bg-white">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3242.2741916325515!2d139.77582537604318!3d35.62001553198536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188981e4272101%3A0x6334a17951d02d09!2sAIST%20Tokyo%20Waterfront%20Annex%202!5e0!3m2!1sen!2sjp!4v1715014631383!5m2!1sen!2sjp"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="space-y-2">
+          <h3 class="text-xl font-bold text-ink">Address</h3>
+          <p class="text-body">
+            AIST Annex 2 Building<br>
+            2-4-7 Aomi, Koto-ku, Tokyo, 135-0064, JAPAN
+          </p>
+        </div>
+
+        <div class="space-y-2">
+          <h3 class="text-xl font-bold text-ink">Access</h3>
+          <p class="text-body">
+            We are located in the AIST Annex 2 Building. From the <strong class="text-ink">Tokyo Telecom Center
+              Station</strong> on the Yurikamome Line, it is a short, direct walk to our facilities.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Nearby Attractions Section -->
+    <section class="space-y-6 pt-12 mt-12 border-t border-line">
+      <header class="mb-8">
+        <h2 class="display text-3xl font-semibold text-ink">Explore the Area</h2>
+        <p class="mt-4 text-body text-lg leading-relaxed">
+          Our lab is located in Odaiba, a vibrant, futuristic hub on a high-tech artificial island in Tokyo
+          Bay. It offers a perfect blend of waterfront relaxation and modern entertainment.
         </p>
-    </footer>
+      </header>
 
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+        <!-- Odaiba Card -->
+        <div
+          class="group overflow-hidden rounded-3xl bg-white border border-line shadow-sm transition-all hover:shadow-md">
+          <div class="w-full h-56 bg-line overflow-hidden relative">
+            <img src="img/odaiba.png" alt="Odaiba Waterfront"
+              class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            </div>
+          </div>
+          <div class="p-8">
+            <h3 class="display text-xl font-semibold text-ink mb-2">Odaiba Bay Area</h3>
+            <p class="text-body text-sm leading-relaxed">
+              Enjoy stunning waterfront views of the Tokyo skyline, the iconic Rainbow Bridge, and
+              expansive seaside parks perfect for a walk after research hours.
+            </p>
+          </div>
+        </div>
+
+        <!-- DiverCity Card -->
+        <div
+          class="group overflow-hidden rounded-3xl bg-white border border-line shadow-sm transition-all hover:shadow-md">
+          <div class="w-full h-56 bg-line overflow-hidden relative">
+            <img src="img/gundam.png" alt="DiverCity Tokyo Plaza"
+              class="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105">
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-ink/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            </div>
+          </div>
+          <div class="p-8">
+            <h3 class="display text-xl font-semibold text-ink mb-2">DiverCity Tokyo Plaza</h3>
+            <p class="text-body text-sm leading-relaxed">
+              A premier shopping and entertainment complex just a short distance away, famous for its
+              impressive life-sized Gundam statue and diverse dining options.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="max-w-site mx-auto px-5 py-10 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
+      <p class="font-semibold display">Enrique Coronado</p>
+      <p class="meta text-faint">AIST · National Institute of Advanced Industrial Science and Technology</p>
+    </div>
+  </footer>
+
+  <script>
+    // ---------- Mobile menu ----------
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.toggle('hidden');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+  </script>
 </body>
 
 </html>

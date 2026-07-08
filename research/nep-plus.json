@@ -1,0 +1,45 @@
+{
+  "type": "Research",
+  "accent": "blue",
+  "eyebrow": "Software Frameworks · Inclusive HMI",
+  "title": "NEP+",
+  "subtitle": "A human-centered framework for inclusive human-machine interaction development",
+  "heroImage": "../img/nep7.png",
+  "intro": "NEP+ lowers the entry barrier to robotics and interactive-system development. It is a cross-platform, accessible middleware that lets researchers, designers, and end-users — not only robotics experts — build distributed human-machine interaction systems.",
+  "highlights": ["Cross-Platform Middleware", "End-User Development", "ROS Bridge (nep2ros)", "Industry 5.0 Digital Twins"],
+  "sections": [
+    {
+      "title": "Why NEP+?",
+      "text": "Most robotics middleware is techno-centered: powerful, but hard to use for people outside robotics engineering. NEP+ takes a human-centered approach, prioritizing accessibility, platform independence, and simple programming interfaces so that interdisciplinary teams can prototype interactive robots and IoT-aided systems quickly.",
+      "image": "../img/nep.png"
+    },
+    {
+      "title": "Bridging to ROS and Industry 5.0",
+      "text": "Through the nep2ros bridge, NEP+ connects with the Robot Operating System (ROS), enabling bidirectional data exchange between diverse hardware and software landscapes. This path supports Industry 5.0 human digital twins, where human data and robot control loops coexist across platforms, game engines, and devices.",
+      "image": "../img/Bridging_Robotics_and_Human_Interaction.png"
+    }
+  ],
+  "publications": [
+    {
+      "title": "NEP+: A Human-Centered Framework for Inclusive Human-Machine Interaction Development",
+      "venue": "Journal Article",
+      "date": "2023",
+      "href": "../research.html"
+    },
+    {
+      "title": "A Path to Industry 5.0 Digital Twins for Human-Robot Collaboration by Bridging NEP+ and ROS",
+      "venue": "Robotics (MDPI)",
+      "date": "Feb 2024",
+      "href": "../news/paper-digital-twins-feb-13-2024.html"
+    },
+    {
+      "title": "Towards IoT-aided human-robot interaction using NEP and ROS: A platform-independent, accessible and distributed approach",
+      "venue": "Journal Article",
+      "date": "2020",
+      "href": "../research.html"
+    }
+  ],
+  "links": [
+    { "label": "Related Publications", "href": "../research.html" }
+  ]
+}

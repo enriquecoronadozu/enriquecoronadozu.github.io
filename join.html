@@ -1,321 +1,417 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opportunities | Enrique Coronado</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opportunities — Enrique Coronado</title>
+  <meta name="description"
+    content="Opportunities to join the HEART team at AIST — internships, research assistantships, postdoctoral fellowships, and full-time positions in responsible agentic robotics.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap"
+    rel="stylesheet">
+
+  <!-- DESIGN TOKENS — identical to index.html; keep in sync -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#16233F', body: '#4B5568', faint: '#8B93A3', line: '#DDE2EC',
+            sky: '#4E9FD9', lime: '#DCF34B',
+            blue: { DEFAULT: '#1173BC', deep: '#0A5697', text: '#1B6FB5' },
+            cyan: '#A9EAFB', cyanfill: '#BFF0FC',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+          },
+          maxWidth: { site: '80rem' },
         }
-    </style>
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-feature-settings: 'cv11', 'ss01';
+      background: linear-gradient(180deg, #F4F6FB 0%, #EAEFF8 55%, #F1F4FA 100%);
+    }
+    .display { letter-spacing: -0.025em; }
+    .meta {
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #1173BC; outline-offset: 3px; border-radius: 4px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
 </head>
 
-<body class="bg-white text-slate-900 min-h-screen">
+<body class="text-ink antialiased">
 
-    <nav class="bg-white/70 backdrop-blur-md border-b sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="index.html" class="group flex items-center gap-3">
-                <div
-                    class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-hover:bg-blue-700 group-hover:text-white transition-all">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
-                </div>
-                <span
-                    class="font-bold text-sm uppercase tracking-widest text-slate-400 group-hover:text-slate-900 transition-colors">Back
-                    to Home</span>
-            </a>
-            <div class="text-right">
-                <h1 class="text-sm font-bold text-blue-700 uppercase tracking-widest">Opportunities</h1>
-                <p class="text-[10px] text-slate-400 font-semibold uppercase">Enrique Coronado — AIST HEART</p>
+  <!-- NAVIGATION — same bar as index.html -->
+  <nav aria-label="Main">
+    <div class="max-w-site mx-auto px-5 h-16 flex items-center justify-between gap-6">
+      <a href="index.html" class="leading-tight shrink-0">
+        <span class="block font-bold text-[17px] display">Enrique Coronado</span>
+        <span class="block text-[10px] text-faint font-medium tracking-wide">AIST · INTEGRATED RESEARCH CENTER FOR
+          WELLBEING</span>
+      </a>
+      <div class="hidden lg:flex items-center gap-9 text-[15px] font-medium">
+        <a href="about.html" class="hover:text-blue transition-colors">About</a>
+        <a href="index.html#research" class="hover:text-blue transition-colors">Research</a>
+        <a href="index.html#projects" class="hover:text-blue transition-colors">Projects</a>
+        <a href="research.html" class="hover:text-blue transition-colors">Publications</a>
+        <a href="index.html#news" class="hover:text-blue transition-colors">News</a>
+        <a href="interships.html" class="hover:text-blue transition-colors">Internships</a>
+      </div>
+      <button id="menu-toggle" class="lg:hidden p-2 -mr-2 text-ink" aria-expanded="false" aria-controls="mobile-menu"
+        aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-line bg-white px-5 py-5">
+      <div class="flex flex-col gap-4 text-[15px] font-medium text-body">
+        <a href="about.html" class="hover:text-ink">About</a>
+        <a href="index.html#research" class="hover:text-ink">Research</a>
+        <a href="index.html#projects" class="hover:text-ink">Projects</a>
+        <a href="research.html" class="hover:text-ink">Publications</a>
+        <a href="index.html#news" class="hover:text-ink">News</a>
+        <a href="interships.html" class="text-blue font-semibold">Internships →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="max-w-site mx-auto px-5 pt-10 pb-14 md:pt-16 md:pb-20">
+    <p class="meta text-faint mb-5">Opportunities · 2026–2027</p>
+    <h1 class="display font-semibold text-4xl md:text-7xl leading-[1.02] max-w-4xl">
+      Join the <span class="text-blue">Evolution</span> of Robotics
+    </h1>
+    <p class="mt-7 text-lg md:text-xl text-body leading-relaxed max-w-3xl">
+      We are architecting the <span class="text-ink font-medium italic">Human-AI Future</span>.
+      Whether you are a student, social researcher, or engineer, HEART offers a inclusive space to grow and
+      contribute to the next generation of AI and robotics systems.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-2">
+      <span class="meta text-body bg-white rounded-full px-3.5 py-2 shadow-sm">Internships</span>
+      <span class="meta text-body bg-white rounded-full px-3.5 py-2 shadow-sm">Master's &amp; PhD</span>
+      <span class="meta text-body bg-white rounded-full px-3.5 py-2 shadow-sm">Postdocs</span>
+      <span class="meta text-body bg-white rounded-full px-3.5 py-2 shadow-sm">Engineers</span>
+      <span class="meta text-ink bg-lime rounded-full px-3.5 py-2">Open for 2026–2027</span>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- 01 · WHY HEART — color card (same blue as "03 Join the Lab" on index.html) -->
+    <section class="max-w-site mx-auto px-5">
+      <div class="rounded-3xl bg-gradient-to-br from-blue to-blue-deep text-white shadow-xl overflow-hidden">
+        <div class="p-8 md:p-16">
+          <div class="flex flex-col lg:flex-row lg:justify-between gap-8 mb-12">
+            <div class="flex items-baseline gap-4">
+              <span class="meta text-cyan/70 text-2xl md:text-3xl">01</span>
+              <h2 class="display font-semibold text-4xl md:text-5xl text-cyan">Why HEART?</h2>
             </div>
-        </div>
-    </nav>
-
-    <main class="max-w-4xl mx-auto px-6 py-12 md:py-24">
-        <header class="mb-16 text-center md:text-left">
-            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                Join the <span class="text-blue-700">Evolution</span> of Robotics
-            </h1>
-            <p class="mt-8 text-lg md:text-xl text-slate-500 font-light leading-relaxed">
-                We are architecting the <span class="text-slate-900 font-medium italic">Human-AI Future</span>.
-                Whether you are a student, social researcher, or engineer, HEART offers a inclusive space to grow and
-                contribute to the next generation of AI and robotics systems.
+            <p class="text-white/85 text-lg leading-relaxed lg:max-w-xl">
+              Four reasons people stay: a real network, real impact, a research identity of your own,
+              and a profile that stands out anywhere in the world.
             </p>
-        </header>
+          </div>
 
-        <div class="prose prose-slate lg:prose-lg text-slate-600 leading-relaxed space-y-12 max-w-none">
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white/10 rounded-2xl p-7 backdrop-blur-[2px] hover:bg-white/15 transition-colors">
+              <p class="meta text-cyan mb-3">01 · Global Network</p>
+              <h3 class="display font-semibold text-xl mb-3">Access a Global Network of Experts</h3>
+              <p class="text-white/80 text-[15px] leading-relaxed">
+                We maintain deep mastery of <strong class="text-white">Robotics, Deep Reinforcement Learning,
+                Agentic AI, and Human-Robot Interaction</strong> — and operate as a transdisciplinary bridge.
+                You will collaborate directly with <strong class="text-white">social and cognitive scientists,
+                philosophers, and designers</strong> within our international research networks.
+              </p>
+            </div>
 
-            <section id="why-join">
-                <h3 class="text-2xl font-bold text-slate-900 mb-4">Why join the HEART Team?</h3>
-                <div class="prose prose-slate lg:prose-lg text-slate-600 leading-relaxed space-y-16 max-w-none">
+            <div class="bg-white/10 rounded-2xl p-7 backdrop-blur-[2px] hover:bg-white/15 transition-colors">
+              <p class="meta text-cyan mb-3">02 · Real Impact</p>
+              <h3 class="display font-semibold text-xl mb-3">Translate Curiosity into Real Impact</h3>
+              <p class="text-white/80 text-[15px] leading-relaxed">
+                Our mission goes beyond academic curiosity or industrial perspectives. We guide you so your
+                contributions — from top-tier conferences and journals to patents — prioritize
+                <strong class="text-white">human and planetary needs</strong>, delivering value that lasts
+                long after the research concludes.
+              </p>
+            </div>
 
-                    <div class="space-y-4">
-                        <h4 class="text-xl font-black uppercase tracking-widest text-blue-700">
-                            01. Access a Global Network of Experts
-                        </h4>
-                        <p class="text-lg leading-relaxed">
-                            Our work transcends the scope of traditional laboratories. While we maintain a deep mastery
-                            of
-                            <span class="text-slate-900 font-semibold">Robotics, Deep Reinforcement
-                                Learning, Agentic AI, and Human-Robot Interaction</span>,
-                            we operate as a transdisciplinary bridge. You will collaborate directly with
-                            <span class="text-slate-900 font-semibold">social and cognitive scientists,
-                                philosophers, and designers</span>
-                            within our <span class="text-slate-900 font-bold">international research networks</span>.
+            <div class="bg-white/10 rounded-2xl p-7 backdrop-blur-[2px] hover:bg-white/15 transition-colors">
+              <p class="meta text-cyan mb-3">03 · Your Identity</p>
+              <h3 class="display font-semibold text-xl mb-3">Define Your Research Identity</h3>
+              <p class="text-white/80 text-[15px] leading-relaxed">
+                You gain <strong class="text-white">insights that go beyond technical expertise</strong>.
+                Through workshops and collaborative sessions you will understand your own values and
+                aspirations — and learn to empathize with the real needs and realities of users and
+                other stakeholders.
+              </p>
+            </div>
 
-                        </p>
-                    </div>
-
-                    <div class="space-y-4">
-                        <h4 class="text-xl font-black uppercase tracking-widest text-blue-700">
-                            02. Translate Curiosity into Real Impact
-                        </h4>
-
-                        <p class="text-lg leading-relaxed">
-                            Our mission is to create value that transcends <span
-                                class="text-slate-900 font-semibold"> academic curiosity or industrial
-                                perspectives</span>. In HEART, we will guide you to ensure that
-                            your
-                            contributions—from top-tier
-                            conferences and journals to patents—prioritize
-                            <span class="text-blue-700 font-bold underline decoration-blue-100 underline-offset-8">human
-                                and planetary needs</span>,
-                            delivering tangible value that lasts long after the research concludes.
-                        </p>
-
-                    </div>
-                    <div class="space-y-4">
-                        <h4 class="text-xl font-black uppercase tracking-widest text-blue-700">
-                            03. Define Your Research Identity
-                        </h4>
-                        <p class="text-lg leading-relaxed">
-                            Students and early-career researchers in our team gain <span
-                                class="text-blue-700 font-bold underline decoration-blue-100 underline-offset-8">insights
-                                that go beyond technical expertise</span>.
-                            Through our workshops and collaborative sessions, you will not only develop a deep
-                            understanding of
-                            your own values and aspirations, but also learn to <span
-                                class="text-slate-900 font-semibold text-blue-700"> empathize with the real needs and
-                                realities of users and other stakeholders</span>.
-                        </p>
-                    </div>
-
-                    <div class="space-y-4">
-                        <h4 class="text-xl font-black uppercase tracking-widest text-blue-700">
-                            04. Emerge as a High-Value Leader
-                        </h4>
-                        <p class="text-lg leading-relaxed">
-                            By bridging the gap between professional orientation and real societal needs, our
-                            members
-                            are positioned to
-                            <span class="text-slate-900 font-bold italic">lead and innovate beyond conventional
-                                boundaries</span>.
-                            Whether you choose a path in academia or large-scale international enterprises, you will
-                            emerge with a
-                            <span class="text-slate-900 font-semibold text-blue-700">holistic leadership
-                                profile</span>
-                            that distinguishes you in a
-                            highly competitive global job market.
-                        </p>
-                    </div>
-
-                </div>
-            </section>
-
-            <section class="bg-slate-50 p-8 md:p-12 rounded-[2.5rem] border border-slate-100">
-                <h3 class="text-2xl font-black text-slate-900 mb-8 tracking-tighter uppercase">The Anatomy of the Skill you will
-                    Gain</h3>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-
-                    <div class="space-y-4">
-                        <h4 class="font-black text-blue-700 uppercase tracking-[0.2em]">01 — The Body</h4>
-                        <p class="text-slate-600 leading-relaxed">
-                            Master the physical interaction between machines and the world. Gain hands-on experience
-                            controlling
-                            <span class="text-slate-900 font-semibold">industrial, mobile, and humanoid</span> platforms
-                            using
-                            <span class="text-slate-900 font-semibold text-blue-700">ROS 2</span>.
-                            Design complex simulations and immersive interfaces with
-                            <span class="text-slate-900 font-medium">Unity, Blender, and JavaScript</span>.
-                        </p>
-                    </div>
-
-                    <div class="space-y-4">
-                        <h4 class="font-black text-blue-700 uppercase tracking-[0.2em]">02 — The Brain</h4>
-                        <p class="text-slate-600 leading-relaxed">
-                            Architect high-level cognition and autonomous reasoning. Develop and deploy
-                            <span class="text-slate-900 font-semibold">Agentic AI models</span> using
-                            <span class="text-slate-900 font-semibold text-blue-700">Python and PyTorch</span>.
-                            Leverage large-scale simulation environments like <span
-                                class="text-slate-900 font-medium">Isaac Sim</span>
-                            while utilizing AIST’s <span class="text-slate-900 font-medium">GPUs and supercomputers</span>
-                            for massive model training.
-                        </p>
-                    </div>
-
-                    <div class="space-y-4">
-                        <h4 class="font-black text-blue-700 uppercase tracking-[0.2em]">03 — The Heart</h4>
-                        <p
-                            class="text-slate-500 text-base font-light leading-relaxed group-hover:text-slate-900 transition-colors">
-                            Lead with <span class="text-blue-700 font-semibold">empathy and inclusivity</span>.
-                            We provide end-to-end mentorship across the research lifecycle—from
-                            <span class="text-slate-900 font-semibold">conceptualization to publication</span>—utilizing
-                            <span class="text-slate-900 font-medium">Responsible AI</span> frameworks to ensure your
-                            innovations deliver <span class="text-slate-900 font-semibold">meaningful social
-                                impact</span>.
-                        </p>
-                    </div>
-
-                </div>
-            </section>
-
-            <section id="values" class="max-w-4xl mx-auto py-12 md:py-24">
-                <h3 class="text-2xl font-bold text-slate-900 mb-4">Qualities We Value</h3>
-
-                <div class="text-lg leading-relaxed">
-                    <p>
-                        While a strong foundation in either <span class="text-slate-900 font-semibold text-blue-700">
-                            AI, robotics
-                            or programming</span>
-                        is essential, we believe technical expertise is merely the baseline. We place the highest
-                        value on
-                        <span class="text-slate-900 font-semibold">creativity, leadership, and critical
-                            thinking</span>—the
-                        faculties that allow a researcher to see beyond the code.
-                    </p>
-
-
-                    <div class="border-l-4 border-blue-700 pl-6 my-10 italic font-light text-xl text-slate-500">
-                        "True innovation is found at the intersection of technical excellence, imagination, social
-                        necessity, and ethical alignment."
-                    </div>
-
-                    <p class="text-lg leading-relaxed">
-                        As a global collective, we seek individuals who lead with
-                        <span class="text-slate-900 font-semibold text-blue-700">open-mindedness and intellectual
-                            humility</span>—a profound respect for diverse perspectives paired with a commitment to
-                        <span class="text-slate-900 font-semibold">mutual growth</span>. Thriving within our team
-                        requires the
-                        <span class="text-slate-900 font-semibold text-blue-700 italic">cultural intelligence</span> to
-                        navigate the synergy between international research work environments and the unique nuances of
-                        Japanese
-                        social norms.
-                    </p>
-
-
-                    <div class="border-l-4 border-blue-700 pl-6 my-10 italic font-light text-xl text-slate-500">
-                        "In a world of rapid technological change and economic uncertainty, the ability to adapt and
-                        learn from others is more valuable than
-                        any specific technical skill."
-                    </div>
-
-
-                    <p>
-                        We empower our members to take <span class="text-slate-900 font-bold">ownership</span>
-                        over their research. We aren't just looking for contributors; we seek <span
-                            class="text-blue-700 font-semibold italic">leaders</span> who take initiative to drive the
-                        team toward shared success.
-                    </p>
-
-                    <p>
-                        Transformative innovation requires more than technical excellence—it demands a foundation of
-                        <span class="text-slate-900 font-semibold">empathy, inclusion, and responsibility</span>.
-                        We look for individuals with a <span class="text-slate-900 font-semibold">collaborative
-                            spirit</span>
-                        and a relentless commitment to creating technology that truly serves others.
-                    </p>
-
-
-                    <div class="border-l-4 border-blue-700 pl-6 my-10 italic font-light text-xl text-slate-500">
-                        If this mission resonates with you, <span class="text-blue-400 font-bold">don’t overthink
-                            the requirements</span> and just reach out.
-                    </div>
-
-                </div>
-            </section>
-
-            <section>
-                <h3 class="text-2xl font-bold text-slate-900 mb-4">The Professional Mindset</h3>
-                <p>
-                    We view the mind, body and heart as deeply interconnected. Sustainability in research means taking care of
-                    your health—through
-                    <span class="text-slate-900 font-semibold">proper nutrition, physical activity, and social
-                        interaction</span>.
-                    Our lab culture encourages speed in refining ideas, but also values the time needed to relax and
-                    sustain long-term productive research.
-                </p>
-            </section>
-
-            <section class="space-y-6 pt-12 border-t border-slate-100">
-                <h3 class="text-3xl font-extrabold text-slate-900">How to Join the Team</h3>
-
-                <div class="space-y-4">
-                    <h4 class="text-xl font-bold text-slate-900">Students (Master's & Doctoral)</h4>
-                    <p class="text-sm">
-                        Apply through the <span class="text-slate-900 font-semibold">AIST Research Assistant (RA)
-                            Program</span>.
-                        This program allows you to contribute to core research challenges while receiving financial
-                        support.
-                    </p>
-                    <a href="https://www.aist.go.jp/aist_j/recruit/res_assistant/" target="_blank"
-                        class="text-blue-700 font-bold hover:underline">Learn more about the RA Program →</a>
-                </div>
-
-                <div class="space-y-4 pt-6">
-                    <h4 class="text-xl font-bold text-slate-900">Postdocs & Researchers</h4>
-                    <p class="text-sm">
-                        For early-career researchers with a Ph.D., we offer postdoctoral fellowships and full-time
-                        appointments focused on
-                        <span class="text-slate-900 font-semibold">Responsible Agentic Robotics</span>.
-                    </p>
-                    <div class="flex flex-col md:flex-row gap-4">
-                        <a href="https://www.aist.go.jp/aist_j/recruit/info_researcher.html"
-                            class="px-6 py-3 bg-blue-700 text-white rounded-xl font-bold text-sm text-center transition-all hover:bg-blue-600">Full-time
-                            Positions</a>
-                        <a href="https://www.aist.go.jp/aist_j/recruit/info_fixed_term.html"
-                            class="px-6 py-3 border-2 border-blue-700 text-blue-700 rounded-xl font-bold text-sm text-center transition-all hover:bg-blue-50">Fixed-term
-                            & Engineering</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- New Location Section -->
-            <section class="space-y-6 pt-12 border-t border-slate-100">
-                <h3 class="text-3xl font-extrabold text-slate-900">Location & Access</h3>
-
-                <div class="space-y-2">
-                    <h4 class="text-xl font-bold text-slate-900">Address</h4>
-                    <p class="text-slate-600">
-                        AIST Annex 2 Building<br>
-                        2-4-7 Aomi, Koto-ku, Tokyo, 125-0064, JAPAN
-                    </p>
-                </div>
-
-                <div class="space-y-2">
-                    <h4 class="text-xl font-bold text-slate-900">Access</h4>
-                    <p class="text-slate-600">
-                        We are located in the AIST Annex 2 Building. From the <strong>Tokyo Telecom Center Station</strong> on the Yurikamome Line, it is a short, direct walk to our facilities.
-                    </p>
-                </div>
-            </section>
-            
+            <div class="bg-white/10 rounded-2xl p-7 backdrop-blur-[2px] hover:bg-white/15 transition-colors">
+              <p class="meta text-cyan mb-3">04 · Leadership</p>
+              <h3 class="display font-semibold text-xl mb-3">Emerge as a High-Value Leader</h3>
+              <p class="text-white/80 text-[15px] leading-relaxed">
+                By bridging professional orientation and real societal needs, our members
+                <strong class="text-white">lead and innovate beyond conventional boundaries</strong> —
+                emerging with a holistic leadership profile that distinguishes them in a highly
+                competitive global job market, in academia or industry.
+              </p>
+            </div>
+          </div>
         </div>
-    </main>
+      </div>
+    </section>
 
-    <footer class="py-12 border-t border-slate-50 text-center">
-        <p class="text-[10px] text-slate-400 uppercase tracking-[0.4em] font-bold">
-            Humanity in the Core &bull; AIST HEART &bull; 2026
+    <!-- 02 · SKILLS — plain section (like "02 Projects" on index.html) -->
+    <section class="max-w-site mx-auto px-5 py-20 md:py-24">
+      <div class="flex flex-col lg:flex-row lg:justify-between gap-8 mb-12">
+        <div class="flex items-baseline gap-4">
+          <span class="meta text-blue/60 text-2xl md:text-3xl">02</span>
+          <h2 class="display font-semibold text-4xl md:text-5xl text-blue">What You Will Master</h2>
+        </div>
+        <p class="text-body text-lg leading-relaxed lg:max-w-xl">
+          The anatomy of the skill set you will gain — body, brain, and heart of intelligent systems.
         </p>
-    </footer>
+      </div>
 
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="group rounded-3xl bg-white/20 backdrop-blur-[2px] shadow-sm border border-white/20 hover:bg-white/50 hover:shadow-lg transition-all duration-300 p-8 flex flex-col gap-3">
+          <p class="meta text-blue">01 — The Body</p>
+          <h3 class="display font-semibold text-2xl">Robots &amp; Interfaces</h3>
+          <p class="text-body text-[15px] leading-relaxed">
+            Master the physical interaction between machines and the world. Hands-on experience controlling
+            <strong class="text-ink">industrial, mobile, and humanoid</strong> platforms, plus complex
+            simulations and immersive interfaces.
+          </p>
+          <div class="mt-auto flex flex-wrap gap-2 pt-3">
+            <span class="meta text-body bg-line/60 rounded-full px-3 py-1.5">ROS 2</span>
+            <span class="meta text-body bg-line/60 rounded-full px-3 py-1.5">Unity</span>
+            <span class="meta text-body bg-line/60 rounded-full px-3 py-1.5">Blender</span>
+            <span class="meta text-body bg-line/60 rounded-full px-3 py-1.5">JavaScript</span>
+          </div>
+        </div>
+
+        <div class="group rounded-3xl bg-white/20 backdrop-blur-[2px] shadow-sm border border-white/20 hover:bg-white/50 hover:shadow-lg transition-all duration-300 p-8 flex flex-col gap-3">
+          <p class="meta text-blue">02 — The Brain</p>
+          <h3 class="display font-semibold text-2xl">Agentic AI</h3>
+          <p class="text-body text-[15px] leading-relaxed">
+            Architect high-level cognition and autonomous reasoning. Develop and deploy
+            <strong class="text-ink">Agentic AI models</strong>, leveraging large-scale simulation and AIST's
+            GPUs and supercomputers for massive model training.
+          </p>
+          <div class="mt-auto flex flex-wrap gap-2 pt-3">
+            <span class="meta text-body bg-line/60 rounded-full px-3 py-1.5">Python</span>
+            <span class="meta text-body bg-line/60 rounded-full px-3 py-1.5">PyTorch</span>
+            <span class="meta text-body bg-line/60 rounded-full px-3 py-1.5">Isaac Sim</span>
+            <span class="meta text-body bg-line/60 rounded-full px-3 py-1.5">HPC</span>
+          </div>
+        </div>
+
+        <div class="group rounded-3xl bg-white/20 backdrop-blur-[2px] shadow-sm border border-white/20 hover:bg-white/50 hover:shadow-lg transition-all duration-300 p-8 flex flex-col gap-3">
+          <p class="meta text-blue">03 — The Heart</p>
+          <h3 class="display font-semibold text-2xl">Responsible AI</h3>
+          <p class="text-body text-[15px] leading-relaxed">
+            Lead with <strong class="text-ink">empathy and inclusivity</strong>. End-to-end mentorship across
+            the research lifecycle — from conceptualization to publication — with Responsible AI frameworks
+            for meaningful social impact.
+          </p>
+          <div class="mt-auto flex flex-wrap gap-2 pt-3">
+            <span class="meta text-body bg-line/60 rounded-full px-3 py-1.5">Responsible AI</span>
+            <span class="meta text-body bg-line/60 rounded-full px-3 py-1.5">Mentorship</span>
+            <span class="meta text-body bg-line/60 rounded-full px-3 py-1.5">Publication</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 · QUALITIES WE VALUE — color card (same blue) -->
+    <section class="max-w-site mx-auto px-5">
+      <div class="rounded-3xl bg-gradient-to-br from-blue to-blue-deep text-white shadow-xl overflow-hidden">
+        <div class="p-8 md:p-16">
+          <div class="flex items-baseline gap-4 mb-10">
+            <span class="meta text-cyan/70 text-2xl md:text-3xl">03</span>
+            <h2 class="display font-semibold text-4xl md:text-5xl text-cyan">Qualities We Value</h2>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+            <div class="space-y-6 text-white/85 text-lg leading-relaxed">
+              <p>
+                A strong foundation in <strong class="text-white">AI, robotics, or programming</strong> is
+                essential — but technical expertise is merely the baseline. We place the highest value on
+                <strong class="text-white">creativity, leadership, and critical thinking</strong>: the
+                faculties that let a researcher see beyond the code.
+              </p>
+              <p>
+                We seek individuals who lead with <strong class="text-white">open-mindedness and intellectual
+                humility</strong> — respect for diverse perspectives paired with a commitment to mutual
+                growth, and the <strong class="text-white">cultural intelligence</strong> to navigate
+                international research environments and the unique nuances of Japanese social norms.
+              </p>
+              <p>
+                We empower our members to take <strong class="text-white">ownership</strong> of their
+                research. We aren't just looking for contributors; we seek <strong class="text-white">leaders</strong>
+                who take initiative — with a foundation of <strong class="text-white">empathy, inclusion, and
+                responsibility</strong>, and a collaborative spirit committed to technology that truly
+                serves others.
+              </p>
+            </div>
+
+            <div class="space-y-8">
+              <blockquote class="border-l-4 border-cyan pl-6">
+                <p class="display text-xl md:text-2xl leading-snug text-cyan italic">
+                  "True innovation is found at the intersection of technical excellence, imagination,
+                  social necessity, and ethical alignment."
+                </p>
+              </blockquote>
+              <blockquote class="border-l-4 border-cyan pl-6">
+                <p class="display text-xl md:text-2xl leading-snug text-cyan italic">
+                  "The ability to adapt and learn from others is more valuable than any specific
+                  technical skill."
+                </p>
+              </blockquote>
+              <div class="bg-white/10 rounded-2xl p-6 backdrop-blur-[2px]">
+                <p class="text-white/90 text-lg leading-relaxed">
+                  If this mission resonates with you,
+                  <span class="text-lime font-semibold">don't overthink the requirements</span> —
+                  just reach out.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 · MINDSET — plain section -->
+    <section class="max-w-site mx-auto px-5 py-20 md:py-24">
+      <div class="flex flex-col lg:flex-row lg:justify-between gap-8">
+        <div class="flex items-baseline gap-4 shrink-0">
+          <span class="meta text-blue/60 text-2xl md:text-3xl">04</span>
+          <h2 class="display font-semibold text-4xl md:text-5xl text-blue">The Professional Mindset</h2>
+        </div>
+        <div class="lg:max-w-xl">
+          <p class="text-body text-lg leading-relaxed">
+            We view the mind, body and heart as deeply interconnected. Sustainability in research means
+            taking care of your health — through <strong class="text-ink">proper nutrition, physical
+            activity, and social interaction</strong>. Our lab culture encourages speed in refining ideas,
+            but also values the time needed to relax and sustain long-term productive research.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 · HOW TO JOIN — color card (same blue), CTA like index.html "03 Join the Lab" -->
+    <section class="max-w-site mx-auto px-5 pb-6">
+      <div class="rounded-3xl bg-gradient-to-br from-blue to-blue-deep text-white shadow-xl">
+        <div class="p-8 md:p-16">
+          <div class="flex items-baseline gap-4 mb-10">
+            <span class="meta text-cyan/70 text-2xl md:text-3xl">05</span>
+            <h2 class="display font-semibold text-4xl md:text-5xl text-cyan">How to Join the Team</h2>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-10">
+            <div class="flex flex-col gap-5">
+              <h3 class="display font-semibold text-2xl">Students (Master's &amp; Doctoral)</h3>
+              <p class="text-white/85 text-lg leading-relaxed">
+                Apply through the <strong class="text-white">AIST Research Assistant (RA) Program</strong> —
+                contribute to core research challenges while receiving financial support.
+              </p>
+              <div class="flex flex-wrap gap-4 mt-auto">
+                <a href="https://www.aist.go.jp/aist_j/recruit/res_assistant/" target="_blank" rel="noopener"
+                  class="inline-flex items-center gap-3 bg-cyanfill text-ink rounded-full px-6 py-3.5 font-medium text-[15px] hover:bg-white transition-colors">
+                  RA Program
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+                <a href="interships.html"
+                  class="inline-flex items-center gap-3 border border-white/50 text-white rounded-full px-6 py-3.5 font-medium text-[15px] hover:bg-white/10 transition-colors">
+                  Internships
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+              </div>
+            </div>
+
+            <div class="flex flex-col gap-5">
+              <h3 class="display font-semibold text-2xl">Postdocs &amp; Researchers</h3>
+              <p class="text-white/85 text-lg leading-relaxed">
+                For early-career researchers with a Ph.D., we offer postdoctoral fellowships and full-time
+                appointments focused on <strong class="text-white">Responsible Agentic Robotics</strong>.
+              </p>
+              <div class="flex flex-wrap gap-4 mt-auto">
+                <a href="https://www.aist.go.jp/aist_j/recruit/info_researcher.html" target="_blank" rel="noopener"
+                  class="inline-flex items-center gap-3 bg-cyanfill text-ink rounded-full px-6 py-3.5 font-medium text-[15px] hover:bg-white transition-colors">
+                  Full-time Positions
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+                <a href="https://www.aist.go.jp/aist_j/recruit/info_fixed_term.html" target="_blank" rel="noopener"
+                  class="inline-flex items-center gap-3 border border-white/50 text-white rounded-full px-6 py-3.5 font-medium text-[15px] hover:bg-white/10 transition-colors">
+                  Fixed-term &amp; Engineering
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCATION — plain closing section -->
+    <section class="max-w-site mx-auto px-5 py-20 md:py-24">
+      <h2 class="display font-semibold text-3xl md:text-4xl text-ink mb-8">Location &amp; Access</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white/20 backdrop-blur-[2px] border border-white/20 rounded-3xl p-8 shadow-sm">
+          <p class="meta text-blue mb-3">Address</p>
+          <p class="text-body text-lg leading-relaxed">
+            AIST Annex 2 Building<br>
+            2-4-7 Aomi, Koto-ku, Tokyo, 135-0064, JAPAN
+          </p>
+        </div>
+        <div class="bg-white/20 backdrop-blur-[2px] border border-white/20 rounded-3xl p-8 shadow-sm">
+          <p class="meta text-blue mb-3">Access</p>
+          <p class="text-body text-lg leading-relaxed">
+            We are located in the AIST Annex 2 Building. From the <strong class="text-ink">Tokyo Telecom
+            Center Station</strong> on the Yurikamome Line, it is a short, direct walk to our facilities.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="max-w-site mx-auto px-5 py-10 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
+      <p class="font-semibold display">Enrique Coronado</p>
+      <p class="meta text-faint">AIST · National Institute of Advanced Industrial Science and Technology</p>
+    </div>
+  </footer>
+
+  <script>
+    // ---------- Mobile menu ----------
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.toggle('hidden');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+  </script>
 </body>
 
 </html>

@@ -3,9 +3,9 @@
   "accent": "blue",
   "eyebrow": "Human-Robot Collaboration & Responsible AI",
   "title": "People-Centric AI & Robotics",
-  "subtitle": "Designing intelligent systems that prioritize human needs, safety, and societal value",
+  "subtitle": "Designing embodied intelligent systems that prioritize human needs, safety, and collective societal value",
   "heroImage": "../img/social.png",
-  "intro": "People-Centric AI & Robotics focuses on developing interactive systems where humans remain at the center of decision-making, ensuring transparency, trust, and meaningful collaboration between humans and machines.",
+  "intro": "People-Centric AI & Robotics moves beyond optimizing technology or individual user experience toward innovation that serves communities and society. It keeps humans at the center of decision-making across the full lifecycle of a system \u2014 design, deployment, and governance \u2014 ensuring transparency, trust, and meaningful collaboration between people and machines.",
   "stats": [
     {
       "value": "Active",
@@ -17,40 +17,46 @@
     }
   ],
   "vision": {
-    "text": "Create AI and robotic systems that enhance human capabilities while preserving autonomy, dignity, and social well-being.",
-    "image": "../img/digital.png"
+    "text": "Create AI and robotic systems that enhance human capabilities while preserving autonomy, dignity, and social well-being \u2014 shifting the focus from individual users to communities, diverse stakeholders, and long-term societal outcomes.",
+    "image": "../img/vision1.png"
   },
   "mission": {
-    "text": "Advance human-robot collaboration, social intelligence, and responsible AI innovation for real-world impact."
+    "text": "Advance human-robot collaboration, social intelligence, and responsible AI innovation through participatory, co-creative methods that deliver real-world impact aligned with human and societal values."
   },
   "activities": [
     {
-      "title": "Human-Robot Collaboration",
-      "text": "Developing shared autonomy systems where humans and robots work together seamlessly in dynamic environments.",
-      "image": "../img/digital.png"
+      "title": "Social Robotics",
+      "text": "Developing socially intelligent robots that interact naturally with diverse users in real-world settings, combining human-centred design, adaptive behaviour, and transparent communication to build trust and support meaningful collaboration.",
+      "image": "../img/interaction2.png"
     },
     {
-      "title": "Social Robotics",
-      "text": "Designing socially aware robots capable of natural interaction, empathy modeling, and adaptive communication.",
-      "image": "../img/digital.png"
+      "title": "Human–Robot Interaction in the Wild",
+      "text": "Investigating how people interact with robots in everyday environments through real-world deployments and longitudinal studies. Developing robots that adapt to diverse users, contexts, and social norms while enabling natural and meaningful interactions.",
+      "image": "../img/rize.png"
     },
     {
       "title": "Responsible AI & Innovation",
-      "text": "Ensuring ethical, transparent, and safe deployment of AI systems aligned with societal values and regulations.",
-      "image": "../img/digital.png"
+      "text": "Ensuring the ethical and safe deployment of Physical AI by conducting participatory design workshops integrating societal values into the development and evaluation of robotic systems, in alignment with the UN Sustainable Development Goals.",
+      "image": "../img/pd_ex.png"
     }
   ],
   "publications": [
     {
-      "title": "Human-Centric Frameworks for Collaborative Robotics",
-      "venue": "AIST HEART Lab Research",
+      "title": "Robots for Well-being: Design and Integration of a Low-Cost Social Robot Prototype for Promoting Healthy Habits",
+      "venue": "IEEE International Conference on Advanced Robotics and its Social Impacts (ARSO)",
+      "date": "2025",
+      "href": "https://ieeexplore.ieee.org/document/11124986/"
+    },
+    {
+      "title": "From Large Language Models to Agentic AI in Industry 5.0 and the Post-ChatGPT Era: A Socio-Technical Framework and Review on Human–Robot Collaboration",
+      "venue": "Robotics",
       "date": "2026",
-      "href": "#"
+      "href": "https://www.mdpi.com/2218-6581/15/3/58"
     }
   ],
   "cta": {
     "title": "Collaborate With Us",
-    "text": "We are looking for students, researchers, and industry partners interested in human-centered robotics and AI systems.",
+    "text": "We are looking for students, researchers, and industry partners interested in people-centered robotics and AI systems.",
     "primaryLabel": "Join the Lab",
     "primaryHref": "../interships.html",
     "secondaryLabel": "Contact",

@@ -8,9 +8,14 @@ WHAT IT DOES
 
     news/<name>.json      -> news/<name>.html      (from news/news-template.html)
     projects/<name>.json  -> projects/<name>.html  (from projects/project-template.html)
+    research/<name>.json  -> research/<name>.html  (from research/research-template.html)
 
-  It also (re)builds projects/index.html — a listing page of all projects,
-  generated from the JSON files' title / subtitle / heroImage / accent.
+  It also (re)builds projects/index.html and research/index.html — listing
+  pages of all projects / research topics, generated from the JSON files'
+  title / subtitle / heroImage / accent.
+
+  research/featured.json is NOT a page: it is the ordered list of slugs
+  shown in the index.html "01 Research" carousel (fetched at runtime).
 
 USAGE
     python3 generate.py            # generate everything
@@ -39,16 +44,28 @@ SECTIONS = [
     # (folder, template filename)
     ("news", "news-template.html"),
     ("projects", "project-template.html"),
+    ("research", "research-template.html"),
 ]
 
 ACCENT_TEXT = {"plum": "text-plum-via", "blue": "text-blue", "teal": "text-teal"}
+
+# JSON files that are data, not pages — never turned into HTML.
+NON_PAGE_JSON = {"featured.json"}
+
+LISTINGS = [
+    # (folder, page <h1>/title, intro paragraph)
+    ("projects", "Research &amp; Projects",
+     "Explore the research areas and active projects of the lab."),
+    ("research", "Research",
+     "All research lines, frameworks, and visions of the lab — every topic, not only the featured ones."),
+]
 
 LISTING_PAGE = """<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Research &amp; Projects — Enrique Coronado</title>
+  <title>__TITLE__ — Enrique Coronado</title>
   <!-- GENERATED FILE — do not edit. Run `python3 generate.py` to rebuild. -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -101,8 +118,8 @@ LISTING_PAGE = """<!DOCTYPE html>
     </div>
   </nav>
   <header class="max-w-site mx-auto px-5 pt-10 pb-12">
-    <h1 class="display font-semibold text-4xl md:text-6xl mb-5">Research &amp; Projects</h1>
-    <p class="text-xl text-body max-w-2xl">Explore the research areas and active projects of the lab.</p>
+    <h1 class="display font-semibold text-4xl md:text-6xl mb-5">__TITLE__</h1>
+    <p class="text-xl text-body max-w-2xl">__INTRO__</p>
   </header>
   <section class="max-w-site mx-auto px-5 pb-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 __CARDS__
@@ -117,14 +134,15 @@ __CARDS__
 </html>
 """
 
-CARD = """    <a href="{slug}.html" class="group bg-white rounded-3xl overflow-hidden flex flex-col shadow-sm">
+# Glass-effect card — same look as the projects grid on index.html.
+CARD = """    <a href="{slug}.html" class="group rounded-3xl bg-white/20 overflow-hidden flex flex-col backdrop-blur-[2px] shadow-sm border border-white/20 hover:bg-white/50 hover:shadow-lg transition-all duration-300">
       <div class="h-52 overflow-hidden">
         <img src="{img}" alt="" loading="lazy"
           class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500">
       </div>
       <div class="p-7 flex flex-col gap-2.5 flex-1">
         <p class="meta {accent_cls}">{type} · {eyebrow}</p>
-        <h3 class="display font-semibold text-2xl group-hover:text-sky transition-colors">{title}</h3>
+        <h3 class="display font-semibold text-2xl">{title}</h3>
         <p class="text-body text-[15px] leading-relaxed">{subtitle}</p>
       </div>
     </a>
@@ -142,6 +160,8 @@ def generate_pages(check_only: bool) -> int:
         template = template_path.read_text(encoding="utf-8")
 
         for json_path in sorted(directory.glob("*.json")):
+            if json_path.name in NON_PAGE_JSON:
+                continue
             html_path = json_path.with_suffix(".html")
             try:
                 json.loads(json_path.read_text(encoding="utf-8"))
@@ -159,10 +179,12 @@ def generate_pages(check_only: bool) -> int:
     return changed
 
 
-def generate_project_listing(check_only: bool) -> None:
-    directory = ROOT / "projects"
+def generate_listing(folder: str, title: str, intro: str, check_only: bool) -> None:
+    directory = ROOT / folder
     cards = []
     for json_path in sorted(directory.glob("*.json")):
+        if json_path.name in NON_PAGE_JSON:
+            continue
         try:
             p = json.loads(json_path.read_text(encoding="utf-8"))
         except json.JSONDecodeError:
@@ -178,20 +200,24 @@ def generate_project_listing(check_only: bool) -> None:
         ))
     if not cards:
         return
-    out = LISTING_PAGE.replace("__CARDS__", "".join(cards))
+    out = (LISTING_PAGE
+           .replace("__TITLE__", title)
+           .replace("__INTRO__", intro)
+           .replace("__CARDS__", "".join(cards)))
     index_path = directory / "index.html"
     if check_only:
-        print(f"  would   projects/index.html ({len(cards)} cards)")
+        print(f"  would   {folder}/index.html ({len(cards)} cards)")
     else:
         index_path.write_text(out, encoding="utf-8")
-        print(f"  written projects/index.html ({len(cards)} cards)")
+        print(f"  written {folder}/index.html ({len(cards)} cards)")
 
 
 if __name__ == "__main__":
     check = "--check" in sys.argv
     print("Generating pages from JSON files...\n")
     n = generate_pages(check)
-    generate_project_listing(check)
+    for folder, title, intro in LISTINGS:
+        generate_listing(folder, title, intro, check)
     print(f"\nDone. {n} page(s) {'need updating' if check else 'updated'}.")
     if not check:
         print("Preview with:  python3 -m http.server   ->  http://localhost:8000")

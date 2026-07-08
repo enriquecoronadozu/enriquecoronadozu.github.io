@@ -1,0 +1,16 @@
+{
+  "animation": "guided",
+  "innerDensity": 180,
+  "edgeNodes": 75,
+  "outliers": 12,
+  "reach": 4,
+  "edgeScatter": 2.4,
+  "jitter": 2,
+  "breathAmplitude": 0.13,
+  "phases": {
+    "inhale": 4,
+    "hold": 4,
+    "exhale": 6,
+    "rest": 2
+  }
+}
