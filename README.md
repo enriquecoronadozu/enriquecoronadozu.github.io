@@ -46,11 +46,18 @@ python3 -m http.server         # then open http://localhost:8000
    `id`, `date`, `category` ("Paper" | "Award"), `title`, `summary`, `img`,
    `subtitle1..3` / `description1..3`, `highlight`, `url`.
    Image paths are relative to `news/`, so use `../img/...`.
-2. Run `python3 generate.py` → creates `news/my-article-<date>.html`.
-3. **Show it on the home page:** add an entry to the `SITE_NEWS` array in
-   `index.html` (id = the file name without extension, plus date, category,
-   title, byline, img — here img paths are relative to the root: `img/...`).
-   The news section on index.html renders only from `SITE_NEWS`.
+   Include a short `byline` (venue / context line shown on the card).
+2. Run `python3 generate.py` → creates `news/my-article-<date>.html` **and**
+   rebuilds `news/index.json`, the manifest the home page reads.
+3. **That's it.** The home-page News section loads `news/index.json`
+   (single source of truth) and orders items automatically by their `date`
+   field — no `SITE_NEWS` array to edit, and the date shown on the card is
+   derived from the JSON so the two can never diverge. The `id` is taken
+   from the file name, so a new item just needs a valid `date`.
+
+   Categories map to filter buttons on the home page: `Paper` → Publications,
+   `Award` → Awards, `Milestone` → Milestones (add more categories freely;
+   they show under "All" even without a dedicated button).
 
 ## Adding a PROJECT
 

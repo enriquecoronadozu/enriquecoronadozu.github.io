@@ -2,6 +2,7 @@
     "id": "paper-xr-hri-jan-18-2023",
     "date": "January 18, 2023",
     "category": "Paper",
+    "byline": "Applied Sciences (MDPI)",
     "title": "Integrating Virtual, Mixed, and Augmented Reality to HRI Applications Using Game Engines",
     "summary": "New article in 'Applied Sciences' identifies accessible software tools for developing VR, AR, and MR experiences in HRI. The review classifies XR applications across social robotics, industrial programming, and teleoperation.",
     "img": "../img/Game_Engines_in_Robotics.png",

@@ -14,6 +14,12 @@ WHAT IT DOES
   pages of all projects / research topics, generated from the JSON files'
   title / subtitle / heroImage / accent.
 
+  It also (re)builds news/index.json — a manifest of every news item
+  (id, date, category, byline, title, img), SORTED newest-first by date.
+  index.html reads this manifest to render the News section, so the news
+  JSON files are the single source of truth (no more hand-editing a
+  SITE_NEWS array, and the home page orders itself by date automatically).
+
   research/featured.json is NOT a page: it is the ordered list of slugs
   shown in the index.html "01 Research" carousel (fetched at runtime).
 
@@ -24,7 +30,8 @@ USAGE
 WORKFLOW FOR A NEW ARTICLE OR PROJECT
     1. Create news/my-new-article.json  (copy an existing one)
     2. Run:  python3 generate.py
-    3. Link to news/my-new-article.html from index.html (SITE_NEWS data)
+    That's it — the home page picks up the new item from news/index.json,
+    already sorted by its "date" field.
 
 Because every page is a fresh copy of the template, redesigning the
 template and re-running this script restyles ALL pages at once.
@@ -36,6 +43,7 @@ PREVIEW
 
 import json
 import sys
+from datetime import datetime
 from pathlib import Path
 
 ROOT = Path(__file__).parent
@@ -50,7 +58,7 @@ SECTIONS = [
 ACCENT_TEXT = {"plum": "text-plum-via", "blue": "text-blue", "teal": "text-teal"}
 
 # JSON files that are data, not pages — never turned into HTML.
-NON_PAGE_JSON = {"featured.json"}
+NON_PAGE_JSON = {"featured.json", "index.json"}
 
 LISTINGS = [
     # (folder, page <h1>/title, intro paragraph)
@@ -212,12 +220,71 @@ def generate_listing(folder: str, title: str, intro: str, check_only: bool) -> N
         print(f"  written {folder}/index.html ({len(cards)} cards)")
 
 
+# Date formats accepted in a news JSON "date" field (first match wins).
+NEWS_DATE_FORMATS = ["%B %d, %Y", "%b %d, %Y", "%Y-%m-%d"]
+
+
+def parse_news_date(value: str):
+    for fmt in NEWS_DATE_FORMATS:
+        try:
+            return datetime.strptime(value.strip(), fmt)
+        except (ValueError, AttributeError):
+            continue
+    return None
+
+
+def generate_news_manifest(check_only: bool) -> None:
+    """Build news/index.json — card data for every news item, newest first.
+
+    This is the single source of truth for the index.html News section:
+    the id comes from the file name, the rest from the JSON. Items are
+    sorted by their "date" field so the home page orders itself.
+    """
+    directory = ROOT / "news"
+    items = []
+    for json_path in sorted(directory.glob("*.json")):
+        if json_path.name in NON_PAGE_JSON:
+            continue
+        try:
+            p = json.loads(json_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            continue
+        dt = parse_news_date(p.get("date", ""))
+        if dt is None:
+            print(f"!! unparseable date in {json_path.name}: {p.get('date')!r} — sorted last")
+        items.append({
+            "sort": (dt or datetime.min).strftime("%Y-%m-%d"),
+            "id": json_path.stem,  # file name is the id (survives a missing "id" field)
+            "date": p.get("date", ""),
+            "category": p.get("category", "News"),
+            "byline": p.get("byline", ""),
+            "title": p.get("title", json_path.stem),
+            # rebase "../img/..." (relative to news/) to "img/..." (site root);
+            # leave absolute URLs untouched.
+            "img": p.get("img", "").replace("../", "", 1) if p.get("img", "").startswith("../") else p.get("img", ""),
+        })
+
+    items.sort(key=lambda x: x["sort"], reverse=True)
+    for it in items:
+        del it["sort"]
+
+    out = json.dumps(items, ensure_ascii=False, indent=2) + "\n"
+    manifest = directory / "index.json"
+    up_to_date = manifest.exists() and manifest.read_text(encoding="utf-8") == out
+    if check_only:
+        print(f"  {'ok      ' if up_to_date else 'would   '} news/index.json ({len(items)} items)")
+    else:
+        manifest.write_text(out, encoding="utf-8")
+        print(f"  written news/index.json ({len(items)} items)")
+
+
 if __name__ == "__main__":
     check = "--check" in sys.argv
     print("Generating pages from JSON files...\n")
     n = generate_pages(check)
     for folder, title, intro in LISTINGS:
         generate_listing(folder, title, intro, check)
+    generate_news_manifest(check)
     print(f"\nDone. {n} page(s) {'need updating' if check else 'updated'}.")
     if not check:
         print("Preview with:  python3 -m http.server   ->  http://localhost:8000")

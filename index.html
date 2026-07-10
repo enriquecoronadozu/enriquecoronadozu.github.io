@@ -196,6 +196,12 @@
           class="filter-btn text-faint hover:text-ink transition-colors">Publications</button>
         <button data-category="Award" aria-pressed="false"
           class="filter-btn text-faint hover:text-ink transition-colors">Awards</button>
+        <button data-category="Milestone" aria-pressed="false"
+          class="filter-btn text-faint hover:text-ink transition-colors">Milestones</button>
+        <button data-category="Position" aria-pressed="false"
+          class="filter-btn text-faint hover:text-ink transition-colors">Positions</button>
+        <button data-category="Members" aria-pressed="false"
+          class="filter-btn text-faint hover:text-ink transition-colors">Members</button>
       </div>
     </div>
     <div id="news-container" class="grid grid-cols-1 lg:grid-cols-2 gap-x-14 min-h-[180px]"></div>
@@ -329,14 +335,11 @@
   </footer>
 
   <script>
-    const SITE_NEWS = [
-      { id: "paper-robotics-march-12-2026", date: "Mar 12, 2026", category: "Paper", title: "Post-ChatGPT Era: Agentic AI in Industry 5.0", byline: "Robotics (MDPI)", img: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=400" },
-      { id: "award-sii-nomination-jan-10-2026", date: "Jan 10, 2026", category: "Award", title: "Best Paper Award Nomination at IEEE/SICE SII 2026", byline: "With internship student Tatsuya K., University of Tokyo", img: "img/sii-2026.png" },
-      { id: "paper-simulators-august-04-2025", date: "Aug 4, 2025", category: "Paper", title: "ROS-Compatible Robotics Simulators for Industry 4.0 and Industry 5.0", byline: "Applied Sciences (MDPI)", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400" },
-      { id: "paper-digital-twins-feb-13-2024", date: "Feb 13, 2024", category: "Paper", title: "A Path to Industry 5.0 Digital Twins for Human–Robot Collaboration by Bridging NEP+ and ROS", byline: "Robotics (MDPI)", img: "img/Bridging_Robotics_and_Human_Interaction.png" },
-      { id: "award-aist-ith-best-paper-feb-29-2024", date: "Feb 29, 2024", category: "Award", title: "AIST ITH Best Paper Award", byline: "AIST Information Technology and Human Factors", img: "img/best.png" },
-      { id: "paper-xr-hri-jan-18-2023", date: "Jan 18, 2023", category: "Paper", title: "Integrating Virtual, Mixed, and Augmented Reality to HRI Applications Using Game Engines", byline: "Applied Sciences (MDPI)", img: "img/teleop.png" }
-    ];
+    // News is loaded from news/index.json — the manifest that generate.py
+    // builds from the news/*.json files (single source of truth), already
+    // sorted newest-first by each item's "date". Edit a news JSON and run
+    // `python generate.py`; nothing here needs touching.
+    let SITE_NEWS = [];
 
     // 01 RESEARCH carousel is NOT defined here: it is driven by
     // research/featured.json (ordered slugs of the featured topics) and the
@@ -787,7 +790,8 @@
 
     // ---------- News: row templates ----------
     function newsRow(item) {
-      const chip = item.category === 'Award' ? 'AWARD' : 'NEWS';
+      // Chip shows the category name; "Paper" reads as the friendlier "NEWS".
+      const chip = item.category === 'Paper' ? 'NEWS' : (item.category || 'News').toUpperCase();
       return `
         <a href="news/${item.id}.html"
           class="group border-b border-line py-6 flex gap-5 items-start justify-between backdrop-blur-sm">
@@ -836,6 +840,29 @@
         : SITE_NEWS.filter(item => item.category === currentCategory);
     }
 
+    // Long JSON date ("January 18, 2023") -> compact card date ("Jan 18, 2023").
+    function shortDate(str) {
+      const d = new Date(str);
+      return isNaN(d) ? str
+        : d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+
+    // Load the news manifest, then render. Requires HTTP (fetch fails on
+    // file://) — same as the projects/research pages.
+    async function loadNews() {
+      try {
+        const res = await fetch('news/index.json');
+        if (!res.ok) throw new Error('Could not load news/index.json');
+        SITE_NEWS = (await res.json()).map(item => ({ ...item, date: shortDate(item.date) }));
+      } catch (err) {
+        console.error(err);
+        newsContainer.innerHTML =
+          `<p class="col-span-full py-16 text-center text-faint">News could not be loaded.</p>`;
+        return;
+      }
+      renderNews();
+    }
+
     function renderNews() {
       const filtered = getFilteredNews();
       const start = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -871,7 +898,7 @@
     }
 
     // Run layout renderings
-    renderNews();
+    loadNews();
     renderProjects();
     renderResearch();
   </script>

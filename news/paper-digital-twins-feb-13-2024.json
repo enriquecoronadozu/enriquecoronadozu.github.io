@@ -2,6 +2,7 @@
     "id": "paper-digital-twins-feb-01-2024",
     "date": "February 1, 2024",
     "category": "Paper",
+    "byline": "Robotics (MDPI)",
     "title": "A Path to Industry 5.0 Digital Twins for Human–Robot Collaboration by Bridging NEP+ and ROS",
     "summary": "New article in 'Robotics' introduces the nep2ros ROS package, designed to bridge the Robot Operating System (ROS) with the cross-platform NEP+ framework to facilitate Industry 5.0 human digital twins.",
     "img": "../img/Bridging_Robotics_and_Human_Interaction.png",

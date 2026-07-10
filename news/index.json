@@ -1,0 +1,74 @@
+[
+  {
+    "id": "members-tec-monterrey-interns-july-01-2026",
+    "date": "July 1, 2026",
+    "category": "Members",
+    "byline": "Tecnológico de Monterrey, Mexico · One-semester internship",
+    "title": "Four New Interns Join HEART from Tec de Monterrey",
+    "img": "img/social.png"
+  },
+  {
+    "id": "position-utokyo-adjunct-april-01-2026",
+    "date": "April 1, 2026",
+    "category": "Position",
+    "byline": "The University of Tokyo · Part-time",
+    "title": "New Position: Adjunct Researcher at the University of Tokyo",
+    "img": "img/Utokyo.png"
+  },
+  {
+    "id": "paper-robotics-march-12-2026",
+    "date": "March 12, 2026",
+    "category": "Paper",
+    "byline": "Robotics (MDPI)",
+    "title": "From Large Language Models to Agentic AI in Industry 5.0: A Socio-Technical Framework",
+    "img": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=1200"
+  },
+  {
+    "id": "award-sii-nomination-jan-10-2026",
+    "date": "January 10, 2026",
+    "category": "Award",
+    "byline": "With internship student Tatsuya K., University of Tokyo",
+    "title": "Best Paper Award Nomination at IEEE/SICE SII 2026",
+    "img": "img/sii-2026.png"
+  },
+  {
+    "id": "milestone-hri-quality-citations-july-08-2026",
+    "date": "January 8, 2026",
+    "category": "Milestone",
+    "byline": "Evaluating Quality in Human-Robot Interaction · Applied Sciences (MDPI)",
+    "title": "Human-Robot Interaction Quality Survey Surpasses 300 Citations",
+    "img": "img/best.png"
+  },
+  {
+    "id": "paper-simulators-august-04-2025",
+    "date": "August 4, 2025",
+    "category": "Paper",
+    "byline": "Applied Sciences (MDPI)",
+    "title": "ROS-Compatible Robotics Simulators for Industry 4.0 and Industry 5.0",
+    "img": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200"
+  },
+  {
+    "id": "award-aist-ith-best-paper-feb-29-2024",
+    "date": "February 29, 2024",
+    "category": "Award",
+    "byline": "AIST Information Technology and Human Factors",
+    "title": "AIST ITH Best Paper Award",
+    "img": "img/best.png"
+  },
+  {
+    "id": "paper-digital-twins-feb-13-2024",
+    "date": "February 1, 2024",
+    "category": "Paper",
+    "byline": "Robotics (MDPI)",
+    "title": "A Path to Industry 5.0 Digital Twins for Human–Robot Collaboration by Bridging NEP+ and ROS",
+    "img": "img/Bridging_Robotics_and_Human_Interaction.png"
+  },
+  {
+    "id": "paper-xr-hri-jan-18-2023",
+    "date": "January 18, 2023",
+    "category": "Paper",
+    "byline": "Applied Sciences (MDPI)",
+    "title": "Integrating Virtual, Mixed, and Augmented Reality to HRI Applications Using Game Engines",
+    "img": "img/Game_Engines_in_Robotics.png"
+  }
+]
