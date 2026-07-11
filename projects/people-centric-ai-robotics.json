@@ -42,24 +42,34 @@
   ],
   "publications": [
     {
-      "title": "Robots for Well-being: Design and Integration of a Low-Cost Social Robot Prototype for Promoting Healthy Habits",
-      "venue": "IEEE International Conference on Advanced Robotics and its Social Impacts (ARSO)",
-      "date": "2025",
-      "href": "https://ieeexplore.ieee.org/document/11124986/"
-    },
-    {
       "title": "From Large Language Models to Agentic AI in Industry 5.0 and the Post-ChatGPT Era: A Socio-Technical Framework and Review on Human–Robot Collaboration",
       "venue": "Robotics",
       "date": "2026",
       "href": "https://www.mdpi.com/2218-6581/15/3/58"
+    },
+    {
+      "title": "TeleSign: A Flexible and Intuitive Gesture-Based Teleoperation Framework",
+      "venue": "IEEE International Conference on Advanced Robotics and its Social Impacts (ARSO)",
+      "date": "2025",
+      "href": "https://ieeexplore.ieee.org/abstract/document/11124965/"
+    },
+    {
+      "title": "Robots for Well-being: Design and Integration of a Low-Cost Social Robot Prototype for Promoting Healthy Habits",
+      "venue": "IEEE International Conference on Advanced Robotics and its Social Impacts (ARSO)",
+      "date": "2025",
+      "href": "https://ieeexplore.ieee.org/abstract/document/11124986/"
+    },
+    {
+      "title": "Yōkobo: a robot to strengthen links amongst users with non-verbal behaviours",
+      "venue": "Machines",
+      "date": "2022",
+      "href": "https://www.mdpi.com/2075-1702/10/8/708"
     }
   ],
   "cta": {
     "title": "Collaborate With Us",
     "text": "We are looking for students, researchers, and industry partners interested in people-centered robotics and AI systems.",
     "primaryLabel": "Join the Lab",
-    "primaryHref": "../interships.html",
-    "secondaryLabel": "Contact",
-    "secondaryHref": "mailto:e.coronado@aist.go.jp"
+    "primaryHref": "../interships.html"
   }
 }

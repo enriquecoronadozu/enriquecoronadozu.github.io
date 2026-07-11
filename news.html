@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News — Enrique Coronado</title>
+  <meta name="description"
+    content="News, publications, awards, milestones, positions, and new members of Enrique Coronado's research at AIST HEART.">
+
+  <!-- ============================================================
+       NEWS LISTING PAGE
+       No content lives here: cards are rendered at runtime from
+       news/index.json, the manifest that `python3 generate.py`
+       builds from the news/*.json files (sorted newest-first).
+       Add a news JSON + run the generator and this page updates.
+       ============================================================ -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap"
+    rel="stylesheet">
+
+  <!-- DESIGN TOKENS — identical to index.html; keep in sync -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#16233F', body: '#4B5568', faint: '#8B93A3', line: '#DDE2EC',
+            sky: '#4E9FD9', lime: '#DCF34B',
+            blue: { DEFAULT: '#1173BC', deep: '#0A5697', text: '#1B6FB5' },
+            cyan: '#A9EAFB', cyanfill: '#BFF0FC',
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            mono: ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+          },
+          maxWidth: { site: '80rem' },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-feature-settings: 'cv11', 'ss01';
+      background: linear-gradient(180deg, #F4F6FB 0%, #EAEFF8 55%, #F1F4FA 100%);
+    }
+    .display { letter-spacing: -0.025em; }
+    .meta {
+      font-family: 'IBM Plex Mono', ui-monospace, monospace;
+      font-size: 0.75rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid #1173BC; outline-offset: 3px; border-radius: 4px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+
+<body class="text-ink antialiased">
+
+  <!-- NAVIGATION — same bar as index.html -->
+  <nav aria-label="Main">
+    <div class="max-w-site mx-auto px-5 h-16 flex items-center justify-between gap-6">
+      <a href="index.html" class="leading-tight shrink-0">
+        <span class="block font-bold text-[17px] display">Enrique Coronado</span>
+        <span class="block text-[10px] text-faint font-medium tracking-wide">AIST · INTEGRATED RESEARCH CENTER FOR
+          WELLBEING</span>
+      </a>
+      <div class="hidden lg:flex items-center gap-9 text-[15px] font-medium">
+        <a href="about.html" class="hover:text-blue transition-colors">About</a>
+        <a href="index.html#research" class="hover:text-blue transition-colors">Research</a>
+        <a href="index.html#projects" class="hover:text-blue transition-colors">Projects</a>
+        <a href="research.html" class="hover:text-blue transition-colors">Publications</a>
+        <a href="news.html" class="text-blue">News</a>
+        <a href="interships.html" class="hover:text-blue transition-colors">Internships</a>
+      </div>
+      <button id="menu-toggle" class="lg:hidden p-2 -mr-2 text-ink" aria-expanded="false" aria-controls="mobile-menu"
+        aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+          stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-line bg-white px-5 py-5">
+      <div class="flex flex-col gap-4 text-[15px] font-medium text-body">
+        <a href="about.html" class="hover:text-ink">About</a>
+        <a href="index.html#research" class="hover:text-ink">Research</a>
+        <a href="index.html#projects" class="hover:text-ink">Projects</a>
+        <a href="research.html" class="hover:text-ink">Publications</a>
+        <a href="news.html" class="text-blue">News</a>
+        <a href="interships.html" class="text-blue font-semibold">Internships →</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-site mx-auto px-5 py-10 md:py-16">
+
+    <!-- Header -->
+    <header class="mb-10 md:mb-14">
+      <p class="meta text-faint mb-4">
+        <a href="index.html" class="hover:text-ink">Home</a> /
+        <span class="text-blue">News</span>
+      </p>
+      <h1 class="display font-semibold text-4xl md:text-6xl leading-[1.05]">
+        News &amp; <span class="text-blue">Achievements</span>
+      </h1>
+      <p class="mt-6 text-lg md:text-xl text-body leading-relaxed max-w-3xl">
+        Publications, awards, milestones, new positions, and new members of the team — the latest first.
+      </p>
+    </header>
+
+    <!-- Filters -->
+    <div id="news-filters" class="flex flex-wrap gap-x-6 gap-y-3 text-sm font-medium mb-10" role="group"
+      aria-label="Filter news">
+      <button data-category="All" aria-pressed="true"
+        class="filter-btn text-ink underline underline-offset-8 decoration-2 decoration-lime">All</button>
+      <button data-category="Paper" aria-pressed="false"
+        class="filter-btn text-faint hover:text-ink transition-colors">Publications</button>
+      <button data-category="Award" aria-pressed="false"
+        class="filter-btn text-faint hover:text-ink transition-colors">Awards</button>
+      <button data-category="Milestone" aria-pressed="false"
+        class="filter-btn text-faint hover:text-ink transition-colors">Milestones</button>
+      <button data-category="Position" aria-pressed="false"
+        class="filter-btn text-faint hover:text-ink transition-colors">Positions</button>
+      <button data-category="Members" aria-pressed="false"
+        class="filter-btn text-faint hover:text-ink transition-colors">Members</button>
+    </div>
+
+    <!-- Cards — glass effect, big images -->
+    <section id="news-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[200px]">
+      <div class="col-span-full flex justify-center py-24" aria-label="Loading">
+        <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-blue"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="max-w-site mx-auto px-5 py-10 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
+      <p class="font-semibold display">Enrique Coronado</p>
+      <p class="meta text-faint">&copy; 2026 · AIST — HEART</p>
+    </div>
+  </footer>
+
+  <script>
+    // ---------- Mobile menu ----------
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.toggle('hidden');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // ---------- News grid (from news/index.json, newest first) ----------
+    let ALL_NEWS = [];
+    let currentCategory = 'All';
+
+    const gridEl = document.getElementById('news-grid');
+    const filtersEl = document.getElementById('news-filters');
+
+    const ACTIVE_FILTER = ['text-ink', 'underline', 'underline-offset-8', 'decoration-2', 'decoration-lime'];
+    const IDLE_FILTER = ['text-faint', 'hover:text-ink'];
+
+    // Long JSON date ("January 18, 2023") -> compact card date ("Jan 18, 2023").
+    function shortDate(str) {
+      const d = new Date(str);
+      return isNaN(d) ? str
+        : d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+
+    // Glass card — same effect as the projects grid on index.html,
+    // with a bigger image band.
+    function newsCard(item) {
+      const chip = item.category === 'Paper' ? 'NEWS' : (item.category || 'News').toUpperCase();
+      return `
+        <a href="news/${item.id}.html"
+          class="group rounded-3xl bg-white/20 overflow-hidden flex flex-col backdrop-blur-[2px] shadow-sm border border-white/20 hover:bg-white/50 hover:shadow-lg transition-all duration-300">
+          <div class="relative h-64 overflow-hidden bg-white">
+            <img src="${item.img}" alt="" loading="lazy"
+              class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500">
+            <span class="absolute top-4 left-4 bg-lime text-ink text-[10px] font-bold tracking-wider rounded-full px-3 py-1.5">
+              ${chip}
+            </span>
+          </div>
+          <div class="p-7 flex flex-col gap-2.5 flex-1">
+            <p class="meta text-faint">${shortDate(item.date)}</p>
+            <h2 class="display font-semibold text-xl leading-snug">${item.title}</h2>
+            <p class="text-body text-[15px] leading-relaxed mt-auto">${item.byline || ''}</p>
+          </div>
+        </a>`;
+    }
+
+    function renderGrid() {
+      const items = currentCategory === 'All'
+        ? ALL_NEWS
+        : ALL_NEWS.filter(item => item.category === currentCategory);
+      gridEl.innerHTML = items.length
+        ? items.map(newsCard).join('')
+        : `<p class="col-span-full py-16 text-center text-faint">No items found.</p>`;
+    }
+
+    filtersEl.addEventListener('click', (e) => {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      currentCategory = btn.dataset.category;
+      filtersEl.querySelectorAll('.filter-btn').forEach(b => {
+        const active = b === btn;
+        b.classList.remove(...ACTIVE_FILTER, ...IDLE_FILTER);
+        b.classList.add(...(active ? ACTIVE_FILTER : IDLE_FILTER));
+        b.setAttribute('aria-pressed', String(active));
+      });
+      renderGrid();
+    });
+
+    // Requires HTTP (fetch fails on file://), same as the other pages.
+    async function loadNews() {
+      try {
+        const res = await fetch('news/index.json');
+        if (!res.ok) throw new Error('Could not load news/index.json');
+        ALL_NEWS = await res.json();
+        renderGrid();
+      } catch (err) {
+        console.error(err);
+        gridEl.innerHTML =
+          `<p class="col-span-full py-16 text-center text-faint">News could not be loaded.</p>`;
+      }
+    }
+    loadNews();
+  </script>
+</body>
+
+</html>

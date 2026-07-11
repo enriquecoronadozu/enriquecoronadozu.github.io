@@ -1,0 +1,70 @@
+{
+  "type": "Project",
+  "accent": "green",
+  "eyebrow": "Human-Centred AI & Sustainable Industry",
+  "title": "Industry 5.0",
+  "subtitle": "Inclusive and sustainable manufacturing through human-centred AI and robotics",
+  "heroImage": "../img/digital.png",
+  "intro": "Industry 5.0 focuses on developing human-centred AI and robotic systems for manufacturing environments, where digital twins, shared autonomy, and collaborative intelligence enhance work performance, safety, and ergonomics.",
+  "stats": [
+    {
+      "value": "Active",
+      "label": "Status"
+    },
+    {
+      "value": "2",
+      "label": "Core Themes"
+    }
+  ],
+  "vision": {
+    "text": "Enable manufacturing ecosystems where humans and intelligent systems collaborate through digital twins, shared autonomy, ergonomic optimization, and cognitive augmentation.",
+    "image": "../img/twin.png"
+  },
+  "mission": {
+    "text": "Advance human-centred AI methodologies that integrate digital twins, collaborative robotics, and transdisciplinary innovation for sustainable and inclusive industry."
+  },
+  "activities": [
+    {
+      "title": "Collaborative Digital Twins",
+      "text": "Designing AI and robotics systems that support workers in production environments through adaptive assistance, digitalization of humans, robots, and environments, ergonomic optimization, shared autonomy, and cognitive augmentation.",
+      "image": "../img/collabtwins.png"
+    },
+    {
+      "title": "Multimodal Interaction",
+      "text": "Developing intuitive multimodal interfaces for human-robot collaboration in manufacturing, integrating gesture recognition and voice commands to improve safety, efficiency, and user experience.",
+      "image": "../img/gestures.png"
+    }
+  ],
+  "publications": [
+    {
+      "title": "TeleSign: A Flexible and Intuitive Gesture-Based Teleoperation Framework",
+      "venue": "IEEE International Conference on Advanced Robotics and its Social Impacts (ARSO)",
+      "date": "2025",
+      "href": "https://ieeexplore.ieee.org/abstract/document/11124965/"
+    },
+    {
+      "title": "A path to industry 5.0 digital twins for human–robot collaboration by bridging NEP+ and ROS",
+      "venue": "Robotics",
+      "date": "2024",
+      "href": "https://www.mdpi.com/2218-6581/13/2/28"
+    },
+    {
+      "title": "Integrating virtual, mixed, and augmented reality to human–robot interaction applications using game engines: A brief review of accessible software tools and frameworks",
+      "venue": "Applied Sciences",
+      "date": "2023",
+      "href": "https://www.mdpi.com/2076-3417/13/3/1292"
+    },
+    {
+      "title": "Gesture-based robot control: Design challenges and evaluation with humans",
+      "venue": "IEEE International Conference on Robotics & Automation (ICRA)",
+      "date": "2017",
+      "href": "https://ieeexplore.ieee.org/abstract/document/7989321"
+    }
+  ],
+  "cta": {
+    "title": "Join the Research",
+    "text": "We welcome collaborations in human-centred AI, digital twins, robotics, and transdisciplinary innovation for sustainable manufacturing.",
+    "primaryLabel": "View Opportunities",
+    "primaryHref": "../interships.html"
+  }
+}

@@ -120,7 +120,7 @@ LISTING_PAGE = """<!DOCTYPE html>
         <a href="../index.html#research" class="hover:text-blue transition-colors">Research</a>
         <a href="../index.html#projects" class="hover:text-blue transition-colors">Projects</a>
         <a href="../research.html" class="hover:text-blue transition-colors">Publications</a>
-        <a href="../index.html#news" class="hover:text-blue transition-colors">News</a>
+        <a href="../news.html" class="hover:text-blue transition-colors">News</a>
         <a href="../interships.html" class="hover:text-blue transition-colors">Internships</a>
       </div>
     </div>
