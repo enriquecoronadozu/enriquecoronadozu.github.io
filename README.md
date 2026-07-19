@@ -112,6 +112,18 @@ or vision (e.g. Mythra, NEP+, HCF).
 | 02 Projects      | `SITE_PROJECTS` array in `index.html`  | no                |
 | Listing pages    | all JSON files in the folder           | yes (`generate.py`) |
 
+## Fundings page
+
+`fundings.html` renders entirely from **`fundings.json`** (site root) — edit
+that file to add, remove, or reorder fundings; no HTML editing and no
+generator run needed. Each entry: `title`, `program`, `period`,
+`status` ("active" | "completed" — shown as a badge on the image),
+`description`, `objective` (highlighted callout), `image` (your explanatory
+figure in `img/`), `universities`, `agencies`, optional `amount`/`href`, and
+optional `results` — the Top Results list (`{ type, text, href }`, e.g.
+Prize / Article / Workshop; empty `href` shows the result without a link).
+Display order = order in the file. Preview needs a local server (fetch).
+
 ## Heart animation (home page background)
 
 The breathing heart on index.html is configured by **`heart-config.json`**

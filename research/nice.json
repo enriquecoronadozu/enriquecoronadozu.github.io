@@ -1,0 +1,30 @@
+{
+  "type": "Research",
+  "accent": "plum",
+  "eyebrow": "Robot Navigation · Foundation Models",
+  "title": "NAIS",
+  "subtitle": "Robots that understand \"I'm thirsty\" — and figure out where to go",
+  "heroImage": "../img/NAIS.png",
+  "teaser": "A ROS 2 framework that lets mobile robots build a live map of meaning — objects, rooms, relations — and navigate from natural requests like \"I'm thirsty\".",
+  "intro": "Tell today's robots \"go to coordinates 3.2, 5.7\" and they will oblige. Tell them \"I'm thirsty\" and they are lost. NAIS (Navigation AI Impulse by Scene Graph) closes that gap: it is a modular ROS 2 framework that lets a mobile robot build a live map of meaning — which objects are in which rooms, and how they relate — and use it to act on everyday human requests.",
+  "why": {
+    "text": "For robots to be useful in homes, offices, and care settings, people should not have to speak 'robot'. The robot should understand people. Turning vague, human phrases into sensible actions — finding a water dispenser when someone is thirsty, a chair when someone is tired — is a key step toward machines that fit into daily life instead of demanding technical skills from their users."
+  },
+  "highlights": ["Scene Graphs", "Language-Guided Navigation", "ROS 2", "Vision-Language Models", "Real-Time"],
+  "sections": [
+    {
+      "title": "A map of meaning, not just geometry",
+      "text": "While exploring, the robot combines classical SLAM mapping with a dynamic scene graph: a living diagram of objects inside rooms, and rooms inside buildings. Vision-language models describe what the camera sees in open vocabulary — no fixed list of allowed objects — while language models infer the spatial relations between them. The map updates continuously, in real time.",
+      "image": "../img/NAIS.png"
+    },
+    {
+      "title": "From \"I'm thirsty\" to a navigation plan",
+      "text": "When a person makes a request, a language model interprets the intent and searches the scene graph for a sensible target — a cup, a water dispenser — then hands the goal to the classical planner that drives the robot there safely. Demonstrated on a TurtleBot 4 in real office environments, NAIS handles context-dependent commands without manual configuration.",
+      "image": "../img/combini.png"
+    },
+    {
+      "title": "Modular and open by design",
+      "text": "NAIS is the first ROS 2 framework to unify SLAM, open-vocabulary scene graphs, and foundation-model reasoning in one deployable pipeline. Each stage — mapping, understanding, reasoning, planning — is a replaceable module, so researchers can swap in new models as AI evolves, instead of rebuilding the system from scratch."
+    }
+  ]
+}

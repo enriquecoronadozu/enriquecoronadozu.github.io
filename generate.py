@@ -121,6 +121,7 @@ LISTING_PAGE = """<!DOCTYPE html>
         <a href="../index.html#projects" class="hover:text-blue transition-colors">Projects</a>
         <a href="../research.html" class="hover:text-blue transition-colors">Publications</a>
         <a href="../news.html" class="hover:text-blue transition-colors">News</a>
+        <a href="../fundings.html" class="hover:text-blue transition-colors">Fundings</a>
         <a href="../interships.html" class="hover:text-blue transition-colors">Internships</a>
       </div>
     </div>

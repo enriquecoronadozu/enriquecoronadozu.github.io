@@ -1,4 +1,4 @@
 {
   "_comment": "Slugs of the research topics shown in the index.html '01 Research' carousel, in display order (most relevant first, 3-5 recommended). Every slug must match a research/<slug>.json file. Topics NOT listed here still appear on research/index.html.",
-  "featured": ["nep-plus"]
+  "featured": ["nep-plus", "nice", "axobotl"]
 }

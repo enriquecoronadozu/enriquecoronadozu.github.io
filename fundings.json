@@ -1,0 +1,53 @@
+{
+  "_comment": "Content of fundings.html — one object per funded project, newest / most important first. Fields: title, program (funding scheme), period, status ('active'|'completed'), description (1-2 sentences), objective (1-2 sentences, shown highlighted), image (single explanatory figure in img/), universities [..], agencies [..], amount (optional, '' hides), href (optional project link, '' hides), pillars (optional core pillars: [{title, text}], shown as a compact grid), results (optional list of top results: type is a short label like 'Prize'|'Article'|'Workshop', text is a brief description, href optional link, '' hides the arrow).",
+  "fundings": [
+    {
+      "title": "CHARISM — Japan-UK Centre for Human-Oriented AI and Robotics in Inclusive and Sustainable Manufacturing",
+      "program": "JST ASPIRE · EPSRC — Japan-UK Joint Call on Artificial Intelligence and Information",
+      "period": "2026–2030",
+      "status": "active",
+      "description": "A five-year Japan-UK research centre exploring how intelligent machines and people can collaborate in manufacturing. CHARISM combines AI, robotics, and data science to support production that is flexible and low-waste while keeping workers — their capabilities, wellbeing, and rights — at the centre of the factory of the future.",
+      "objective": "Transform how AI and robotics are used in manufacturing: moving beyond automation that replaces people toward hybrid human-machine collaboration that makes industry more inclusive and sustainable.",
+      "image": "img/digital.png",
+      "universities": ["University of Birmingham (UK)", "AIST — National Institute of Advanced Industrial Science and Technology (Japan)"],
+      "agencies": ["JST — ASPIRE Program (Japan)", "EPSRC — Engineering and Physical Sciences Research Council (UK)"],
+      "amount": "",
+      "href": "https://www.birmingham.ac.uk/news/2026/japan-uk-ai-research-funded-to-advance-human-centred-ai-and-data-science",
+      "pillars": [
+        {
+          "title": "Hybrid Collective Intelligence",
+          "text": "AI-human coordination that enables flexible, low-waste production — machines and people deciding together, not machines deciding alone."
+        },
+        {
+          "title": "Measuring Human Wellbeing",
+          "text": "Tracking the mental and physical wellbeing of workers in human-AI work environments, making wellbeing a first-class engineering metric."
+        },
+        {
+          "title": "Ethics and Trust",
+          "text": "Designing AI systems that are explainable, fair, and responsive, so trust between people and intelligent machines can be earned and verified."
+        }
+      ],
+      "results": []
+    },
+    {
+      "title": "EDIT ME — Completed Project Name",
+      "program": "EDIT ME — Funding Program / Scheme",
+      "period": "2022–2024",
+      "status": "completed",
+      "description": "EDIT ME — brief description of a completed international project.",
+      "objective": "EDIT ME — the objective this project pursued and achieved.",
+      "image": "img/tech.png",
+      "universities": ["AIST (Japan)", "EDIT ME — University"],
+      "agencies": ["EDIT ME — Funding Agency"],
+      "amount": "",
+      "href": "",
+      "results": [
+        {
+          "type": "Prize",
+          "text": "EDIT ME — brief description of a prize or award obtained through this project.",
+          "href": ""
+        }
+      ]
+    }
+  ]
+}

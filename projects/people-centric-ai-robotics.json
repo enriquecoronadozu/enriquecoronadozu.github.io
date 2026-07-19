@@ -20,9 +20,6 @@
     "text": "Create AI and robotic systems that enhance human capabilities while preserving autonomy, dignity, and social well-being \u2014 shifting the focus from individual users to communities, diverse stakeholders, and long-term societal outcomes.",
     "image": "../img/vision1.png"
   },
-  "mission": {
-    "text": "Advance human-robot collaboration, social intelligence, and responsible AI innovation through participatory, co-creative methods that deliver real-world impact aligned with human and societal values."
-  },
   "activities": [
     {
       "title": "Social Robotics",
@@ -65,11 +62,5 @@
       "date": "2022",
       "href": "https://www.mdpi.com/2075-1702/10/8/708"
     }
-  ],
-  "cta": {
-    "title": "Collaborate With Us",
-    "text": "We are looking for students, researchers, and industry partners interested in people-centered robotics and AI systems.",
-    "primaryLabel": "Join the Lab",
-    "primaryHref": "../interships.html"
-  }
+  ]
 }

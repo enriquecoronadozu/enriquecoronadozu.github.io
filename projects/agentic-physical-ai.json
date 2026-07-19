@@ -1,11 +1,11 @@
 {
   "type": "Project",
-  "accent": "purple",
-  "eyebrow": "Embodied Intelligence & Autonomous Systems",
-  "title": "Agentic & Physical AI",
-  "subtitle": "Building autonomous embodied systems that understand intent and act in the physical world",
-  "heroImage": "../img/robot.png",
-  "intro": "Agentic & Physical AI explores how embodied systems can perceive, reason, and act autonomously in complex environments while aligning with human intent, needs, and safety constraints.",
+  "accent": "blue",
+  "eyebrow": "Human-AI Symbiosis · Embodied Intelligence",
+  "title": "Embodied Agentic AI",
+  "subtitle": "Robots that reason, adapt, and collaborate safely with humans in the physical and social world",
+  "heroImage": "../img/irex.png",
+  "intro": "Today's robots excel at structured sensorimotor tasks but struggle with open-ended, long-horizon activities that demand common sense, memory, social understanding, and meaningful human-robot collaboration. Embodied Agentic AI is the next frontier — and we approach it from the human side.",
   "stats": [
     {
       "value": "Active",
@@ -14,44 +14,78 @@
     {
       "value": "3",
       "label": "Core Research Lines"
+    },
+    {
+      "value": "Symbiosis",
+      "label": "Human-AI, not Human vs. AI"
     }
   ],
   "vision": {
-    "text": "Enable machines to understand human intent and operate safely as autonomous agents in real-world environments.",
-    "image": "../img/digital.png"
-  },
-  "mission": {
-    "text": "Integrate embodiment, reasoning, and adaptive decision-making into next-generation physical AI systems."
+    "text": "Improving physical dexterity alone offers limited societal value: people rarely care whether a robot can fold a towel 10% faster, perform acrobatic maneuvers, or manipulate objects with superhuman precision. The true value of embodied intelligence lies beyond manipulation benchmarks — in addressing unmet human needs, augmenting human capabilities rather than replacing them, and improving well-being. We envision embodied agents as partners in a genuine human-AI symbiosis: machines that understand the people they work with, and people who can trust the machines they work alongside.",
+    "image": "../img/interaction.png"
   },
   "activities": [
     {
-      "title": "Embodied Agentic AI",
-      "text": "Developing autonomous agents capable of perception-action loops in real-time physical environments.",
-      "image": "../img/digital.png"
+      "section": "Human Understanding",
+      "intro": "Continuously understanding human intentions and latent, unmet needs — reading context rather than waiting for explicit commands.",
+      "topics": [
+        {
+          "title": "Multimodal Perception of Intent and Unmet Needs",
+          "text": "Combining vision, speech, gesture, and activity signals so embodied agents can infer what people are trying to do and what they actually need — including needs they never state out loud. The goal is anticipation grounded in evidence, not guesswork.",
+          "image": "../img/hri.png"
+        },
+        {
+          "title": "Real-Time Conversational Models",
+          "text": "Conversational agents that keep up with the pace and messiness of real interaction: interruptions, clarifications, and shifting goals. Dialogue becomes a continuous channel for understanding people, not just a command interface.",
+          "image": "../img/interaction.png"
+        }
+      ]
     },
     {
-      "title": "Neuro-Symbolic World Models",
-      "text": "Combining learning-based and symbolic reasoning approaches to build structured, generalizable world understanding.",
-      "image": "../img/digital.png"
+      "section": "World Understanding",
+      "intro": "Constructing persistent, dynamic world models that integrate physical, spatial, temporal, and social context for grounded reasoning.",
+      "topics": [
+        {
+          "title": "Persistent, Dynamic World Models",
+          "text": "Agents that remember how a space is organized, used, and by whom — and track how situations evolve over hours, days, and weeks. Reasoning happens over a living model of the world, not a single-frame snapshot.",
+          "image": "../img/digital.png"
+        },
+        {
+          "title": "Social and Temporal Grounding",
+          "text": "Integrating social context — roles, routines, norms, and relationships — into the world model, so plans and actions make sense in homes, workplaces, and public spaces, not only in controlled laboratory conditions.",
+          "image": "../img/social.png"
+        }
+      ]
     },
     {
-      "title": "Human Intent & Needs Understanding",
-      "text": "Modeling human goals, preferences, and contextual intent for aligned decision-making in embodied agents.",
-      "image": "../img/digital.png"
+      "section": "Agentic Execution",
+      "intro": "Modular orchestration that turns understanding into safe, adaptive, human-centered action.",
+      "topics": [
+        {
+          "title": "Modular Orchestration Frameworks",
+          "text": "Frameworks that seamlessly coordinate foundation models, memory, world models, communication, reasoning, planning, and robot capabilities. Modularity keeps each capability inspectable and replaceable — essential for systems people must be able to trust.",
+          "image": "../img/shared.png"
+        },
+        {
+          "title": "Safe, Adaptive, Human-Centered Execution",
+          "text": "Execution that adapts to people rather than forcing people to adapt to robots: legible behavior, graceful recovery from failure, and safety in the physical and social world — designed into the architecture, not added as an afterthought.",
+          "image": "../img/RAR.png"
+        }
+      ]
     }
   ],
   "publications": [
     {
-      "title": "Post-ChatGPT Era: Embodied Agentic Systems for Real-World AI",
-      "venue": "AIST HEART Lab Research",
-      "date": "2026",
-      "href": "#"
+      "title": "From Large Language Models to Agentic AI in Industry 5.0: A Socio-Technical Framework and Review on Human-Robot Collaboration",
+      "venue": "Robotics (MDPI)",
+      "date": "Mar 2026",
+      "href": "../news/paper-robotics-march-12-2026.html"
+    },
+    {
+      "title": "Evaluating quality in human-robot interaction: A systematic search and classification of performance and human-centered factors, measures and metrics towards an Industry 5.0",
+      "venue": "Journal Article",
+      "date": "2022",
+      "href": "../research.html"
     }
-  ],
-  "cta": {
-    "title": "Work on Embodied AI",
-    "text": "Join research on agentic systems, world models, and physical intelligence for next-generation robotics.",
-    "primaryLabel": "Open Positions",
-    "primaryHref": "../interships.html"
-  }
+  ]
 }

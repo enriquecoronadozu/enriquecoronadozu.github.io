@@ -127,6 +127,7 @@
         <a href="#projects" class="hover:text-blue transition-colors">Projects</a>
         <a href="research.html" class="hover:text-blue transition-colors">Publications</a>
         <a href="news.html" class="hover:text-blue transition-colors">News</a>
+        <a href="fundings.html" class="hover:text-blue transition-colors">Fundings</a>
         <a href="interships.html" class="hover:text-blue transition-colors">Internships</a>
       </div>
 
@@ -146,6 +147,7 @@
         <a href="#projects" class="hover:text-ink">Projects</a>
         <a href="research.html" class="hover:text-ink">Publications</a>
         <a href="news.html" class="hover:text-ink">News</a>
+        <a href="fundings.html" class="hover:text-ink">Fundings</a>
         <a href="interships.html" class="text-blue font-semibold">Internships →</a>
       </div>
     </div>
@@ -208,76 +210,39 @@
     <div id="pagination-controls" class="mt-10 flex justify-center gap-2"></div>
   </section>
 
-  <section class="max-w-site mx-auto px-5 pb-20">
-    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-      <div class="rounded-3xl overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=400" alt="Responsible Agentic Robotics research" loading="lazy"
-          class="w-full aspect-[16/10] object-cover">
-      </div>
-      <div>
-        <h2 class="display font-semibold text-3xl md:text-4xl text-blue leading-tight mb-5">
-          The Responsible Agentic Robotics Framework Is Here
-        </h2>
-        <p class="text-blue-text leading-relaxed text-[17px]">
-          Published in <em>Robotics</em>, the RAR framework maps the shift from LLMs to agentic AI in Industry
-          5.0 — and asks what it takes for autonomous, embodied agents to remain sustainable and
-          human-centered. As robots gain the ability to decide and act, rigorous frameworks for responsibility
-          have never been more critical. This work provides a comprehensive path for aligning agentic robotics
-          with the people it serves.
-        </p>
-        <a href="news/paper-robotics-march-12-2026.html"
-          class="mt-7 inline-flex items-center gap-2.5 bg-blue hover:bg-blue-deep text-white px-6 py-3.5 rounded-full font-medium text-[15px] transition-colors">
-          Read the Paper
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
-            aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </a>
-      </div>
-    </div>
-  </section>
-
   <main>
-    <section id="research" class="max-w-site mx-auto px-5">
-      <div class="rounded-3xl bg-gradient-to-b from-plum-from via-plum-via to-plum-to text-white overflow-hidden">
-        <div class="py-12 md:py-16">
-          <div class="px-6 md:px-12 flex flex-col lg:flex-row lg:justify-between gap-8 mb-12">
-            <div class="flex items-baseline gap-4">
-              <span class="meta text-mint-text/80 text-2xl md:text-3xl">01</span>
-              <h2 class="display font-semibold text-4xl md:text-5xl text-mint-text">Research</h2>
-            </div>
-            <p class="text-white/90 text-lg leading-relaxed lg:max-w-xl">
+    <!-- RESEARCH — white glossy panel with glass cards -->
+    <section id="research" class="max-w-site mx-auto px-5 py-10 md:py-14">
+      <div class="rounded-3xl bg-white/40 backdrop-blur-[2px] border border-white/40 shadow-sm p-7 md:p-12">
+        <div class="flex flex-col lg:flex-row lg:justify-between gap-8 mb-12">
+          <h2 class="display font-semibold text-4xl md:text-5xl text-blue">Research</h2>
+          <div class="lg:max-w-xl">
+            <p class="text-body text-lg leading-relaxed mb-6">
               My vision is led by a commitment to studying, guiding, and developing human-centered AI and
               robotics. Intelligent agents should be collaborative, augmentative, and enhance human well-being
               and quality of life.
             </p>
-          </div>
-
-          <div class="relative">
-            <!-- Cards rendered from SITE_RESEARCH (see script below) -->
-            <div id="research-carousel" class="carousel flex gap-6 overflow-x-auto scroll-smooth px-6 md:px-12 pb-2"></div>
-
-            <button id="carousel-next" aria-label="Scroll research cards" class="hidden md:flex absolute right-6 top-1/3 w-14 h-14 rounded-full bg-white text-ink items-center justify-center shadow-lg hover:scale-105 transition-transform">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-            </button>
-          </div>
-
-          <div class="px-6 md:px-12 mt-10 flex flex-wrap justify-end gap-4">
-            <a href="research/index.html" class="inline-flex items-center gap-3 bg-mint text-mint-ink rounded-full px-6 py-3 font-medium text-[15px] hover:bg-white transition-colors">
+            <a href="research/index.html" class="inline-flex items-center gap-2.5 bg-blue hover:bg-blue-deep text-white px-6 py-3.5 rounded-full font-medium text-[15px] transition-colors">
               More on Research
               <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
             </a>
           </div>
+        </div>
+
+        <div class="relative">
+          <!-- Cards rendered from research/featured.json (see script below) -->
+          <div id="research-carousel" class="carousel flex gap-6 overflow-x-auto scroll-smooth pb-2"></div>
+
+          <button id="carousel-next" aria-label="Scroll research cards" class="hidden md:flex absolute right-2 top-1/3 w-14 h-14 rounded-full bg-white text-ink items-center justify-center shadow-lg hover:scale-105 transition-transform">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+          </button>
         </div>
       </div>
     </section>
 
     <section id="projects" class="max-w-site mx-auto px-5 py-20 md:py-24">
       <div class="flex flex-col lg:flex-row lg:justify-between gap-8 mb-12">
-        <div class="flex items-baseline gap-4">
-          <span class="meta text-teal/60 text-2xl md:text-3xl">02</span>
-          <h2 class="display font-semibold text-4xl md:text-5xl text-teal">Projects</h2>
-        </div>
+        <h2 class="display font-semibold text-4xl md:text-5xl text-teal">Projects</h2>
         <div class="lg:max-w-xl">
           <p class="text-body text-lg leading-relaxed mb-6">
             Research made physical: platforms and studies where responsible AI meets real robots, real environments, and
@@ -296,10 +261,7 @@
       <div class="rounded-3xl bg-gradient-to-br from-blue to-blue-deep text-white shadow-xl">
         <div class="p-8 md:p-16 flex flex-col lg:flex-row lg:justify-between gap-10">
           <div>
-            <div class="flex items-baseline gap-4 mb-8">
-              <span class="meta text-cyan/70 text-2xl md:text-3xl">03</span>
-              <h2 class="display font-semibold text-4xl md:text-5xl text-cyan">Join the Lab</h2>
-            </div>
+            <h2 class="display font-semibold text-4xl md:text-5xl text-cyan mb-8">Join the Lab</h2>
             <h3 class="display font-semibold text-2xl md:text-3xl leading-snug max-w-xl">
               Pioneering agentic &amp; physical AI — with students.
             </h3>
@@ -356,11 +318,11 @@
       },
       {
         id: "agentic-physical-ai",
-        meta: "Embodied Intelligence",
-        title: "Agentic & Physical AI",
-        description: "Building embodied autonomous systems that understand human needs, reason over world models, and act safely in complex real-world environments.",
-        img: "img/education.png",
-        tags: ["Embodied AI", "World Models", "Neuro-Symbolic AI"]
+        meta: "Human-AI Symbiosis · Embodied Intelligence",
+        title: "Embodied Agentic AI",
+        description: "Beyond manipulation benchmarks: robots that reason, remember, and collaborate safely with humans in the physical and social world — augmenting people, not replacing them.",
+        img: "img/irex.png",
+        tags: ["Embodied Agentic AI", "Human-AI Symbiosis", "Social Intelligence", "Shared Autonomy"]
       },
       {
         id: "industry-5",
@@ -704,23 +666,26 @@
           const img = (topic.cardImage || topic.heroImage || '').replace(/^\.\.\//, '');
           const description = topic.teaser || topic.subtitle || '';
           return `
-          <a href="research/${topic.slug}.html" class="w-[300px] md:w-[360px] shrink-0 flex flex-col group">
-            <div class="rounded-2xl overflow-hidden card-glow mb-6">
-              <img src="${img}" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover bg-white">
+          <a href="research/${topic.slug}.html"
+            class="group w-[300px] md:w-[360px] shrink-0 rounded-3xl bg-white/20 overflow-hidden flex flex-col backdrop-blur-[2px] shadow-sm border border-white/20 hover:bg-white/50 hover:shadow-lg transition-all duration-300">
+            <div class="h-48 overflow-hidden bg-white">
+              <img src="${img}" alt="" loading="lazy" class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500">
             </div>
-            <h3 class="display font-semibold text-xl mb-2 group-hover:underline underline-offset-4">${topic.title}</h3>
-            <div class="flex items-end justify-between gap-4">
-              <p class="text-white/80 text-[15px] leading-relaxed">
-                ${description}
-              </p>
-              <svg class="w-6 h-6 shrink-0 text-white/70" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+            <div class="p-6 flex flex-col gap-2 flex-1">
+              <h3 class="display font-semibold text-xl">${topic.title}</h3>
+              <div class="flex items-end justify-between gap-4 flex-1">
+                <p class="text-body text-[15px] leading-relaxed">
+                  ${description}
+                </p>
+                <svg class="w-6 h-6 shrink-0 text-faint group-hover:text-blue transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+              </div>
             </div>
           </a>`;
         }).join('');
       } catch (error) {
         console.error(error);
         carousel.innerHTML = `
-          <a href="research/index.html" class="text-white/80 underline underline-offset-4 px-2 py-6">
+          <a href="research/index.html" class="text-body underline underline-offset-4 px-2 py-6">
             Explore all research topics →
           </a>`;
       }

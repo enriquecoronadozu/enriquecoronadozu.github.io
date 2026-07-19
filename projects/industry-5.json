@@ -20,9 +20,6 @@
     "text": "Enable manufacturing ecosystems where humans and intelligent systems collaborate through digital twins, shared autonomy, ergonomic optimization, and cognitive augmentation.",
     "image": "../img/twin.png"
   },
-  "mission": {
-    "text": "Advance human-centred AI methodologies that integrate digital twins, collaborative robotics, and transdisciplinary innovation for sustainable and inclusive industry."
-  },
   "activities": [
     {
       "title": "Collaborative Digital Twins",
@@ -60,11 +57,5 @@
       "date": "2017",
       "href": "https://ieeexplore.ieee.org/abstract/document/7989321"
     }
-  ],
-  "cta": {
-    "title": "Join the Research",
-    "text": "We welcome collaborations in human-centred AI, digital twins, robotics, and transdisciplinary innovation for sustainable manufacturing.",
-    "primaryLabel": "View Opportunities",
-    "primaryHref": "../interships.html"
-  }
+  ]
 }

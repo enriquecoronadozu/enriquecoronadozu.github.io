@@ -25,13 +25,19 @@
 
        JSON FIELDS (see research/nep-plus.json for a full example):
          type, accent ("plum"|"blue"|"teal"), eyebrow, title,
-         subtitle, heroImage, intro,
-         sections     [{ title, text, image }]          (optional;
-                       image is optional per section)
+         subtitle, intro,
+         why          { text }  "Why it matters" for a general
+                      audience — rendered as a highlighted callout
          highlights   ["chip", "chip", ...]             (optional)
-         publications [{ title, venue, date, href }]    (optional)
-         links        [{ label, href }]                 (optional)
+         sections     [{ title, text, image }]          (optional;
+                       image optional per section; AT MOST TWO
+                       images render per page — extras are ignored,
+                       shown small and framed next to the text)
+         heroImage    NOT shown on this page — used only for the
+                      index.html carousel card and research/index.html
+                      listing (with optional "teaser" / "cardImage")
        Every optional section is skipped if its field is missing.
+       Write for the GENERAL PUBLIC: short sentences, no jargon.
        This template is intentionally LIGHTER than the project one:
        it explains a paper, framework, or vision — not a full project.
        ============================================================ -->
@@ -72,6 +78,7 @@
       background: linear-gradient(180deg, #F4F6FB 0%, #EAEFF8 55%, #F1F4FA 100%);
     }
     .display { letter-spacing: -0.025em; }
+    .card-glow { box-shadow: 0 0 44px rgba(255, 255, 255, 0.28); }
     .meta {
       font-family: 'IBM Plex Mono', ui-monospace, monospace;
       font-size: 0.75rem; font-weight: 500;
@@ -103,6 +110,7 @@
         <a href="../index.html#projects" class="hover:text-blue transition-colors">Projects</a>
         <a href="../research.html" class="hover:text-blue transition-colors">Publications</a>
         <a href="../news.html" class="hover:text-blue transition-colors">News</a>
+        <a href="../fundings.html" class="hover:text-blue transition-colors">Fundings</a>
         <a href="../interships.html" class="hover:text-blue transition-colors">Internships</a>
       </div>
       <button id="menu-toggle" class="lg:hidden p-2 -mr-2 text-ink" aria-expanded="false" aria-controls="mobile-menu"
@@ -120,6 +128,7 @@
         <a href="../index.html#projects" class="hover:text-ink">Projects</a>
         <a href="../research.html" class="hover:text-ink">Publications</a>
         <a href="../news.html" class="hover:text-ink">News</a>
+        <a href="../fundings.html" class="hover:text-ink">Fundings</a>
         <a href="../interships.html" class="text-blue font-semibold">Internships →</a>
       </div>
     </div>
@@ -170,14 +179,9 @@
       },
     };
 
-    const arrow = `<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>`;
-
     // ---------- Section builders (each returns '' if data missing) ----------
+    // No hero image: the page opens with words, not a banner.
     function heroSection(p, t) {
-      const hero = p.heroImage ? `
-        <div class="rounded-3xl overflow-hidden">
-          <img src="${p.heroImage}" alt="${p.title}" class="w-full aspect-[21/9] object-cover">
-        </div>` : '';
       return `
       <header class="max-w-site mx-auto px-5 pt-6">
         <p class="meta text-faint mb-6">
@@ -185,20 +189,32 @@
           <a href="index.html" class="hover:text-ink">Research</a> /
           <span class="${t.eyebrow}">${p.type || 'Research'}</span>
         </p>
-        <div class="max-w-3xl mb-10">
+        <div class="max-w-3xl">
           <p class="meta ${t.eyebrow} mb-4">${p.eyebrow || ''}</p>
           <h1 class="display font-semibold text-4xl md:text-6xl leading-[1.08] mb-5">${p.title}</h1>
           <p class="text-xl text-body leading-relaxed">${p.subtitle || ''}</p>
         </div>
-        ${hero}
       </header>`;
     }
 
     function introSection(p) {
       if (!p.intro) return '';
       return `
-      <section class="max-w-site mx-auto px-5 py-14 md:py-20">
+      <section class="max-w-site mx-auto px-5 pt-12 md:pt-16 pb-10">
         <p class="text-blue-text text-xl md:text-2xl leading-relaxed max-w-3xl display font-medium">${p.intro}</p>
+      </section>`;
+    }
+
+    // "Why it matters" — the general-public hook, highlighted like the
+    // Objective callout on the fundings page.
+    function whySection(p) {
+      if (!p.why || !p.why.text) return '';
+      return `
+      <section class="max-w-site mx-auto px-5 pb-12">
+        <div class="bg-cyanfill/40 border-l-4 border-blue rounded-r-xl px-6 py-5 max-w-3xl">
+          <p class="meta text-blue-deep mb-1.5">Why it matters</p>
+          <p class="text-ink text-[16px] leading-relaxed">${p.why.text}</p>
+        </div>
       </section>`;
     }
 
@@ -212,65 +228,37 @@
       </section>`;
     }
 
-    // Article-style blocks: image + text side by side (alternating), or
-    // full-width text when the section has no image.
+    // Article-style blocks. Sections with an image get a SMALL framed
+    // figure (glossy, like the fundings page) beside the text — and at
+    // most TWO images render per page; further images are ignored.
     function sectionsSection(p) {
       if (!p.sections || !p.sections.length) return '';
-      const blocks = p.sections.map((s, i) => {
-        if (!s.image) {
+      let imagesUsed = 0;
+      const blocks = p.sections.map(s => {
+        const showImage = s.image && imagesUsed < 2;
+        if (!showImage) {
           return `
           <div class="max-w-3xl">
             <h2 class="display font-semibold text-2xl md:text-3xl mb-4">${s.title}</h2>
             <p class="text-body text-lg leading-relaxed">${s.text}</p>
           </div>`;
         }
-        const imgFirst = i % 2 === 0;
+        const flip = imagesUsed % 2 === 1;
+        imagesUsed++;
         return `
-        <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          <div class="rounded-3xl overflow-hidden ${imgFirst ? 'order-last lg:order-first' : 'order-last'}">
-            <img src="${s.image}" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover">
+        <div class="grid lg:grid-cols-3 gap-8 lg:gap-12 items-start">
+          <div class="${flip ? 'lg:order-last' : ''}">
+            <img src="${s.image}" alt="" loading="lazy"
+              class="w-full max-w-xs mx-auto aspect-[4/3] object-cover rounded-2xl card-glow bg-white">
           </div>
-          <div>
+          <div class="lg:col-span-2">
             <h2 class="display font-semibold text-2xl md:text-3xl mb-4">${s.title}</h2>
             <p class="text-body text-lg leading-relaxed">${s.text}</p>
           </div>
         </div>`;
       }).join('');
       return `
-      <section class="max-w-site mx-auto px-5 pb-16 md:pb-24 space-y-16 md:space-y-20">${blocks}</section>`;
-    }
-
-    function publicationsSection(p) {
-      if (!p.publications || !p.publications.length) return '';
-      const rows = p.publications.map(pub => `
-        <a href="${pub.href}" class="group border-t border-line py-6 flex items-start justify-between gap-6">
-          <div class="min-w-0">
-            <h3 class="font-semibold text-[16px] leading-snug mb-2 group-hover:text-sky transition-colors">${pub.title}</h3>
-            <p class="text-sm text-body">${pub.venue}</p>
-          </div>
-          <p class="meta text-faint shrink-0 pt-1">${pub.date}</p>
-        </a>`).join('');
-      return `
-      <section class="max-w-site mx-auto px-5 pb-16 md:pb-24">
-        <h2 class="display font-semibold text-3xl md:text-4xl mb-8">Related Publications</h2>
-        <div>${rows}</div>
-      </section>`;
-    }
-
-    function linksSection(p, t) {
-      if (!p.links || !p.links.length) return '';
-      const capsules = p.links.map(l => `
-        <a href="${l.href}" target="_blank" rel="noopener"
-          class="inline-flex items-center gap-3 ${t.capsule} rounded-full px-6 py-3.5 font-medium text-[15px] transition-colors">
-          ${l.label} ${arrow}
-        </a>`).join('');
-      return `
-      <section class="max-w-site mx-auto px-5 pb-6">
-        <div class="rounded-3xl ${t.panel} text-white p-8 md:p-12 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-          <h2 class="display font-semibold text-2xl md:text-3xl ${t.heading}">Explore this work</h2>
-          <div class="flex flex-wrap gap-4">${capsules}</div>
-        </div>
-      </section>`;
+      <section class="max-w-site mx-auto px-5 pb-16 md:pb-24 space-y-14 md:space-y-18">${blocks}</section>`;
     }
 
     // ---------- Load JSON matching this file's own name ----------
@@ -289,10 +277,9 @@
         app.innerHTML = [
           heroSection(p, t),
           introSection(p),
+          whySection(p),
           highlightsSection(p),
           sectionsSection(p),
-          publicationsSection(p),
-          linksSection(p, t),
         ].join('');
 
       } catch (error) {

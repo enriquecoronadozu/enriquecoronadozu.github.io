@@ -1,45 +1,30 @@
 {
   "type": "Research",
   "accent": "blue",
-  "eyebrow": "Software Frameworks · Inclusive HMI",
+  "eyebrow": "Software Frameworks · Inclusive Technology",
   "title": "NEP+",
-  "subtitle": "A human-centered framework for inclusive human-machine interaction development",
+  "subtitle": "A human-centered framework that lets anyone — not only robotics engineers — build interactive robots and smart devices",
   "heroImage": "../img/nep7.png",
-  "intro": "NEP+ lowers the entry barrier to robotics and interactive-system development. It is a cross-platform, accessible middleware that lets researchers, designers, and end-users — not only robotics experts — build distributed human-machine interaction systems.",
-  "highlights": ["Cross-Platform Middleware", "End-User Development", "ROS Bridge (nep2ros)", "Industry 5.0 Digital Twins"],
+  "teaser": "A framework that makes building interactive robots and smart devices accessible to everyone — designers, researchers, and students, not only engineers.",
+  "intro": "Most software for building robots is made by engineers, for engineers. NEP+ (Network Empower and Prototyping Platform) takes the opposite path: it gives designers, scientists, students, and makers simple tools to connect cameras, sensors, robots, and AI — on any computer, in the programming language they already know.",
+  "why": {
+    "text": "The future of robots will be shaped by whoever can build them. If only a small technical elite can create interactive machines, the results will ignore most people's needs. By lowering the entry barrier, NEP+ lets therapists, teachers, artists, and researchers from any field prototype the robots their communities actually need."
+  },
+  "highlights": ["Cross-Platform", "Easy to Learn", "Robots & IoT", "Open Tools", "Industry 5.0"],
   "sections": [
     {
-      "title": "Why NEP+?",
-      "text": "Most robotics middleware is techno-centered: powerful, but hard to use for people outside robotics engineering. NEP+ takes a human-centered approach, prioritizing accessibility, platform independence, and simple programming interfaces so that interdisciplinary teams can prototype interactive robots and IoT-aided systems quickly.",
-      "image": "../img/nep.png"
+      "title": "One simple idea: let everything talk to everything",
+      "text": "A robot is really a team of parts — cameras that see, microphones that hear, motors that move, AI models that decide. NEP+ acts as a universal messenger between them: each part simply publishes what it knows and listens for what it needs, whether it runs on Windows, macOS, Linux, or a tiny Raspberry Pi. A few lines of code are enough to connect a speech recognizer to a robot arm.",
+      "image": "../img/nep7.png"
     },
     {
-      "title": "Bridging to ROS and Industry 5.0",
-      "text": "Through the nep2ros bridge, NEP+ connects with the Robot Operating System (ROS), enabling bidirectional data exchange between diverse hardware and software landscapes. This path supports Industry 5.0 human digital twins, where human data and robot control loops coexist across platforms, game engines, and devices.",
+      "title": "Designed around people, measured with people",
+      "text": "NEP+ was built following a quality model that puts usability first, and it was evaluated the same way: in user studies, newcomers found its tools easy to adopt, with low mental workload. It has already powered real human-centered projects — from social robots in homes to human-robot collaboration in Industry 5.0 factories, where it bridges with ROS, the standard robotics ecosystem.",
       "image": "../img/Bridging_Robotics_and_Human_Interaction.png"
-    }
-  ],
-  "publications": [
-    {
-      "title": "NEP+: A Human-Centered Framework for Inclusive Human-Machine Interaction Development",
-      "venue": "Journal Article",
-      "date": "2023",
-      "href": "../research.html"
     },
     {
-      "title": "A Path to Industry 5.0 Digital Twins for Human-Robot Collaboration by Bridging NEP+ and ROS",
-      "venue": "Robotics (MDPI)",
-      "date": "Feb 2024",
-      "href": "../news/paper-digital-twins-feb-13-2024.html"
-    },
-    {
-      "title": "Towards IoT-aided human-robot interaction using NEP and ROS: A platform-independent, accessible and distributed approach",
-      "venue": "Journal Article",
-      "date": "2020",
-      "href": "../research.html"
+      "title": "A bridge between communities",
+      "text": "The deeper contribution of NEP+ is social, not technical: it acts as a bridge between engineers and non-engineers, letting interdisciplinary teams work on the same system with the tools each one prefers. That inclusivity is what turns technology development into collaboration."
     }
-  ],
-  "links": [
-    { "label": "Related Publications", "href": "../research.html" }
   ]
 }

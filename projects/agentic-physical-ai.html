@@ -18,17 +18,21 @@
        Preview needs a local server (fetch fails on file://):
          python3 -m http.server     -> http://localhost:8000
 
-       JSON FIELDS (see projects/robocycle.json for a full example):
+       JSON FIELDS:
          type, accent ("plum"|"blue"|"teal"), eyebrow, title,
          subtitle, heroImage, intro,
          stats        [{ value, label }]                (optional)
          vision       { text, image }                   (optional)
-         mission      { text }                          (optional)
-         activities   [{ title, text, image }]          (optional)
+         activities   (optional) — two shapes supported:
+           flat:    [{ title, text, image }]
+                    -> rendered as a card grid
+           grouped: [{ section, intro?, topics: [{ title, text, image }] }]
+                    -> sections with image/text subsections
+                       (like eart.airc.aist.go.jp/en/research)
          publications [{ title, venue, date, href }]    (optional)
-         cta          { title, text, primaryLabel, primaryHref,
-                        secondaryLabel, secondaryHref } (optional)
        Every optional section is skipped if its field is missing.
+       ("mission" and "cta" fields are ignored — those sections
+       were removed from the design.)
        ============================================================ -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,6 +102,7 @@
         <a href="../index.html#projects" class="hover:text-blue transition-colors">Projects</a>
         <a href="../research.html" class="hover:text-blue transition-colors">Publications</a>
         <a href="../news.html" class="hover:text-blue transition-colors">News</a>
+        <a href="../fundings.html" class="hover:text-blue transition-colors">Fundings</a>
         <a href="../interships.html" class="hover:text-blue transition-colors">Internships</a>
       </div>
       <button id="menu-toggle" class="lg:hidden p-2 -mr-2 text-ink" aria-expanded="false" aria-controls="mobile-menu"
@@ -115,6 +120,7 @@
         <a href="../index.html#projects" class="hover:text-ink">Projects</a>
         <a href="../research.html" class="hover:text-ink">Publications</a>
         <a href="../news.html" class="hover:text-ink">News</a>
+        <a href="../fundings.html" class="hover:text-ink">Fundings</a>
         <a href="../interships.html" class="text-blue font-semibold">Internships →</a>
       </div>
     </div>
@@ -217,34 +223,54 @@
             <img src="${p.vision.image || p.heroImage}" alt="" loading="lazy" class="w-full aspect-[4/3] object-cover">
           </div>
           <div>
-            <div class="flex items-baseline gap-4 mb-6">
-              <span class="meta ${t.eyebrow} text-2xl">01</span>
-              <h2 class="display font-semibold text-3xl md:text-4xl">Vision</h2>
-            </div>
+            <h2 class="display font-semibold text-3xl md:text-4xl mb-6">Vision</h2>
             <p class="text-body text-lg leading-relaxed">${p.vision.text}</p>
           </div>
         </div>
       </section>`;
     }
 
-    function missionSection(p, t) {
-      if (!p.mission) return '';
-      return `
-      <section class="max-w-site mx-auto px-5 pb-16 md:pb-24">
-        <div class="rounded-3xl ${t.panel} text-white p-8 md:p-16">
-          <div class="flex flex-col lg:flex-row lg:justify-between gap-8">
-            <div class="flex items-baseline gap-4 shrink-0">
-              <span class="meta ${t.heading} opacity-70 text-2xl">02</span>
-              <h2 class="display font-semibold text-3xl md:text-4xl ${t.heading}">Mission</h2>
-            </div>
-            <p class="text-white/90 text-lg md:text-xl leading-relaxed lg:max-w-2xl">${p.mission.text}</p>
-          </div>
-        </div>
-      </section>`;
-    }
-
+    // "activities" supports two shapes (see header comment):
+    //   flat    [{ title, text, image }]                            -> card grid
+    //   grouped [{ section, intro?, topics: [{title,text,image}] }] -> EART-style
+    //           sections, each topic an alternating image/text row.
     function activitiesSection(p, t) {
       if (!p.activities || !p.activities.length) return '';
+
+      const heading = `<h2 class="display font-semibold text-3xl md:text-4xl mb-10">What We Do</h2>`;
+
+      if (Array.isArray(p.activities[0] && p.activities[0].topics)) {
+        let topicIndex = 0;
+        const groups = p.activities.map(group => {
+          const intro = group.intro
+            ? `<p class="text-body text-lg leading-relaxed max-w-3xl mb-10">${group.intro}</p>` : '';
+          const topics = (group.topics || []).map(a => {
+            const flip = topicIndex++ % 2 === 1;
+            return `
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
+              <div class="rounded-3xl overflow-hidden ${flip ? 'lg:order-last' : ''}">
+                <img src="${a.image}" alt="" loading="lazy" class="w-full aspect-[16/10] object-cover">
+              </div>
+              <div>
+                <h4 class="display font-semibold text-xl md:text-2xl mb-3">${a.title}</h4>
+                <p class="text-body text-[16px] leading-relaxed">${a.text}</p>
+              </div>
+            </div>`;
+          }).join('');
+          return `
+          <div>
+            <h3 class="display font-semibold text-2xl md:text-3xl ${t.eyebrow} mb-4 border-l-4 border-current pl-4">${group.section}</h3>
+            ${intro}
+            <div class="space-y-12 md:space-y-16">${topics}</div>
+          </div>`;
+        }).join('');
+        return `
+      <section class="max-w-site mx-auto px-5 pb-16 md:pb-24">
+        ${heading}
+        <div class="space-y-16 md:space-y-24">${groups}</div>
+      </section>`;
+      }
+
       const cards = p.activities.map(a => `
         <article class="bg-white rounded-3xl overflow-hidden flex flex-col shadow-sm">
           <div class="h-48 overflow-hidden">
@@ -257,10 +283,7 @@
         </article>`).join('');
       return `
       <section class="max-w-site mx-auto px-5 pb-16 md:pb-24">
-        <div class="flex items-baseline gap-4 mb-10">
-          <span class="meta ${t.eyebrow} text-2xl">03</span>
-          <h2 class="display font-semibold text-3xl md:text-4xl">What We Do</h2>
-        </div>
+        ${heading}
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">${cards}</div>
       </section>`;
     }
@@ -282,31 +305,6 @@
       </section>`;
     }
 
-    function ctaSection(p, t) {
-      if (!p.cta) return '';
-      const secondary = p.cta.secondaryLabel ? `
-        <a href="${p.cta.secondaryHref}"
-          class="inline-flex items-center gap-3 border border-white/50 text-white rounded-full px-6 py-3.5 font-medium text-[15px] hover:bg-white/10 transition-colors">
-          ${p.cta.secondaryLabel} ${arrow}
-        </a>` : '';
-      return `
-      <section class="max-w-site mx-auto px-5 pb-6">
-        <div class="rounded-3xl ${t.panel} text-white p-8 md:p-16 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-          <div class="max-w-xl">
-            <h2 class="display font-semibold text-3xl md:text-4xl ${t.heading} mb-4">${p.cta.title}</h2>
-            <p class="text-white/85 text-lg leading-relaxed">${p.cta.text}</p>
-          </div>
-          <div class="flex flex-wrap gap-4 shrink-0">
-            <a href="${p.cta.primaryHref}"
-              class="inline-flex items-center gap-3 ${t.capsule} rounded-full px-6 py-3.5 font-medium text-[15px] transition-colors">
-              ${p.cta.primaryLabel} ${arrow}
-            </a>
-            ${secondary}
-          </div>
-        </div>
-      </section>`;
-    }
-
     // ---------- Load JSON matching this file's own name ----------
     async function loadProject() {
       const app = document.getElementById('app');
@@ -325,10 +323,8 @@
           introSection(p),
           statsSection(p),
           visionSection(p, t),
-          missionSection(p, t),
           activitiesSection(p, t),
           publicationsSection(p),
-          ctaSection(p, t),
         ].join('');
 
       } catch (error) {

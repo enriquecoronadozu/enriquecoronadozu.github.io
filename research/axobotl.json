@@ -1,0 +1,30 @@
+{
+  "type": "Research",
+  "accent": "teal",
+  "eyebrow": "Social Robotics · Well-being",
+  "title": "Axobotl",
+  "subtitle": "A low-cost social robot that helps students and office workers build healthier habits",
+  "heroImage": "../img/axoface.png",
+  "teaser": "A friendly, affordable desktop robot — inspired by the Mexican axolotl — that encourages healthy habits among students and office workers.",
+  "intro": "Chronic diseases like diabetes, hypertension, and depression are rising worldwide — and the best medicine is prevention: better sleep, more movement, less stress. Axobotl is a small, friendly desktop robot designed to sit where those habits are formed (and broken): on the desks of students and office workers, gently encouraging healthier routines.",
+  "why": {
+    "text": "Most social robots are too expensive for the schools, clinics, and communities that could benefit most — especially in developing countries. Axobotl is built from widely available parts: a smartphone as its face, a Raspberry Pi as its brain, 3D-printed body, and affordable servo motors. Care technology should not be a luxury."
+  },
+  "highlights": ["Preventive Healthcare", "Low-Cost Design", "3D-Printed", "Participatory Design", "Made with Mexico"],
+  "sections": [
+    {
+      "title": "Designed with its future users, not just for them",
+      "text": "Axobotl was created through design thinking and participatory design: students and staff took part in the ideation, definition, and prototyping phases, shaping what the robot should do and how it should feel. Its identity is inspired by the axolotl — a beloved Mexican symbol of regeneration — making it approachable rather than intimidating.",
+      "image": "../img/axoface.png"
+    },
+    {
+      "title": "Modern AI in an affordable body",
+      "text": "Despite its low cost, Axobotl is no toy: its smartphone face gives it a touch display, camera, and microphone, while its Raspberry Pi controller and servo-actuated movements enable expressive, interactive behaviors — and the integration of state-of-the-art AI for conversation and perception. It is a first step toward democratizing social robotics for preventive healthcare.",
+      "image": "../img/cute_black.png"
+    },
+    {
+      "title": "A collaboration across continents",
+      "text": "Axobotl is developed between AIST in Japan and the Benemérita Universidad Autónoma de Puebla in Mexico — an example of how international collaboration can aim technology directly at well-being and health equity, rather than only at industrial performance."
+    }
+  ]
+}
